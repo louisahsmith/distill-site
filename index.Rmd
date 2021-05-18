@@ -10,8 +10,8 @@ links:
     url: "https://twitter.com/louisahsmith"
   - label: '<i class="ai ai-google-scholar"></i> Google Scholar'
     url: "https://scholar.google.com/citations?user=KeltSA4AAAAJ&hl=en&oi=ao"
-# preview: images/helveston.png
-# favicon: images/favicon.ico
+preview: img/louisa-headshot.jpeg
+favicon: img/favicon.ico
 twitter:
   creator: "@louisahsmith"
   site: "@louisahsmith"

@@ -361,11 +361,13 @@ code span.fu a {
   color: #4758ab;
 }
 
-.sidebar-section.subscribe {
-    font-size: 12px;
-    line-height: 1.5em;
-  }
 
-  .sidebar-section.custom {
-    line-height: 1.5em;
-  }
+
+.my-1.rounded {
+             border: 0;
+            }
+  
+.list-group {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
