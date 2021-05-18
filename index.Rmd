@@ -20,7 +20,7 @@ output:
   postcards::trestles
 ---
 
-:::: {style="display: grid; grid-template-columns: 35% 55%; grid-column-gap: 50px; line-height: 1.5rem;"}
+:::: {style="display: grid; grid-template-columns: 35% 55%; grid-column-gap: 50px; line-height: 1.7rem;"}
 ::: {#intlist}
 ### Interests
 
