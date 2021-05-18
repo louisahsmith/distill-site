@@ -2,7 +2,7 @@
   {
     "path": "talks/2021-06-23/",
     "title": "Challenges in estimating effects of COVID-19 on preterm birth",
-    "description": "My contribution to the infectious diseases session at SER 2021.",
+    "description": "Avoiding various biases when studying COVID-19 and preterm birth, presented in the infectious diseases session at SER 2021.",
     "author": [
       {
         "name": "Louisa H. Smith",
@@ -13,7 +13,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-06-23/snapshot.png",
-    "last_modified": "2021-05-17T19:28:30-04:00",
+    "last_modified": "2021-05-18T15:24:22-04:00",
     "input_file": {},
     "preview_width": 2010,
     "preview_height": 1256
@@ -36,7 +36,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-05-21/snapshot.png",
-    "last_modified": "2021-05-17T21:49:57-04:00",
+    "last_modified": "2021-05-18T15:24:20-04:00",
     "input_file": {},
     "preview_width": 2392,
     "preview_height": 1616
@@ -53,11 +53,87 @@
     ],
     "date": "2021-05-07",
     "categories": [],
-    "contents": "\n\n\n\n\n\n\n\n",
+    "contents": "\n\n Dissertation Video\n\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-05-07/snapshot.png",
-    "last_modified": "2021-05-17T21:22:38-04:00",
+    "last_modified": "2021-05-18T15:24:18-04:00",
     "input_file": {},
     "preview_width": 1636,
     "preview_height": 1027
+  },
+  {
+    "path": "talks/2020-12-19/",
+    "title": "Simple sensitivity analysis for selection bias using bounds",
+    "description": "Extending a sensitivity analysis approach for unmeasured confounding to selection bias.",
+    "author": [
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      }
+    ],
+    "date": "2020-12-19",
+    "categories": [],
+    "contents": "\n\n Paper\n\n\n\n\n\n\n\n\n",
+    "preview": "talks/2020-12-19/snapshot.png",
+    "last_modified": "2021-05-18T15:24:17-04:00",
+    "input_file": {},
+    "preview_width": 2006,
+    "preview_height": 1308
+  },
+  {
+    "path": "talks/2020-08-20/",
+    "title": "The Magic of R",
+    "description": "A guest lecture to convince new learners of R just how cool it is.",
+    "author": [
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      }
+    ],
+    "date": "2020-08-20",
+    "categories": [],
+    "contents": "\n\n\n\n\n\n\n\n",
+    "preview": "talks/2020-08-20/snapshot.png",
+    "last_modified": "2021-05-18T15:24:14-04:00",
+    "input_file": {},
+    "preview_width": 2808,
+    "preview_height": 1582
+  },
+  {
+    "path": "talks/2020-01-29/",
+    "title": "Data gets personal",
+    "description": "A data science/human interest story first shared at RLadies Boston.",
+    "author": [
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      }
+    ],
+    "date": "2020-01-29",
+    "categories": [],
+    "contents": "\n\n Code\n\n\n\n\n\n\n\n\n",
+    "preview": "talks/2020-01-29/snapshot.png",
+    "last_modified": "2021-05-18T15:24:11-04:00",
+    "input_file": {},
+    "preview_width": 2460,
+    "preview_height": 1382
+  },
+  {
+    "path": "talks/2018-12-07/",
+    "title": "Directed Acyclic Graphs: An introduction",
+    "description": "The basics of DAGs.",
+    "author": [
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      }
+    ],
+    "date": "2018-12-07",
+    "categories": [],
+    "contents": "\n\n\n\n\n\n\n\n",
+    "preview": "talks/2018-12-07/snapshot.png",
+    "last_modified": "2021-05-18T15:25:28-04:00",
+    "input_file": {},
+    "preview_width": 2132,
+    "preview_height": 1196
   }
 ]

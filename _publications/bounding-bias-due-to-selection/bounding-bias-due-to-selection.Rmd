@@ -21,14 +21,14 @@ categories: Epidemiology
 ```{r, echo = FALSE}
 distilltools::icon_link(
   icon = "doi",
-  text = "DOI",
+  text = "Online version",
   url = "https://doi.org/10.1097/EDE.0000000000001032"
 )
 # 
 distilltools::icon_link(
   icon = "fas fa-file-pdf",
   text = "PDF",
-  url = "https://www.louisahsmith.com/publication/smith-2019/smith-2019.pdf"
+  url = "bounding-bias-due-to-selection.pdf"
 )
 
 distilltools::icon_link(

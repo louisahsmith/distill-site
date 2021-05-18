@@ -22,7 +22,7 @@ categories: Epidemiology
 ```{r, echo = FALSE}
 distilltools::icon_link(
   icon = "doi",
-  text = "DOI",
+  text = "Online version",
   url = "https://doi.org/10.1097/ede.0000000000001335"
 )
 # 

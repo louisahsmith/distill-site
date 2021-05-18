@@ -22,12 +22,12 @@ categories: Epidemiology
 distilltools::icon_link(
   icon = "fas fa-file-pdf",
   text = "PDF",
-  url = "files/mediational-e-values.pdf"
+  url = "mediational-e-values-approximate-sensitivity-analysis-for-unmeasured-mediator-outcome-confounding.pdf"
 )
 
 distilltools::icon_link(
   icon = "doi",
-  text = "DOI",
+  text = "Online version",
   url = "https://doi.org/10.1097/EDE.0000000000001064"
 )
 

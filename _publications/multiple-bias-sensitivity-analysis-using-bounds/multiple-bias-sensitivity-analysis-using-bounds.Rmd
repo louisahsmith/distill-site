@@ -19,7 +19,7 @@ journal:
 volume: 32
 issue: 5
 citation_url: https://arxiv.org/abs/2005.02908
-categories: "Epidemiology"
+categories: "To appear in Epidemiology"
 ---
 
 ```{r, echo = FALSE}

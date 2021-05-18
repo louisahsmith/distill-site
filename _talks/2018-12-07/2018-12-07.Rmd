@@ -1,0 +1,30 @@
+---
+title: "Directed Acyclic Graphs: An introduction"
+description: |
+  The basics of DAGs.
+author:
+  - name: Louisa H. Smith
+date: '2018-12-07'
+doi: Kolokotrones Symposium, Harvard TH Chan School of Public Health
+preview: snapshot.png
+creative_commons: CC BY-ND
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+image_link <- function(image, url, border = FALSE, ...) {
+  border <- border * 2
+  htmltools::a(
+    href = url,
+    htmltools::img(src = image, style = paste0("max-width: 100%;border: ", border, "px solid;"), ...)
+  )
+}
+```
+
+```{r}
+image_link("snapshot.png",
+           "slides.pdf", border = FALSE)
+```

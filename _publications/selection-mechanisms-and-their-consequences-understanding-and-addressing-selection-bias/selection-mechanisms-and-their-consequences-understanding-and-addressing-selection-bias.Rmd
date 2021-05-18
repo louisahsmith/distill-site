@@ -19,14 +19,14 @@ categories: "Current Epidemiology Reports"
 ```{r, echo = FALSE}
 distilltools::icon_link(
   icon = "doi",
-  text = "DOI",
+  text = "Online version",
   url = "https://doi.org/10.1007/s40471-020-00241-6"
 )
 
 distilltools::icon_link(
   icon = "fas fa-file-pdf",
   text = "PDF",
-  url = "https://www.louisahsmith.com/publication/smith-2020-b/smith-2020-b.pdf"
+  url = "selection-mechanisms-and-their-consequences-understanding-and-addressing-selection-bias.pdf"
 )
 # 
 # distilltools::icon_link(

@@ -19,7 +19,7 @@ citation_url:
 ```{r, echo = FALSE}
 # distilltools::icon_link(
 #   icon = "doi",
-#   text = "DOI",
+#   text = "Online version",
 #   url = ""
 # )
 # 

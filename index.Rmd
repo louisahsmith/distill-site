@@ -10,8 +10,6 @@ links:
     url: "https://twitter.com/louisahsmith"
   - label: '<i class="ai ai-google-scholar"></i> Google Scholar'
     url: "https://scholar.google.com/citations?user=KeltSA4AAAAJ&hl=en&oi=ao"
-  # - label: '<i class="ai ai-orcid"></i> ORCID'
-  #   url: "https://orcid.org/0000-0001-9029-4644"
 # preview: images/helveston.png
 # favicon: images/favicon.ico
 twitter:

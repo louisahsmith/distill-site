@@ -1,0 +1,92 @@
+---
+title: "Teaching"
+---
+```{css, echo = FALSE}
+
+d-article h1 {
+  font-size: 28px;
+  padding-bottom: .5rem;
+}
+
+d-article h3 {
+margin-top: .25rem;
+  margin-bottom: 6px;
+  font-size: 14px;
+color: rgba(42, 25, 79, .6)!important;
+}
+
+d-article > p {
+  padding-bottom: 20px;
+}
+
+.l-body {
+  font-size: 1rem;
+  padding-top: 4px;
+}
+
+.l-body p {
+  margin-bottom: 6px
+}
+
+h2 a:hover {
+    text-decoration: none;
+}
+
+```
+
+# Harvard TH Chan School of Public Health
+
+## [EPI 207: Advanced Epidemiologic Methods](https://courses.my.harvard.edu/psp/courses/EMPLOYEE/EMPL/h/?tab=HU_CLASS_SEARCH&SearchReqJSON=%7B%22PageNumber%22%3A1%2C%22PageSize%22%3A%22%22%2C%22SortOrder%22%3A%5B%22IS_SCL_SUBJ_CAT%22%5D%2C%22Facets%22%3A%5B%5D%2C%22Category%22%3A%22HU_SCL_SCHEDULED_BRACKETED_COURSES%22%2C%22SearchPropertiesInResults%22%3Atrue%2C%22FacetsInResults%22%3Atrue%2C%22SaveRecent%22%3Atrue%2C%22TopN%22%3A%22%22%2C%22SearchText%22%3A%22EPI%20207%20Robins%22%2C%22DeepLink%22%3Afalse%7D)
+
+### (Head) Teaching fellow (fall 2018, fall 2019, fall 2020)
+
+Causal inference for time-varying exposures: g-formula, marginal structural models, g-estimation of structural nested models; static and dynamic treatment regimes.
+  
+## [BST 256: Theories and Methods for Causality I](https://courses.my.harvard.edu/psp/courses/EMPLOYEE/EMPL/h/?tab=HU_CLASS_SEARCH&SearchReqJSON=%7B%22ExcludeBracketed%22%3Atrue%2C%22PageNumber%22%3A1%2C%22PageSize%22%3A%22%22%2C%22SortOrder%22%3A%5B%22IS_SCL_SUBJ_CAT%22%5D%2C%22Facets%22%3A%5B%5D%2C%22Category%22%3A%22HU_SCL_SCHEDULED_BRACKETED_COURSES%22%2C%22SearchPropertiesInResults%22%3Atrue%2C%22FacetsInResults%22%3Atrue%2C%22SaveRecent%22%3Atrue%2C%22TopN%22%3A%22%22%2C%22SearchText%22%3A%22BST%20256%22%2C%22DeepLink%22%3Afalse%7D)
+  
+### Teaching fellow (fall 2020)
+
+Structural causal models, graphical models, algorithms for identification.
+  
+
+## [Introduction to R](https://intro-to-R-2020.louisahsmith.com)
+### Instructor (fall 2019, summer 2020)
+```{r, echo = FALSE}
+distilltools::icon_link(
+  icon = "chalkboard-teacher",
+  text = "Course materials",
+  url = "https://intro-to-R-2020.louisahsmith.com"
+)
+```
+
+Developed and taught short course to introduce R to graduate students. Topics included creating figures and tables, cleaning data, writing functions.
+  
+## [Introduction to Epidemiology](https://www.hsph.harvard.edu/biostatistics/diversity/summer-program/)
+  
+### Co-instructor (summer 2019, summer 2020)
+
+Epidemiology course for participants in the Harvard Summer Program in Biostatistics & Computational Biology.
+
+## [PHS 2000: Quantitative Research Methods in Population Health Sciences](https://courses.my.harvard.edu/psp/courses/EMPLOYEE/EMPL/h/?tab=HU_CLASS_SEARCH&SearchReqJSON=%7B%22PageNumber%22%3A1%2C%22PageSize%22%3A%22%22%2C%22SortOrder%22%3A%5B%22IS_SCL_SUBJ_CAT%22%5D%2C%22Facets%22%3A%5B%5D%2C%22Category%22%3A%22HU_SCL_SCHEDULED_BRACKETED_COURSES%22%2C%22SearchPropertiesInResults%22%3Atrue%2C%22FacetsInResults%22%3Atrue%2C%22SaveRecent%22%3Atrue%2C%22TopN%22%3A%22%22%2C%22SearchText%22%3A%22PHS%202000%22%2C%22DeepLink%22%3Afalse%7D)
+### Teaching fellow (fall 2017, spring 2018, fall 2019)
+```{r, echo = FALSE}
+distilltools::icon_link(
+  icon = "chalkboard-teacher",
+  text = "Summer prep site",
+  url = "https://phs2000-prep.hmdc.harvard.edu"
+)
+```
+Regression models, sampling, longitudinal and multilevel analysis, time-varying confounding, mediation and interaction, econometric methods, missing data.
+  
+# University of California, Berkeley
+
+## [PH 150A: Introduction to Epidemiology and Human Disease](http://guide.berkeley.edu/courses/pb_hlth/)
+### Graduate student instructor (spring 2016)
+
+Basic epidemiologic methods, overview of epidemiology of diseases/conditions of public health importance for undergraduates.
+
+
+## [PH 250A: Epidemiologic Methods](http://guide.berkeley.edu/courses/pb_hlth/)
+### Graduate student instructor (fall 2015)
+
+Study design, sampling, data collection, analysis, inference for MPH students.

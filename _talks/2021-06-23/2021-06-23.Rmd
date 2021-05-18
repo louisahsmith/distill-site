@@ -1,11 +1,12 @@
 ---
 title: "Challenges in estimating effects of COVID-19 on preterm birth"
 description: |
-  My contribution to the infectious diseases session at SER 2021.
+  Avoiding various biases when studying COVID-19 and preterm birth, presented in the infectious diseases session at SER 2021.
 author:
   - name: Louisa H. Smith
     url: {}
 date: 2021-06-23
+doi: SER 2021
 preview: snapshot.png
 creative_commons: CC BY-ND
 output:

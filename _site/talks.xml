@@ -12,7 +12,7 @@
       <title>Challenges in estimating effects of COVID-19 on preterm birth</title>
       <dc:creator>Louisa H. Smith</dc:creator>
       <link>https://www.louisahsmith.com/talks/2021-06-23</link>
-      <description>My contribution to the infectious diseases session at SER 2021.</description>
+      <description>Avoiding various biases when studying COVID-19 and preterm birth, presented in the infectious diseases session at SER 2021.</description>
       <guid>https://www.louisahsmith.com/talks/2021-06-23</guid>
       <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2021-06-23/snapshot.png" medium="image" type="image/png" width="2010" height="1256"/>
@@ -35,6 +35,42 @@
       <guid>https://www.louisahsmith.com/talks/2021-05-07</guid>
       <pubDate>Fri, 07 May 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2021-05-07/snapshot.png" medium="image" type="image/png" width="1636" height="1027"/>
+    </item>
+    <item>
+      <title>Simple sensitivity analysis for selection bias using bounds</title>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <link>https://www.louisahsmith.com/talks/2020-12-19</link>
+      <description>Extending a sensitivity analysis approach for unmeasured confounding to selection bias.</description>
+      <guid>https://www.louisahsmith.com/talks/2020-12-19</guid>
+      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://www.louisahsmith.com/talks/2020-12-19/snapshot.png" medium="image" type="image/png" width="2006" height="1308"/>
+    </item>
+    <item>
+      <title>The Magic of R</title>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <link>https://www.louisahsmith.com/talks/2020-08-20</link>
+      <description>A guest lecture to convince new learners of R just how cool it is.</description>
+      <guid>https://www.louisahsmith.com/talks/2020-08-20</guid>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://www.louisahsmith.com/talks/2020-08-20/snapshot.png" medium="image" type="image/png" width="2808" height="1582"/>
+    </item>
+    <item>
+      <title>Data gets personal</title>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <link>https://www.louisahsmith.com/talks/2020-01-29</link>
+      <description>A data science/human interest story first shared at RLadies Boston.</description>
+      <guid>https://www.louisahsmith.com/talks/2020-01-29</guid>
+      <pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://www.louisahsmith.com/talks/2020-01-29/snapshot.png" medium="image" type="image/png" width="2460" height="1382"/>
+    </item>
+    <item>
+      <title>Directed Acyclic Graphs: An introduction</title>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <link>https://www.louisahsmith.com/talks/2018-12-07</link>
+      <description>The basics of DAGs.</description>
+      <guid>https://www.louisahsmith.com/talks/2018-12-07</guid>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://www.louisahsmith.com/talks/2018-12-07/snapshot.png" medium="image" type="image/png" width="2132" height="1196"/>
     </item>
   </channel>
 </rss>

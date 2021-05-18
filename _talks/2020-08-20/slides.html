@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>The Magic of R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Louisa Smith" />
+    <meta name="date" content="2020-08-20" />
+    <link rel="stylesheet" href="extra.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# The Magic of R
+### Louisa Smith
+### August 20, 2020
+
+---
+
+
+
+# About me
+
+.pull-left[
+
+- Rising 5th-year PhD candidate in Epidemiology at Harvard
+
+- Research focused on methods, bias, causal inference with interests in reproductive epidemiology and cancer
+
+- Started using R during my master's (so 6 years of experience); learned mostly by doing (found my initial introduction extremely confusing!)
+
+- Problem sets, manuscripts, slides, website all in R
+
+- Developed and teach the Intro to R course for my department
+
+]
+.pull-right[
+&lt;img src="img/louisa headshot.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: large
+
+# Agenda/goals
+
+- Make sure you can navigate and feel comfortable in RStudio
+--
+
+- Convince you that R is really amazing
+--
+
+- Leave you with some resources to learn more
+
+
+---
+class: inverse, center, middle
+
+.hand-large[
+Let's start with...
+]
+.larger[
+the basics
+]
+
+---
+# R &amp; RStudio
+
+.pull-left-narrow[
+- R is the programming language
+  - You can run it from the command line
+]
+.pull-right-wide[
+&lt;img src="img/r-cli.png" width="80%" style="display: block; margin: auto auto auto 0;" /&gt;
+]
+
+---
+# R &amp; RStudio
+
+.pull-left-narrow[
+- R is the programming language
+  - You can run it from the command line
+- RStudio is the graphical interface/development environment that many people use to write and run R code
+- Many other options, but RStudio is popular for a reason
+]
+.pull-right-wide[
+&lt;img src="img/my-rstudio.png" width="1278" style="display: block; margin: auto auto auto 0;" /&gt;
+]
+
+---
+# R terminology
+
+- A R **object** can be a dataset, a number, a function, etc.
+    - You'll hear about *dataframes*, *vectors*, *matrices*, *lists*, etc.
+    - What's inside may be *numeric*, *character*, *logical*, *factor*, etc.
+&lt;br&gt;&lt;br&gt;
+- **Objects** are stored in an **environment**
+&lt;br&gt;&lt;br&gt;
+- R code can be run from a **script** or directly in the **console**
+&lt;br&gt;&lt;br&gt;
+- "Results" from running code can be stored as **objects** or printed to the **console**
+&lt;br&gt;&lt;br&gt;
+- Storing things as **objects** happens via the **"assignment arrow"**
+
+---
+# Basic R rules
+
+- If you want to use an object (e.g., a number) again, store it in your environment using the assignment arrow
+
+```r
+x &lt;- 2
+```
+- If you want to run code again, save it as an R script (or an R Markdown file)
+  - `analysis.R`
+  - `data-exploration.Rmd`
+- If you want to experiment with something, you might do neither
+  - e.g., could just run this in the console:
+
+```r
+4 * 8
+```
+
+```
+## [1] 32
+```
+- But default to storing everything!
+
+---
+# R packages
+
+- R comes with some built-in packages
+  - e.g., you can run a t test, or draw a boxplot
+- Install other packages from a repository
+  - `install.packages("package_name")` installs from CRAN
+  - `remotes::install_github("username/repo")` installs from Github
+- Everytime you want to use the functions from a package, run `library(package_name)` (often at the start of a script)
+  - Or you can refer to functions from another package with the `package_name::function()` notation
+  
+
+```r
+library(tidyverse)
+my_data &lt;- read_csv("my_file.csv") # from readr (tidyverse) package
+clean_data &lt;- janitor::clean_names(my_data)
+```
+
+---
+# R functions
+
+**Functions** take *arguments*: `read_csv("my_file.csv")`
+
+- `read_csv()` is the **function** and `"my_file.csv"` is one of its *arguments*
+  - All of its other arguments have defaults, so the only one we need to specify is `file`
+  - Could also write `read_csv(file = "my_file.csv")`, but since it's the first argument, it's often left out
+  - If we want to specify other arguments to override the defaults, we can: 
+    - `read_csv("my_file.csv", na = c(".", "-", "-99"))` means that all of those values should be treated as missing values
+- Run `?read_csv`, `help(read_csv)`, or search for it in the "Help" pane to see all possible arguments
+    - They also show up with autocomplete!
+
+---
+# There's always a way to make your life easier
+
+- RStudio has **code completion**
+
+&lt;img src="img/tab-complete.png" width="48%" /&gt;&lt;img src="img/tab-complete-var.png" width="48%" /&gt;
+
+- RStudio includes a lot of **keyboard shortcuts**
+  - Use `ctrl`/`cmd` + `enter` to run code from a script
+  - Hold down `alt`/`option` to create multiple cursors in a line
+  - You will only memorize the ones you need, but see them all in "Tools" -&gt; Keyboard Shortcuts Help"
+  - You can make your own to do common tasks
+
+---
+class: inverse middle center huge
+
+
+.hand-large[
+Explore &lt;br&gt;R Studio
+]
+
+
+---
+class: inverse, center, middle
+
+.hand-large[
+Now it's time for
+]
+.larger[
+the magic
+]
+
+---
+# Read in data of all types
+
+Each of these have different arguments that will allow you to read in specific columns only, skip rows, give the variables names, etc. There are also better options out there if your dataset is really big (look into the `data.table` or the `vroom` package), and if you have other types of data.
+
+```r
+dat &lt;- readr::`read_csv`("data.csv")
+dat &lt;- readr::`read_table`("data.dat")
+dat &lt;- readr::`read_rds`("data.rds")
+dat &lt;- readxl::`read_excel`("data.xlsx")
+dat &lt;- haven::`read_sas`("data.sas7bdat")
+dat &lt;- haven::`read_stata`("data.dta")
+dat &lt;- googlesheets4::`read_sheet`("sheet-id")
+```
+
+---
+# Google Sheets
+
+&lt;img src="img/meta.png" width="100%" /&gt;
+
+---
+# Google Sheets
+
+
+```r
+library(googlesheets4)
+data.raw1 &lt;- read_sheet("11HN9h5ZN81l_5a8P",
+  sheet = "Parameter_All",
+  col_types = "iicciccccccccncccn"
+)
+```
+
+... a while later...
+
+
+```r
+# write each to a separate sheet
+write_to_gs &lt;- function(inner_data, is_subgroup, PatientInformation) {
+  write_sheet(inner_data,
+    ss = "18M25ULDFccUNjkclrkL-Z8",
+    sheet = str_sub(paste(is_subgroup, PatientInformation), 1, 100)
+  )
+  Sys.sleep(5) # gets overwhelmed without a timeout!
+}
+```
+
+---
+# Write manuscripts with R markdown
+
+&lt;img src="img/r-manuscript.png" width="75%" /&gt;
+
+---
+
+# Creates...
+
+&lt;img src="img/manuscript.png" width="90%" /&gt;
+
+---
+# Reproducible research with R Markdown
+
+- All of your tables will have the correct values!
+- All of your figures will be regenerated when the data changes!
+- No more copy-pasting errors!
+- Tons of output formats: pdf, word, html, etc.
+  - With lots of customization options
+.pull-right[
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/aee91187a9c6811a802ddc524c3271302893a149/a7003/images/bandthree2.png" width="85%" /&gt;
+]
+
+---
+# Other data sources: Databases
+
+
+```r
+library(dbplyr)
+
+db_path &lt;- "~/Documents/MacGourmet4Database.mgdatabase/MacGourmet.mgdb"
+new_rec &lt;- DBI::dbConnect(RSQLite::SQLite(), db_path)
+tbls &lt;- DBI::dbListTables(new_rec)
+
+direction &lt;- tbl(new_rec, "direction")
+ingredient &lt;- tbl(new_rec, "ingredient")
+recipe &lt;- tbl(new_rec, "recipe")
+
+# get recipes that haven't been deleted
+not_del &lt;- recipe %&gt;%
+  filter(has_been_deleted != 1) %&gt;%
+  select(recipe_id, image_id)
+
+# look at the directions for those ones
+directions_new &lt;- direction %&gt;%
+  inner_join(not_del, by = "recipe_id") %&gt;%
+  collect()
+```
+
+---
+# Under the hood
+
+
+```sql
+&lt;SQL&gt;
+SELECT recipe_id, image_id
+FROM recipe
+WHERE (has_been_deleted != 1.0)
+
+SELECT *
+FROM direction AS LHS
+INNER JOIN (SELECT recipe_id, image_id
+FROM recipe
+WHERE (has_been_deleted != 1.0)) AS RHS
+ON (LHS.recipe_id = RHS.recipe_id)
+```
+
+- Using the same functions you would use with your day-to-day datasets in R
+  - See package `dbplyr`, the database version of `dplyr`
+
+---
+# Can extract my favorite recipes!
+
+
+```r
+directions_new %&gt;%
+  select(recipe_id, direction_id, directions_text)
+```
+
+```
+## # A tibble: 610 x 3
+##    recipe_id direction_id directions_text                                                    
+##        &lt;int&gt;        &lt;int&gt; &lt;chr&gt;                                                              
+##  1       200          995 "Put the potatoes in the bottom of an Instant Pot. Add 1 cup water…
+##  2       200          996 "Rub the top and sides of the salmon fillets with the paprika and …
+##  3       200          997 "Remove the salmon and rack and set the cooker to saute at normal …
+##  4       200          998 "Turn off the cooker. Add the mixed greens to the potatoes and sti…
+##  5       201          999 "Make sure the stainless steel insert is in your Instant Pot. Butt…
+##  6       201         1000 "Add 1 cup of tap water to the IP. Set the trivet (that came with …
+##  7       201         1001 "In a medium mixing bowl, place butter (cut into squares) and choc…
+##  8       201         1002 "Add powdered sugar. If your powdered sugar is clumpy, sift it ove…
+##  9       201         1003 "Add egg and egg yolk and vanilla and whisk well. Add flour and sa…
+## 10       201         1004 "Divide the chocolate batter evenly among the ramekins. Place rame…
+## # … with 600 more rows
+```
+
+---
+# And print!
+
+
+```r
+cleaned_directions &lt;- directions_new %&gt;%
+  select(recipe_id, direction_id, directions_text) %&gt;%
+  nest(recipe = -recipe_id) %&gt;%
+  mutate(text = map_chr(recipe, ~paste(.x$directions_text, collapse = "\n")))
+
+cleaned_directions %&gt;%
+  slice(5) %&gt;%
+  pull(text) %&gt;%
+  cat()
+```
+
+```
+## Measure rice into bottom of the Instant Pot.
+## Add chicken broth and salt and pepper, stir to combine.
+## Lay the frozen chicken breasts on top of the rice. Season the chicken breasts with the Italian herb blend or your favorite herb blend.
+## Lay carrots on top of the rice.
+## Cover pot, lock on the lid, and set the steam release valve to Sealing
+## Select Pressure Cook and make sure it’s set to high. Set the time to 9 minutes.
+## When the cooking cycle has finished, allow the pot to sit for 5 minutes, and then do a quick release by moving the valve to Venting.
+```
+
+---
+# Run other languages too
+
+RStudio has great integration with Python via the `reticulate` package.
+
+    ```{python}
+    def add(x, y): 
+        return x + y
+    ```
+    ```{r}
+    library(reticulate)
+    py$add(4, 5)
+    ```
+    ## [1] 9
+    
+Useful for packages that are only available in Python, or code that runs faster in Python.
+
+- For example, I run some analysis in Python but use R to create graphics.
+- Use `reticulate::source_py()` to run an entire `.py` script and make the objects directly available.
+
+---
+# Lots of options if you use R Markdown
+
+
+
+    ```{stata}
+    import delimited http://www.stata.com/examples/auto.csv
+    summarize
+    ```
+
+
+```
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        make |          0
+       price |         10      5517.4    2063.518       3799      10372
+         mpg |         10        19.5     3.27448         15         26
+       rep78 |          8       3.125    .3535534          3          4
+     foreign |          0
+```
+
+---
+
+# Collect data
+
+From a pdf:
+
+![](img/pdf.gif)
+
+---
+# Collect data
+
+
+```r
+dat &lt;- tabulizer::extract_areas("vaccines_by_state.pdf")
+cols &lt;- apply(dat[[1]][1:2,], 2, function(x) reduce(x, paste))
+cols &lt;- cols[-6]
+
+page1 &lt;- dat[[1]][-(1:3),] %&gt;%
+  as_tibble() %&gt;%
+  select(-V7) %&gt;% 
+  mutate_at(vars(-V1), ~parse_number(str_sub(., 1, 4))) %&gt;%
+  setNames(cols)
+
+page2 &lt;- dat[[2]] %&gt;%
+  as_tibble() %&gt;%
+  select(V1, V2, V4, V6, V8, V10, V12) %&gt;%
+  mutate_at(vars(-V1), ~parse_number(str_sub(., 1, 4))) %&gt;%
+  setNames(cols)
+
+vaccines &lt;- bind_rows(page1, page2)
+names(vaccines) &lt;- c("State", "MMR", "DTaP", "HepB", "HepA", 
+                     "Rotavirus", "Series")
+```
+
+---
+# Collect data
+
+Into clean data:
+
+
+```
+# A tibble: 74 x 7
+   State           MMR  DTaP  HepB  HepA Rotavirus Series
+   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+ 1 US National    91.5  83.2  73.6  59.7      73.2   70.4
+ 2 HHS REGION I   96.3  90.2  73.4  62.8      81.3   78.5
+ 3 Connecticut    94.6  86.8  78.5  73        84     75.3
+ 4 Maine          93.7  90.3  63.1  61        75.6   72.7
+ 5 Massachusetts  98.3  92.6  75    56.9      80.1   82.1
+ 6 New Hampshire  94.1  89.8  67.2  64.9      84.5   78.9
+ 7 Rhode Island   95.3  89.2  75.7  69        85.1   74.4
+ 8 Vermont        93.7  85.5  52.4  58.1      75.8   74  
+ 9 HHS REGION II  91.4  83.1  67.8  54.1      73.1   68  
+10 New Jersey     89    82.8  60    49.5      70.2   69.3
+# … with 64 more rows
+```
+
+- with the `tabulizer` package
+
+---
+# Or just copy and paste
+.center[
+![](https://raw.githubusercontent.com/milesmcbain/datapasta/master/inst/media/tribble_paste.gif)
+]
+
+- with the amazing `datapasta` package (gif from https://github.com/MilesMcBain/datapasta)
+
+---
+
+# Case study
+
+&lt;img src="img/ice-cream-website.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Get map data
+
+.pull-left[
+
+```r
+library(magrittr)
+library(purrr)
+library(xml2)
+
+dat &lt;- read_xml(
+  "Maine Ice Cream Trail.kml"
+  )  %&gt;%
+  xml_ns_strip() %&gt;%
+  xml_find_all("//Folder") %&gt;%
+  xml_find_all("//Placemark")
+```
+]
+.pull-right[
+&lt;img src="img/kml.png" width="100%" /&gt;
+]
+
+---
+# Parse latitude and longitude
+
+
+```r
+coords &lt;- dat %&gt;%
+  xml_find_all("//Placemark//Point//coordinates") %&gt;%
+  xml_text() %&gt;%
+  # split text at commas
+  stringr::`str_split`("\\,", simplify = TRUE) %&gt;%
+  tibble::as_tibble(.name_repair = "unique") %&gt;%
+  # read text as numbers
+  dplyr::mutate_all(readr::`parse_number`) %&gt;%
+  set_names(c("lng", "lat", "x")) %&gt;%
+  # select latitude and longitude in the correct order
+  dplyr::`select`(lat, lng) %&gt;%
+  # paste them together into one comma-separated value
+  tidyr::`unite`(coords, sep = `","`)
+```
+
+---
+# Use Google Maps API to get street address
+
+
+https://maps.googleapis.com/maps/api/geocode/json?latlng=44.6325812,-69.8269262&amp;result_type=street_address
+.pull-left-narrow[
+- Need an API key (free!)
+]
+.pull-right-wide[
+&lt;img src="img/ice-cream-example.png" width="90%" /&gt;
+]
+- https://developers.google.com/maps/documentation/urls/get-started
+
+---
+# Use Google Maps API to get street address
+
+.pull-left[
+
+```r
+get_address &lt;- function(`coords`) {
+  glue::glue(
+    "https://maps.googleapis.com/",
+    "maps/api/geocode/json?",
+    "latlng={`coords`}&amp;",
+    "result_type=street_address&amp;",
+    "key=AIzaSergsdbwY6c-agXC") %&gt;%
+    httr::`POST`() %&gt;%
+    httr::content(type = "text") %&gt;%
+    jsonlite::`fromJSON`()
+}
+```
+]
+.pull-right[
+&lt;img src="img/json.png" width="532" /&gt;
+]
+
+---
+
+# Clean up some of the data
+
+- Categorical variables in R are "factors"
+- I use the `forcats` package to manage them
+
+```r
+coords &lt;- coords %&gt;%
+  dplyr::mutate(region = 
+                  forcats::`fct_recode`(region,
+                                      "Greater Portland" = "1607_0288D1",
+                                      "Downeast" = "1607_9C27B0",
+                                      "Western Maine" = "1607_E65100",
+                                      "Southern Maine" = "1607_0F9D58",
+                                      "Central Maine" = "1607_F9A825",
+                                      "Northern Maine" = "1607_558B2F",
+                                      "Mid Coast Maine" = "1607_FF5252",
+                                      "Ice Cream Manufacturers" = "1607_C2185B"))
+```
+
+---
+# Prepare to share the data
+
+I want to be able to sort by town, not just region:
+
+
+```r
+coords &lt;- coords %&gt;%
+  # separate the text at every comma
+  tidyr::separate(address, sep = ",", 
+                  # into these 4 variables
+                  into = c("street", "town", "zip", "country"), 
+                  remove = FALSE, extra = "merge")
+googlesheets4::write_sheet(coords, "asdgasdgsdfhe")
+```
+
+---
+# Yum!
+
+&lt;img src="img/ice-cream-dat.png" width="100%" /&gt;
+
+---
+# Finally, graphics
+The most popular package for graphics in R is `ggplot2`
+
+![](img/grammar.png)
+
+---
+# I keep a folder dedicated to mistakes
+
+&lt;img src="img/violins.png" width="100%" /&gt;
+
+---
+# I keep a folder dedicated to mistakes
+
+&lt;img src="img/plot.png" width="48%" /&gt;&lt;img src="img/plot-1.png" width="48%" /&gt;
+
+---
+# I keep a folder dedicated to mistakes
+
+&lt;img src="img/us_map.png" width="80%" /&gt;
+
+---
+# I do make nice figures sometimes!
+
+## But there's a better source for great R figures: #tidytuesday
+
+&lt;img src="https://pbs.twimg.com/media/Eft4jzMX0AEeLlH?format=jpg&amp;name=4096x4096" width="70%" style="display: block; margin: auto;" /&gt;
+
+.footnote[@MaiaPelletier, https://github.com/MaiaPelletier/tidytuesday/blob/master/R/2020_Week34_ExtinctPlants.R]
+
+---
+
+&lt;img src="https://pbs.twimg.com/media/EfKyKEAXsAo7Qn6?format=jpg&amp;name=4096x4096" width="100%" style="display: block; margin: auto;" /&gt;
+
+.footnote[@CedScherer]
+
+---
+
+&lt;img src="https://pbs.twimg.com/media/EWi8TXvXYAAGRqH?format=jpg&amp;name=4096x4096" width="49%" /&gt;&lt;img src="https://pbs.twimg.com/media/EWi8TXvWkAA9jTh?format=jpg&amp;name=4096x4096" width="49%" /&gt;
+
+.footnote[@samiasab90, http://samia.rbind.io/post/australia-wildfires-a-tidy-tuesday-project-from-january-2020/]
+
+---
+
+&lt;img src="https://pbs.twimg.com/media/Eb5R2x4X0AAIhU6?format=jpg&amp;name=4096x4096" width="60%" style="display: block; margin: auto;" /&gt;
+
+.footnote[@geokaramanis, https://github.com/gkaramanis/tidytuesday/tree/master/2020-week27]
+
+---
+
+&lt;img src="https://pbs.twimg.com/media/EaJSPJkU4AAlERV?format=jpg&amp;name=4096x4096" width="95%" style="display: block; margin: auto;" /&gt;
+
+.footnote[@_isabellamb, https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/24_black_achievements/24_black_achievements.R]
+
+---
+# How to learn R
+
+- My #1 recommendation: choose a project (something fun!) and prepare for a lot of error messages and Googling
+- Google all error messages -- someone has almost always had the same problem as you
+- Twitter, StackOverflow, RStudio community, blogs
+- Read other people's code
+  - R is open source and most people have the same philosophy: share as much as they can
+- Free books: [R for Data Science](https://r4ds.had.co.nz), [R Markown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/), [Text Mining with R](https://www.tidytextmining.com), [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org), [ModernDive](https://moderndive.com)
+
+---
+# Favorite R packages
+
+- tidyverse (dplyr, tidyr, tibble, readr, forcats, purrr, ggplot2 etc.)
+- broom
+- lubridate
+- rvest
+- janitor
+- datapasta
+- ggrepel
+- googlesheets4
+- gt
+- gtsummary
+- tableone
+- glue
+- shiny (see https://shiny.rstudio.com/gallery/#user-showcase)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"highlightStyle": "color-brewer",
+"highlightLines": true,
+"highlightSpans": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

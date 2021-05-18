@@ -17,6 +17,8 @@ navbar:
       href: publications.html
     - text: "Talks"
       href: talks.html
+    - text: "Teaching"
+      href: teaching.html
     - text: "Posts"
       href: blog.html
     # - text: "Teaching"

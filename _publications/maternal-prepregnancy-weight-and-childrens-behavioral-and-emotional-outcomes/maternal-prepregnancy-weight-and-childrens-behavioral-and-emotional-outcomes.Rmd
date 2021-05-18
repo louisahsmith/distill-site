@@ -23,7 +23,7 @@ categories: "American Journal of Preventive Medicine"
 ```{r, echo = FALSE}
 distilltools::icon_link(
   icon = "doi",
-  text = "DOI",
+  text = "Online version",
   url = "https://doi.org/10.1016/j.amepre.2017.05.013"
 )
 # 

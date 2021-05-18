@@ -22,7 +22,7 @@ categories: "Journal of Public Health"
 ```{r, echo = FALSE}
 distilltools::icon_link(
   icon = "doi",
-  text = "DOI",
+  text = "Online version",
   url = "https://doi.org/10.1007/s10389-017-0857-5"
 )
 # 
