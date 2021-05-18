@@ -1,0 +1,70 @@
+---
+title: "Mediational E-values: Approximate sensitivity analysis for unmeasured mediator-outcome confounding"
+description: "We show how E-values can be used and easily interpreted for sensitivity analysis in mediation."
+author:
+  - name: Louisa H. Smith
+    affiliation: Harvard TH Chan School of Public Health
+  - name: Tyler J. VanderWeele
+date: '2019-11-01'
+output:
+  distill::distill_article:
+    self_contained: false
+journal: 
+  title: "Epidemiology"
+volume: 30
+issue: 6
+doi: 10.1097/EDE.0000000000001064
+citation_url: "https://journals.lww.com/epidem/Fulltext/2019/11000/Mediational_E_values__Approximate_Sensitivity.9.aspx"
+categories: Epidemiology
+---
+
+```{r, echo = FALSE}
+distilltools::icon_link(
+  icon = "fas fa-file-pdf",
+  text = "PDF",
+  url = "files/mediational-e-values.pdf"
+)
+
+distilltools::icon_link(
+  icon = "doi",
+  text = "DOI",
+  url = "https://doi.org/10.1097/EDE.0000000000001064"
+)
+
+distilltools::icon_link(
+  icon = "fas fa-file-pdf",
+  text = "Online appendix",
+  url = "https://download.lww.com/wolterskluwer_vitalstream_com/PermaLink/EDE/B/EDE_2019_07_22_SMITH_EDE18-0696R2_SDC1.pdf"
+)
+
+# 
+# distilltools::icon_link(
+#   icon = "arxiv",
+#   text = "Pre-print",
+#   url = ""
+# )
+# 
+distilltools::icon_link(
+  icon = "fab fa-github",
+  text = "Code",
+  url = "https://github.com/louisahsmith/mediational-e-values"
+)
+```
+
+# Abstract
+
+## Background
+
+Mediation analysis is a powerful tool for understanding mechanisms, but conclusions about direct and indirect effects will be invalid if there is unmeasured mediator-outcome confounding. Sensitivity analysis methods allow researchers to assess the extent of this bias but are not always used. One particularly straightforward technique that requires minimal assumptions is nonetheless difficult to interpret, and so would benefit from a more intuitive parameterization.
+
+## Methods
+
+We conducted an exhaustive numerical search over simulated mediation effects, calculating the proportion of scenarios in which a bound for unmeasured mediator-outcome confounding held under an alternative parameterization.
+
+## Results
+
+In over 99% of cases, the bound for the bias held when we described the strength of confounding directly via the confounder-mediator relationship instead of via the conditional exposure-confounder relationship.
+
+## Conclusions
+
+Researchers can conduct sensitivity analysis using a method that describes the strength of the confounder-outcome relationship and the approximate strength of the confounder-mediator relationship that together would be required to explain away a direct or indirect effect.

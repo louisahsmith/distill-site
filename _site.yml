@@ -1,0 +1,63 @@
+name: "distill-site"
+title: "Louisa H. Smith"
+description: |
+  Louisa H. Smith's personal website
+author:
+  - name: Louisa H. Smith
+output_dir: "_site"
+base_url: https://www.louisahsmith.com
+navbar:
+  search: false
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "About me"
+      href: about.html
+    - text: "Publications"
+      href: publications.html
+    - text: "Talks"
+      href: talks.html
+    - text: "Posts"
+      href: blog.html
+    # - text: "Teaching"
+    #   href: teaching.html
+    # - text: "Projects"
+    #   href: projects.html
+  right:
+    - icon: ai ai-cv ai-2x
+      href: files/louisahsmith_cv.pdf
+    - icon: fab fa-github fa-lg
+      href: https://github.com/louisahsmith/distill-website
+    - icon: fab fa-twitter fa-lg
+      href: https://twitter.com/louisahsmith
+output:
+  distill::distill_article:
+    includes:
+      in_header: www/header.html
+    self_contained: false
+theme: www/custom-theme.css
+collections:
+  posts:
+    # share: twitter
+    citations: false
+    categories: true
+    categories_metadata: true
+    authors_metadata: false
+  publications:
+    # share: twitter
+    citations: true
+    categories: false
+    categories_metadata: true
+    authors_metadata: true
+    feed_items_max: false
+    rss:
+      full_content: true
+  talks:
+    # share: twitter
+    citations: false
+    categories: false
+    categories_metadata: true
+    authors_metadata: false
+    feed_items_max: false
+rss:
+  full_content: true

@@ -1,0 +1,9 @@
+---
+title: "Who am I?"
+---
+
+I'm an epidemiologist trained in the [Program in Population Health Sciences](https://www.hsph.harvard.edu/phdphs/) and the [Department of Epidemiology](https://www.hsph.harvard.edu/epidemiology/) at the Harvard T.H. Chan School of Public Health. I also have a Master of Science degree from the [Department of Biostatistics](https://www.hsph.harvard.edu/biostatistics/). My research interests are in epidemiologic and biostatistical methods as well as reproductive and child health. I first developed these interests at [U.C. Berkeley](http://sph.berkeley.edu), where I earned my M.S. in epidemiology, and while teaching third grade at [Little Wound School](http://littlewound.us) in Kyle, SD, where I lived for three years. Prior to that I studied [comparative literature](https://www.brown.edu/academics/comparative-literature/) (focusing on literary translation from French and Portuguese) and [community health](https://www.brown.edu/academics/public-health/education-training/undergraduate/) at Brown University.
+
+My passion for teaching has continued beyond my experience in elementary education. I enjoy introducing students to epidemiology and biostatistics as well as delving into more advanced topics in causal inference. I love to create teaching materials, some of which can be found below.
+
+I also love hiking and camping, reading novels, and programming in R.

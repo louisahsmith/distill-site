@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+<script>
+if (window.location.href.indexOf("publications/") != -1) {
+  (function (d) {
+  var interval;
+  function check() {
+    var xpath = "/html/body/d-byline/div/div[2]/p";
+    if (document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue) {
+      var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+      var d = Date.parse(matchingElement.innerHTML);
+      
+      matchingElement.innerHTML = Intl.DateTimeFormat('en-US',{ year: 'numeric', month: 'long'}).format(d);
+      clearInterval( interval );
+    }
+  }
+  interval = setInterval( check, 100 ); // duration: 100ms
+}(document));
+}
+</script>
+
+<script>
+if (window.location.href.indexOf("talks") != -1) {
+(function (d) {
+  var interval;
+  function check() {
+  var xpathTalk = "/html/body/d-byline/div/div[2]/h3";
+  var xpathLocation = "/html/body/d-byline/div/div[3]/h3"
+  var matchingElementTalk = document.evaluate(xpathTalk, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (matchingElementTalk) {
+    
+ matchingElementTalk.innerHTML = "Presented";
+ matchingElementLoc = document.evaluate(xpathLocation, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+ matchingElementLoc.innerHTML = "Location";
+ clearInterval( interval );
+  }
+  }
+  interval = setInterval( check, 100 ); // duration: 100ms
+}(document));
+}
+</script>

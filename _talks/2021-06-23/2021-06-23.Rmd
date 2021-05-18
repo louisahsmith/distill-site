@@ -1,0 +1,30 @@
+---
+title: "Challenges in estimating effects of COVID-19 on preterm birth"
+description: |
+  My contribution to the infectious diseases session at SER 2021.
+author:
+  - name: Louisa H. Smith
+    url: {}
+date: 2021-06-23
+preview: snapshot.png
+creative_commons: CC BY-ND
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+image_link <- function(image, url, border = FALSE, ...) {
+  border <- border * 2
+  htmltools::a(
+    href = url,
+    htmltools::img(src = image, style = paste0("max-width: 100%;border: ", border, "px solid;"), ...)
+  )
+}
+```
+
+```{r}
+image_link("snapshot.png",
+           "slides.pdf", border = TRUE)
+```

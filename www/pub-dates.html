@@ -1,0 +1,16 @@
+<script>
+var myDates = document.getElementsByClassName("publishedDate");
+
+for (var i = 0; i < myDates.length; i++) {
+  myDates[i].innerHTML = myDates[i].innerHTML.slice(-4);
+}
+  
+var authorNames = document.getElementsByClassName("dt-author");
+
+for (var i = 0; i < authorNames.length; i++) {
+  if (authorNames[i].innerHTML == "Louisa H. Smith") {
+    authorNames[i].classList.add("louisaName");
+  }
+}
+
+</script>

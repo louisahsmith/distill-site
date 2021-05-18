@@ -1,0 +1,57 @@
+---
+title: "Selection mechanisms and their consequences: Understanding and addressing selection bias"
+description: "Understanding the way in which a study sample relates to the target population is critical for avoiding and addressing bias. Communication about selection bias is aided by the use of causal graphs."
+author:
+  - name: Louisa H. Smith
+    affiliation: Harvard TH Chan School of Public Health
+date: '2020-01-01'
+output:
+  distill::distill_article:
+    self_contained: false
+journal: 
+  title: "Current Epidemiology Reports"
+volume: 7
+doi: "10.1007/s40471-020-00241-6"
+citation_url: "https://doi.org/10.1007/s40471-020-00241-6"
+categories: "Current Epidemiology Reports"
+---
+
+```{r, echo = FALSE}
+distilltools::icon_link(
+  icon = "doi",
+  text = "DOI",
+  url = "https://doi.org/10.1007/s40471-020-00241-6"
+)
+
+distilltools::icon_link(
+  icon = "fas fa-file-pdf",
+  text = "PDF",
+  url = "https://www.louisahsmith.com/publication/smith-2020-b/smith-2020-b.pdf"
+)
+# 
+# distilltools::icon_link(
+#   icon = "arxiv",
+#   text = "Pre-print",
+#   url = ""
+# )
+# 
+# distilltools::icon_link(
+#   icon = "fab fa-github",
+#   text = "Code",
+#   url = ""
+# )
+```
+
+# Abstract
+
+## Purpose of Review
+
+Epidemiologic research is rarely based on a random sample of a well-defined target population. We used causal directed acyclic graphs to demonstrate the types of bias that can result when selection into that sample is associated with the exposure or outcome of interest, or with both. These selection mechanisms can affect both the internal and external validity of a study. We reviewed approaches to selection mechanisms that affect valid causal inference.
+
+## Recent Findings
+
+We noted that selection bias can refer to a number of issues with different consequences. We identified strategies for addressing selection bias when designing studies, collecting data, conducting analyses, and assessing possible bias in those analyses.
+
+## Summary
+
+Understanding the way in which a study sample relates to the target population is critical for avoiding and addressing bias. Communication about selection bias is aided by the use of causal graphs.

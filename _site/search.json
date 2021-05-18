@@ -1,0 +1,41 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "Who am I?",
+      "author": [],
+      "contents": "\nI’m an epidemiologist trained in the Program in Population Health Sciences and the Department of Epidemiology at the Harvard T.H. Chan School of Public Health. I also have a Master of Science degree from the Department of Biostatistics. My research interests are in epidemiologic and biostatistical methods as well as reproductive and child health. I first developed these interests at U.C. Berkeley, where I earned my M.S. in epidemiology, and while teaching third grade at Little Wound School in Kyle, SD, where I lived for three years. Prior to that I studied comparative literature (focusing on literary translation from French and Portuguese) and community health at Brown University.\nMy passion for teaching has continued beyond my experience in elementary education. I enjoy introducing students to epidemiology and biostatistics as well as delving into more advanced topics in causal inference. I love to create teaching materials, some of which can be found below.\nI also love hiking and camping, reading novels, and programming in R.\n\n\n\n",
+      "last_modified": "2021-05-17T23:06:31-04:00"
+    },
+    {
+      "path": "blog.html",
+      "title": "Blog posts",
+      "description": "Rarely updated thoughts about epidemiology and R",
+      "author": [],
+      "contents": "\n\n\ndiv.dt-tags {\n  visibility: visible;\n  margin-top: 10px;\n  height: 100%;\n}\n\n\n\n\n",
+      "last_modified": "2021-05-17T23:06:32-04:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Louisa H. Smith",
+      "author": [],
+      "contents": "\n\n          \n          \n          Louisa H. Smith\n          \n          \n          \n          About me\n          Publications\n          Talks\n          Posts\n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          ☰\n          \n          \n      \n        \n          \n            \n              \n            \n              Louisa H. Smith\n            \n            \n              \n                \n                    \n                      \n                         Email\n                      \n                    \n                  \n                                    \n                    \n                      \n                         GitHub\n                      \n                    \n                  \n                                    \n                    \n                      \n                         Twitter\n                      \n                    \n                  \n                                    \n                    \n                      \n                         Google Scholar\n                      \n                    \n                  \n                                  \n            \n          \n        \n        \n        \n          \n            \n            \n            \n            Interests\n            Epidemiologic and biostatistical methods\n            Causal inference\n            Reproductive and perinatal epidemiology\n            Cancer epidemiology\n            Teaching\n            \n            \n            \n            \n            Education\n            PhD, Population Health Sciences (Epidemiology)\n            SM, Biostatistics\n            Harvard TH Chan School of Public Health (2021)\n            \n            MS, Epidemiology\n            University of California, Berkeley (2016)\n            \n            AB, Comparative Literature / Community Health\n            Brown University (2011)\n            \n            \n            \n            \n          \n        \n      \n    \n\n    \n      \n        \n          \n            \n              \n            \n              Louisa H. Smith\n            \n            \n              \n                \n                                    \n                    \n                       Email\n                    \n                  \n                                    \n                    \n                       GitHub\n                    \n                  \n                                    \n                    \n                       Twitter\n                    \n                  \n                                    \n                    \n                       Google Scholar\n                    \n                  \n                                  \n              \n            \n            \n              \n              \n              \n              Interests\n              Epidemiologic and biostatistical methods\n              Causal inference\n              Reproductive and perinatal epidemiology\n              Cancer epidemiology\n              Teaching\n              \n              \n              \n              \n              Education\n              PhD, Population Health Sciences (Epidemiology)\n              SM, Biostatistics\n              Harvard TH Chan School of Public Health (2021)\n              \n              MS, Epidemiology\n              University of California, Berkeley (2016)\n              \n              AB, Comparative Literature / Community Health\n              Brown University (2011)\n              \n              \n              \n              \n            \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2021-05-17T23:06:32-04:00"
+    },
+    {
+      "path": "publications.html",
+      "title": "Publications",
+      "author": [],
+      "contents": "\n\n\n\n\n\n\n",
+      "last_modified": "2021-05-17T23:06:32-04:00"
+    },
+    {
+      "path": "talks.html",
+      "title": "Recent and Upcoming Talks",
+      "author": [],
+      "contents": "\n\n\n.posts-list .post-preview .thumbnail {\n  border: 2px solid rgba(42, 45, 79, 0.8);\n}\n\n\n\n\n",
+      "last_modified": "2021-05-17T23:06:33-04:00"
+    }
+  ],
+  "collections": ["posts/posts.json", "publications/publications.json", "talks/talks.json"]
+}
