@@ -29,7 +29,7 @@ navbar:
     - icon: ai ai-cv ai-2x
       href: files/louisahsmith_cv.pdf
     - icon: fab fa-github fa-lg
-      href: https://github.com/louisahsmith/distill-website
+      href: https://github.com/louisahsmith/distill-site
     - icon: fab fa-twitter fa-lg
       href: https://twitter.com/louisahsmith
 output:

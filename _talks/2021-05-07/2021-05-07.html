@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #20794d; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,7 +77,7 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.sc { color: #20794d; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
@@ -117,7 +117,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["2021-05-07_files/anchor-4.2.2/anchor.min.js","2021-05-07_files/bowser-1.9.3/bowser.min.js","2021-05-07_files/distill-2.2.21/template.v2.js","2021-05-07_files/header-attrs-2.8/header-attrs.js","2021-05-07_files/jquery-1.11.3/jquery.min.js","2021-05-07_files/popper-2.6.0/popper.min.js","2021-05-07_files/tippy-6.2.7/tippy-bundle.umd.min.js","2021-05-07_files/tippy-6.2.7/tippy-light-border.css","2021-05-07_files/tippy-6.2.7/tippy.css","2021-05-07_files/tippy-6.2.7/tippy.umd.min.js","2021-05-07_files/webcomponents-2.0.0/webcomponents.js","slides.pdf","snapshot.png"]}
+  {"type":"character","attributes":{},"value":["2021-05-07_files/anchor-4.2.2/anchor.min.js","2021-05-07_files/bowser-1.9.3/bowser.min.js","2021-05-07_files/distill-2.2.21/template.v2.js","2021-05-07_files/header-attrs-2.8/header-attrs.js","2021-05-07_files/jquery-1.11.3/jquery.min.js","2021-05-07_files/popper-2.6.0/popper.min.js","2021-05-07_files/tippy-6.2.7/tippy-bundle.umd.min.js","2021-05-07_files/tippy-6.2.7/tippy-light-border.css","2021-05-07_files/tippy-6.2.7/tippy.css","2021-05-07_files/tippy-6.2.7/tippy.umd.min.js","2021-05-07_files/webcomponents-2.0.0/webcomponents.js","louisahsmith-thesis.pdf","slides.pdf","snapshot.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1264,10 +1264,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refs = $(this).attr('data-cites').split(" ");
-        var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
-        }).join("\n");
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1459,7 +1456,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Bias bounds and target trials for causal inference in observational data","description":"My dissertation defense!","authors":[{"author":"Louisa H. Smith","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-07T00:00:00.000-04:00","citationText":"Smith, 2021"}
+{"title":"Bias bounds and target trials for causal inference in observational data","description":"My dissertation defense!","authors":[{"author":"Louisa H. Smith","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-07T00:00:00.000+00:00","citationText":"Smith, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1483,7 +1480,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <div class="layout-chunk" data-layout="l-body">
-<p><a href="files/louisahsmith-thesis.pdf" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Dissertation</a><a href="https://youtu.be/NlhYCuOcIQ8" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Video</a></p>
+<p><a href="louisahsmith-thesis.pdf" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Dissertation</a><a href="https://youtu.be/NlhYCuOcIQ8" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Video</a></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <a href="slides.pdf">

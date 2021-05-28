@@ -27,7 +27,7 @@ image_link <- function(image, url, border = FALSE, ...) {
 distilltools::icon_link(
   icon = "file-pdf",
   text = "Dissertation",
-  url = "files/louisahsmith-thesis.pdf"
+  url = "louisahsmith-thesis.pdf"
 )
 
 distilltools::icon_link(
