@@ -19,6 +19,25 @@
     "preview_height": 1256
   },
   {
+    "path": "talks/2021-06-16/",
+    "title": "COVID-19 and preterm birth: Understanding the relationship",
+    "description": "Speed presentation on the timing- and severity-specific effects of COVID-19 on preterm birth.",
+    "author": [
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      }
+    ],
+    "date": "2021-06-16",
+    "categories": [],
+    "contents": "\n\n\n\n\n\n\n\n",
+    "preview": "talks/2021-06-16/snapshot.png",
+    "last_modified": "2021-05-31T13:20:53-04:00",
+    "input_file": {},
+    "preview_width": 2002,
+    "preview_height": 1254
+  },
+  {
     "path": "talks/2021-05-21/",
     "title": "E-values, unmeasured confounding, measurement error, and selection bias",
     "description": "SER 2021 workshop with Maya Mathur.",
@@ -36,10 +55,10 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-05-21/snapshot.png",
-    "last_modified": "2021-05-18T15:24:20-04:00",
+    "last_modified": "2021-05-31T13:23:01-04:00",
     "input_file": {},
-    "preview_width": 2392,
-    "preview_height": 1616
+    "preview_width": 1314,
+    "preview_height": 828
   },
   {
     "path": "talks/2021-05-07/",

@@ -27,5 +27,5 @@ image_link <- function(image, url, border = FALSE, ...) {
 
 ```{r}
 image_link("snapshot.png",
-           "https://osf.io/j3wqy/", border = TRUE)
+           "https://osf.io/5pkcv/", border = TRUE)
 ```
