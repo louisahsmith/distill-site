@@ -17,13 +17,13 @@
         "url": "https://www.hsph.harvard.edu/tyler-vanderweele/"
       }
     ],
-    "date": "2021-09-02",
+    "date": "2021-09-01",
     "categories": [
-      "To appear in Epidemiology"
+      "Epidemiology"
     ],
-    "contents": "\n\n Pre-print\n\nAbstract\nConfounding, selection bias, and measurement error are well-known sources of bias in epidemiologic research. Methods for assessing these biases have their own limitations. Many quantitative sensitivity analysis approaches consider each type of bias individually, while more complex approaches are harder to implement or require numerous assumptions. By failing to consider multiple biases at once, researchers can underestimate or overestimate their joint impact. We show that it is possible to bound the total composite bias due to these three sources, and to use that bound to assess the sensitivity of a risk ratio to any combination of these biases. We derive bounds for the total composite bias under a variety of scenarios, providing researchers with tools to assess their total potential impact. We apply this technique to a study where unmeasured confounding and selection bias are both concerns, and to another study in which possible differential exposure misclassification and confounding are concerns. The approach we describe, though conservative, is easier to implement and makes simpler assumptions than quantitative bias analysis. We provide R functions to aid implementation.\n\n\n\n",
+    "contents": "\n\n Online version PDF Online appendix\n\nAbstract\nConfounding, selection bias, and measurement error are well-known sources of bias in epidemiologic research. Methods for assessing these biases have their own limitations. Many quantitative sensitivity analysis approaches consider each type of bias individually, while more complex approaches are harder to implement or require numerous assumptions. By failing to consider multiple biases at once, researchers can underestimate or overestimate their joint impact. We show that it is possible to bound the total composite bias due to these three sources, and to use that bound to assess the sensitivity of a risk ratio to any combination of these biases. We derive bounds for the total composite bias under a variety of scenarios, providing researchers with tools to assess their total potential impact. We apply this technique to a study where unmeasured confounding and selection bias are both concerns, and to another study in which possible differential exposure misclassification and confounding are concerns. The approach we describe, though conservative, is easier to implement and makes simpler assumptions than quantitative bias analysis. We provide R functions to aid implementation.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:28:17-04:00",
+    "last_modified": "2021-08-09T16:47:45+02:00",
     "input_file": {}
   },
   {
@@ -46,7 +46,7 @@
     ],
     "contents": "\n\n Online version\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:29-04:00",
+    "last_modified": "2021-05-18T21:24:29+02:00",
     "input_file": {}
   },
   {
@@ -81,7 +81,7 @@
     ],
     "contents": "\n\n Pre-print\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:26-04:00",
+    "last_modified": "2021-05-18T21:24:26+02:00",
     "input_file": {}
   },
   {
@@ -104,7 +104,7 @@
     ],
     "contents": "\n\n PDF Online version\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:34-04:00",
+    "last_modified": "2021-05-18T21:24:34+02:00",
     "input_file": {}
   },
   {
@@ -155,7 +155,7 @@
     ],
     "contents": "\n\n Online version\n\nAbstract\nA mediator is a factor that occurs after the exposure of interest, precedes the outcome of interest (i.e. between the exposure and the outcome) and is associated with both the exposure and the outcome of interest (i.e. is on the pathway between exposure and outcome). Mediation analyses can be valuable in many reproductive health contexts, as mediation analysis can help researchers to better identify, quantify and understand the underlying pathways of the association they are studying. The purpose of this commentary is to introduce the concept of mediation and provide examples that solidify understanding of mediation for valid discovery and interpretation in the field of reproductive medicine.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:36-04:00",
+    "last_modified": "2021-05-18T21:24:36+02:00",
     "input_file": {}
   },
   {
@@ -174,7 +174,7 @@
     ],
     "contents": "\n\n Online version PDF\n\nAbstract\nPurpose of Review\nEpidemiologic research is rarely based on a random sample of a well-defined target population. We used causal directed acyclic graphs to demonstrate the types of bias that can result when selection into that sample is associated with the exposure or outcome of interest, or with both. These selection mechanisms can affect both the internal and external validity of a study. We reviewed approaches to selection mechanisms that affect valid causal inference.\nRecent Findings\nWe noted that selection bias can refer to a number of issues with different consequences. We identified strategies for addressing selection bias when designing studies, collecting data, conducting analyses, and assessing possible bias in those analyses.\nSummary\nUnderstanding the way in which a study sample relates to the target population is critical for avoiding and addressing bias. Communication about selection bias is aided by the use of causal graphs.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:33-04:00",
+    "last_modified": "2021-05-18T21:24:33+02:00",
     "input_file": {}
   },
   {
@@ -197,7 +197,7 @@
     ],
     "contents": "\n\n PDF Online version Online appendix Code\n\nAbstract\nBackground\nMediation analysis is a powerful tool for understanding mechanisms, but conclusions about direct and indirect effects will be invalid if there is unmeasured mediator-outcome confounding. Sensitivity analysis methods allow researchers to assess the extent of this bias but are not always used. One particularly straightforward technique that requires minimal assumptions is nonetheless difficult to interpret, and so would benefit from a more intuitive parameterization.\nMethods\nWe conducted an exhaustive numerical search over simulated mediation effects, calculating the proportion of scenarios in which a bound for unmeasured mediator-outcome confounding held under an alternative parameterization.\nResults\nIn over 99% of cases, the bound for the bias held when we described the strength of confounding directly via the confounder-mediator relationship instead of via the conditional exposure-confounder relationship.\nConclusions\nResearchers can conduct sensitivity analysis using a method that describes the strength of the confounder-outcome relationship and the approximate strength of the confounder-mediator relationship that together would be required to explain away a direct or indirect effect.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:31-04:00",
+    "last_modified": "2021-05-18T21:24:31+02:00",
     "input_file": {}
   },
   {
@@ -220,7 +220,7 @@
     ],
     "contents": "\n\n Online version PDF Online appendix Online calculator R package\n\nAbstract\nWhen epidemiologic studies are conducted in a subset of the population, selection bias can threaten the validity of causal inference. This bias can occur whether or not that selected population is the target population and can occur even in the absence of exposure–outcome confounding. However, it is often difficult to quantify the extent of selection bias, and sensitivity analysis can be challenging to undertake and to understand. In this article, we demonstrate that the magnitude of the bias due to selection can be bounded by simple expressions defined by parameters characterizing the relationships between unmeasured factor(s) responsible for the bias and the measured variables. No functional form assumptions are necessary about those unmeasured factors. Using knowledge about the selection mechanism, researchers can account for the possible extent of selection bias by specifying the size of the parameters in the bounds. We also show that the bounds, which differ depending on the target population, result in summary measures that can be used to calculate the minimum magnitude of the parameters required to shift a risk ratio to the null. The summary measure can be used to determine the overall strength of selection that would be necessary to explain away a result. We then show that the bounds and summary measures can be simplified in certain contexts or with certain assumptions. Using examples with varying selection mechanisms, we also demonstrate how researchers can implement these simple sensitivity analyses.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:25-04:00",
+    "last_modified": "2021-05-18T21:24:25+02:00",
     "input_file": {}
   },
   {
@@ -258,7 +258,7 @@
     ],
     "contents": "\n\n Online version\n\nAbstract\nAim: Community-based participatory research (CBPR) is an increasingly common approach in the USA, but still relatively rare in Europe. In the industrial zone of Marseille, there is a long history of pollution, but little is known about the health implications. This study documented the prevalence of different health issues in two heavily polluted towns in the industrial zone using a CBPR approach.\nSubject and methods: This study used a CBPR approach and epidemiologic methods to answer community members’ questions about the health of residents in Marseille’s industrial zone by randomly sampling a cross-section of residents to systematically document health issues in Fos-sur-Mer and Port-Saint-Louis-du-Rhône, two towns in the industrial port area of Marseille, France.\nResults: Many chronic illnesses were elevated in these communities, as compared to regional and national prevalences, including chronic skin problems, asthma, cancer, and diabetes. Chronic skin problems and asthma were among the most common chronic illnesses reported. A majority of respondents also reported acute symptoms that affected daily life, including eye irritation or nose and throat problems.\nConclusion: There is likely an environmental explanation for why, even after direct standardization, the prevalences of many diseases were higher in these communities than elsewhere. The combination of CBPR and rigorous epidemiologic methods helps make our findings relevant to both community members and researchers.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:27-04:00",
+    "last_modified": "2021-05-18T21:24:27+02:00",
     "input_file": {}
   },
   {
@@ -292,7 +292,7 @@
     ],
     "contents": "\n\n Online version\n\nAbstract\nIntroduction\nThis study investigated associations between maternal prepregnancy BMI and child behaviors at ages 9–11 years and examine interaction by race and gender.\nMethods\nThe National Longitudinal Survey of Youth and the Children and Young Adults surveys are U.S.-based, ongoing longitudinal studies, initiated in 1979 and 1986, respectively. Mothers (n=2,952) reported pregnancy and child (n=5,660) developmental information at multiple time points. Child total, internalizing, and externalizing problems at ages 9–11 years were assessed using the Behavior Problems Index (BPI), collected biennially until 2012. Associations between prepregnancy BMI and child BPI outcomes were examined, as well as two- and three-way interactions by race and gender. Analyses were conducted in 2017.\nResults\nBoys whose mothers had higher prepregnancy weights exhibited higher total BPI and externalizing scores at ages 9–11 years versus those with normal-weight mothers. Boys with severely obese mothers had higher total BPI (mean difference=7.99, 95% CI=3.53, 12.46) and externalizing (mean difference=5.77, 95% CI=1.50, 10.04) scores. Prepregnancy underweight was associated with boys’ higher total BPI (mean difference=2.34, 95% CI=0.02, 4.66) and externalizing (mean difference=3.30, 95% CI=0.69, 5.91); these associations were not significant in sensitivity analyses. No associations emerged for girls or internalizing problems. Two-way interactions by race and three-way interactions by race and gender were not significant.\nConclusions\nMaternal prepregnancy weight was associated with BPI level among boys. Boys with severely obese mothers exhibited markedly higher behavioral problems at ages 9–11 years versus those with normal-weight mothers, regardless of race. Maintaining healthy prepregnancy weight may be important for preventing boys’ deleterious behavior outcomes in middle childhood.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:29-04:00",
+    "last_modified": "2021-05-18T21:24:29+02:00",
     "input_file": {}
   }
 ]

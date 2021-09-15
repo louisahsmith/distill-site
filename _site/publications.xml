@@ -7,7 +7,7 @@
     <description>Louisa H. Smith's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 02 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Multiple-bias sensitivity analysis using bounds</title>
       <dc:creator>Louisa H. Smith</dc:creator>
@@ -15,9 +15,9 @@
       <dc:creator>Tyler J. VanderWeele</dc:creator>
       <link>https://www.louisahsmith.com/publications/multiple-bias-sensitivity-analysis-using-bounds</link>
       <description>We show that it is possible to bound the total composite bias due to unmeasured confounding, selection, and differential misclassification, and to use that bound to assess the sensitivity of a risk ratio to any combination of these biases.</description>
-      <category>To appear in Epidemiology</category>
+      <category>Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/multiple-bias-sensitivity-analysis-using-bounds</guid>
-      <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Mediating to opportunity: The challenges of translating mediation estimands into policy recommendations</title>
