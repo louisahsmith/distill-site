@@ -7,7 +7,16 @@
     <description>Louisa H. Smith's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 09 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Causal inference in epidemiology using target trial principles: Applications in pregnancy and prostate cancer</title>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <link>https://www.louisahsmith.com/talks/2021-09-17</link>
+      <description>EPFL Statistics Seminar</description>
+      <guid>https://www.louisahsmith.com/talks/2021-09-17</guid>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://www.louisahsmith.com/talks/2021-09-17/snapshot.png" medium="image" type="image/png" width="1777" height="1120"/>
+    </item>
     <item>
       <title>Multiple-Bias Sensitivity Analysis Using Bounds</title>
       <dc:creator>Louisa H. Smith</dc:creator>
