@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r fig.cap = "Summit of Mt. Tecumseh"}
 knitr::include_graphics("img/louisa-hike.jpeg")
 ```
-I'm an epidemiologist trained in the [Program in Population Health Sciences](https://www.hsph.harvard.edu/phdphs/) and the [Department of Epidemiology](https://www.hsph.harvard.edu/epidemiology/) at the Harvard T.H. Chan School of Public Health. 
+I'm currently a postdoctoral fellow at Northeastern University's [Roux Institute](https://roux.northeastern.edu) in my hometown of Portland, ME, working with the [Observational Health Data Sciences and Informatics Center](https://roux.northeastern.edu/ohdsi/) and with colleagues at the [Bouvé College of Health Sciences](https://bouve.northeastern.edu). Previously I trained in the [Program in Population Health Sciences](https://www.hsph.harvard.edu/phdphs/) and the [Department of Epidemiology](https://www.hsph.harvard.edu/epidemiology/) at the Harvard T.H. Chan School of Public Health. 
 I also have a Master of Science degree from the [Department of Biostatistics](https://www.hsph.harvard.edu/biostatistics/). 
 My research interests are in epidemiologic and biostatistical methods as well as reproductive and child health. I first developed these interests at [U.C. Berkeley](http://sph.berkeley.edu), where I earned my M.S. in epidemiology, and while teaching third grade at [Little Wound School](http://littlewound.us) in Kyle, SD, where I lived for three years. Prior to that I studied [comparative literature](https://www.brown.edu/academics/comparative-literature/) (focusing on literary translation from French and Portuguese) and [community health](https://www.brown.edu/academics/public-health/education-training/undergraduate/) at Brown University.
 
