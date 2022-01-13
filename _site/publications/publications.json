@@ -1,5 +1,39 @@
 [
   {
+    "path": "publications/multifoetal-gestations-mediate-the-effect-of-in-vitro-fertilisation-ivf-on-ischaemic-placental-disease-in-autologous-oocyte-ivf-more-than-donor-oocyte-ivf/",
+    "title": "Multifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF",
+    "author": [
+      {
+        "name": "Anna  M. Modest",
+        "url": {}
+      },
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      },
+      {
+        "name": "Thomas L. Toth",
+        "url": {}
+      },
+      {
+        "name": "Ai-ris Y. Collier",
+        "url": {}
+      },
+      {
+        "name": "Michele M. Hacker",
+        "url": {}
+      }
+    ],
+    "date": "2022-01-01",
+    "categories": [
+      "Paediatric and Perinatal Epidemiology"
+    ],
+    "contents": "\n\n Online version\n\nAbstract\nBackground: Ischaemic placental disease (IPD) affects 16%–23% of pregnancies in the United States. In vitro fertilisation (IVF) is a risk factor for IPD, and the magnitude of increase in risk differs for individuals using donor oocytes (donor IVF) versus their own oocytes (autologous IVF). In addition, multifoetal gestations, which are more common in IVF than non-IVF pregnancies, also are a risk factor for IPD.\nObjective: To quantify the contribution of multifoetal gestations to the association between IVF and IPD.\nMethods: We conducted a retrospective cohort study at a tertiary hospital from 1 January, 2000 to 1 August 2018 using electronic medical records and state vital statistics data. IPD was defined as preeclampsia, placental abruption, small for gestational age (SGA) birth or an intrauterine foetal demise due to placental insufficiency. We used mediation analysis to decompose the total effect of IVF on IPD into a natural direct effect and an indirect effect through multifoetal gestations. We repeated the analyses separately for donor and autologous IVF. All models were adjusted for maternal age, race, parity, insurance, year of delivery and account for multiple pregnancies per person.\nResults: We identified 86,514 deliveries, of which 281 resulted from donor IVF and 4173 resulted from autologous IVF. IVF pregnancies had 1.99 (95% CI 1.88, 2.10) times the risk of IPD compared to non-IVF pregnancies, and 75.5% of this increased risk was mediated by multifoetal gestations. Autologous IVF pregnancies had 1.95 (95% CI 1.84, 2.07) times the risk of IPD compared to non-IVF pregnancies, and the per cent mediated was 78.8%. Donor IVF pregnancies had 2.50 (95% CI 2.09, 2.92) times the risk of IPD, but the per cent mediated was 37.5%.\nConclusion: The majority of the association between autologous IVF and IPD was mediated through multifoetal gestations; however, this was not the case for donor IVF pregnancies.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-01-13T10:53:16-05:00",
+    "input_file": {}
+  },
+  {
     "path": "publications/international-registry-of-coronavirus-exposure-in-pregnancy-ircep-cohort-description-and-methodological-considerations/",
     "title": "International Registry of Coronavirus Exposure in Pregnancy (IRCEP) — Cohort description and methodological considerations",
     "description": "We describe a pregnancy cohort recruited and followed during the COVID-19 pandemic, as well as some challenges encountered during the process.",
