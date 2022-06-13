@@ -34,3 +34,8 @@ image_link("snapshot.png",
 image_link("snapshot-code.png",
            "code.zip", border = FALSE)
 ```
+
+```{r}
+image_link("snapshot-cm.png",
+           "slides-cm.pdf", border = FALSE)
+```
