@@ -1,8 +1,8 @@
 [
   {
-    "path": "talks/2022-06-24/",
-    "title": "SPER Advanced Methods Workshop",
-    "description": "SPER 2022",
+    "path": "talks/2022-06-13/",
+    "title": "Study design and analysis for time-dependent exposures during pregnancy",
+    "description": "SPER Advanced Methods Workshop",
     "author": [
       {
         "name": "Louisa H. Smith",
@@ -13,11 +13,11 @@
         "url": {}
       }
     ],
-    "date": "2022-06-24",
+    "date": "2022-06-13",
     "categories": [],
-    "contents": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-    "preview": "talks/2022-06-24/snapshot.png",
-    "last_modified": "2022-06-13T11:41:18-05:00",
+    "contents": "\nSlides\n\n\n\n\n\n\n\n\nCode\n(click image to download zip file)\n\n\n\n\n\n\n\n",
+    "preview": "talks/2022-06-13/snapshot.png",
+    "last_modified": "2022-06-14T13:38:47-05:00",
     "input_file": {},
     "preview_width": 1964,
     "preview_height": 1106
