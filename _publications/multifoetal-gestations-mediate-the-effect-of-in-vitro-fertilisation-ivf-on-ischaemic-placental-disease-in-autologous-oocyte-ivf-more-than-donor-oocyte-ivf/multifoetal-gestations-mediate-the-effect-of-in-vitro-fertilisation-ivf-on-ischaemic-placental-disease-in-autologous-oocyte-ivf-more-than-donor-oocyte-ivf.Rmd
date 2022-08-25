@@ -2,23 +2,18 @@
 title: Multifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF
 author:
   - name: Anna  M. Modest
-    affiliation: Beth Israel Deaconess Medical Center
   - name: Louisa H. Smith
-    affiliation: Harvard TH Chan School of Public Health
   - name: Thomas L. Toth
-    affiliation: Beth Israel Deaconess Medical Center
   - name: Ai-ris Y. Collier
-    affiliation: Beth Israel Deaconess Medical Center
   - name: Michele M. Hacker
-    affiliation: Beth Israel Deaconess Medical Center
-date: '2022-01-01'
+date: '2022-03-01'
 output:
   distill::distill_article:
     self_contained: false
 journal: 
   title: "Paediatric and Perinatal Epidemiology"
-volume: 
-issue: 
+volume: 36
+issue: 2
 doi: "10.1111/ppe.12857"
 citation_url: "https://doi.org/10.1111/ppe.12857"
 categories: "Paediatric and Perinatal Epidemiology"

@@ -7,19 +7,19 @@
     <description>Louisa H. Smith's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Aug 2022 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Multifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF</title>
-      <dc:creator>Anna  M. Modest</dc:creator>
+      <title>E-values for effect modification and conservative approximations for causal interaction</title>
+      <dc:creator>Maya B. Mathur</dc:creator>
       <dc:creator>Louisa H. Smith</dc:creator>
-      <dc:creator>Thomas L. Toth</dc:creator>
-      <dc:creator>Ai-ris Y. Collier</dc:creator>
-      <dc:creator>Michele M. Hacker</dc:creator>
-      <link>https://www.louisahsmith.com/publications/multifoetal-gestations-mediate-the-effect-of-in-vitro-fertilisation-ivf-on-ischaemic-placental-disease-in-autologous-oocyte-ivf-more-than-donor-oocyte-ivf</link>
-      <description>Multifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF</description>
-      <category>Paediatric and Perinatal Epidemiology</category>
-      <guid>https://www.louisahsmith.com/publications/multifoetal-gestations-mediate-the-effect-of-in-vitro-fertilisation-ivf-on-ischaemic-placental-disease-in-autologous-oocyte-ivf-more-than-donor-oocyte-ivf</guid>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <dc:creator>Kazuki Yoshida</dc:creator>
+      <dc:creator>Peng Ding</dc:creator>
+      <dc:creator>Tyler J. VanderWeele</dc:creator>
+      <link>https://www.louisahsmith.com/publications/e-values-for-effect-modification-and-conservative-approximations-for-causal-interaction</link>
+      <description>We provide sensitivity analyses for unmeasured confounding in estimates of effect heterogeneity and causal interaction.</description>
+      <category>International Journal of Epidemiology</category>
+      <guid>https://www.louisahsmith.com/publications/e-values-for-effect-modification-and-conservative-approximations-for-causal-interaction</guid>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>International Registry of Coronavirus Exposure in Pregnancy (IRCEP) — Cohort description and methodological considerations</title>
@@ -31,8 +31,22 @@
       <dc:creator>Diego F. Wyszynski</dc:creator>
       <link>https://www.louisahsmith.com/publications/international-registry-of-coronavirus-exposure-in-pregnancy-ircep-cohort-description-and-methodological-considerations</link>
       <description>We describe a pregnancy cohort recruited and followed during the COVID-19 pandemic, as well as some challenges encountered during the process.</description>
+      <category>American Journal of Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/international-registry-of-coronavirus-exposure-in-pregnancy-ircep-cohort-description-and-methodological-considerations</guid>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Multifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF</title>
+      <dc:creator>Anna  M. Modest</dc:creator>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <dc:creator>Thomas L. Toth</dc:creator>
+      <dc:creator>Ai-ris Y. Collier</dc:creator>
+      <dc:creator>Michele M. Hacker</dc:creator>
+      <link>https://www.louisahsmith.com/publications/multifoetal-gestations-mediate-the-effect-of-in-vitro-fertilisation-ivf-on-ischaemic-placental-disease-in-autologous-oocyte-ivf-more-than-donor-oocyte-ivf</link>
+      <description>Multifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF</description>
+      <category>Paediatric and Perinatal Epidemiology</category>
+      <guid>https://www.louisahsmith.com/publications/multifoetal-gestations-mediate-the-effect-of-in-vitro-fertilisation-ivf-on-ischaemic-placental-disease-in-autologous-oocyte-ivf-more-than-donor-oocyte-ivf</guid>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Multiple-bias sensitivity analysis using bounds</title>
@@ -54,19 +68,6 @@
       <category>Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/mediating-to-opportunity-the-challenges-of-translat-ing-mediation-estimands-into-policy-recommendations</guid>
       <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>E-values for effect modification and conservative approximations for causal interaction</title>
-      <dc:creator>Maya B. Mathur</dc:creator>
-      <dc:creator>Louisa H. Smith</dc:creator>
-      <dc:creator>Kazuki Yoshida</dc:creator>
-      <dc:creator>Peng Ding</dc:creator>
-      <dc:creator>Tyler J. VanderWeele</dc:creator>
-      <link>https://www.louisahsmith.com/publications/e-values-for-effect-modification-and-conservative-approximations-for-causal-interaction</link>
-      <description>We provide sensitivity analyses for unmeasured confounding in estimates of effect heterogeneity and causal interaction.</description>
-      <category>pre-print</category>
-      <guid>https://www.louisahsmith.com/publications/e-values-for-effect-modification-and-conservative-approximations-for-causal-interaction</guid>
-      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Simple sensitivity analysis for control selection bias</title>

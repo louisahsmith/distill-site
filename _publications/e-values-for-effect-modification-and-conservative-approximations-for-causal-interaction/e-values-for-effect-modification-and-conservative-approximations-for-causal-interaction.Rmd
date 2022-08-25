@@ -3,16 +3,11 @@ title: E-values for effect modification and conservative approximations for caus
 description: We provide sensitivity analyses for unmeasured confounding in estimates of effect heterogeneity and causal interaction.
 author:
   - name: Maya B. Mathur
-    affiliation: Stanford University
   - name: Louisa H. Smith
-    affiliation: Harvard TH Chan School of Public Health
   - name: Kazuki Yoshida
-    affiliation: Brigham and Women’s Hospital and Harvard Medical School
   - name: Peng Ding
-    affiliation: University of California, Berkeley
   - name: Tyler J. VanderWeele
-    affiliation: Harvard TH Chan School of Public Health    
-date: '2021-04-01'
+date: '2022-08-01'
 output:
   distill::distill_article:
     self_contained: false
@@ -22,15 +17,20 @@ output:
 # issue: 
 # doi: 
 # citation_url:
-categories: "pre-print"
+categories: "International Journal of Epidemiology"
+journal: 
+  title: "International Journal of Epidemiology"
+# volume: 32
+# issue: 5
+citation_url: "https://doi.org/10.1093/ije/dyac073"
 ---
 
 ```{r, echo = FALSE}
-# distilltools::icon_link(
-#   icon = "doi",
-#   text = "Online version",
-#   url = ""
-# )
+distilltools::icon_link(
+  icon = "doi",
+  text = "Online version",
+  url = "doi.org/10.1093/ije/dyac073"
+)
 # 
 # distilltools::icon_link(
 #   icon = "fas fa-file-pdf",
