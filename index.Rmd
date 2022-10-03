@@ -20,9 +20,14 @@ output:
   postcards::trestles
 ---
 
-:::: {style="display: grid; grid-template-columns: 35% 55%; grid-column-gap: 50px; line-height: 1.7rem;"}
+<!-- ### Assistant professor, Northeastern University -->
+
+:::: {style="display: grid; grid-template-columns: 35% 55%; grid-column-gap: 10px; line-height: 1.7rem;"}
+<!-- ::: {#joblist} -->
+<!-- I am an assistant professor in the Department of Health Sciences at Northeastern University's [Bouvé College of Health Sciences](https://bouve.northeastern.edu) and at the [Roux Institute](https://roux.northeastern.edu). -->
+<!-- ::: -->
 ::: {#intlist}
-### Interests
+#### *Interests*
 
 - Epidemiologic and biostatistical methods
 - Causal inference
@@ -33,7 +38,7 @@ output:
       
 ::: {#edulist}
 
-### Education
+#### *Education*
 
 - **PhD**, Population Health Sciences (Epidemiology)
 - **SM**, Biostatistics

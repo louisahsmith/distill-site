@@ -1,0 +1,56 @@
+---
+title: "Emulation of a target trial with sustained treatment strategies: An application to prostate cancer using both inverse probability weighting and
+the g-formula"
+author:
+  - name: Louisa H. Smith
+  - name: Xabier García-Albéniz
+  - name: June M. Chan
+  - name: Shoujun Zhao
+  - name: Janet E. Cowan
+  - name: Jeanette M. Broering
+  - name: Matthew R. Cooperberg
+  - name: Peter R. Carroll
+  - name: Miguel A. Hernán
+date: '2022-10-01'
+output:
+  distill::distill_article:
+    self_contained: false
+journal: 
+  title: "European Journal of Epidemiology"
+# volume: 
+# issue: 
+# doi: 
+# citation_url:
+categories: "European Journal of Epidemiology"
+---
+
+```{r, echo = FALSE}
+# distilltools::icon_link(
+#   icon = "doi",
+#   text = "Online version",
+#   url = ""
+# )
+# 
+# distilltools::icon_link(
+#   icon = "fas fa-file-pdf",
+#   text = "PDF",
+#   url = ""
+# )
+# 
+# distilltools::icon_link(
+#   icon = "arxiv",
+#   text = "Pre-print",
+#   url = ""
+# )
+# 
+# distilltools::icon_link(
+#   icon = "fab fa-github",
+#   text = "Code",
+#   url = ""
+# )
+```
+
+# Abstract
+
+
+As with many chronic illnesses, recurrent prostate cancer generally requires sustained treatment to prolong survival. However, initiating treatment immediately after recurrence may negatively impact quality of life without any survival gains. Therefore, we consider sustained strategies for initiating treatment based on specific characteristics of prostate-specific antigen (PSA), which can indicate disease progression. We define the protocol for a target trial comparing treatment strategies based on PSA doubling time, in which androgen deprivation therapy is initiated only after doubling time decreases below a certain threshold. Such a treatment strategy means the timing of treatment initiation (if ever) is not known at baseline, and the target trial protocol must explicitly specify the frequency of PSA monitoring until the threshold is met, as well as the duration of treatment. We describe these and other components of a target trial that need to be specified in order for such a trial to be emulated in observational data. We then use the parametric g-formula and inverse-probability weighted dynamic marginal structural models to emulate our target trial in a cohort of prostate cancer patients from clinics across the United States.

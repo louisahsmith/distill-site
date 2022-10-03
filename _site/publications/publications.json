@@ -1,5 +1,111 @@
 [
   {
+    "path": "publications/emulation-of-a-target-trial-with-sustained-treatment-strategies-an-application-to-prostate-cancer-using-both-inverse-probability-weighting-and-the-g-formula/",
+    "title": "Emulation of a target trial with sustained treatment strategies: An application to prostate cancer using both inverse probability weighting and the g-formula",
+    "author": [
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      },
+      {
+        "name": "Xabier García-Albéniz",
+        "url": {}
+      },
+      {
+        "name": "June M. Chan",
+        "url": {}
+      },
+      {
+        "name": "Shoujun Zhao",
+        "url": {}
+      },
+      {
+        "name": "Janet E. Cowan",
+        "url": {}
+      },
+      {
+        "name": "Jeanette M. Broering",
+        "url": {}
+      },
+      {
+        "name": "Matthew R. Cooperberg",
+        "url": {}
+      },
+      {
+        "name": "Peter R. Carroll",
+        "url": {}
+      },
+      {
+        "name": "Miguel A. Hernán",
+        "url": {}
+      }
+    ],
+    "date": "2022-10-01",
+    "categories": [
+      "European Journal of Epidemiology"
+    ],
+    "contents": "\n\n\n\nAbstract\nAs with many chronic illnesses, recurrent prostate cancer generally\nrequires sustained treatment to prolong survival. However, initiating\ntreatment immediately after recurrence may negatively impact quality of\nlife without any survival gains. Therefore, we consider sustained\nstrategies for initiating treatment based on specific characteristics of\nprostate-specific antigen (PSA), which can indicate disease progression.\nWe define the protocol for a target trial comparing treatment strategies\nbased on PSA doubling time, in which androgen deprivation therapy is\ninitiated only after doubling time decreases below a certain threshold.\nSuch a treatment strategy means the timing of treatment initiation (if\never) is not known at baseline, and the target trial protocol must\nexplicitly specify the frequency of PSA monitoring until the threshold\nis met, as well as the duration of treatment. We describe these and\nother components of a target trial that need to be specified in order\nfor such a trial to be emulated in observational data. We then use the\nparametric g-formula and inverse-probability weighted dynamic marginal\nstructural models to emulate our target trial in a cohort of prostate\ncancer patients from clinics across the United States.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-10-03T12:14:16-04:00",
+    "input_file": {}
+  },
+  {
+    "path": "publications/identification-of-vaccine-effects-when-exposure-status-is-unknown/",
+    "title": "Identification of vaccine effects when exposure status is unknown",
+    "author": [
+      {
+        "name": "Mats J. Stensrud",
+        "url": {}
+      },
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      }
+    ],
+    "date": "2022-09-01",
+    "categories": [
+      "Epidemiology"
+    ],
+    "contents": "\n\n Pre-print\n\nAbstract\nResults from randomized controlled trials (RCTs) help determine\nvaccination strategies and related public health policies. However,\ndefining and identifying estimands that can guide policies in infectious\ndisease settings is difficult, even in an RCT. The effects of\nvaccination critically depend on characteristics of the population of\ninterest, such as the prevalence of infection, the number of vaccinated,\nand social behaviors. To mitigate the dependence on such\ncharacteristics, estimands, and study designs, that require conditioning\nor intervening on exposure to the infectious agent have been advocated.\nBut a fundamental problem for both RCTs and observational studies is\nthat exposure status is often unavailable or difficult to measure, which\nhas made it impossible to apply existing methodology to study vaccine\neffects that account for exposure status. In this work, we present new\nresults on this type of vaccine effects. Under plausible conditions, we\nshow that point identification of certain relative effects is possible\neven when the exposure status is unknown. Furthermore, we derive sharp\nbounds on the corresponding absolute effects. We apply these results to\nestimate the effects of the ChAdOx1 nCoV-19 vaccine on SARS-CoV-2\ndisease (COVID-19) conditional on post-vaccine exposure to the virus,\nusing data from a large RCT.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-10-03T12:12:11-04:00",
+    "input_file": {}
+  },
+  {
+    "path": "publications/timing-and-severity-of-covid-19-during-pregnancy-and-the-risk-of-preterm-birth-in-the-international-registry-of-coronavirus-exposure-in-pregnancy/",
+    "title": "Timing and severity of COVID-19 during pregnancy and the risk of preterm birth in the International Registry of Coronavirus Exposure in Pregnancy",
+    "author": [
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      },
+      {
+        "name": "Camille Dollinger",
+        "url": {}
+      },
+      {
+        "name": "Tyler J. VanderWeele",
+        "url": {}
+      },
+      {
+        "name": "Diego F. Wyszynski",
+        "url": {}
+      },
+      {
+        "name": "Sonia Hernández-Díaz",
+        "url": {}
+      }
+    ],
+    "date": "2022-09-01",
+    "categories": [
+      "BMC Pregnancy & Childbirth"
+    ],
+    "contents": "\n\n\n\nAbstract\nBackground: Studies of preterm delivery after\nCOVID-19 are often subject to selection bias and do not distinguish\nbetween early vs. late infection in pregnancy, nor between spontaneous\nvs. medically indicated preterm delivery. This study aimed to estimate\nthe risk of preterm birth (overall, spontaneous, and indicated) after\nCOVID-19 during pregnancy, while considering different levels of disease\nseverity and timing.\nMethods: Pregnant and recently pregnant people who\nwere tested for or clinically diagnosed with COVID-19 during pregnancy\nenrolled in an international internet-based cohort study between June\n2020 and July 2021. We used several analytic approaches to minimize\nconfounding and immortal time bias, including multivariable regression,\ntime-to-delivery models, and a case-time-control design.\nResults: Among 14 264 eligible participants from 70\ncountries who did not report a pregnancy loss before 20 gestational\nweeks, 5893 had completed their pregnancies and reported delivery\ninformation; others were censored at time of their last follow-up.\nParticipants with symptomatic COVID-19 before 20 weeks’ gestation had no\nincreased risk of preterm delivery compared to those testing negative,\nwith adjusted risks of 10.0% (95% CI 7.8, 12.0) vs. 9.8% (9.1, 10.5).\nMild COVID-19 later in pregnancy was not clearly associated with preterm\ndelivery. In contrast, severe COVID-19 after 20 weeks’ gestation led to\nan increase in preterm delivery compared to milder disease. For example,\nthe risk ratio for preterm delivery comparing severe to mild/moderate\nCOVID-19 at 35 weeks was 2.8 (2.0, 4.0); corresponding risk ratios for\nindicated and spontaneous preterm delivery were 3.7 (2.0, 7.0) and 2.3\n(1.2, 3.9), respectively.\nConclusions: Severe COVID-19 late in pregnancy\nsharply increased the risk of preterm delivery compared to no COVID-19.\nThis elevated risk was primarily due to an increase in medically\nindicated preterm deliveries, included preterm cesarean sections,\nalthough an increase in spontaneous preterm delivery was also observed.\nIn contrast, mild or moderate COVID-19 conferred minimal risk, as did\nsevere disease early in pregnancy.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-10-03T12:18:16-04:00",
+    "input_file": {}
+  },
+  {
     "path": "publications/e-values-for-effect-modification-and-conservative-approximations-for-causal-interaction/",
     "title": "E-values for effect modification and conservative approximations for causal interaction",
     "description": "We provide sensitivity analyses for unmeasured confounding in estimates of effect heterogeneity and causal interaction.",
@@ -291,9 +397,9 @@
     "categories": [
       "Epidemiology"
     ],
-    "contents": "\n\n Online version PDF Online appendix Online calculator R package\n\nAbstract\nWhen epidemiologic studies are conducted in a subset of the population, selection bias can threaten the validity of causal inference. This bias can occur whether or not that selected population is the target population and can occur even in the absence of exposure–outcome confounding. However, it is often difficult to quantify the extent of selection bias, and sensitivity analysis can be challenging to undertake and to understand. In this article, we demonstrate that the magnitude of the bias due to selection can be bounded by simple expressions defined by parameters characterizing the relationships between unmeasured factor(s) responsible for the bias and the measured variables. No functional form assumptions are necessary about those unmeasured factors. Using knowledge about the selection mechanism, researchers can account for the possible extent of selection bias by specifying the size of the parameters in the bounds. We also show that the bounds, which differ depending on the target population, result in summary measures that can be used to calculate the minimum magnitude of the parameters required to shift a risk ratio to the null. The summary measure can be used to determine the overall strength of selection that would be necessary to explain away a result. We then show that the bounds and summary measures can be simplified in certain contexts or with certain assumptions. Using examples with varying selection mechanisms, we also demonstrate how researchers can implement these simple sensitivity analyses.\n\n\n\n",
+    "contents": "\n\n Online version\n PDF\n Online appendix\n Online calculator\n R package\n\nAbstract\nWhen epidemiologic studies are conducted in a subset of the\npopulation, selection bias can threaten the validity of causal\ninference. This bias can occur whether or not that selected population\nis the target population and can occur even in the absence of\nexposure–outcome confounding. However, it is often difficult to quantify\nthe extent of selection bias, and sensitivity analysis can be\nchallenging to undertake and to understand. In this article, we\ndemonstrate that the magnitude of the bias due to selection can be\nbounded by simple expressions defined by parameters characterizing the\nrelationships between unmeasured factor(s) responsible for the bias and\nthe measured variables. No functional form assumptions are necessary\nabout those unmeasured factors. Using knowledge about the selection\nmechanism, researchers can account for the possible extent of selection\nbias by specifying the size of the parameters in the bounds. We also\nshow that the bounds, which differ depending on the target population,\nresult in summary measures that can be used to calculate the minimum\nmagnitude of the parameters required to shift a risk ratio to the null.\nThe summary measure can be used to determine the overall strength of\nselection that would be necessary to explain away a result. We then show\nthat the bounds and summary measures can be simplified in certain\ncontexts or with certain assumptions. Using examples with varying\nselection mechanisms, we also demonstrate how researchers can implement\nthese simple sensitivity analyses.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-05-18T15:24:25-04:00",
+    "last_modified": "2022-10-03T12:09:49-04:00",
     "input_file": {}
   },
   {
