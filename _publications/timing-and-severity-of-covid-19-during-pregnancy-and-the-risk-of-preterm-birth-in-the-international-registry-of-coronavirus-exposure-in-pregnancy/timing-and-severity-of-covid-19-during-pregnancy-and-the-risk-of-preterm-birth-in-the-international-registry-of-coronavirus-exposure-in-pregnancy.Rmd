@@ -12,19 +12,19 @@ output:
     self_contained: false
 journal: 
   title: "BMC Pregnancy & Childbirth"
-# volume: 
+volume: 22
 # issue: 
-# doi: 
-# citation_url:
+doi: "10.1186/s12884-022-05101-3"
+citation_url: "https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-022-05101-3"
 categories: "BMC Pregnancy & Childbirth"
 ---
 
 ```{r, echo = FALSE}
-# distilltools::icon_link(
-#   icon = "doi",
-#   text = "Online version",
-#   url = ""
-# )
+distilltools::icon_link(
+  icon = "doi",
+  text = "Online version",
+  url = "https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-022-05101-3"
+)
 # 
 # distilltools::icon_link(
 #   icon = "fas fa-file-pdf",

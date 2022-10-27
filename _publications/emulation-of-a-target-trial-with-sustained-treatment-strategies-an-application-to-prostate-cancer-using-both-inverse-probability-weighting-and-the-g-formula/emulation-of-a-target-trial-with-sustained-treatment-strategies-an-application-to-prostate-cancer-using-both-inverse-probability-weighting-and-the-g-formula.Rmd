@@ -19,17 +19,17 @@ journal:
   title: "European Journal of Epidemiology"
 # volume: 
 # issue: 
-# doi: 
-# citation_url:
+doi: "10.1007/s10654-022-00929-7"
+citation_url: "https://doi.org/10.1007/s10654-022-00929-7"
 categories: "European Journal of Epidemiology"
 ---
 
 ```{r, echo = FALSE}
-# distilltools::icon_link(
-#   icon = "doi",
-#   text = "Online version",
-#   url = ""
-# )
+distilltools::icon_link(
+  icon = "doi",
+  text = "Online version",
+  url = "https://doi.org/10.1007/s10654-022-00929-7"
+)
 # 
 # distilltools::icon_link(
 #   icon = "fas fa-file-pdf",
