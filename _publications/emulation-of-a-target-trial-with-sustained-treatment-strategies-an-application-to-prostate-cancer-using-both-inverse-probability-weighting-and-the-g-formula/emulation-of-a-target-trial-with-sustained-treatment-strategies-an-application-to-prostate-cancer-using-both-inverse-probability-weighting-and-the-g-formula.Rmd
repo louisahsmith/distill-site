@@ -17,8 +17,8 @@ output:
     self_contained: false
 journal: 
   title: "European Journal of Epidemiology"
-# volume: 
-# issue: 
+volume: 37
+issue: 12
 doi: "10.1007/s10654-022-00929-7"
 citation_url: "https://doi.org/10.1007/s10654-022-00929-7"
 categories: "European Journal of Epidemiology"
@@ -31,11 +31,11 @@ distilltools::icon_link(
   url = "https://doi.org/10.1007/s10654-022-00929-7"
 )
 # 
-# distilltools::icon_link(
-#   icon = "fas fa-file-pdf",
-#   text = "PDF",
-#   url = ""
-# )
+distilltools::icon_link(
+  icon = "fas fa-file-pdf",
+  text = "PDF",
+  url = "emulation-of-a-target-trial-with-sustained-treatment-strategies-an-application-to-prostate-cancer-using-both-inverse-probability-weighting-and-the-g-formula.pdf"
+)
 # 
 # distilltools::icon_link(
 #   icon = "arxiv",

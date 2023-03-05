@@ -7,7 +7,17 @@
     <description>Louisa H. Smith's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 01 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Identification of vaccine effects when exposure status is unknown</title>
+      <dc:creator>Mats J. Stensrud</dc:creator>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <link>https://www.louisahsmith.com/publications/identification-of-vaccine-effects-when-exposure-status-is-unknown</link>
+      <description>Identification of vaccine effects when exposure status is unknown</description>
+      <category>Epidemiology</category>
+      <guid>https://www.louisahsmith.com/publications/identification-of-vaccine-effects-when-exposure-status-is-unknown</guid>
+      <pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Emulation of a target trial with sustained treatment strategies: An application to prostate cancer using both inverse probability weighting and the g-formula</title>
       <dc:creator>Louisa H. Smith</dc:creator>
@@ -24,16 +34,6 @@
       <category>European Journal of Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/emulation-of-a-target-trial-with-sustained-treatment-strategies-an-application-to-prostate-cancer-using-both-inverse-probability-weighting-and-the-g-formula</guid>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Identification of vaccine effects when exposure status is unknown</title>
-      <dc:creator>Mats J. Stensrud</dc:creator>
-      <dc:creator>Louisa H. Smith</dc:creator>
-      <link>https://www.louisahsmith.com/publications/identification-of-vaccine-effects-when-exposure-status-is-unknown</link>
-      <description>Identification of vaccine effects when exposure status is unknown</description>
-      <category>Epidemiology</category>
-      <guid>https://www.louisahsmith.com/publications/identification-of-vaccine-effects-when-exposure-status-is-unknown</guid>
-      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Timing and severity of COVID-19 during pregnancy and the risk of preterm birth in the International Registry of Coronavirus Exposure in Pregnancy</title>

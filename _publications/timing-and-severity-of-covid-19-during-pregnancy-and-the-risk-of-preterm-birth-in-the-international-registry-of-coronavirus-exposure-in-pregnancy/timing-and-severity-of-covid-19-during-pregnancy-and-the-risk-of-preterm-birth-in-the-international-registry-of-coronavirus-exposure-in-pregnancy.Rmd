@@ -13,7 +13,7 @@ output:
 journal: 
   title: "BMC Pregnancy & Childbirth"
 volume: 22
-# issue: 
+issue: 1
 doi: "10.1186/s12884-022-05101-3"
 citation_url: "https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-022-05101-3"
 categories: "BMC Pregnancy & Childbirth"
@@ -26,11 +26,11 @@ distilltools::icon_link(
   url = "https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-022-05101-3"
 )
 # 
-# distilltools::icon_link(
-#   icon = "fas fa-file-pdf",
-#   text = "PDF",
-#   url = ""
-# )
+distilltools::icon_link(
+  icon = "fas fa-file-pdf",
+  text = "PDF",
+  url = "timing-and-severity-of-covid-19-during-pregnancy-and-the-risk-of-preterm-birth-in-the-international-registry-of-coronavirus-exposure-in-pregnancy.pdf"
+)
 # 
 # distilltools::icon_link(
 #   icon = "arxiv",

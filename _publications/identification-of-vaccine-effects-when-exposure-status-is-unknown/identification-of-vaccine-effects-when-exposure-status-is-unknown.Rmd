@@ -3,25 +3,25 @@ title: Identification of vaccine effects when exposure status is unknown
 author:
   - name: Mats J. Stensrud
   - name: Louisa H. Smith
-date: '2022-09-01'
+date: '2023-03-01'
 output:
   distill::distill_article:
     self_contained: false
 journal: 
   title: "Epidemiology"
-# volume: 
-# issue: 
-# doi: 
-# citation_url:
+volume: 34
+issue: 2
+doi: "10.1097/ede.0000000000001573"
+citation_url: "https://journals.lww.com/epidem/Fulltext/2023/03000/Identification_of_Vaccine_Effects_When_Exposure.8.aspx"
 categories: Epidemiology
 ---
 
 ```{r, echo = FALSE}
-# distilltools::icon_link(
-#   icon = "doi",
-#   text = "Online version",
-#   url = ""
-# )
+distilltools::icon_link(
+  icon = "doi",
+  text = "Online version",
+  url = "https://journals.lww.com/epidem/Fulltext/2023/03000/Identification_of_Vaccine_Effects_When_Exposure.8.aspx"
+)
 # 
 # distilltools::icon_link(
 #   icon = "fas fa-file-pdf",
