@@ -1,5 +1,24 @@
 [
   {
+    "path": "talks/2023-05-31/",
+    "title": "Introduction to {targets}",
+    "description": "Maine R User Group",
+    "author": [
+      {
+        "name": "Louisa H. Smith",
+        "url": {}
+      }
+    ],
+    "date": "2023-05-31",
+    "categories": [],
+    "contents": "\n\n\n\n\n\n\n\n",
+    "preview": "talks/2023-05-31/snapshot.png",
+    "last_modified": "2023-05-29T14:52:30-04:00",
+    "input_file": {},
+    "preview_width": 1120,
+    "preview_height": 736
+  },
+  {
     "path": "talks/2022-06-13/",
     "title": "Study design and analysis for time-dependent exposures during pregnancy",
     "description": "SPER Advanced Methods Workshop",

@@ -7,7 +7,16 @@
     <description>Louisa H. Smith's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 13 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>2023-05-31</lastBuildDate>
+    <item>
+      <title>Introduction to {targets}</title>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <link>https://www.louisahsmith.com/talks/2023-05-31</link>
+      <description>Maine R User Group</description>
+      <guid>https://www.louisahsmith.com/talks/2023-05-31</guid>
+      <pubDate>2023-05-31</pubDate>
+      <media:content url="https://www.louisahsmith.com/talks/2023-05-31/snapshot.png" medium="image" type="image/png" width="1120" height="736"/>
+    </item>
     <item>
       <title>Study design and analysis for time-dependent exposures during pregnancy</title>
       <dc:creator>Louisa H. Smith</dc:creator>
@@ -15,7 +24,7 @@
       <link>https://www.louisahsmith.com/talks/2022-06-13</link>
       <description>SPER Advanced Methods Workshop</description>
       <guid>https://www.louisahsmith.com/talks/2022-06-13</guid>
-      <pubDate>Mon, 13 Jun 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-06-13</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2022-06-13/snapshot.png" medium="image" type="image/png" width="1964" height="1106"/>
     </item>
     <item>
@@ -24,7 +33,7 @@
       <link>https://www.louisahsmith.com/talks/2021-09-17</link>
       <description>EPFL Statistics Seminar</description>
       <guid>https://www.louisahsmith.com/talks/2021-09-17</guid>
-      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-09-17</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2021-09-17/snapshot.png" medium="image" type="image/png" width="1777" height="1120"/>
     </item>
     <item>
@@ -33,7 +42,7 @@
       <link>https://www.louisahsmith.com/talks/2021-08-09</link>
       <description>Joint Statistical Meetings 2021</description>
       <guid>https://www.louisahsmith.com/talks/2021-08-09</guid>
-      <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-08-09</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2021-08-09/snapshot.png" medium="image" type="image/png" width="1852" height="1244"/>
     </item>
     <item>
@@ -42,7 +51,7 @@
       <link>https://www.louisahsmith.com/talks/2021-06-23</link>
       <description>Avoiding various biases when studying COVID-19 and preterm birth, presented in the infectious diseases session at SER 2021.</description>
       <guid>https://www.louisahsmith.com/talks/2021-06-23</guid>
-      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-06-23</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2021-06-23/snapshot.png" medium="image" type="image/png" width="2010" height="1256"/>
     </item>
     <item>
@@ -51,7 +60,7 @@
       <link>https://www.louisahsmith.com/talks/2021-06-16</link>
       <description>Speed presentation on the timing- and severity-specific effects of COVID-19 on preterm birth.</description>
       <guid>https://www.louisahsmith.com/talks/2021-06-16</guid>
-      <pubDate>Wed, 16 Jun 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-06-16</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2021-06-16/snapshot.png" medium="image" type="image/png" width="2002" height="1254"/>
     </item>
     <item>
@@ -61,7 +70,7 @@
       <link>https://www.louisahsmith.com/talks/2021-05-21</link>
       <description>SER 2021 workshop with Maya Mathur.</description>
       <guid>https://www.louisahsmith.com/talks/2021-05-21</guid>
-      <pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-05-21</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2021-05-21/snapshot.png" medium="image" type="image/png" width="1314" height="828"/>
     </item>
     <item>
@@ -70,7 +79,7 @@
       <link>https://www.louisahsmith.com/talks/2021-05-07</link>
       <description>My dissertation defense!</description>
       <guid>https://www.louisahsmith.com/talks/2021-05-07</guid>
-      <pubDate>Fri, 07 May 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-05-07</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2021-05-07/snapshot.png" medium="image" type="image/png" width="1636" height="1027"/>
     </item>
     <item>
@@ -79,7 +88,7 @@
       <link>https://www.louisahsmith.com/talks/2020-12-19</link>
       <description>Extending a sensitivity analysis approach for unmeasured confounding to selection bias.</description>
       <guid>https://www.louisahsmith.com/talks/2020-12-19</guid>
-      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-12-19</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2020-12-19/snapshot.png" medium="image" type="image/png" width="2006" height="1308"/>
     </item>
     <item>
@@ -88,7 +97,7 @@
       <link>https://www.louisahsmith.com/talks/2020-08-20</link>
       <description>A guest lecture to convince new learners of R just how cool it is.</description>
       <guid>https://www.louisahsmith.com/talks/2020-08-20</guid>
-      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-08-20</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2020-08-20/snapshot.png" medium="image" type="image/png" width="2808" height="1582"/>
     </item>
     <item>
@@ -97,7 +106,7 @@
       <link>https://www.louisahsmith.com/talks/2020-01-29</link>
       <description>A data science/human interest story first shared at RLadies Boston.</description>
       <guid>https://www.louisahsmith.com/talks/2020-01-29</guid>
-      <pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-01-29</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2020-01-29/snapshot.png" medium="image" type="image/png" width="2460" height="1382"/>
     </item>
     <item>
@@ -106,7 +115,7 @@
       <link>https://www.louisahsmith.com/talks/2018-12-07</link>
       <description>The basics of DAGs.</description>
       <guid>https://www.louisahsmith.com/talks/2018-12-07</guid>
-      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>2018-12-07</pubDate>
       <media:content url="https://www.louisahsmith.com/talks/2018-12-07/snapshot.png" medium="image" type="image/png" width="2132" height="1196"/>
     </item>
   </channel>

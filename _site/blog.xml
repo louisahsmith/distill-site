@@ -7,14 +7,14 @@
     <description>Louisa H. Smith's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>2020-06-08</lastBuildDate>
     <item>
       <title>The Base Rate Fallacy</title>
       <dc:creator>Louisa H. Smith</dc:creator>
       <link>https://www.louisahsmith.com/posts/2020-06-08-the-base-rate-fallacy</link>
       <description>Explaining why we need Bayes in our everyday lives.</description>
       <guid>https://www.louisahsmith.com/posts/2020-06-08-the-base-rate-fallacy</guid>
-      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-06-08</pubDate>
     </item>
     <item>
       <title>Github-style calendar heatmap</title>
@@ -22,7 +22,7 @@
       <link>https://www.louisahsmith.com/posts/2018-09-25-github-style-calendar-heatmap</link>
       <description>Can I replicate the Github contributions calendar?</description>
       <guid>https://www.louisahsmith.com/posts/2018-09-25-github-style-calendar-heatmap</guid>
-      <pubDate>Tue, 25 Sep 2018 00:00:00 +0000</pubDate>
+      <pubDate>2018-09-25</pubDate>
     </item>
     <item>
       <title>Secrets and Robots: Accessing password-protected data with R</title>
@@ -30,7 +30,7 @@
       <link>https://www.louisahsmith.com/posts/2018-09-11-secrets-and-robots-accessing-password-protected-data-with-r</link>
       <description>In which I try to download my own insurance claims data.</description>
       <guid>https://www.louisahsmith.com/posts/2018-09-11-secrets-and-robots-accessing-password-protected-data-with-r</guid>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      <pubDate>2018-09-11</pubDate>
     </item>
     <item>
       <title>Tidy Tuesday: California Fires</title>
@@ -38,7 +38,7 @@
       <link>https://www.louisahsmith.com/posts/2018-08-29-tidy-tuesday-california-fires</link>
       <description>My first (very poor) attempt at a Tidy Tuesday challenge.</description>
       <guid>https://www.louisahsmith.com/posts/2018-08-29-tidy-tuesday-california-fires</guid>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>2018-08-29</pubDate>
     </item>
   </channel>
 </rss>

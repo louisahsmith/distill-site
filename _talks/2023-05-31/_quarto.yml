@@ -1,0 +1,23 @@
+project:
+  title: "Intro to {targets}"
+format:
+  html:
+    theme: journal
+    css: www/styles.css
+    toc: true
+  revealjs:
+    slide-number: c/t
+    preview-links: auto
+    hash-type: number
+    hash-one-based-index: true
+    theme: 
+      - www/custom.scss
+    pointer:
+      color: '#32cd32'
+      pointerSize: 12
+revealjs-plugins:
+  - pointer
+  
+format-links: false
+highlight-style: nord
+editor: source

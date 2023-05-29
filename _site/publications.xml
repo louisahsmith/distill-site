@@ -7,7 +7,7 @@
     <description>Louisa H. Smith's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 01 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>2023-03-01</lastBuildDate>
     <item>
       <title>Identification of vaccine effects when exposure status is unknown</title>
       <dc:creator>Mats J. Stensrud</dc:creator>
@@ -16,7 +16,7 @@
       <description>Identification of vaccine effects when exposure status is unknown</description>
       <category>Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/identification-of-vaccine-effects-when-exposure-status-is-unknown</guid>
-      <pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+      <pubDate>2023-03-01</pubDate>
     </item>
     <item>
       <title>Emulation of a target trial with sustained treatment strategies: An application to prostate cancer using both inverse probability weighting and the g-formula</title>
@@ -33,7 +33,7 @@
       <description>Emulation of a target trial with sustained treatment strategies: An application to prostate cancer using both inverse probability weighting and the g-formula</description>
       <category>European Journal of Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/emulation-of-a-target-trial-with-sustained-treatment-strategies-an-application-to-prostate-cancer-using-both-inverse-probability-weighting-and-the-g-formula</guid>
-      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-10-01</pubDate>
     </item>
     <item>
       <title>Timing and severity of COVID-19 during pregnancy and the risk of preterm birth in the International Registry of Coronavirus Exposure in Pregnancy</title>
@@ -46,7 +46,7 @@
       <description>Timing and severity of COVID-19 during pregnancy and the risk of preterm birth in the International Registry of Coronavirus Exposure in Pregnancy</description>
       <category>BMC Pregnancy &amp; Childbirth</category>
       <guid>https://www.louisahsmith.com/publications/timing-and-severity-of-covid-19-during-pregnancy-and-the-risk-of-preterm-birth-in-the-international-registry-of-coronavirus-exposure-in-pregnancy</guid>
-      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-09-01</pubDate>
     </item>
     <item>
       <title>E-values for effect modification and conservative approximations for causal interaction</title>
@@ -59,7 +59,7 @@
       <description>We provide sensitivity analyses for unmeasured confounding in estimates of effect heterogeneity and causal interaction.</description>
       <category>International Journal of Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/e-values-for-effect-modification-and-conservative-approximations-for-causal-interaction</guid>
-      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-08-01</pubDate>
     </item>
     <item>
       <title>International Registry of Coronavirus Exposure in Pregnancy (IRCEP) — Cohort description and methodological considerations</title>
@@ -73,7 +73,7 @@
       <description>We describe a pregnancy cohort recruited and followed during the COVID-19 pandemic, as well as some challenges encountered during the process.</description>
       <category>American Journal of Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/international-registry-of-coronavirus-exposure-in-pregnancy-ircep-cohort-description-and-methodological-considerations</guid>
-      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-06-01</pubDate>
     </item>
     <item>
       <title>Multifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF</title>
@@ -86,7 +86,7 @@
       <description>Multifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF</description>
       <category>Paediatric and Perinatal Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/multifoetal-gestations-mediate-the-effect-of-in-vitro-fertilisation-ivf-on-ischaemic-placental-disease-in-autologous-oocyte-ivf-more-than-donor-oocyte-ivf</guid>
-      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-03-01</pubDate>
     </item>
     <item>
       <title>Multiple-bias sensitivity analysis using bounds</title>
@@ -97,7 +97,7 @@
       <description>We show that it is possible to bound the total composite bias due to unmeasured confounding, selection, and differential misclassification, and to use that bound to assess the sensitivity of a risk ratio to any combination of these biases.</description>
       <category>Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/multiple-bias-sensitivity-analysis-using-bounds</guid>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-09-01</pubDate>
     </item>
     <item>
       <title>Mediating to opportunity: The challenges of translating mediation estimands into policy recommendations</title>
@@ -107,7 +107,7 @@
       <description>Commenting on an article by Rudolph et al., we describe goals of mediation analysis for informing policy.</description>
       <category>Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/mediating-to-opportunity-the-challenges-of-translat-ing-mediation-estimands-into-policy-recommendations</guid>
-      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-05-01</pubDate>
     </item>
     <item>
       <title>Simple sensitivity analysis for control selection bias</title>
@@ -117,7 +117,7 @@
       <description>We extend a sensitivity analysis approach for selection bias to account for poor control selection in case-control studies.</description>
       <category>Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/simple-sensitivity-analysis-for-control-selection-bias</guid>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-09-01</pubDate>
     </item>
     <item>
       <title>The importance of mediation in reproductive health studies</title>
@@ -134,7 +134,7 @@
       <description>We introduce the concept of mediation and provide examples that solidify understanding of mediation for valid discovery and interpretation in the field of reproductive medicine.</description>
       <category>Human Reproduction</category>
       <guid>https://www.louisahsmith.com/publications/the-importance-of-mediation-in-reproductive-health-studies</guid>
-      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-06-01</pubDate>
     </item>
     <item>
       <title>Selection mechanisms and their consequences: Understanding and addressing selection bias</title>
@@ -143,7 +143,7 @@
       <description>Understanding the way in which a study sample relates to the target population is critical for avoiding and addressing bias. Communication about selection bias is aided by the use of causal graphs.</description>
       <category>Current Epidemiology Reports</category>
       <guid>https://www.louisahsmith.com/publications/selection-mechanisms-and-their-consequences-understanding-and-addressing-selection-bias</guid>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-01-01</pubDate>
     </item>
     <item>
       <title>Mediational E-values: Approximate sensitivity analysis for unmeasured mediator-outcome confounding</title>
@@ -153,7 +153,7 @@
       <description>We show how E-values can be used and easily interpreted for sensitivity analysis in mediation.</description>
       <category>Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/mediational-e-values-approximate-sensitivity-analysis-for-unmeasured-mediator-outcome-confounding</guid>
-      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-11-01</pubDate>
     </item>
     <item>
       <title>Bounding bias due to selection</title>
@@ -163,7 +163,7 @@
       <description>We provide bounds for selection bias under a variety of situations.</description>
       <category>Epidemiology</category>
       <guid>https://www.louisahsmith.com/publications/bounding-bias-due-to-selection</guid>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-07-01</pubDate>
     </item>
     <item>
       <title>Health issues in the industrial port zone of Marseille, France: The Fos EPSEAL community-based cross-sectional survey</title>
@@ -177,7 +177,7 @@
       <description>Health issues in the industrial port zone of Marseille, France: The Fos EPSEAL community-based cross-sectional survey</description>
       <category>Journal of Public Health</category>
       <guid>https://www.louisahsmith.com/publications/health-issues-in-the-industrial-port-zone-of-marseille-france-the-fos-epseal-community-based-cross-sectional-survey</guid>
-      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>2017-11-01</pubDate>
     </item>
     <item>
       <title>Maternal prepregnancy weight and children's behavioral and emotional outcomes</title>
@@ -190,7 +190,7 @@
       <description>Maternal prepregnancy weight and children's behavioral and emotional outcomes</description>
       <category>American Journal of Preventive Medicine</category>
       <guid>https://www.louisahsmith.com/publications/maternal-prepregnancy-weight-and-childrens-behavioral-and-emotional-outcomes</guid>
-      <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
+      <pubDate>2017-10-01</pubDate>
     </item>
   </channel>
 </rss>
