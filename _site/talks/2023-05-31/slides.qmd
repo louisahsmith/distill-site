@@ -115,6 +115,12 @@ list(
 )
 ```
 
+Run `tar_make()` to run pipeline
+
+::: callout-tip
+`use_targets()` will generate a `_targets.R` script for you to fill in.
+:::
+
 ## `{targets}` workflow
 
 Targets are "hidden" away where you don't need to manage them
@@ -236,6 +242,7 @@ In big projects, I comment my `_targets.R` file so that I can use the RStudio ou
 
 ## Key `{targets}` functions {.smaller}
 
+- `use_targets()` gets you started with a `_targets.R` script to fill in
 - `tar_make()` runs the pipeline and saves the results in `_targets/objects/`
 - `tar_make_future()` runs the pipeline in parallel^[Note: `{targets}` is moving to a new distributed computing strategy using `{crew}`]
 - `tar_load()` loads the results of a target into the global environment  
@@ -288,33 +295,11 @@ Because `report.qmd` depends on `results` and `plots`, it will only be re-render
 The `extra_files = ` argument can be used to force it to depend on additional non-target files
 :::
 
-## `{tarchetypes}`: branching
+## `{tarchetypes}`: branching {.smaller}
 
-::: smaller
-We want to investigate the relationship between age at first birth and hours of sleep on weekdays and weekends among moms and dads separately^[Data and code at <https://github.com/louisahsmith/targets-example>]
-:::
+Using data from the National Longitudinal Survey of Youth,
 
 :::: columns
-::: {.column width="59%"}
-
-`R/functions.R`
-```r
-model_function <- function(outcome_val, 
-                           sex_val, dat) {
-
-  lm(as.formula(paste(outcome_val, 
-      " ~ age_bir + income + factor(region)")) ,
-     data = dat, 
-     subset = sex == sex_val)
-}
-
-coef_function <- function(model) {
-  coef(model)[["age_bir"]]
-}
-```
-:::
-::: {.column width="2%"}
-:::
 ::: {.column width="39%"}
 `_targets.R`
 ```r
@@ -336,7 +321,29 @@ targets_setup <- list(
 )
 ```
 :::
+::: {.column width="2%"}
+:::
+::: {.column width="59%"}
+`R/functions.R`
+```r
+model_function <- function(outcome_var, 
+                           sex_val, dat) {
+
+  lm(as.formula(paste(outcome_var, 
+      " ~ age_bir + income + factor(region)")) ,
+     data = dat, 
+     subset = sex == sex_val)
+}
+
+coef_function <- function(model) {
+  coef(model)[["age_bir"]]
+}
+```
+:::
 ::::
+
+we want to investigate the relationship between age at first birth and hours of sleep on weekdays and weekends among moms and dads separately^[Data and code at <https://github.com/louisahsmith/targets-example>]
+
 
 ## Option 1
 
@@ -346,7 +353,7 @@ Create (and name) a separate target for each combination of sleep variable (`"sl
 targets_1 <- list(
   tar_target(
     model_1,
-    model_function(outcome_val = "sleep_wkdy", sex_val = 1, dat = dat)
+    model_function(outcome_var = "sleep_wkdy", sex_val = 1, dat = dat)
   ),
   tar_target(
     coef_1,
@@ -375,7 +382,7 @@ targets_2 <- tar_map(
   ),
   tar_target(
     model_2,
-    model_function(outcome_val = outcome, sex_val = sex, dat = dat)
+    model_function(outcome_var = outcome, sex_val = sex, dat = dat)
   ),
   tar_target(
     coef_2,
@@ -428,7 +435,7 @@ targets_3 <- list(
   ),
   tar_target(
     model_3,
-    model_function(outcome_val = outcome_target, sex_val = sex_target, dat = dat),
+    model_function(outcome_var = outcome_target, sex_val = sex_target, dat = dat),
     pattern = cross(outcome_target, sex_target)
   ),
   tar_target(
@@ -477,7 +484,7 @@ targets_4 <- list(
     bootstrap_coefs,
     dat |>
       dplyr::slice_sample(prop = 1, replace = TRUE) |>
-      model_function(outcome_val = "sleep_wkdy", sex_val = 1, dat = _) |>
+      model_function(outcome_var = "sleep_wkdy", sex_val = 1, dat = _) |>
       coef_function(),
     batches = 10,
     reps = 10
@@ -488,6 +495,14 @@ The pipeline gets split into `batches` x `reps` chunks, each with its own random
 
 ## `{tarchetypes}`: mapping over iterations
 
+```r
+sensitivity_scenarios <- tibble::tibble(
+  error = c("small", "medium", "large"),
+  mean = c(1, 2, 3),
+  sd = c(0.5, 0.75, 1)
+)
+```
+
 `tar_map_rep()` repeats a target multiple times with different arguments
 
 ```r
@@ -495,7 +510,7 @@ targets_5 <- tar_map_rep(
   sensitivity_analysis,
   dat |> 
     dplyr::mutate(sleep_wkdy = sleep_wkdy + rnorm(nrow(dat), mean, sd)) |>
-    model_function(outcome_val = "sleep_wkdy", sex_val = 1, dat = _) |>
+    model_function(outcome_var = "sleep_wkdy", sex_val = 1, dat = _) |>
     coef_function() |> 
     data.frame(coef = _),
   values = sensitivity_scenarios,

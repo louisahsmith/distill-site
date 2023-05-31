@@ -1,0 +1,4 @@
+- source: R-Maine-targets.qmd
+  netlify:
+    - id: a0e57124-2703-41e6-a61c-89996a91dce4
+      url: 'https://stirring-hummingbird-8bd06e.netlify.app'
