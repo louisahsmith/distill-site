@@ -1,12 +1,15 @@
 ---
-title: "Missing data in a frailty index"
+title: "Evaluating missingness assumptions for items in a frailty index"
 author: Louisa Smith
 email: l.smith@northeastern.edu
-date: "SER: June 2023"
+location: "SER: June 14, 2023"
 institute: "Department of Health Sciences<br>The Roux Institute<br>Northeastern University"
 url: louisahsmith.com/talks/2023-06-14/slides.html
 format: 
   revealjs:
+    slide-number: c/t
+    pdf-max-pages-per-slide: 1
+    pdf-separate-fragments: true
     template-partials:
       - title-slide.html
     theme: www/custom.scss
@@ -23,6 +26,11 @@ bibliography: "references.bib"
 {{< include www/_scss.qmd >}}
 :::
 
+```{r}
+#| include: false
+library(tidyverse)
+```
+
 ::: columns
 ::: {.column width="40%"}
 Frailty is a syndrome of vulnerability more common in older adults
@@ -37,6 +45,10 @@ A frailty index is a quantitative measure of the aggregate burden of age-related
 
 ::: center
 FI = \# of deficits / \# of possible deficits
+:::
+
+::: aside
+<0.15 robust; 0.15-0.25 pre-frail; >0.25 frail
 :::
 
 ## 
@@ -59,13 +71,18 @@ FI = \# of deficits / \# of possible deficits
 -   Cover multiple domains, including comorbidities, function, cognition, mental health, and geriatric syndromes
 -   Cannot be weighted to heavily toward one domain (or it would be, e.g., a comorbidity index)
 
+**9.8% of 200,000+ participants had complete data**
+
+**38% had data for >80% of deficits (>27/33)**
+
+
 ::: aside
 @wong2023frailty
 :::
 
-## Missing items in age 50+
 
 ```{r}
+#| eval: false
 library(tidyverse)
 denoms <- tribble(~denominator, ~n,
                   0,  2342,
@@ -103,48 +120,57 @@ denoms <- tribble(~denominator, ~n,
                   32,	4168,
                   33,	19915) |> 
   arrange(desc(denominator)) |> 
-  mutate(cum_n = cumsum(n))
+  mutate(cum_n = cumsum(n),
+         prop_missing = cum_n / sum(n),
+         prop_denominator = denominator / 33)
 
-denoms %>%
-  mutate(denominator = fct_rev(factor(denominator)),
-         pct = cum_n / sum(denoms$n)) |> 
-  ggplot(aes(cum_n, denominator, fill = pct)) +
+
+denoms |> 
+  filter(denominator %in% c(33, 27, 17)) |> 
+  ggplot(aes(cum_n, fct_rev(factor(prop_denominator, labels = c("<50% missing", "<20% missing", "complete data"))))) +
   geom_col() +
-  geom_col(aes(-cum_n, denominator)) +
-  scale_fill_fermenter(type = "div", palette = 3) +
-  labs(y = "FI denominator", x = "Remaining sample",
-       fill = "Proportion of\ntotal sample") +
-  scale_x_continuous(labels = scales::number,
-                     expand = c(0,0), breaks = c(20000, 100000, 200000)) +
-  theme_minimal() 
+  scale_x_continuous(labels = scales::comma, limits = c(0, 204164), name = "Sample size") +
+  scale_y_discrete(name = NULL) +
+  geom_label(aes())
+#   ggplot(aes(prop_missing, fill = prop_denominator, group = prop_denominator)) +
+#   geom_bar(position = position_stack())
+# denoms %>%
+#   mutate(denominator = fct_rev(factor(denominator)),
+#          pct = cum_n / sum(denoms$n)) |> 
+#   ggplot(aes(cum_n, denominator, fill = pct)) +
+#   geom_col() +
+#   geom_col(aes(-cum_n, denominator)) +
+#   scale_fill_fermenter(type = "div", palette = 3) +
+#   labs(y = "FI denominator", x = "Remaining sample",
+#        fill = "Proportion of\ntotal sample") +
+#   scale_x_continuous(labels = scales::number,
+#                      expand = c(0,0), breaks = c(20000, 100000, 200000)) +
+#   theme_minimal() 
 ```
 
 ## Options for missing items in an index/scale
 
--   Exclude those with any missing items (complete-case)
+:::: columns
+::: {.column width=49%}
+**Complete-case** <br> Exclude those with any missing items
 
--   Change denominator to number of non-missing items (proration; i.e. person-mean imputation)
+**Proration** <br>Adjust denominator (person-mean imputation)
 
--   Multiple imputation (of total score, of individual items)
+**Multiple imputation** <br> Of individual items / total score
+:::
+::: {.column width=49% .fragment}
 
--   Hybrid approaches
-
-## Cons {.smaller}
-
-Complete case
-
--   Throwing away *a lot* of data, including from people who have almost all items observed
--   Valid only under the strongest set of assumptions
-
-Proration
-
--   Since the items cover a range of domains, this can mean that single domains e.g., cognition and mental health, are weighted differently than others
--   Still throwing away data from observations not meeting the threshhold of enough items
-
-Multiple imputation
-
--   Computationally intensive
--   Not valid in general under MNAR
+Throwing away *a lot* of data, strong assumptions
+ <br>
+  <br>
+  
+Different weighting across domains
+ <br>
+  <br>
+  
+Computationally intensive, not valid in general under MNAR
+:::
+::::
 
 ## Missing data assumptions
 
@@ -153,12 +179,12 @@ Multiple imputation
 | missing completely at random                                | missing at random                                                                 | missing not at random                                                          |
 | missingness does not depend on the observed or missing data | conditional on the observed data, missingness does not depend on the missing data | missingness depends on the missing data, even conditional on the observed data |
 
-## Missing data assumptions
+## Understanding assumptions
 
 Let's consider the joint distribution of the [missing]{.red} and [observed]{.blue} data and the [missingness pattern]{.green}, all conditional on the [fully observed variables]{.orange}:
 
 $$
-f(\color{IndianRed}{Y_{mis}}, {\color{SlateBlue} Y_{obs}}, \color{Teal} {R} \mid \color{Salmon} {X})
+f(\color{IndianRed}{Y_{mis}}, \color{SlateBlue}{Y_{obs}}, \color{Teal} {R} \mid \color{Salmon} {X})
 $$
 
 In our setting, $\color{IndianRed}{Y_{mis}}$ and $\color{SlateBlue}{Y_{obs}}$ are missing and observed components of the frailty variables, $\color{Teal} {R}$ is a matrix with indicators of missingness for each observation/variable, and $\color{Salmon}{X}$ are fully observed variables like age and gender
@@ -170,20 +196,20 @@ $$
 $$
 
 ::: columns
-::: {.column width="32%"}
+::: {.column width="39%"}
 [distribution of missing data conditional on whats observed, and on missingness patterns]{.red}
 :::
 
-::: {.column width="32%"}
+::: {.column width="35%"}
 [distribution of observed data conditional on a given missingness pattern]{.blue}
 :::
 
-::: {.column width="32%"}
+::: {.column width="26%"}
 [probability of a given missingness pattern]{.green}
 :::
 :::
 
-Under MAR, $\color{IndianRed}{f(Y_{mis} \mid Y_{obs}, R, X)} = f(Y_{mis} \mid Y_{obs}, X)$: missing data doesn't depend on missingness pattern
+Under **MAR**, $\color{IndianRed}{f(Y_{mis} \mid Y_{obs}, R, X)} = f(Y_{mis} \mid Y_{obs}, X)$: missing data doesn't depend on missingness pattern
 
 ## Pattern-mixture models
 
@@ -238,9 +264,9 @@ For a given item $Y$, we collapsed missingness patterns into:
 -   missing data on $Y$ but completed survey ([group C]{.yellow})
 -   missing survey on which $Y$ is collected ([group D]{.green})[^1]
 
-[^1]: so not known whether it would have been observed had survey been completed!
+[^1]: so not known whether it *would* have been observed had survey been completed
 
-## Interpretible parameters
+## Interpretable parameters
 
 Most items are binary
 
@@ -249,7 +275,7 @@ Most items are binary
 -   Even differences in means not particularly intuitive
     -   "Non-respondents may have up to 10 percentage points higher prevalence of *item* compared to respondents who are similar in other ways"
 
-Instead, standardized means
+Standardized means seem more interpretable
 
 ## Standardized means
 
@@ -272,18 +298,20 @@ Instead, standardized means
 ## Experts in this population can combine with their knowledge
 
 ::: center
-![**Difficulty bathing**](img/bathing.png)
+![**Difficulty bathing**](img/bathing.png){height=490px}
 :::
 
 ## Shiny app
 
-![](img/app.png)
+![](img/app.png){height=570px}
 
 ::: aside
 @mason2017development; @tompsett2020general
 :::
 
 ## Analysis: FI distribution
+
+*Synthetic AoU dataset*
 
 -   complete case
 -   proration \> 50% complete
@@ -299,9 +327,9 @@ Instead, standardized means
 ```{r}
 #| message: false
 library(ggokabeito)
-example_plots <- read_rds("~/Documents/Projects/All of Us/missing-data/_targets/objects/example_plots")
-example_plots$rank_plot +
-    labs(y = NULL, x = "Scaled ranks of sensitivity parameters") + scale_fill_manual(values = c("SlateBlue", "#008080", "IndianRed", "Gold")) +
+rank_plot <- read_rds("~/Documents/Presentations/SER 2023/img/rank_plot.rds")
+rank_plot +
+    labs(y = NULL, x = "Ranks of sensitivity parameters") + scale_fill_manual(values = c("SlateBlue", "#008080", "IndianRed", "Gold")) +
   facet_wrap(vars(fct_relevel(distribution, "Beta(1, 1)", "Beta(5, 5)", "Beta(5, 2)", "Beta(10, 1)")))
 ```
 
@@ -345,7 +373,7 @@ filter(cleaned_res_age,
   scale_color_okabe_ito()
 ```
 
-## FI by age
+## Age differences in FI
 
 ```{r}
 #| fig-width: 6
@@ -409,7 +437,7 @@ filter(cleaned_res_gender,
   scale_color_okabe_ito()
 ```
 
-## FI by gender, age-adjusted
+## Age-adjusted gender differences
 
 ```{r}
 #| fig-width: 6
@@ -440,6 +468,8 @@ filter(cleaned_res_gender,
     -   Is it necessary to recompute frailty index in between every item?
 -   At what point is this necessary?
     -   "Tipping point" analysis
+    
+*Thanks to Chelsea Wong MD, Ariela Orkaby MD, Brianne Olivieri-Mui PhD*
 
 ## 
 

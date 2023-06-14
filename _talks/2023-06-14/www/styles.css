@@ -73,3 +73,7 @@ iframe.reveal-demo {
   //color: #bf616a;
   color: IndianRed;
 }
+
+figure>figcaption {
+    margin-top: 0;
+}

@@ -1,5 +1,5 @@
 ---
-title: "Missing data in a frailty index"
+title: "Evaluating missingness assumptions for items in a frailty index"
 description: |
   SER 2023
 author:

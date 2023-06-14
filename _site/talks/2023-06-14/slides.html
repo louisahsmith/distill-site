@@ -11,8 +11,7 @@
   <meta name="generator" content="quarto-1.3.361">
 
   <meta name="author" content="Louisa Smith">
-  <meta name="dcterms.date" content="2023-06-01">
-  <title>Missing data in a frailty index</title>
+  <title>Evaluating missingness assumptions for items in a frailty index</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -346,15 +345,15 @@
     <div class="slides">
 
 <section id="title-slide" class="center">
-  <h1 class="title">Missing data in a frailty index</h1>
+  <h1 class="title">Evaluating missingness assumptions for items in a frailty index</h1>
   <p class="author">Louisa Smith</p>
-  <p class="date">2023-06-01</p>
+  <p class="date">SER: June 14, 2023</p>
   <p class="institute">Department of Health Sciences<br>The Roux Institute<br>Northeastern University</p>
   <p class="email">
     <a href="mailto:l.smith@northeastern.edu">l.smith@northeastern.edu</a>
 </p>
   <p class="slide-url">
-    <a href="louisahsmith.com/talks/2023-06-14/slides.html" target="_blank">louisahsmith.com/talks/2023-06-14/slides.html</a>
+    <a href="https://louisahsmith.com/talks/2023-06-14/slides.html" target="_blank">louisahsmith.com/talks/2023-06-14/slides.html</a>
     </p>
 </section>
 <section id="context-deficit-accumulation-frailty-index" class="slide level2">
@@ -377,7 +376,10 @@ div.callout-caution{border-left-color:#5e81ac !important}div.callout-caution.cal
 <div class="center">
 <p>FI = # of deficits / # of possible deficits</p>
 </div>
-</section>
+
+<aside><div>
+<p>&lt;0.15 robust; 0.15-0.25 pre-frail; &gt;0.25 frail</p>
+</div></aside></section>
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="columns">
@@ -399,40 +401,25 @@ div.callout-caution{border-left-color:#5e81ac !important}div.callout-caution.cal
 <li>Cover multiple domains, including comorbidities, function, cognition, mental health, and geriatric syndromes</li>
 <li>Cannot be weighted to heavily toward one domain (or it would be, e.g., a comorbidity index)</li>
 </ul>
+<p><strong>9.8% of 200,000+ participants had complete data</strong></p>
+<p><strong>38% had data for &gt;80% of deficits (&gt;27/33)</strong></p>
 
 <aside><div>
 <p><span class="citation" data-cites="wong2023frailty">Wong et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2023</a>)</span></p>
 </div></aside></section>
-<section id="missing-items-in-age-50" class="slide level2">
-<h2>Missing items in age 50+</h2>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 <section id="options-for-missing-items-in-an-indexscale" class="slide level2">
 <h2>Options for missing items in an index/scale</h2>
-<ul>
-<li><p>Exclude those with any missing items (complete-case)</p></li>
-<li><p>Change denominator to number of non-missing items (proration; i.e.&nbsp;person-mean imputation)</p></li>
-<li><p>Multiple imputation (of total score, of individual items)</p></li>
-<li><p>Hybrid approaches</p></li>
-</ul>
-</section>
-<section id="cons" class="slide level2 smaller">
-<h2>Cons</h2>
-<p>Complete case</p>
-<ul>
-<li>Throwing away <em>a lot</em> of data, including from people who have almost all items observed</li>
-<li>Valid only under the strongest set of assumptions</li>
-</ul>
-<p>Proration</p>
-<ul>
-<li>Since the items cover a range of domains, this can mean that single domains e.g., cognition and mental health, are weighted differently than others</li>
-<li>Still throwing away data from observations not meeting the threshhold of enough items</li>
-</ul>
-<p>Multiple imputation</p>
-<ul>
-<li>Computationally intensive</li>
-<li>Not valid in general under MNAR</li>
-</ul>
+<div class="columns">
+<div class="column" style="width:49%;">
+<p><strong>Complete-case</strong> <br> Exclude those with any missing items</p>
+<p><strong>Proration</strong> <br>Adjust denominator (person-mean imputation)</p>
+<p><strong>Multiple imputation</strong> <br> Of individual items / total score</p>
+</div><div class="column fragment" style="width:49%;">
+<p>Throwing away <em>a lot</em> of data, strong assumptions <br> <br></p>
+<p>Different weighting across domains <br> <br></p>
+<p>Computationally intensive, not valid in general under MNAR</p>
+</div>
+</div>
 </section>
 <section id="missing-data-assumptions" class="slide level2">
 <h2>Missing data assumptions</h2>
@@ -463,11 +450,11 @@ div.callout-caution{border-left-color:#5e81ac !important}div.callout-caution.cal
 </tbody>
 </table>
 </section>
-<section id="missing-data-assumptions-1" class="slide level2">
-<h2>Missing data assumptions</h2>
+<section id="understanding-assumptions" class="slide level2">
+<h2>Understanding assumptions</h2>
 <p>Let’s consider the joint distribution of the <span class="red">missing</span> and <span class="blue">observed</span> data and the <span class="green">missingness pattern</span>, all conditional on the <span class="orange">fully observed variables</span>:</p>
 <p><span class="math display">\[
-f(\color{IndianRed}{Y_{mis}}, {\color{SlateBlue} Y_{obs}}, \color{Teal} {R} \mid \color{Salmon} {X})
+f(\color{IndianRed}{Y_{mis}}, \color{SlateBlue}{Y_{obs}}, \color{Teal} {R} \mid \color{Salmon} {X})
 \]</span></p>
 <p>In our setting, <span class="math inline">\(\color{IndianRed}{Y_{mis}}\)</span> and <span class="math inline">\(\color{SlateBlue}{Y_{obs}}\)</span> are missing and observed components of the frailty variables, <span class="math inline">\(\color{Teal} {R}\)</span> is a matrix with indicators of missingness for each observation/variable, and <span class="math inline">\(\color{Salmon}{X}\)</span> are fully observed variables like age and gender</p>
 </section>
@@ -477,15 +464,15 @@ f(\color{IndianRed}{Y_{mis}}, {\color{SlateBlue} Y_{obs}}, \color{Teal} {R} \mid
 \color{black} {f(Y_{obs}, Y_{mis}, R \mid X)} = \\ \color{IndianRed} {f(Y_{mis} \mid Y_{obs}, R, X)} \color{SlateBlue} {f(Y_{obs} \mid R, X)}\color{Teal}{f(R \mid X)}
 \]</span></p>
 <div class="columns">
-<div class="column" style="width:32%;">
+<div class="column" style="width:39%;">
 <p><span class="red">distribution of missing data conditional on whats observed, and on missingness patterns</span></p>
-</div><div class="column" style="width:32%;">
+</div><div class="column" style="width:35%;">
 <p><span class="blue">distribution of observed data conditional on a given missingness pattern</span></p>
-</div><div class="column" style="width:32%;">
+</div><div class="column" style="width:26%;">
 <p><span class="green">probability of a given missingness pattern</span></p>
 </div>
 </div>
-<p>Under MAR, <span class="math inline">\(\color{IndianRed}{f(Y_{mis} \mid Y_{obs}, R, X)} = f(Y_{mis} \mid Y_{obs}, X)\)</span>: missing data doesn’t depend on missingness pattern</p>
+<p>Under <strong>MAR</strong>, <span class="math inline">\(\color{IndianRed}{f(Y_{mis} \mid Y_{obs}, R, X)} = f(Y_{mis} \mid Y_{obs}, X)\)</span>: missing data doesn’t depend on missingness pattern</p>
 </section>
 <section id="pattern-mixture-models" class="slide level2">
 <h2>Pattern-mixture models</h2>
@@ -537,9 +524,9 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 <li>missing data on <span class="math inline">\(Y\)</span> but completed survey (<span class="yellow">group C</span>)</li>
 <li>missing survey on which <span class="math inline">\(Y\)</span> is collected (<span class="green">group D</span>)<sup>1</sup></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>so not known whether it would have been observed had survey been completed!</p></li></ol></aside></section>
-<section id="interpretible-parameters" class="slide level2">
-<h2>Interpretible parameters</h2>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>so not known whether it <em>would</em> have been observed had survey been completed</p></li></ol></aside></section>
+<section id="interpretable-parameters" class="slide level2">
+<h2>Interpretable parameters</h2>
 <p>Most items are binary</p>
 <ul>
 <li>Parameters on odds ratio scale suggested in literature
@@ -551,7 +538,7 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 <li>“Non-respondents may have up to 10 percentage points higher prevalence of <em>item</em> compared to respondents who are similar in other ways”</li>
 </ul></li>
 </ul>
-<p>Instead, standardized means</p>
+<p>Standardized means seem more interpretable</p>
 </section>
 <section id="standardized-means" class="slide level2">
 <h2>Standardized means</h2>
@@ -587,7 +574,7 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 <div class="center">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="img/bathing.png"></p>
+<p><img data-src="img/bathing.png" height="490"></p>
 <figcaption><strong>Difficulty bathing</strong></figcaption>
 </figure>
 </div>
@@ -595,13 +582,14 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 </section>
 <section id="shiny-app" class="slide level2">
 <h2>Shiny app</h2>
-<p><img data-src="img/app.png"></p>
+<p><img data-src="img/app.png" height="570"></p>
 
 <aside><div>
 <p><span class="citation" data-cites="mason2017development">Mason et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="tompsett2020general">D. Tompsett et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2020</a>)</span></p>
 </div></aside></section>
 <section id="analysis-fi-distribution" class="slide level2">
 <h2>Analysis: FI distribution</h2>
+<p><em>Synthetic AoU dataset</em></p>
 <ul>
 <li>complete case</li>
 <li>proration &gt; 50% complete</li>
@@ -618,27 +606,27 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 <section id="distributions-of-sensitivity-parameters" class="slide level2">
 <h2>Distributions of sensitivity parameters</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="average-fi-age-50-55" class="slide level2">
 <h2>Average FI age 50-55</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="576" class="r-stretch"></section>
-<section id="fi-by-age" class="slide level2">
-<h2>FI by age</h2>
-
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" width="576" class="r-stretch"></section>
+<section id="age-differences-in-fi" class="slide level2">
+<h2>Age differences in FI</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="576" class="r-stretch"></section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="576" class="r-stretch"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="576" class="r-stretch"></section>
 <section id="average-fi-among-women" class="slide level2">
 <h2>Average FI among women</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="576" class="r-stretch"></section>
-<section id="fi-by-gender-age-adjusted" class="slide level2">
-<h2>FI by gender, age-adjusted</h2>
-
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="576" class="r-stretch"></section>
+<section id="age-adjusted-gender-differences" class="slide level2">
+<h2>Age-adjusted gender differences</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="576" class="r-stretch"></section>
 <section id="conclusions-and-future-directions" class="slide level2">
 <h2>Conclusions and future directions</h2>
 <p><strong>Observations with missing data are quite different, but it’s not clear that reasonable non-random missingness makes any difference</strong></p>
@@ -652,6 +640,7 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 <li>“Tipping point” analysis</li>
 </ul></li>
 </ul>
+<p><em>Thanks to Chelsea Wong MD, Ariela Orkaby MD, Brianne Olivieri-Mui PhD</em></p>
 </section>
 <section id="section-2" class="slide level2 smaller scrollable">
 <h2></h2>
@@ -716,7 +705,7 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
 'controlsAuto': true,
 'previewLinksAuto': false,
 'smaller': false,
-'pdfSeparateFragments': false,
+'pdfSeparateFragments': true,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
@@ -741,7 +730,7 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
