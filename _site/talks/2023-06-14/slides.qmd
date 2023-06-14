@@ -168,58 +168,49 @@ Different weighting across domains
  <br>
   <br>
   
-Computationally intensive, not valid in general under MNAR
+Computationally intensive, still requires assumptions
 :::
 ::::
 
-## Missing data assumptions
+<!-- ## Understanding assumptions -->
 
-| MCAR                                                        | MAR                                                                               | MNAR                                                                           |
-|--------------------|--------------------------|--------------------------|
-| missing completely at random                                | missing at random                                                                 | missing not at random                                                          |
-| missingness does not depend on the observed or missing data | conditional on the observed data, missingness does not depend on the missing data | missingness depends on the missing data, even conditional on the observed data |
+<!-- Let's consider the joint distribution of the [missing]{.red} and [observed]{.blue} data and the [missingness pattern]{.green}, all conditional on the [fully observed variables]{.orange}: -->
 
-## Understanding assumptions
+<!-- $$ -->
+<!-- f(\color{IndianRed}{Y_{mis}}, \color{SlateBlue}{Y_{obs}}, \color{Teal} {R} \mid \color{Salmon} {X}) -->
+<!-- $$ -->
 
-Let's consider the joint distribution of the [missing]{.red} and [observed]{.blue} data and the [missingness pattern]{.green}, all conditional on the [fully observed variables]{.orange}:
+<!-- In our setting, $\color{IndianRed}{Y_{mis}}$ and $\color{SlateBlue}{Y_{obs}}$ are missing and observed components of the frailty variables, $\color{Teal} {R}$ is a matrix with indicators of missingness for each observation/variable, and $\color{Salmon}{X}$ are fully observed variables like age and gender -->
 
-$$
-f(\color{IndianRed}{Y_{mis}}, \color{SlateBlue}{Y_{obs}}, \color{Teal} {R} \mid \color{Salmon} {X})
-$$
+<!-- ## Factorization -->
 
-In our setting, $\color{IndianRed}{Y_{mis}}$ and $\color{SlateBlue}{Y_{obs}}$ are missing and observed components of the frailty variables, $\color{Teal} {R}$ is a matrix with indicators of missingness for each observation/variable, and $\color{Salmon}{X}$ are fully observed variables like age and gender
+<!-- $$ -->
+<!-- \color{black} {f(Y_{obs}, Y_{mis}, R \mid X)} = \\ \color{IndianRed} {f(Y_{mis} \mid Y_{obs}, R, X)} \color{SlateBlue} {f(Y_{obs} \mid R, X)}\color{Teal}{f(R \mid X)} -->
+<!-- $$ -->
 
-## Factorization
+<!-- ::: columns -->
+<!-- ::: {.column width="39%"} -->
+<!-- [distribution of missing data conditional on whats observed, and on missingness patterns]{.red} -->
+<!-- ::: -->
 
-$$
-\color{black} {f(Y_{obs}, Y_{mis}, R \mid X)} = \\ \color{IndianRed} {f(Y_{mis} \mid Y_{obs}, R, X)} \color{SlateBlue} {f(Y_{obs} \mid R, X)}\color{Teal}{f(R \mid X)}
-$$
+<!-- ::: {.column width="35%"} -->
+<!-- [distribution of observed data conditional on a given missingness pattern]{.blue} -->
+<!-- ::: -->
 
-::: columns
-::: {.column width="39%"}
-[distribution of missing data conditional on whats observed, and on missingness patterns]{.red}
-:::
+<!-- ::: {.column width="26%"} -->
+<!-- [probability of a given missingness pattern]{.green} -->
+<!-- ::: -->
+<!-- ::: -->
 
-::: {.column width="35%"}
-[distribution of observed data conditional on a given missingness pattern]{.blue}
-:::
+<!-- If $\color{IndianRed}{f(Y_{mis} \mid Y_{obs}, R, X)} = f(Y_{mis} \mid Y_{obs}, X)$, missing data doesn't depend on missingness pattern (missing at random; MAR) -->
 
-::: {.column width="26%"}
-[probability of a given missingness pattern]{.green}
-:::
-:::
-
-Under **MAR**, $\color{IndianRed}{f(Y_{mis} \mid Y_{obs}, R, X)} = f(Y_{mis} \mid Y_{obs}, X)$: missing data doesn't depend on missingness pattern
-
-## Pattern-mixture models
+## Pattern-mixture models for missingness "not at random" (MNAR)
 
 Model how the distribution of missing data depends on missingness pattern
 
--   For example, a missingness pattern in which a given variable $Y$ is missing may be associated with a *higher* probability that $Y = 1$
+-   For example, a missingness pattern in which a given deficit is missing may be associated with a *higher* probability of that deficit
 
--   We would never know that from the observed data, because by definition we are missing $Y$ in that missingness pattern
-
--   But in a sensitivity analysis, we can decide how much higher it might be
+-  Can't tell from the observed data -- by definition we are missing the item in that missingness pattern
 
 ::: aside
 @little1993patternmixture; @rubin1987multiple
@@ -227,24 +218,32 @@ Model how the distribution of missing data depends on missingness pattern
 
 ## Sensitivity analysis via delta adjustment
 
-For a single variable with missingness:
+A simple model for a single variable with missingness:
 
 $$
 E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{SlateBlue}{r_0})
 $$
 
-where $\color{IndianRed}{\delta}$ parameterizes how much different the distribution of $Y$ is in observations with missing data patterns where it is missing ($\color{SlateBlue}{r_0}$)
+where $\color{IndianRed}{\delta}$ parameterizes how much different the distribution (expectation) of $Y$ is in observations with missing data patterns where it is missing ($\color{SlateBlue}{r_0}$)
 
 ## Multiple imputation
 
 The delta adjustment approach can be done in the context of multiple imputation, e.g., with MICE
 
--   Fit a model for $Y$ as usual
--   Add $\delta$ to the imputed values
+-   Fit a model for the conditional expectation of $Y$ as usual
+-   Add $\delta$ to the modeled expectation and draw values of $Y$
 -   Analyze multiple datasets as usual
 
 ::: aside
 @vanbuuren2011mice; @buuren2012flexible
+:::
+
+## Shiny app to elicit parameters
+
+![](img/app.png){height=570px}
+
+::: aside
+@mason2017development; @tompsett2020general
 :::
 
 ## Complications
@@ -252,7 +251,7 @@ The delta adjustment approach can be done in the context of multiple imputation,
 With multiple missing variables, interpretation of sensitivity parameter $\delta$ is different
 
 -   conditional on the missingness pattern of the other variables
--   @tompsett2018use proposed a solution which involves eliciting mode interpretable delta-like parameters and searching the solution space for the $\delta$s they correspond to
+-   @tompsett2018use proposed a solution which involves eliciting more interpretable $\delta$-like parameters and searching the solution space for the $\delta$s they correspond to
 -   computationally infeasible with 33 missing items without further assumptions
 
 ## Missingness patterns
@@ -301,21 +300,17 @@ Standardized means seem more interpretable
 ![**Difficulty bathing**](img/bathing.png){height=490px}
 :::
 
-## Shiny app
+## Shiny app to elicit parameters
 
-![](img/app.png){height=570px}
-
-::: aside
-@mason2017development; @tompsett2020general
-:::
+![](img/app.png)
 
 ## Analysis: FI distribution
 
 *Synthetic AoU dataset*
 
 -   complete case
--   proration \> 50% complete
 -   proration \> 80% complete
+-   proration \> 50% complete
 -   MAR (MICE with no delta-adjustment)
 -   MNAR, drawing sensitivity parameters from various distributions taking in account possible correlations
     -   draw from triangle distribution, individually
@@ -415,50 +410,50 @@ filter(cleaned_res_age,
   scale_color_okabe_ito()
 ```
 
-## Average FI among women
+<!-- ## Average FI among women -->
 
-```{r}
-#| fig-width: 6
-#| fig-asp: .65
-filter(cleaned_res_gender,
-       term == "(Intercept)") %>%
-  group_by(term, type) %>% 
-  summarise(estimate = median(estimate),
-            conf.low = median(conf.low),
-            conf.high = median(conf.high)) %>% 
-  ggplot() +
-  aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) +
-  geom_point(position = position_dodge(width = .5)) +
-  geom_errorbar(position = position_dodge(width = .5))  +
-  theme_minimal() +
-  labs(y = "Average FI", x = NULL, color = NULL) +
-  theme(legend.position = "top",
-        axis.text.x = element_blank()) +
-  scale_color_okabe_ito()
-```
+<!-- ```{r} -->
+<!-- #| fig-width: 6 -->
+<!-- #| fig-asp: .65 -->
+<!-- filter(cleaned_res_gender, -->
+<!--        term == "(Intercept)") %>% -->
+<!--   group_by(term, type) %>%  -->
+<!--   summarise(estimate = median(estimate), -->
+<!--             conf.low = median(conf.low), -->
+<!--             conf.high = median(conf.high)) %>%  -->
+<!--   ggplot() + -->
+<!--   aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) + -->
+<!--   geom_point(position = position_dodge(width = .5)) + -->
+<!--   geom_errorbar(position = position_dodge(width = .5))  + -->
+<!--   theme_minimal() + -->
+<!--   labs(y = "Average FI", x = NULL, color = NULL) + -->
+<!--   theme(legend.position = "top", -->
+<!--         axis.text.x = element_blank()) + -->
+<!--   scale_color_okabe_ito() -->
+<!-- ``` -->
 
-## Age-adjusted gender differences
+<!-- ## Age-adjusted gender differences -->
 
-```{r}
-#| fig-width: 6
-#| fig-asp: .55
+<!-- ```{r} -->
+<!-- #| fig-width: 6 -->
+<!-- #| fig-asp: .55 -->
 
-filter(cleaned_res_gender,
-       !term %in% c("(Intercept)", "Skip", "scale(age, scale = FALSE)")) %>%
-  group_by(term, type) %>% 
-  summarise(estimate = median(estimate),
-            conf.low = median(conf.low),
-            conf.high = median(conf.high)) %>% 
-  ggplot() +
-  aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) +
-  geom_point(position = position_dodge(width = .5)) +
-  geom_errorbar(position = position_dodge(width = .5)) +
-  theme_minimal() +
-  labs(y = "Difference in FI compared to women", x = "Gender", color = NULL) +
-  theme(legend.position = "top")  +
-  scale_color_okabe_ito()
-  
-```
+<!-- filter(cleaned_res_gender, -->
+<!--        !term %in% c("(Intercept)", "Skip", "scale(age, scale = FALSE)")) %>% -->
+<!--   group_by(term, type) %>%  -->
+<!--   summarise(estimate = median(estimate), -->
+<!--             conf.low = median(conf.low), -->
+<!--             conf.high = median(conf.high)) %>%  -->
+<!--   ggplot() + -->
+<!--   aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) + -->
+<!--   geom_point(position = position_dodge(width = .5)) + -->
+<!--   geom_errorbar(position = position_dodge(width = .5)) + -->
+<!--   theme_minimal() + -->
+<!--   labs(y = "Difference in FI compared to women", x = "Gender", color = NULL) + -->
+<!--   theme(legend.position = "top")  + -->
+<!--   scale_color_okabe_ito() -->
+
+<!-- ``` -->
 
 ## Conclusions and future directions
 

@@ -417,70 +417,38 @@ div.callout-caution{border-left-color:#5e81ac !important}div.callout-caution.cal
 </div><div class="column fragment" style="width:49%;">
 <p>Throwing away <em>a lot</em> of data, strong assumptions <br> <br></p>
 <p>Different weighting across domains <br> <br></p>
-<p>Computationally intensive, not valid in general under MNAR</p>
+<p>Computationally intensive, still requires assumptions</p>
 </div>
 </div>
+<!-- ## Understanding assumptions -->
+<!-- Let's consider the joint distribution of the [missing]{.red} and [observed]{.blue} data and the [missingness pattern]{.green}, all conditional on the [fully observed variables]{.orange}: -->
+<!-- $$ -->
+<!-- f(\color{IndianRed}{Y_{mis}}, \color{SlateBlue}{Y_{obs}}, \color{Teal} {R} \mid \color{Salmon} {X}) -->
+<!-- $$ -->
+<!-- In our setting, $\color{IndianRed}{Y_{mis}}$ and $\color{SlateBlue}{Y_{obs}}$ are missing and observed components of the frailty variables, $\color{Teal} {R}$ is a matrix with indicators of missingness for each observation/variable, and $\color{Salmon}{X}$ are fully observed variables like age and gender -->
+<!-- ## Factorization -->
+<!-- $$ -->
+<!-- \color{black} {f(Y_{obs}, Y_{mis}, R \mid X)} = \\ \color{IndianRed} {f(Y_{mis} \mid Y_{obs}, R, X)} \color{SlateBlue} {f(Y_{obs} \mid R, X)}\color{Teal}{f(R \mid X)} -->
+<!-- $$ -->
+<!-- ::: columns -->
+<!-- ::: {.column width="39%"} -->
+<!-- [distribution of missing data conditional on whats observed, and on missingness patterns]{.red} -->
+<!-- ::: -->
+<!-- ::: {.column width="35%"} -->
+<!-- [distribution of observed data conditional on a given missingness pattern]{.blue} -->
+<!-- ::: -->
+<!-- ::: {.column width="26%"} -->
+<!-- [probability of a given missingness pattern]{.green} -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- If $\color{IndianRed}{f(Y_{mis} \mid Y_{obs}, R, X)} = f(Y_{mis} \mid Y_{obs}, X)$, missing data doesn't depend on missingness pattern (missing at random; MAR) -->
 </section>
-<section id="missing-data-assumptions" class="slide level2">
-<h2>Missing data assumptions</h2>
-<table>
-<colgroup>
-<col style="width: 27%">
-<col style="width: 36%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>MCAR</th>
-<th>MAR</th>
-<th>MNAR</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>missing completely at random</td>
-<td>missing at random</td>
-<td>missing not at random</td>
-</tr>
-<tr class="even">
-<td>missingness does not depend on the observed or missing data</td>
-<td>conditional on the observed data, missingness does not depend on the missing data</td>
-<td>missingness depends on the missing data, even conditional on the observed data</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="understanding-assumptions" class="slide level2">
-<h2>Understanding assumptions</h2>
-<p>Let’s consider the joint distribution of the <span class="red">missing</span> and <span class="blue">observed</span> data and the <span class="green">missingness pattern</span>, all conditional on the <span class="orange">fully observed variables</span>:</p>
-<p><span class="math display">\[
-f(\color{IndianRed}{Y_{mis}}, \color{SlateBlue}{Y_{obs}}, \color{Teal} {R} \mid \color{Salmon} {X})
-\]</span></p>
-<p>In our setting, <span class="math inline">\(\color{IndianRed}{Y_{mis}}\)</span> and <span class="math inline">\(\color{SlateBlue}{Y_{obs}}\)</span> are missing and observed components of the frailty variables, <span class="math inline">\(\color{Teal} {R}\)</span> is a matrix with indicators of missingness for each observation/variable, and <span class="math inline">\(\color{Salmon}{X}\)</span> are fully observed variables like age and gender</p>
-</section>
-<section id="factorization" class="slide level2">
-<h2>Factorization</h2>
-<p><span class="math display">\[
-\color{black} {f(Y_{obs}, Y_{mis}, R \mid X)} = \\ \color{IndianRed} {f(Y_{mis} \mid Y_{obs}, R, X)} \color{SlateBlue} {f(Y_{obs} \mid R, X)}\color{Teal}{f(R \mid X)}
-\]</span></p>
-<div class="columns">
-<div class="column" style="width:39%;">
-<p><span class="red">distribution of missing data conditional on whats observed, and on missingness patterns</span></p>
-</div><div class="column" style="width:35%;">
-<p><span class="blue">distribution of observed data conditional on a given missingness pattern</span></p>
-</div><div class="column" style="width:26%;">
-<p><span class="green">probability of a given missingness pattern</span></p>
-</div>
-</div>
-<p>Under <strong>MAR</strong>, <span class="math inline">\(\color{IndianRed}{f(Y_{mis} \mid Y_{obs}, R, X)} = f(Y_{mis} \mid Y_{obs}, X)\)</span>: missing data doesn’t depend on missingness pattern</p>
-</section>
-<section id="pattern-mixture-models" class="slide level2">
-<h2>Pattern-mixture models</h2>
+<section id="pattern-mixture-models-for-missingness-not-at-random-mnar" class="slide level2">
+<h2>Pattern-mixture models for missingness “not at random” (MNAR)</h2>
 <p>Model how the distribution of missing data depends on missingness pattern</p>
 <ul>
-<li><p>For example, a missingness pattern in which a given variable <span class="math inline">\(Y\)</span> is missing may be associated with a <em>higher</em> probability that <span class="math inline">\(Y = 1\)</span></p></li>
-<li><p>We would never know that from the observed data, because by definition we are missing <span class="math inline">\(Y\)</span> in that missingness pattern</p></li>
-<li><p>But in a sensitivity analysis, we can decide how much higher it might be</p></li>
+<li><p>For example, a missingness pattern in which a given deficit is missing may be associated with a <em>higher</em> probability of that deficit</p></li>
+<li><p>Can’t tell from the observed data – by definition we are missing the item in that missingness pattern</p></li>
 </ul>
 
 <aside><div>
@@ -488,30 +456,37 @@ f(\color{IndianRed}{Y_{mis}}, \color{SlateBlue}{Y_{obs}}, \color{Teal} {R} \mid 
 </div></aside></section>
 <section id="sensitivity-analysis-via-delta-adjustment" class="slide level2">
 <h2>Sensitivity analysis via delta adjustment</h2>
-<p>For a single variable with missingness:</p>
+<p>A simple model for a single variable with missingness:</p>
 <p><span class="math display">\[
 E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{SlateBlue}{r_0})
 \]</span></p>
-<p>where <span class="math inline">\(\color{IndianRed}{\delta}\)</span> parameterizes how much different the distribution of <span class="math inline">\(Y\)</span> is in observations with missing data patterns where it is missing (<span class="math inline">\(\color{SlateBlue}{r_0}\)</span>)</p>
+<p>where <span class="math inline">\(\color{IndianRed}{\delta}\)</span> parameterizes how much different the distribution (expectation) of <span class="math inline">\(Y\)</span> is in observations with missing data patterns where it is missing (<span class="math inline">\(\color{SlateBlue}{r_0}\)</span>)</p>
 </section>
 <section id="multiple-imputation" class="slide level2">
 <h2>Multiple imputation</h2>
 <p>The delta adjustment approach can be done in the context of multiple imputation, e.g., with MICE</p>
 <ul>
-<li>Fit a model for <span class="math inline">\(Y\)</span> as usual</li>
-<li>Add <span class="math inline">\(\delta\)</span> to the imputed values</li>
+<li>Fit a model for the conditional expectation of <span class="math inline">\(Y\)</span> as usual</li>
+<li>Add <span class="math inline">\(\delta\)</span> to the modeled expectation and draw values of <span class="math inline">\(Y\)</span></li>
 <li>Analyze multiple datasets as usual</li>
 </ul>
 
 <aside><div>
 <p><span class="citation" data-cites="vanbuuren2011mice">Van Buuren and Groothuis-Oudshoorn (<a href="#/section-2" role="doc-biblioref" onclick="">2011</a>)</span>; <span class="citation" data-cites="buuren2012flexible">Buuren (<a href="#/section-2" role="doc-biblioref" onclick="">2012</a>)</span></p>
 </div></aside></section>
+<section id="shiny-app-to-elicit-parameters" class="slide level2">
+<h2>Shiny app to elicit parameters</h2>
+<p><img data-src="img/app.png" height="570"></p>
+
+<aside><div>
+<p><span class="citation" data-cites="mason2017development">Mason et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="tompsett2020general">D. Tompsett et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2020</a>)</span></p>
+</div></aside></section>
 <section id="complications" class="slide level2">
 <h2>Complications</h2>
 <p>With multiple missing variables, interpretation of sensitivity parameter <span class="math inline">\(\delta\)</span> is different</p>
 <ul>
 <li>conditional on the missingness pattern of the other variables</li>
-<li><span class="citation" data-cites="tompsett2018use">D. M. Tompsett et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2018</a>)</span> proposed a solution which involves eliciting mode interpretable delta-like parameters and searching the solution space for the <span class="math inline">\(\delta\)</span>s they correspond to</li>
+<li><span class="citation" data-cites="tompsett2018use">D. M. Tompsett et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2018</a>)</span> proposed a solution which involves eliciting more interpretable <span class="math inline">\(\delta\)</span>-like parameters and searching the solution space for the <span class="math inline">\(\delta\)</span>s they correspond to</li>
 <li>computationally infeasible with 33 missing items without further assumptions</li>
 </ul>
 </section>
@@ -580,20 +555,17 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 </div>
 </div>
 </section>
-<section id="shiny-app" class="slide level2">
-<h2>Shiny app</h2>
-<p><img data-src="img/app.png" height="570"></p>
+<section id="shiny-app-to-elicit-parameters-1" class="slide level2">
+<h2>Shiny app to elicit parameters</h2>
 
-<aside><div>
-<p><span class="citation" data-cites="mason2017development">Mason et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="tompsett2020general">D. Tompsett et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2020</a>)</span></p>
-</div></aside></section>
+<img data-src="img/app.png" class="r-stretch"></section>
 <section id="analysis-fi-distribution" class="slide level2">
 <h2>Analysis: FI distribution</h2>
 <p><em>Synthetic AoU dataset</em></p>
 <ul>
 <li>complete case</li>
-<li>proration &gt; 50% complete</li>
 <li>proration &gt; 80% complete</li>
+<li>proration &gt; 50% complete</li>
 <li>MAR (MICE with no delta-adjustment)</li>
 <li>MNAR, drawing sensitivity parameters from various distributions taking in account possible correlations
 <ul>
@@ -618,15 +590,46 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 <section id="section-1" class="slide level2">
 <h2></h2>
 
+<!-- ## Average FI among women -->
+<!-- ```{r} -->
+<!-- #| fig-width: 6 -->
+<!-- #| fig-asp: .65 -->
+<!-- filter(cleaned_res_gender, -->
+<!--        term == "(Intercept)") %>% -->
+<!--   group_by(term, type) %>%  -->
+<!--   summarise(estimate = median(estimate), -->
+<!--             conf.low = median(conf.low), -->
+<!--             conf.high = median(conf.high)) %>%  -->
+<!--   ggplot() + -->
+<!--   aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) + -->
+<!--   geom_point(position = position_dodge(width = .5)) + -->
+<!--   geom_errorbar(position = position_dodge(width = .5))  + -->
+<!--   theme_minimal() + -->
+<!--   labs(y = "Average FI", x = NULL, color = NULL) + -->
+<!--   theme(legend.position = "top", -->
+<!--         axis.text.x = element_blank()) + -->
+<!--   scale_color_okabe_ito() -->
+<!-- ``` -->
+<!-- ## Age-adjusted gender differences -->
+<!-- ```{r} -->
+<!-- #| fig-width: 6 -->
+<!-- #| fig-asp: .55 -->
+<!-- filter(cleaned_res_gender, -->
+<!--        !term %in% c("(Intercept)", "Skip", "scale(age, scale = FALSE)")) %>% -->
+<!--   group_by(term, type) %>%  -->
+<!--   summarise(estimate = median(estimate), -->
+<!--             conf.low = median(conf.low), -->
+<!--             conf.high = median(conf.high)) %>%  -->
+<!--   ggplot() + -->
+<!--   aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) + -->
+<!--   geom_point(position = position_dodge(width = .5)) + -->
+<!--   geom_errorbar(position = position_dodge(width = .5)) + -->
+<!--   theme_minimal() + -->
+<!--   labs(y = "Difference in FI compared to women", x = "Gender", color = NULL) + -->
+<!--   theme(legend.position = "top")  + -->
+<!--   scale_color_okabe_ito() -->
+<!-- ``` -->
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="576" class="r-stretch"></section>
-<section id="average-fi-among-women" class="slide level2">
-<h2>Average FI among women</h2>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="576" class="r-stretch"></section>
-<section id="age-adjusted-gender-differences" class="slide level2">
-<h2>Age-adjusted gender differences</h2>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="576" class="r-stretch"></section>
 <section id="conclusions-and-future-directions" class="slide level2">
 <h2>Conclusions and future directions</h2>
 <p><strong>Observations with missing data are quite different, but it’s not clear that reasonable non-random missingness makes any difference</strong></p>
