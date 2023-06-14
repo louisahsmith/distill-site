@@ -7,7 +7,25 @@
     <description>Louisa H. Smith's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>2023-05-31</lastBuildDate>
+    <lastBuildDate>2023-06-14</lastBuildDate>
+    <item>
+      <title>Missing data in a frailty index</title>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <link>https://www.louisahsmith.com/talks/2023-06-14</link>
+      <description>SER 2023</description>
+      <guid>https://www.louisahsmith.com/talks/2023-06-14</guid>
+      <pubDate>2023-06-14</pubDate>
+      <media:content url="https://www.louisahsmith.com/talks/2023-06-14/snapshot.png" medium="image" type="image/png" width="1228" height="674"/>
+    </item>
+    <item>
+      <title>Reproducible Epidemiology in R</title>
+      <dc:creator>Louisa H. Smith</dc:creator>
+      <link>https://www.louisahsmith.com/talks/2023-06-13</link>
+      <description>SER pre-conference workshop</description>
+      <guid>https://www.louisahsmith.com/talks/2023-06-13</guid>
+      <pubDate>2023-06-13</pubDate>
+      <media:content url="https://www.louisahsmith.com/talks/2023-06-13/snapshot.png" medium="image" type="image/png" width="1969" height="615"/>
+    </item>
     <item>
       <title>Introduction to {targets}</title>
       <dc:creator>Louisa H. Smith</dc:creator>
