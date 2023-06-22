@@ -13,7 +13,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2023-06-14/snapshot.png",
-    "last_modified": "2023-06-13T23:14:42-07:00",
+    "last_modified": "2023-06-14T02:14:42-04:00",
     "input_file": {},
     "preview_width": 2156,
     "preview_height": 1386
@@ -32,7 +32,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2023-06-13/snapshot.png",
-    "last_modified": "2023-06-13T23:16:53-07:00",
+    "last_modified": "2023-06-14T02:16:53-04:00",
     "input_file": {},
     "preview_width": 1969,
     "preview_height": 615
@@ -51,7 +51,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2023-05-31/snapshot.png",
-    "last_modified": "2023-05-31T14:05:19-07:00",
+    "last_modified": "2023-05-31T17:05:19-04:00",
     "input_file": {},
     "preview_width": 1120,
     "preview_height": 736
@@ -74,7 +74,7 @@
     "categories": [],
     "contents": "\nSlides\n\n\n\n\n\n\n\n\nCode\n(click image to download zip file)\n\n\n\n\n\n\n\n",
     "preview": "talks/2022-06-13/snapshot.png",
-    "last_modified": "2022-06-14T11:38:47-07:00",
+    "last_modified": "2022-06-14T14:38:47-04:00",
     "input_file": {},
     "preview_width": 1964,
     "preview_height": 1106
@@ -93,7 +93,7 @@
     "categories": [],
     "contents": "\nMuch of the evidence about what improves and impairs human health is derived from observational data. However, naïve analyses can result in biased and misleading conclusions. One tool that can help us better use observational data for causal inference is the target trial, which invokes the principles of randomized controlled trials to design and analyze observational studies.\nIn this talk I will present the design and analysis of two observational studies using these principles. First, I will describe some pitfalls in estimating the risk of preterm birth after COVID-19 and introduce a strategy to produce meaningful comparisons between pregnancies that were and weren’t affected by COVID-19. Using this method in a registry of pregnant women during the pandemic, we find a large increase in risk of preterm birth after severe COVID-19 late in pregnancy, but not after milder disease or earlier in pregnancy.\nNext, I will discuss an open question about prostate cancer treatment that is unlikely to ever be addressed in a trial, and I will describe how to answer it in observational data using inverse probability weighting or the parametric g-formula. A comparison of the results from each analysis points to the importance of fully specifying a sustained treatment strategy, as well as to inadequacies in our data for answering questions about this particular strategy.\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-09-17/snapshot.png",
-    "last_modified": "2021-09-17T04:56:17-07:00",
+    "last_modified": "2021-09-17T07:56:17-04:00",
     "input_file": {},
     "preview_width": 1777,
     "preview_height": 1120
@@ -112,7 +112,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-08-09/snapshot.png",
-    "last_modified": "2021-09-15T06:05:38-07:00",
+    "last_modified": "2021-09-15T09:05:38-04:00",
     "input_file": {},
     "preview_width": 1852,
     "preview_height": 1244
@@ -131,7 +131,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-06-23/snapshot.png",
-    "last_modified": "2021-05-18T12:24:22-07:00",
+    "last_modified": "2021-05-18T15:24:22-04:00",
     "input_file": {},
     "preview_width": 2010,
     "preview_height": 1256
@@ -150,7 +150,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-06-16/snapshot.png",
-    "last_modified": "2021-05-31T10:20:53-07:00",
+    "last_modified": "2021-05-31T13:20:53-04:00",
     "input_file": {},
     "preview_width": 2002,
     "preview_height": 1254
@@ -173,7 +173,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-05-21/snapshot.png",
-    "last_modified": "2021-05-31T10:23:01-07:00",
+    "last_modified": "2021-05-31T13:23:01-04:00",
     "input_file": {},
     "preview_width": 1314,
     "preview_height": 828
@@ -192,7 +192,7 @@
     "categories": [],
     "contents": "\n\n Dissertation Video\n\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-05-07/snapshot.png",
-    "last_modified": "2021-05-27T17:27:24-07:00",
+    "last_modified": "2021-05-27T20:27:24-04:00",
     "input_file": {},
     "preview_width": 1636,
     "preview_height": 1027
@@ -211,7 +211,7 @@
     "categories": [],
     "contents": "\n\n Paper\n\n\n\n\n\n\n\n\n",
     "preview": "talks/2020-12-19/snapshot.png",
-    "last_modified": "2021-05-18T12:24:17-07:00",
+    "last_modified": "2021-05-18T15:24:17-04:00",
     "input_file": {},
     "preview_width": 2006,
     "preview_height": 1308
@@ -230,7 +230,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2020-08-20/snapshot.png",
-    "last_modified": "2021-05-18T12:24:14-07:00",
+    "last_modified": "2021-05-18T15:24:14-04:00",
     "input_file": {},
     "preview_width": 2808,
     "preview_height": 1582
@@ -249,7 +249,7 @@
     "categories": [],
     "contents": "\n\n Code\n\n\n\n\n\n\n\n\n",
     "preview": "talks/2020-01-29/snapshot.png",
-    "last_modified": "2021-05-18T12:24:11-07:00",
+    "last_modified": "2021-05-18T15:24:11-04:00",
     "input_file": {},
     "preview_width": 2460,
     "preview_height": 1382
@@ -268,7 +268,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n\n\n\n",
     "preview": "talks/2018-12-07/snapshot.png",
-    "last_modified": "2021-05-18T12:25:28-07:00",
+    "last_modified": "2021-05-18T15:25:28-04:00",
     "input_file": {},
     "preview_width": 2132,
     "preview_height": 1196
