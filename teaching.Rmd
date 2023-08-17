@@ -40,9 +40,15 @@ h2 a:hover {
 
 ### Instructor (spring 2023)
 
+# Emory University Rollins School of Public Health
+
+## [EPI590R: R Bootcamp](https://epi590r-2023.louisahsmith.com)
+
+### Instructor (summer 2023)
+
 # Harvard TH Chan School of Public Health
 
-## [ID543: Intro to R](id543.louisahsmith.com)
+## [ID543: Intro to R](https://id543.louisahsmith.com)
 
 ### Instructor (summer 2023)
 
