@@ -1,0 +1,14 @@
+{
+  "hash": "16b25c226c905b9c46d0e51b8c9d73b7",
+  "result": {
+    "markdown": "---\ntitle: \"Reproducible Epidemiology in R\"\ndescription: |\n  SER pre-conference workshop\nauthor:\n  - name: Louisa H. Smith\ndate: '2023-06-13'\nsubtitle: SER 2023\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"https://www.reproducible-epi-workshop.louisahsmith.com/\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

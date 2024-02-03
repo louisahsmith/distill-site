@@ -1,0 +1,14 @@
+{
+  "hash": "70ab88c899f7cd55c8fcc9c0a992ef16",
+  "result": {
+    "markdown": "---\ntitle: \"COVID-19 and preterm birth: Understanding the relationship\"\ndescription: |\n  Speed presentation on the timing- and severity-specific effects of COVID-19 on preterm birth.\nauthor:\n  - name: Louisa H. Smith\ndate: '2021-06-16'\nsubtitle: SPER 2021\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 2px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

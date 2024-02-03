@@ -1,0 +1,26 @@
+/*-- scss:defaults --*/
+
+//
+// Color system
+//
+
+$blue:    #88c0d0 !default; // frost
+$indigo:  #5e81ac !default; // frost
+$teal:    #8fbcbb !default; // frost
+$cyan:    #81a1c1 !default; // frost
+$purple:  #b48ead !default; // aurora
+$red:     #bf616a !default; // aurora
+$orange:  #d08770 !default; // aurora
+$yellow:  #ebcb8b !default; // aurora
+$green:   #a3be8c !default; // aurora
+
+$primary:       $indigo !default;
+$secondary:     $gray-500 !default;
+
+
+/*-- scss:rules --*/
+a:link { 
+  text-decoration: none; 
+} 
+
+

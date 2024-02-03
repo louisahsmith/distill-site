@@ -1,0 +1,14 @@
+{
+  "hash": "50f76a1c080715a2ea478a38fba701c2",
+  "result": {
+    "markdown": "---\ntitle: \"Challenges in estimating effects of COVID-19 on preterm birth\"\ndescription: |\n  Avoiding various biases when studying COVID-19 and preterm birth, presented in the infectious diseases session at SER 2021.\nauthor:\n  - name: Louisa H. Smith\ndate: 2021-06-23\nsubtitle: SER 2021\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 2px solid;\"/>\n</a>\n```\n\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "hash": "97644854443653b64fe8b585a89d7de1",
+  "result": {
+    "markdown": "---\ntitle: E-values, unmeasured confounding, measurement error, and selection bias\ndescription: |\n  SER 2021 workshop with Maya Mathur.\nauthor:\n  - name: Louisa H. Smith\n  - name: Maya B. Mathur\ndate: '2021-05-21'\nimage: snapshot.png\nsubtitle: \"SER 2021\"\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"https://osf.io/5pkcv/\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 2px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

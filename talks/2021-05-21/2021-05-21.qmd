@@ -1,0 +1,27 @@
+---
+title: E-values, unmeasured confounding, measurement error, and selection bias
+description: |
+  SER 2021 workshop with Maya Mathur.
+author:
+  - name: Louisa H. Smith
+  - name: Maya B. Mathur
+date: '2021-05-21'
+image: snapshot.png
+subtitle: "SER 2021"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+image_link <- function(image, url, border = FALSE, ...) {
+  border <- border * 2
+  htmltools::a(
+    href = url,
+    htmltools::img(src = image, style = paste0("max-width: 100%;border: ", border, "px solid;"), ...)
+  )
+}
+```
+
+```{r}
+image_link("snapshot.png",
+           "https://osf.io/5pkcv/", border = TRUE)
+```

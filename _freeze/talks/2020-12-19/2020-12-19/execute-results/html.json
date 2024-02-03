@@ -1,0 +1,14 @@
+{
+  "hash": "a6e4f31b5eb4081aa459c438d4a28269",
+  "result": {
+    "markdown": "---\ntitle: Simple sensitivity analysis for selection bias using bounds\ndescription: |\n  Extending a sensitivity analysis approach for unmeasured confounding to selection bias.\nauthor:\n  - name: Louisa H. Smith\ndate: '2020-12-19'\nsubtitle: CMStatistics 2020\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"https://www.louisahsmith.com/publications/bounding-bias-due-to-selection/index.html\" class=\"icon-link\" target=\"_blank\" rel=\"noopener\"><i class=\"fas fa-file-alt\"></i> Paper</a>\n```\n\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 2px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

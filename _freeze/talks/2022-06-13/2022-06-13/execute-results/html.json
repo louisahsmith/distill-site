@@ -1,0 +1,14 @@
+{
+  "hash": "873d3f0a1ad6e75cb026908be48f4c51",
+  "result": {
+    "markdown": "---\ntitle: \"Study design and analysis for time-dependent exposures during pregnancy\"\ndescription: |\n  SPER Advanced Methods Workshop\nauthor:\n  - name: Louisa H. Smith\n  - name: Chelsea Messinger\ndate: '2022-06-13'\nsubtitle: SPER 2022\nimage: snapshot.png\n---\n\n\n\n  \n# Slides\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides-lhs.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides-cm.pdf\">\n<img src=\"snapshot-cm.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::\n\n\n# Code\n\n(click image to download zip file)\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"code.zip\">\n<img src=\"snapshot-code.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

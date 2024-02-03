@@ -1,0 +1,26 @@
+---
+title: "COVID-19 and preterm birth: Understanding the relationship"
+description: |
+  Speed presentation on the timing- and severity-specific effects of COVID-19 on preterm birth.
+author:
+  - name: Louisa H. Smith
+date: '2021-06-16'
+subtitle: SPER 2021
+image: snapshot.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+image_link <- function(image, url, border = FALSE, ...) {
+  border <- border * 2
+  htmltools::a(
+    href = url,
+    htmltools::img(src = image, style = paste0("max-width: 100%;border: ", border, "px solid;"), ...)
+  )
+}
+```
+
+```{r}
+image_link("snapshot.png",
+           "slides.pdf", border = TRUE)
+```

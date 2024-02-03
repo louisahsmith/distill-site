@@ -1,0 +1,14 @@
+{
+  "hash": "923c4438bb5ce06bc2bd833dba7ee490",
+  "result": {
+    "markdown": "---\ntitle: \"Causal inference in epidemiology using target trial principles: Applications in pregnancy and prostate cancer\"\ndescription: |\n  EPFL Statistics Seminar\nauthor:\n  - name: Louisa H. Smith\ndate: '2021-09-17'\nimage: snapshot.png\nsubtitle: EPFL Statistics Seminar\n---\n\n\n\n\nMuch of the evidence about what improves and impairs human health is derived from observational data. However, naïve analyses can result in biased and misleading conclusions. One tool that can help us better use observational data for causal inference is the target trial, which invokes the principles of randomized controlled trials to design and analyze observational studies.\n\nIn this talk I will present the design and analysis of two observational studies using these principles. First, I will describe some pitfalls in estimating the risk of preterm birth after COVID-19 and introduce a strategy to produce meaningful comparisons between pregnancies that were and weren’t affected by COVID-19. Using this method in a registry of pregnant women during the pandemic, we find a large increase in risk of preterm birth after severe COVID-19 late in pregnancy, but not after milder disease or earlier in pregnancy.\n  \nNext, I will discuss an open question about prostate cancer treatment that is unlikely to ever be addressed in a trial, and I will describe how to answer it in observational data using inverse probability weighting or the parametric g-formula. A comparison of the results from each analysis points to the importance of fully specifying a sustained treatment strategy, as well as to inadequacies in our data for answering questions about this particular strategy.\n  \n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

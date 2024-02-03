@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="slides_files/libs/clipboard/clipboard.min.js"></script>
-<script src="slides_files/libs/quarto-html/tabby.min.js"></script>
-<script src="slides_files/libs/quarto-html/popper.min.js"></script>
-<script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.339">
 
   <meta name="author" content="Louisa Smith l.smith@northeastern.edu">
   <meta name="dcterms.date" content="2023-05-31">
-  <title>Intro to {targets}</title>
+  <title>Louisa H. Smith - Intro to {targets}</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -57,51 +57,50 @@
         -khtml-user-select: none; -moz-user-select: none;
         -ms-user-select: none; user-select: none;
         padding: 0 4px; width: 4em;
+        color: #aaaaaa;
       }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
     div.sourceCode
-      { color: #d8dee9; background-color: #2e3440; }
+      { color: #003b4f; background-color: #f1f3f5; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #d8dee9; } /* Normal */
-    code span.al { color: #bf616a; background-color: #3b4252; font-weight: bold; } /* Alert */
-    code span.an { color: #d08770; } /* Annotation */
-    code span.at { color: #8fbcbb; } /* Attribute */
-    code span.bn { color: #b48ead; } /* BaseN */
-    code span.bu { color: #88c0d0; font-style: italic; } /* BuiltIn */
-    code span.cf { color: #81a1c1; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #ebcb8b; } /* Char */
-    code span.cn { color: #eceff4; font-weight: bold; } /* Constant */
-    code span.co { color: #616e88; } /* Comment */
-    code span.cv { color: #e5e9f0; } /* CommentVar */
-    code span.do { color: #5e81ac; } /* Documentation */
-    code span.dt { color: #81a1c1; } /* DataType */
-    code span.dv { color: #b48ead; } /* DecVal */
-    code span.er { color: #bf616a; text-decoration: underline; } /* Error */
-    code span.ex { color: #8fbcbb; font-weight: bold; } /* Extension */
-    code span.fl { color: #b48ead; } /* Float */
-    code span.fu { color: #88c0d0; } /* Function */
-    code span.im { color: #a3be8c; } /* Import */
-    code span.in { color: #ebcb8b; } /* Information */
-    code span.kw { color: #81a1c1; font-weight: bold; } /* Keyword */
-    code span.op { color: #81a1c1; } /* Operator */
-    code span.ot { color: #8fbcbb; } /* Other */
-    code span.pp { color: #5e81ac; } /* Preprocessor */
-    code span.re { color: #88c0d0; background-color: #3b4252; } /* RegionMarker */
-    code span.sc { color: #ebcb8b; } /* SpecialChar */
-    code span.ss { color: #d08770; } /* SpecialString */
-    code span.st { color: #a3be8c; } /* String */
-    code span.va { color: #5e81ac; } /* Variable */
-    code span.vs { color: #a3be8c; } /* VerbatimString */
-    code span.wa { color: #bf616a; } /* Warning */
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -223,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -386,12 +386,14 @@
       margin-right: 0; 
     }
   </style>
+<meta property="og:title" content="Louisa H. Smith - Intro to {targets}">
+<meta property="og:site_name" content="Louisa H. Smith">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section class="quarto-title-block center">
+<section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Intro to <code>{targets}</code></h1>
 
 <div class="quarto-title-authors">
@@ -407,7 +409,7 @@ Louisa Smith<br>l.smith@northeastern.edu
 
   <p class="date">2023-05-31</p>
 </section>
-<section class="slide level2">
+<section id="what-is-targets" class="slide level2">
 <h2>What is <code>{targets}</code>?</h2>
 <div style="height: 0px;">
 <div class="cell">
@@ -429,7 +431,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2 smaller">
+<section id="script-based-workflow" class="slide level2 smaller">
 <h2>Script-based workflow</h2>
 <p><code>01-data.R</code></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -454,7 +456,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <aside><div>
 <p>Based on example in <a href="https://books.ropensci.org/targets" class="uri">https://books.ropensci.org/targets</a></p>
 </div></aside></section>
-<section class="slide level2">
+<section id="problems-with-script-based-workflow" class="slide level2">
 <h2>Problems with script-based workflow</h2>
 <ul>
 <li><strong>Reproducibility</strong>: if you change something in one script, you have to remember to re-run the scripts that depend on it</li>
@@ -464,7 +466,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </ul>
 </section>
 <section>
-<section class="title-slide slide level1 center">
+<section id="targets-the-basics" class="title-slide slide level1 center">
 <h1><code>{targets}</code>: The basics</h1>
 
 </section>
@@ -472,7 +474,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 
 <iframe data-external="1" src="https://player.vimeo.com/video/700982360" width="100%" height="100%" frameborder="0" allow="autoplay; title=" "="" fullscreen;="" picture-in-picture"="" allowfullscreen=""></iframe>
 </section>
-<section class="slide level2">
+<section id="targets-workflow" class="slide level2">
 <h2><code>{targets}</code> workflow</h2>
 <p><code>R/functions.R</code></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file) {</span>
@@ -491,7 +493,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <span id="cb4-14"><a href="#cb4-14"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> model[<span class="dv">1</span>], <span class="at">slope =</span> model[<span class="dv">2</span>])</span>
 <span id="cb4-15"><a href="#cb4-15"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section class="slide level2">
+<section id="targets-workflow-1" class="slide level2">
 <h2><code>{targets}</code> workflow</h2>
 <p><code>_targets.R</code></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(targets)</span>
@@ -512,7 +514,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong></strong></p>
 </div>
 <div class="callout-content">
 <p><code>use_targets()</code> will generate a <code>_targets.R</code> script for you to fill in.</p>
@@ -520,7 +522,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="targets-workflow-2" class="slide level2">
 <h2><code>{targets}</code> workflow</h2>
 <p>Targets are “hidden” away where you don’t need to manage them</p>
 <pre><code>├── _targets.R
@@ -538,7 +540,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong></strong></p>
 </div>
 <div class="callout-content">
 <p>You can of course have multiple files in <code>R/</code>; <code>tar_source()</code> will source them all</p>
@@ -546,7 +548,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="my-typical-workflow-with-targets" class="slide level2">
 <h2>My typical workflow with <code>{targets}</code></h2>
 <div class="smaller">
 <ol type="1">
@@ -565,7 +567,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong></strong></p>
 </div>
 <div class="callout-content">
 <p>I usually include <code>library(targets)</code> in my project <code>.Rprofile</code> so that I can always call <code>tar_load()</code> on the fly</p>
@@ -573,7 +575,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="targets.r-tips-and-tricks" class="slide level2">
 <h2><code>_targets.R</code> tips and tricks</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">list</span>(</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">tar_target</span>(</span>
@@ -596,7 +598,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong></strong></p>
 </div>
 <div class="callout-content">
 <p>I like to pair my functions/targets by name so that the workflow is clear to me</p>
@@ -604,7 +606,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="targets.r-tips-and-tricks-1" class="slide level2">
 <h2><code>_targets.R</code> tips and tricks</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>preparation <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb8-2"><a href="#cb8-2"></a>  ...,</span>
@@ -631,7 +633,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong></strong></p>
 </div>
 <div class="callout-content">
 <p>By grouping the targets into lists, I can easily comment out chunks of the pipeline to not run the whole thing</p>
@@ -640,7 +642,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="targets.r-tips-and-tricks-2" class="slide level2">
 <h2><code>_targets.R</code> tips and tricks</h2>
 <div class="columns">
 <div class="column" style="width:65.5%;">
@@ -670,7 +672,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong></strong></p>
 </div>
 <div class="callout-content">
 <p>In big projects, I comment my <code>_targets.R</code> file so that I can use the RStudio outline pane to navigate the pipeline (<a href="https://github.com/louisahsmith/louisahstuff/blob/master/R/outline_targets.R">my buggy function</a>)</p>
@@ -678,7 +680,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2 smaller">
+<section id="key-targets-functions" class="slide level2 smaller">
 <h2>Key <code>{targets}</code> functions</h2>
 <ul>
 <li><code>use_targets()</code> gets you started with a <code>_targets.R</code> script to fill in</li>
@@ -695,15 +697,15 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Note: <code>{targets}</code> is moving to a new distributed computing strategy using <code>{crew}</code></p></li></ol></aside></section></section>
 <section>
-<section class="title-slide slide level1 center">
+<section id="advanced-targets" class="title-slide slide level1 center">
 <h1>Advanced <code>{targets}</code></h1>
 
 </section>
-<section class="slide level2">
+<section id="target-factories" class="slide level2">
 <h2>“target factories”</h2>
 <img data-src="img/factories.png" class="r-stretch">
 </section>
-<section class="slide level2">
+<section id="tarchetypes-reports" class="slide level2">
 <h2><code>{tarchetypes}</code>: reports</h2>
 <p>Render documents that depend on targets loaded with <code>tar_load()</code> or <code>tar_read()</code>.</p>
 <ul>
@@ -716,7 +718,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong></strong></p>
 </div>
 <div class="callout-content">
 <p>It can’t detect dependencies like <code>tar_load(ends_with("plot"))</code></p>
@@ -724,21 +726,21 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="what-does-report.qmd-look-like" class="slide level2">
 <h2>What does <code>report.qmd</code> look like?</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My report"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(targets)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(results)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(plots)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>There were <span class="in">`r results$n`</span> observations with a mean age of <span class="in">`r results$mean_age`</span>.</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plots<span class="sc">$</span>age_plot</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="an">title:</span><span class="co"> "My report"</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co">---</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="in">```{r}</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="in">library(targets)</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="in">tar_load(results)</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="in">tar_load(plots)</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="in">```</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>There were <span class="in">`r results$n`</span> observations with a mean age of <span class="in">`r results$mean_age`</span>.</span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="in">```{r}</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="in">plots$age_plot</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Because <code>report.qmd</code> depends on <code>results</code> and <code>plots</code>, it will only be re-rendered if either of those targets change.</p>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -746,7 +748,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong></strong></p>
 </div>
 <div class="callout-content">
 <p>The <code>extra_files =</code> argument can be used to force it to depend on additional non-target files</p>
@@ -754,7 +756,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2 smaller">
+<section id="tarchetypes-branching" class="slide level2 smaller">
 <h2><code>{tarchetypes}</code>: branching</h2>
 <p>Using data from the National Longitudinal Survey of Youth,</p>
 <div class="columns">
@@ -796,7 +798,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 <p>we want to investigate the relationship between age at first birth and hours of sleep on weekdays and weekends among moms and dads separately<sup>1</sup></p>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>Data and code at <a href="https://github.com/louisahsmith/targets-example" class="uri">https://github.com/louisahsmith/targets-example</a></p></li></ol></aside></section>
-<section class="slide level2">
+<section id="option-1" class="slide level2">
 <h2>Option 1</h2>
 <p>Create (and name) a separate target for each combination of sleep variable (<code>"sleep_wkdy"</code>, <code>"sleep_wknd"</code>) and sex (male: <code>1</code>, female: <code>2</code>):</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>targets_1 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -817,7 +819,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="option-2" class="slide level2">
 <h2>Option 2</h2>
 <p>Use <code>tarchetypes::tar_map()</code> to map over the combinations for you (static branching):</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>targets_2 <span class="ot">&lt;-</span> <span class="fu">tar_map</span>(</span>
@@ -842,7 +844,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="option-2-cont." class="slide level2">
 <h2>Option 2, cont.</h2>
 <p>Use <code>tarchetypes::tar_combine()</code> to combine the results of a call to <code>tar_map()</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>combined <span class="ot">&lt;-</span> <span class="fu">tar_combine</span>(</span>
@@ -859,7 +861,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 <p><code>command = vctrs::vec_c(!!!.x)</code> is the default, but you can supply your own function to combine the results</p>
 </section>
-<section class="slide level2">
+<section id="option-3" class="slide level2">
 <h2>Option 3</h2>
 <div class="smaller">
 <p>Use the <code>pattern =</code> argument of <code>tar_target()</code> (dynamic branching):</p>
@@ -892,7 +894,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="branching" class="slide level2">
 <h2>Branching</h2>
 <table>
 <colgroup>
@@ -928,7 +930,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <aside><div>
 <p>From <a href="https://books.ropensci.org/targets/dynamic.html#branching" class="uri">https://books.ropensci.org/targets/dynamic.html#branching</a></p>
 </div></aside></section>
-<section class="slide level2">
+<section id="branching-1" class="slide level2">
 <h2>Branching</h2>
 <ul>
 <li>The book also has an example of using metaprogramming to map over different functions
@@ -942,7 +944,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <li>Branching can lead to slowdowns in the pipeline (see book for suggestions)</li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="tarchetypes-repetition" class="slide level2">
 <h2><code>{tarchetypes}</code>: repetition</h2>
 <p><code>tar_rep()</code> repeats a target multiple times with the same arguments</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>targets_4 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -958,7 +960,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <span id="cb22-11"><a href="#cb22-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The pipeline gets split into <code>batches</code> x <code>reps</code> chunks, each with its own random seed</p>
 </section>
-<section class="slide level2">
+<section id="tarchetypes-mapping-over-iterations" class="slide level2">
 <h2><code>{tarchetypes}</code>: mapping over iterations</h2>
 <div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>sensitivity_scenarios <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
 <span id="cb23-2"><a href="#cb23-2"></a>  <span class="at">error =</span> <span class="fu">c</span>(<span class="st">"small"</span>, <span class="st">"medium"</span>, <span class="st">"large"</span>),</span>
@@ -978,7 +980,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <span id="cb24-10"><a href="#cb24-10"></a>  <span class="at">reps =</span> <span class="dv">10</span></span>
 <span id="cb24-11"><a href="#cb24-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section class="slide level2">
+<section id="tarchetypes-mapping-over-iterations-1" class="slide level2">
 <h2><code>{tarchetypes}</code>: mapping over iterations</h2>
 <div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">tar_read</span>(sensitivity_analysis) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
@@ -1007,7 +1009,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="the-end" class="slide level2">
 <h2>The end</h2>
 <ul>
 <li><code>{targets}</code> is a great tool for managing complex workflows</li>
@@ -1018,6 +1020,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="center hand" style="font-size: 2.5em;">
 <p>Thanks!</p>
 </div>
+
 <div class="footer footer-default">
 
 </div>
@@ -1027,20 +1030,19 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="slides_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="slides_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1049,14 +1051,12 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
       // https://revealjs.com/config/
       Reveal.initialize({
 'controlsAuto': true,
-'previewLinksAuto': true,
-'smaller': false,
+'previewLinksAuto': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'pointer': {"key":"q","color":"#32cd32","pointerSize":12,"alwaysVisible":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1077,7 +1077,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'c/t',
+        slideNumber: false,
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -1087,7 +1087,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
         hash: true,
 
         // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: true,
+        hashOneBasedIndex: false,
 
         // Flags if we should monitor the hash and change slides accordingly
         respondToHashChanges: true,
@@ -1227,7 +1227,7 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealPointer, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -1350,10 +1350,9 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1363,8 +1362,17 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

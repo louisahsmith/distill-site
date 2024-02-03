@@ -1,0 +1,13 @@
+[
+  {
+    "listing": "/talks.html",
+    "items": [
+      "talks/2023-06-14/slides.html",
+      "talks/2023-05-31/slides.html"
+    ]
+  },
+  {
+    "listing": "/publications.html",
+    "items": []
+  }
+]

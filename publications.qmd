@@ -1,0 +1,61 @@
+---
+title: Publications
+format:
+  html:
+    toc: false
+    page-layout: full
+listing:
+  contents: publications.yaml
+  sort-ui: false
+  filter-ui: false
+  type: table
+  sort: "date desc"
+  date-format: "YYYY"
+  fields: [title, date, Authors, Journal, PDF]
+---
+
+```{r}
+library(tidyverse)
+all_pubs <- rmarkdown::pandoc_citeproc_convert("~/Documents/CV/library.bib", type = "list")
+ids <- map_chr(all_pubs, pluck, "id")
+zotero_files <- file.path("~/Documents/Zotero/Me",  paste0(ids, ".pdf"))
+local_files <- file.path("publications",  paste0(ids, ".pdf"))
+walk2(local_files, zotero_files, ~{
+  if (!file.exists(.x) && file.exists(.y)) {
+    file.copy(.y, .x)
+  }
+})
+files <- ifelse(file.exists(local_files), local_files, NA)
+dois <- map_chr(all_pubs, pluck, "DOI")
+journals <- map_chr(all_pubs, pluck, "container-title")
+titles <- map_chr(all_pubs, pluck, "title")
+authors <- map(all_pubs, pluck, "author")
+years <- map_dbl(all_pubs, pluck, "issued", "date-parts", 1, 1)
+safe_family <- function(x) ifelse(is.null(pluck(x, "family")), NA, pluck(x, "family"))
+family_names <- map(map(authors, ~map_chr(.x, safe_family)), na.omit)
+safe_given <- function(x) ifelse(is.null(pluck(x, "given")), NA, str_extract_all(pluck(x, "given"), "[A-Z]"))
+first_initials <- map(map(map(authors, ~map(.x, safe_given)), ~map_chr(map(.x, pluck, 1), str_c, collapse = "")), na.omit)
+pubs <- tibble(doi = dois, journal = journals, title = titles, year = years, 
+               family = family_names, initials = first_initials, pdf = files) |> 
+  mutate(authors = map2_chr(family, initials, ~str_c(.x,  " ", .y, collapse = ", ")),
+         authors = str_replace_all(authors, "Smith L,", "**Smith L,**"),
+         authors = str_replace_all(authors, "Smith L$", "**Smith L**"),
+         authors = str_replace_all(authors, "Smith LH", "**Smith LH**"),
+         pdf = ifelse(is.na(pdf), "", str_glue('
+|
+    <a href="{pdf}">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+')),
+         text = str_glue('
+- title: "{title}"
+  Authors: "{authors}"
+  date: {year}-01-01
+  path: https://doi.org/{doi}
+  Journal: "{journal}"
+  PDF: {pdf}
+'))
+
+write_lines(pubs$text, "publications.yaml")
+```
+

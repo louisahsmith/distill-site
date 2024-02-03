@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="slides_files/libs/clipboard/clipboard.min.js"></script>
-<script src="slides_files/libs/quarto-html/tabby.min.js"></script>
-<script src="slides_files/libs/quarto-html/popper.min.js"></script>
-<script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.361">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.339">
 
   <meta name="author" content="Louisa Smith">
-  <title>Evaluating missingness assumptions for items in a frailty index</title>
+  <title>Louisa H. Smith - Evaluating missingness assumptions for items in a frailty index</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -49,12 +49,12 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="www/styles.css">
-  <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -176,7 +176,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -339,6 +340,8 @@
       margin-right: 0; 
     }
   </style>
+<meta property="og:title" content="Louisa H. Smith - Evaluating missingness assumptions for items in a frailty index">
+<meta property="og:site_name" content="Louisa H. Smith">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -650,6 +653,7 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 <!-- Approach to MNAR missingness -->
 <!-- Diggle & Kenward, 1994; Hogan & Laird, 1997; Kenward & Molenberghs, 1999; Little, 1993; Little, 1995 -->
 <!-- “Multiple-model multiple imputation”, developed by Siddique et al. (Siddique et al., 2012; Siddique et al., 2014) -->
+
 <div class="footer footer-default">
 
 </div>
@@ -685,19 +689,19 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="slides_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="slides_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -707,11 +711,11 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': true,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
+'pdfMaxPagesPerSlide': 1,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
@@ -1006,10 +1010,9 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1019,8 +1022,17 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

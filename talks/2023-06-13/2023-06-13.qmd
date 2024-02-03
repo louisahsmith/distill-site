@@ -1,0 +1,26 @@
+---
+title: "Reproducible Epidemiology in R"
+description: |
+  SER pre-conference workshop
+author:
+  - name: Louisa H. Smith
+date: '2023-06-13'
+subtitle: SER 2023
+image: snapshot.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+image_link <- function(image, url, border = FALSE, ...) {
+  border <- border * 2
+  htmltools::a(
+    href = url,
+    htmltools::img(src = image, style = paste0("max-width: 100%;border: ", border, "px solid;"), ...)
+  )
+}
+```
+  
+```{r}
+image_link("snapshot.png",
+           "https://www.reproducible-epi-workshop.louisahsmith.com/", border = FALSE)
+```

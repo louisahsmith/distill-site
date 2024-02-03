@@ -1,0 +1,34 @@
+---
+title: "Louisa H. Smith"
+format:
+  html:
+    toc: false
+    page-layout: full
+about:
+  template: trestles
+  image: img/neu_headshotA_square.jpg
+  links:
+    - icon: envelope
+      href: mailto:louisahsmith@gmail.com
+    - icon: github
+      href: https://github.com/louisahsmith
+    - text: "{{< iconify academicons google-scholar >}}"
+      href: https://scholar.google.com/citations?user=KeltSA4AAAAJ&hl=en&oi=ao
+    - text: "{{< iconify ri bluesky-fill >}}"
+      href: https://bsky.app/profile/louisahsmith.com
+---
+
+I am an assistant professor in the Department of Health Sciences and at the Roux Institute, Northeastern University. I am an epidemiologist and biostatistician with expertise in reproductive and perinatal epidemiology and causal inference. I am passionate about teaching and mentoring students in epidemiology and biostatistics.
+
+
+### Education
+
+- **PhD**, Population Health Sciences (Epidemiologic Methods)
+  - Harvard University
+- **SM**, Biostatistics
+  - Harvard University
+- **MS**, Epidemiology
+  - University of California, Berkeley
+- **AB**, Comparative Literature / Community Health
+  - Brown University
+
