@@ -19,6 +19,7 @@ about:
 ---
 
 ```{r}
+#| output: false
 file.copy("~/Documents/CV/cv.pdf", "files/louisahsmith_cv.pdf", overwrite = TRUE)
 ```
 
