@@ -18,6 +18,10 @@ about:
       href: https://bsky.app/profile/louisahsmith.com
 ---
 
+```{r}
+file.copy("~/Documents/CV/cv.pdf", "files/louisahsmith_cv.pdf", overwrite = TRUE)
+```
+
 I am an assistant professor in the Department of Health Sciences and at the Roux Institute, Northeastern University. I am an epidemiologist and biostatistician with expertise in reproductive and perinatal epidemiology and causal inference. I am passionate about teaching and mentoring students in epidemiology and biostatistics.
 
 

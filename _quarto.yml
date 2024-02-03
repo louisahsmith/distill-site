@@ -1,6 +1,5 @@
 project:
   type: website
-
 website:
   title: "Louisa H. Smith"
   site-url: "https://louisahsmith.com"
@@ -19,7 +18,7 @@ website:
       #   href: projects.qmd
     right:
       - text: CV
-        href: files/cv.pdf
+        href: files/cv_louisahsmith.pdf
   open-graph: true
 format:
   html:
