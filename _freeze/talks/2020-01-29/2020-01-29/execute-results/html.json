@@ -1,7 +1,7 @@
 {
   "hash": "b73c10368424db9a5974c288ad320459",
   "result": {
-    "markdown": "---\ntitle: Data gets personal\ndescription: |\n  A data science/human interest story first shared at RLadies Boston.\nauthor:\n  - name: Louisa H. Smith\ndate: '2020-01-29'\nsubtitle: RLadies Boston\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"https://github.com/louisahsmith/theme_bc_aware\" class=\"icon-link\" target=\"_blank\" rel=\"noopener\"><i class=\"fab fa-github\"></i> Code</a>\n```\n\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 2px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "markdown": "---\ntitle: Data gets personal\ndescription: |\n  A data science/human interest story first shared at RLadies Boston.\nauthor:\n  - name: Louisa H. Smith\ndate: '2020-01-29'\nsubtitle: RLadies Boston\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<a href=\"https://github.com/louisahsmith/theme_bc_aware\" class=\"icon-link\" target=\"_blank\" rel=\"noopener\"><i class=\"fab fa-github\"></i> Code</a>\n```\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 2px solid;\"/>\n</a>\n```\n:::\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

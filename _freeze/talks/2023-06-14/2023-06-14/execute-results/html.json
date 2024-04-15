@@ -1,7 +1,7 @@
 {
   "hash": "f1772354f164a168aad3d41cad28f82c",
   "result": {
-    "markdown": "---\ntitle: \"Evaluating missingness assumptions for items in a frailty index\"\ndescription: |\n  SER 2023\nauthor:\n  - name: Louisa H. Smith\ndate: '2023-06-14'\nsubtitle: SER 2023\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.html\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "markdown": "---\ntitle: \"Evaluating missingness assumptions for items in a frailty index\"\ndescription: |\n  SER 2023\nauthor:\n  - name: Louisa H. Smith\ndate: '2023-06-14'\nsubtitle: SER 2023\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<a href=\"slides.html\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n:::\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

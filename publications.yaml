@@ -1,9 +1,48 @@
+- title: "Allofus: An R package to facilitate use of the All of Us Researcher Workbench"
+  Authors: "**Smith LH**, Cavanaugh R"
+  date: 2024-01-01
+  path: https://doi.org/10.1101/2024.04.10.24305611
+  Journal: "preprint"
+  PDF: |
+    <a href="preprints/smith2024allofus.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Pregnancy episodes in All of Us: Harnessing multi-source data for pregnancy-related research"
+  Authors: "**Smith LH**, Wang W, Keefe-Oates B"
+  date: 2024-01-01
+  path: https://doi.org/10.1101/2024.04.10.24305609
+  Journal: "preprint"
+  PDF: |
+    <a href="preprints/smith2024pregnancy.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Benzodiazepine initiation and the risk of falls or fall-related injuries in older adults following acute ischemic stroke"
+  Authors: "Sun S, Lomachinsky V, **Smith LH**, Newhouse JP, Westover MB, Blacker D, Schwamm L, Haneuse S, Moura LMVR"
+  date: 2024-01-01
+  path: https://doi.org/10.1101/2024.02.06.24302430
+  Journal: "preprint"
+  PDF: |
+    <a href="preprints/sun2024benzodiazepine.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Digital intervention engagement mediates the relationship between intrapersonal measures and pre-exposure prophylaxis adherence: A secondary analysis of a randomized controlled trial of sexual orientation and gender minority youth on pre-exposure prophylaxis"
+  Authors: "Williams MP, Manjourides J, **Smith L,** Rainer CB, Hightow-Weidman LB, Haley DF"
+  date: 2024-01-01
+  path: https://doi.org/10.2196/preprints.57619
+  Journal: "preprint"
+  PDF: |
+    <a href="preprints/williams2024digital.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "Bayesian safety surveillance with adaptive bias correction"
   Authors: "Bu F, Schuemie MJ, Nishimura A, **Smith LH**, Kostka K, Falconer T, McLeggon JA, Ryan PB, Hripcsak G, Suchard MA"
   date: 2023-01-01
   path: https://doi.org/10.1002/sim.9968
   Journal: "Statistics in Medicine"
-  PDF: 
+  PDF: |
+    <a href="publications/bu2023bayesian.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "Health issues in the industrial port zone of Marseille, France: The FOS EPSEAL community-based cross-sectional survey"
   Authors: "Cohen AK, Richards T, Allen BL, Ferrier Y, Lees J, **Smith LH**"
   date: 2017-01-01
@@ -40,7 +79,7 @@
     <a href="publications/farland2020importance.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "First trimester COVID-19 and the risk of major congenital malformationsInternational Registry of Coronavirus Exposure in Pregnancy"
+- title: "First trimester COVID-19 and the risk of major congenital malformations–International Registry of Coronavirus Exposure in Pregnancy"
   Authors: "Hernández-Díaz S, **Smith LH**, Wyszynski DF, Rasmussen SA"
   date: 2022-01-01
   path: https://doi.org/10.1002/bdr2.2070
@@ -103,12 +142,15 @@
     <a href="publications/moura2023no.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Deterministic bias analyses to investigate potential impacts of differential participation on certain associations in a United States population-based case-control study of birth defect risk factors"
+- title: "Bias analyses to investigate the impact of differential participation: Application to a birth defects case-control study"
   Authors: "Peterson J, Kahrs JC, Adrien N, Wood ME, Olshan AF, **Smith LH**, Howley MM, Ailes EC, Romitti PA, Herring AH, Parker SE, Shaw GM, Politis MD"
   date: 2023-01-01
   path: https://doi.org/10.1111/ppe.13026
   Journal: "Paediatric and Perinatal Epidemiology"
-  PDF: 
+  PDF: |
+    <a href="publications/peterson2023bias.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "Important questions deserve rigorous analysis: A cautionary note about selection bias"
   Authors: "Petito LC, **Smith LH**"
   date: 2021-01-01
@@ -218,11 +260,14 @@
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
 - title: "Frailty among sexual and gender minority older adults: The All of Us database"
-  Authors: "Wong C, Wilczek MP, **Smith LH**, Bosse JD, Richard EL, Cavanaugh R, Manjourides J, Orkaby AR, Olivieri-Mui B"
+  Authors: "Wong CN, Wilczek MP, **Smith LH**, Bosse JD, Richard EL, Cavanaugh R, Manjourides J, Orkaby AR, Olivieri-Mui B"
   date: 2023-01-01
   path: https://doi.org/10.1093/gerona/glad149
-  Journal: "Journal of Gerontology: Medical Sciences"
-  PDF: 
+  Journal: "The Journals of Gerontology: Series A"
+  PDF: |
+    <a href="publications/wong2023frailty.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "Data missingness reporting and use of methods to address it in critical care cohort studies"
   Authors: "Wu TT, **Smith LH**, Vernooij LM, Patel E, Devlin JW"
   date: 2023-01-01
@@ -234,7 +279,10 @@
     </a>
 - title: "Research letter: Clonidine is associated with faster first resolution of incident ICU delirium than antipsychotics"
   Authors: "Wu TT, Steiger G, **Smith L,** Devlin JW, Slooter AJC"
-  date: 2023-01-01
+  date: 2024-01-01
   path: https://doi.org/10.1016/j.jcrc.2023.154433
   Journal: "Journal of Critical Care"
-  PDF: 
+  PDF: |
+    <a href="publications/wu2024research.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>

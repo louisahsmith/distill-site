@@ -1,7 +1,7 @@
 {
   "hash": "38ad1de91a88d2075533afcce35d539d",
   "result": {
-    "markdown": "---\ntitle: Multiple-Bias Sensitivity Analysis Using Bounds\ndescription: |\n  Joint Statistical Meetings 2021\nauthor:\n  - name: Louisa H. Smith\ndate: '2021-08-09'\nimage: snapshot.png\nsubtitle: \"JSM 2021\"\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "markdown": "---\ntitle: Multiple-Bias Sensitivity Analysis Using Bounds\ndescription: |\n  Joint Statistical Meetings 2021\nauthor:\n  - name: Louisa H. Smith\ndate: '2021-08-09'\nimage: snapshot.png\nsubtitle: \"JSM 2021\"\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n:::\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

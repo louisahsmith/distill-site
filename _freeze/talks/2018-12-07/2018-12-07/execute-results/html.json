@@ -1,7 +1,7 @@
 {
   "hash": "9c04e7318e6d9c64ddbf2bb04eea25df",
   "result": {
-    "markdown": "---\ntitle: \"Directed Acyclic Graphs: An introduction\"\ndescription: |\n  The basics of DAGs.\nauthor:\n  - name: Louisa H. Smith\ndate: '2018-12-07'\nsubtitle: Kolokotrones Symposium, Harvard TH Chan School of Public Health\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "markdown": "---\ntitle: \"Directed Acyclic Graphs: An introduction\"\ndescription: |\n  The basics of DAGs.\nauthor:\n  - name: Louisa H. Smith\ndate: '2018-12-07'\nsubtitle: Kolokotrones Symposium, Harvard TH Chan School of Public Health\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<a href=\"slides.pdf\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n:::\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

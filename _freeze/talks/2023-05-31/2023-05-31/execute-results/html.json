@@ -1,7 +1,7 @@
 {
   "hash": "99f89f527b5fafcdc71f405c5f8bdf9b",
   "result": {
-    "markdown": "---\ntitle: \"Introduction to {targets}\"\ndescription: |\n  Maine R User Group\nauthor:\n  - name: Louisa H. Smith\ndate: '2023-05-31'\nsubtitle: Maine R User Group\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.html\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "markdown": "---\ntitle: \"Introduction to {targets}\"\ndescription: |\n  Maine R User Group\nauthor:\n  - name: Louisa H. Smith\ndate: '2023-05-31'\nsubtitle: Maine R User Group\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<a href=\"slides.html\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n:::\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

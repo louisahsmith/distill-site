@@ -1,7 +1,7 @@
 {
   "hash": "f84955d04896c51ecf95efcdc219ea3c",
   "result": {
-    "markdown": "---\ntitle: The Magic of R\ndescription: |\n  A guest lecture to convince new learners of R just how cool it is.\nauthor:\n  - name: Louisa H. Smith\ndate: '2020-08-20'\nsubtitle: Master of Food and Resource Economics Program, University of British Columbia\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"slides.html\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n\n:::\n:::\n",
+    "markdown": "---\ntitle: The Magic of R\ndescription: |\n  A guest lecture to convince new learners of R just how cool it is.\nauthor:\n  - name: Louisa H. Smith\ndate: '2020-08-20'\nsubtitle: Master of Food and Resource Economics Program, University of British Columbia\nimage: snapshot.png\n---\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<a href=\"slides.html\">\n<img src=\"snapshot.png\" style=\"max-width: 100%;border: 0px solid;\"/>\n</a>\n```\n:::\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

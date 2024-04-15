@@ -1,8 +1,10 @@
 {
-  "hash": "7639120f82d7633d481cf87a1976c9df",
+  "hash": "c29069779841719839ef163aaffc9aaf",
   "result": {
-    "markdown": "---\ntitle: Publications\nformat:\n  html:\n    toc: false\n    page-layout: full\nlisting:\n  contents: publications.yaml\n  sort-ui: false\n  filter-ui: false\n  type: table\n  sort: \"date desc\"\n  date-format: \"YYYY\"\n  fields: [title, date, Authors, Journal, PDF]\n---\n\n::: {.cell}\n\n:::\n",
-    "supporting": [],
+    "markdown": "---\ntitle: Publications\nformat:\n  html:\n    toc: false\n    page-layout: full\nlisting:\n  contents: publications.yaml\n  sort-ui: false\n  filter-ui: false\n  type: table\n  sort: \"date desc\"\n  date-format: \"YYYY\"\n  fields: [title, date, Authors, Journal, PDF]\n---\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::",
+    "supporting": [
+      "publications_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
