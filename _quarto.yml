@@ -1,5 +1,7 @@
 project:
   type: website
+  resources:
+  - "files/louisahsmith_cv.pdf"
 website:
   title: "Louisa H. Smith"
   site-url: "https://louisahsmith.com"
