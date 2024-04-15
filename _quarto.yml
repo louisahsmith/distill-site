@@ -20,7 +20,7 @@ website:
       #   href: projects.qmd
     right:
       - text: CV
-        href: files/cv_louisahsmith.pdf
+        href: files/louisahsmith_cv.pdf
   open-graph: true
 format:
   html:
