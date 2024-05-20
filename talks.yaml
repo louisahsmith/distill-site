@@ -98,7 +98,7 @@
    date: '2022-06-13'
    subtitle: SPER 2022
    image: talks/2022-06-13/snapshot.png
-   path: talks/2022-06-13/slides.pdf
+   path: talks/2022-06-13.qmd
 -  title: "Introduction to {targets}"
    description: |
      Overview of the `targets` package for reproducible data analysis.

@@ -1,0 +1,475 @@
+---
+title: "Evaluating missingness assumptions for items in a frailty index"
+author: Louisa Smith
+email: l.smith@northeastern.edu
+location: "SER: June 14, 2023"
+institute: "Department of Health Sciences<br>The Roux Institute<br>Northeastern University"
+url: louisahsmith.com/talks/2023-06-14/slides.html
+format: 
+  revealjs:
+    slide-number: c/t
+    pdf-max-pages-per-slide: 1
+    pdf-separate-fragments: true
+    template-partials:
+      - title-slide.html
+    theme: www/custom.scss
+    css: www/styles.css
+    html-math-method:
+      method: mathjax
+fig-align: center
+bibliography: "references.bib"
+---
+
+## Context: deficit-accumulation frailty index
+
+::: {style="height: 0px;"}
+{{< include www/_scss.qmd >}}
+:::
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+::: columns
+::: {.column width="40%"}
+Frailty is a syndrome of vulnerability more common in older adults
+
+A frailty index is a quantitative measure of the aggregate burden of age-related health deficits
+:::
+
+::: {.column width="60%"}
+![](https://images.unsplash.com/photo-1626668011660-051379e9b211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80)
+:::
+:::
+
+::: center
+FI = \# of deficits / \# of possible deficits
+:::
+
+::: aside
+<0.15 robust; 0.15-0.25 pre-frail; >0.25 frail
+:::
+
+## 
+
+::: columns
+::: {.column width="50%"}
+![](https://www.joinallofus.org/themes/jaou/img/nav_v2/allofus-logo.svg)
+:::
+
+::: {.column width="50%"}
+-   Large-scale NIH study to gather health data from 1 million+ Americans
+-   Focus on those underrepresented in biomedical research
+-   Multimodal data collection includes surveys, electronic health records, biospecimens, and more
+:::
+:::
+
+## AoU-FI
+
+-   33 deficits based on items from multiple surveys
+-   Cover multiple domains, including comorbidities, function, cognition, mental health, and geriatric syndromes
+-   Cannot be weighted to heavily toward one domain (or it would be, e.g., a comorbidity index)
+
+**9.8% of 200,000+ participants had complete data**
+
+**38% had data for >80% of deficits (>27/33)**
+
+
+::: aside
+@wong2023frailty
+:::
+
+
+```{r}
+#| eval: false
+library(tidyverse)
+denoms <- tribble(~denominator, ~n,
+                  0,  2342,
+                  1,  53,
+                  2,  53,
+                  3,  72,
+                  4,  193,
+                  5,  440,
+                  6,  2981,
+                  7,  1831,
+                  8,  11395,
+                  9,  62911,
+                  10,	4529,
+                  11,	243,
+                  12,	458,
+                  13,	1057,
+                  14,	3896,
+                  15,	21554,
+                  16,	5442,
+                  17,	186,
+                  18,	236,
+                  19,	298,
+                  20,	413,
+                  21,	480,
+                  22,	595,
+                  23,	1087,
+                  24,	735,
+                  25,	1072,
+                  26,	2248,
+                  27,	3686,
+                  28,	7735,
+                  29,	39204,
+                  30,	1062,
+                  31,	1594,
+                  32,	4168,
+                  33,	19915) |> 
+  arrange(desc(denominator)) |> 
+  mutate(cum_n = cumsum(n),
+         prop_missing = cum_n / sum(n),
+         prop_denominator = denominator / 33)
+
+
+denoms |> 
+  filter(denominator %in% c(33, 27, 17)) |> 
+  ggplot(aes(cum_n, fct_rev(factor(prop_denominator, labels = c("<50% missing", "<20% missing", "complete data"))))) +
+  geom_col() +
+  scale_x_continuous(labels = scales::comma, limits = c(0, 204164), name = "Sample size") +
+  scale_y_discrete(name = NULL) +
+  geom_label(aes())
+#   ggplot(aes(prop_missing, fill = prop_denominator, group = prop_denominator)) +
+#   geom_bar(position = position_stack())
+# denoms %>%
+#   mutate(denominator = fct_rev(factor(denominator)),
+#          pct = cum_n / sum(denoms$n)) |> 
+#   ggplot(aes(cum_n, denominator, fill = pct)) +
+#   geom_col() +
+#   geom_col(aes(-cum_n, denominator)) +
+#   scale_fill_fermenter(type = "div", palette = 3) +
+#   labs(y = "FI denominator", x = "Remaining sample",
+#        fill = "Proportion of\ntotal sample") +
+#   scale_x_continuous(labels = scales::number,
+#                      expand = c(0,0), breaks = c(20000, 100000, 200000)) +
+#   theme_minimal() 
+```
+
+## Options for missing items in an index/scale
+
+:::: columns
+::: {.column width=49%}
+**Complete-case** <br> Exclude those with any missing items
+
+**Proration** <br>Adjust denominator (person-mean imputation)
+
+**Multiple imputation** <br> Of individual items / total score
+:::
+::: {.column width=49% .fragment}
+
+Throwing away *a lot* of data, strong assumptions
+ <br>
+  <br>
+  
+Different weighting across domains
+ <br>
+  <br>
+  
+Computationally intensive, still requires assumptions
+:::
+::::
+
+<!-- ## Understanding assumptions -->
+
+<!-- Let's consider the joint distribution of the [missing]{.red} and [observed]{.blue} data and the [missingness pattern]{.green}, all conditional on the [fully observed variables]{.orange}: -->
+
+<!-- $$ -->
+<!-- f(\color{IndianRed}{Y_{mis}}, \color{SlateBlue}{Y_{obs}}, \color{Teal} {R} \mid \color{Salmon} {X}) -->
+<!-- $$ -->
+
+<!-- In our setting, $\color{IndianRed}{Y_{mis}}$ and $\color{SlateBlue}{Y_{obs}}$ are missing and observed components of the frailty variables, $\color{Teal} {R}$ is a matrix with indicators of missingness for each observation/variable, and $\color{Salmon}{X}$ are fully observed variables like age and gender -->
+
+<!-- ## Factorization -->
+
+<!-- $$ -->
+<!-- \color{black} {f(Y_{obs}, Y_{mis}, R \mid X)} = \\ \color{IndianRed} {f(Y_{mis} \mid Y_{obs}, R, X)} \color{SlateBlue} {f(Y_{obs} \mid R, X)}\color{Teal}{f(R \mid X)} -->
+<!-- $$ -->
+
+<!-- ::: columns -->
+<!-- ::: {.column width="39%"} -->
+<!-- [distribution of missing data conditional on whats observed, and on missingness patterns]{.red} -->
+<!-- ::: -->
+
+<!-- ::: {.column width="35%"} -->
+<!-- [distribution of observed data conditional on a given missingness pattern]{.blue} -->
+<!-- ::: -->
+
+<!-- ::: {.column width="26%"} -->
+<!-- [probability of a given missingness pattern]{.green} -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- If $\color{IndianRed}{f(Y_{mis} \mid Y_{obs}, R, X)} = f(Y_{mis} \mid Y_{obs}, X)$, missing data doesn't depend on missingness pattern (missing at random; MAR) -->
+
+## Pattern-mixture models for missingness "not at random" (MNAR)
+
+Model how the distribution of missing data depends on missingness pattern
+
+-   For example, a missingness pattern in which a given deficit is missing may be associated with a *higher* probability of that deficit
+
+-  Can't tell from the observed data -- by definition we are missing the item in that missingness pattern
+
+::: aside
+@little1993patternmixture; @rubin1987multiple
+:::
+
+## Sensitivity analysis via delta adjustment
+
+A simple model for a single variable with missingness:
+
+$$
+E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{SlateBlue}{r_0})
+$$
+
+where $\color{IndianRed}{\delta}$ parameterizes how much different the distribution (expectation) of $Y$ is in observations with missing data patterns where it is missing ($\color{SlateBlue}{r_0}$)
+
+## Multiple imputation
+
+The delta adjustment approach can be done in the context of multiple imputation, e.g., with MICE
+
+-   Fit a model for the conditional expectation of $Y$ as usual
+-   Add $\delta$ to the modeled expectation and draw values of $Y$
+-   Analyze multiple datasets as usual
+
+::: aside
+@vanbuuren2011mice; @buuren2012flexible
+:::
+
+## Shiny app to elicit parameters
+
+![](img/app.png){height=570px}
+
+::: aside
+@mason2017development; @tompsett2020general
+:::
+
+## Complications
+
+With multiple missing variables, interpretation of sensitivity parameter $\delta$ is different
+
+-   conditional on the missingness pattern of the other variables
+-   @tompsett2018use proposed a solution which involves eliciting more interpretable $\delta$-like parameters and searching the solution space for the $\delta$s they correspond to
+-   computationally infeasible with 33 missing items without further assumptions
+
+## Missingness patterns
+
+For a given item $Y$, we collapsed missingness patterns into:
+
+-   data on $Y$ and all surveys completed ([group A]{.red})
+-   data on $Y$ but missing some surveys ([group B]{.blue})
+-   missing data on $Y$ but completed survey ([group C]{.yellow})
+-   missing survey on which $Y$ is collected ([group D]{.green})[^1]
+
+[^1]: so not known whether it *would* have been observed had survey been completed
+
+## Interpretable parameters
+
+Most items are binary
+
+-   Parameters on odds ratio scale suggested in literature
+    -   "Non-respondents may have up to 1.3 times the odds of *item* compared to respondents who are similar in other ways"
+-   Even differences in means not particularly intuitive
+    -   "Non-respondents may have up to 10 percentage points higher prevalence of *item* compared to respondents who are similar in other ways"
+
+Standardized means seem more interpretable
+
+## Standardized means
+
+::: smaller
+-   Fit a model for item among participants with complete data ([group A]{.red}), conditional on demographics, etc.
+-   Predict item prevalence among participants with other missing surveys, but complete item of interest ([group B]{.blue})
+-   Compare observed and predicted item prevalence in [group B]{.blue}: differences are not accounted by demographics, instead by missing data pattern
+:::
+
+::: center
+![**Difficulty with everyday activities**](img/pred-obs.png)
+:::
+
+## This comparison makes specifying the sensitivity parameters more concrete
+
+::: center
+![**Severe fatigue**](img/fatigue.png)
+:::
+
+## Experts in this population can combine with their knowledge
+
+::: center
+![**Difficulty bathing**](img/bathing.png){height=490px}
+:::
+
+## Shiny app to elicit parameters
+
+![](img/app.png)
+
+## Analysis: FI distribution
+
+*Synthetic AoU dataset*
+
+-   complete case
+-   proration \> 80% complete
+-   proration \> 50% complete
+-   MAR (MICE with no delta-adjustment)
+-   MNAR, drawing sensitivity parameters from various distributions taking in account possible correlations
+    -   draw from triangle distribution, individually
+    -   compute rank within all draws
+    -   draw across all items by rank to allow for correlation
+
+## Distributions of sensitivity parameters
+
+```{r}
+#| message: false
+library(ggokabeito)
+rank_plot <- read_rds("~/Documents/Presentations/SER 2023/img/rank_plot.rds")
+rank_plot +
+    labs(y = NULL, x = "Ranks of sensitivity parameters") + scale_fill_manual(values = c("SlateBlue", "#008080", "IndianRed", "Gold")) +
+  facet_wrap(vars(fct_relevel(distribution, "Beta(1, 1)", "Beta(5, 5)", "Beta(5, 2)", "Beta(10, 1)")))
+```
+
+```{r}
+#| message: false
+all_res_age <- read_rds("~/Documents/Projects/All of Us/missing-data/_targets/objects/all_res_age")
+cleaned_res_age <- all_res_age %>% 
+  mutate(term = str_remove(term, fixed("cut(age, breaks = c(seq(50, 100, by = 5), Inf))")),
+         term = fct_relevel(term, "(100,Inf]", after = Inf),
+         type = fct_relevel(type, "Complete Case", "Prorated (>80%)", 
+                            "Prorated (>50%)", "MAR", "Beta(1, 1)", 
+                            "Beta(5, 5)", "Beta(5, 2)", "Beta(10, 1)"))
+all_res_gender <- read_rds("~/Documents/Projects/All of Us/missing-data/_targets/objects/all_res_gender")
+cleaned_res_gender <- all_res_gender %>% 
+  mutate(term = str_remove(term, fixed("gender_cat")),
+         # term = fct_relevel(term, "(100,Inf]", after = Inf),
+         type = fct_relevel(type, "Complete Case", "Prorated (>80%)", 
+                            "Prorated (>50%)", "MAR", "Beta(1, 1)", 
+                            "Beta(5, 5)", "Beta(5, 2)", "Beta(10, 1)"))
+```
+
+## Average FI age 50-55
+
+```{r}
+#| fig-width: 6
+#| fig-asp: .65
+filter(cleaned_res_age,
+       term == "(Intercept)") %>%
+  group_by(term, type) %>% 
+  summarise(estimate = median(estimate),
+            conf.low = median(conf.low),
+            conf.high = median(conf.high)) %>% 
+  ggplot() +
+  aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) +
+  geom_point(position = position_dodge(width = .5)) +
+  geom_errorbar(position = position_dodge(width = .5))  +
+  theme_minimal() +
+  labs(y = "Average FI", x = NULL, color = NULL) +
+  theme(legend.position = "top",
+        axis.text.x = element_blank()) +
+  scale_color_okabe_ito()
+```
+
+## Age differences in FI
+
+```{r}
+#| fig-width: 6
+#| fig-asp: .55
+filter(cleaned_res_age,
+       term != "(Intercept)") %>%
+  group_by(term, type) %>% 
+  summarise(estimate = median(estimate),
+            conf.low = median(conf.low),
+            conf.high = median(conf.high)) %>% 
+  ggplot() +
+  aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) +
+  geom_point(position = position_dodge(width = .5)) +
+  geom_errorbar(position = position_dodge(width = .5)) +
+  theme_minimal() +
+  labs(y = "Difference in FI compared to age 50-55", x = "Age", color = NULL) +
+  theme(legend.position = "top") +
+  scale_color_okabe_ito()
+```
+
+## 
+
+```{r}
+#| fig-width: 6
+#| fig-asp: .55
+filter(cleaned_res_age,
+       term %in% c("(80,85]", "(85,90]", "(90,95]")) %>%
+  group_by(term, type) %>% 
+  summarise(estimate = median(estimate),
+            conf.low = median(conf.low),
+            conf.high = median(conf.high)) %>% 
+  ggplot() +
+  aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) +
+  geom_point(position = position_dodge(width = .5)) +
+  geom_errorbar(position = position_dodge(width = .5)) +
+  theme_minimal() +
+  labs(y = "Difference in FI compared to age 50-55", x = "Age", color = NULL) +
+  theme(legend.position = "top") +
+  scale_color_okabe_ito()
+```
+
+<!-- ## Average FI among women -->
+
+<!-- ```{r} -->
+<!-- #| fig-width: 6 -->
+<!-- #| fig-asp: .65 -->
+<!-- filter(cleaned_res_gender, -->
+<!--        term == "(Intercept)") %>% -->
+<!--   group_by(term, type) %>%  -->
+<!--   summarise(estimate = median(estimate), -->
+<!--             conf.low = median(conf.low), -->
+<!--             conf.high = median(conf.high)) %>%  -->
+<!--   ggplot() + -->
+<!--   aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) + -->
+<!--   geom_point(position = position_dodge(width = .5)) + -->
+<!--   geom_errorbar(position = position_dodge(width = .5))  + -->
+<!--   theme_minimal() + -->
+<!--   labs(y = "Average FI", x = NULL, color = NULL) + -->
+<!--   theme(legend.position = "top", -->
+<!--         axis.text.x = element_blank()) + -->
+<!--   scale_color_okabe_ito() -->
+<!-- ``` -->
+
+<!-- ## Age-adjusted gender differences -->
+
+<!-- ```{r} -->
+<!-- #| fig-width: 6 -->
+<!-- #| fig-asp: .55 -->
+
+<!-- filter(cleaned_res_gender, -->
+<!--        !term %in% c("(Intercept)", "Skip", "scale(age, scale = FALSE)")) %>% -->
+<!--   group_by(term, type) %>%  -->
+<!--   summarise(estimate = median(estimate), -->
+<!--             conf.low = median(conf.low), -->
+<!--             conf.high = median(conf.high)) %>%  -->
+<!--   ggplot() + -->
+<!--   aes(term, estimate, ymin = conf.low, ymax = conf.high, color = type) + -->
+<!--   geom_point(position = position_dodge(width = .5)) + -->
+<!--   geom_errorbar(position = position_dodge(width = .5)) + -->
+<!--   theme_minimal() + -->
+<!--   labs(y = "Difference in FI compared to women", x = "Gender", color = NULL) + -->
+<!--   theme(legend.position = "top")  + -->
+<!--   scale_color_okabe_ito() -->
+
+<!-- ``` -->
+
+## Conclusions and future directions
+
+**Observations with missing data are quite different, but it's not clear that reasonable non-random missingness makes any difference**
+
+-   Deal with computational challenges
+    -   Is it necessary to recompute frailty index in between every item?
+-   At what point is this necessary?
+    -   "Tipping point" analysis
+    
+*Thanks to Chelsea Wong MD, Ariela Orkaby MD, Brianne Olivieri-Mui PhD*
+
+## 
+
+<!-- Approach to MNAR missingness -->
+
+<!-- Diggle & Kenward, 1994; Hogan & Laird, 1997; Kenward & Molenberghs, 1999; Little, 1993; Little, 1995 -->
+
+<!-- “Multiple-model multiple imputation”, developed by Siddique et al. (Siddique et al., 2012; Siddique et al., 2014) -->

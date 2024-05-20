@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Summit of Mt. Tecumseh\n\n\n\nI am an assistant professor in the Department of Health Sciences at Northeastern University’s Bouvé College of Health Sciences and at the Roux Institute in my hometown of Portland, ME. Previously I trained in the Program in Population Health Sciences and the Department of Epidemiology at the Harvard T.H. Chan School of Public Health. I also have a Master of Science degree from the Department of Biostatistics. My research interests are in epidemiologic and biostatistical methods as well as reproductive and child health. I first developed these interests at U.C. Berkeley, where I earned my M.S. in epidemiology, and while teaching third grade at Little Wound School in Kyle, SD, where I lived for three years. Prior to that I studied comparative literature (focusing on literary translation from French and Portuguese) and community health at Brown University.\n\n\n\n\n\n\nRed velvet cake\n\n\n\nMy passion for teaching has continued beyond my experience in elementary education. I enjoy introducing students to epidemiology and biostatistics as well as delving into more advanced topics in causal inference. I love to create teaching materials, some of which can be found on this site.\nI also love hiking and camping, baking, reading novels, and programming in R. I’m working my way through the New Hampshire 4000 footers and through Zoë Bakes Cakes."
+    "text": "Summit of Mt. Tecumseh\n\n\n\nI am an assistant professor in the Department of Public Health & Health Sciences at Northeastern University’s Bouvé College of Health Sciences and at the Roux Institute in my hometown of Portland, ME. Previously I trained in the Program in Population Health Sciences and the Department of Epidemiology at the Harvard T.H. Chan School of Public Health. I also have a Master of Science degree from the Department of Biostatistics. My research interests are in epidemiologic and biostatistical methods as well as reproductive and child health. I first developed these interests at U.C. Berkeley, where I earned my M.S. in epidemiology, and while teaching third grade at Little Wound School in Kyle, SD, where I lived for three years. Prior to that I studied comparative literature (focusing on literary translation from French and Portuguese) and community health at Brown University.\n\n\n\n\n\n\nRed velvet cake\n\n\n\nMy passion for teaching has continued beyond my experience in elementary education. I enjoy introducing students to epidemiology and biostatistics as well as delving into more advanced topics in causal inference. I love to create teaching materials, some of which can be found on this site.\nI also love hiking and camping, baking, reading novels, and programming in R. I’m working my way through the New Hampshire 4000 footers and through Zoë Bakes Cakes."
   },
   {
     "objectID": "index.html",
@@ -28,18 +28,172 @@
     "text": "Dissertation\n\n\n Video"
   },
   {
-    "objectID": "talks/2022-06-13/2022-06-13.html",
-    "href": "talks/2022-06-13/2022-06-13.html",
+    "objectID": "talks/2022-06-13.html",
+    "href": "talks/2022-06-13.html",
     "title": "Study design and analysis for time-dependent exposures during pregnancy",
     "section": "",
     "text": "Slides\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n(click image to download zip file)"
+  },
+  {
+    "objectID": "talks/2020-01-29/2020-01-29.html",
+    "href": "talks/2020-01-29/2020-01-29.html",
+    "title": "Data gets personal",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#context-deficit-accumulation-frailty-index",
+    "href": "talks/2023-06-14/slides.html#context-deficit-accumulation-frailty-index",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Context: deficit-accumulation frailty index",
+    "text": "Context: deficit-accumulation frailty index\n\n\n\n\n\n\n\nFrailty is a syndrome of vulnerability more common in older adults\nA frailty index is a quantitative measure of the aggregate burden of age-related health deficits\n\n\n\n\n\nFI = # of deficits / # of possible deficits\n\n\n\n&lt;0.15 robust; 0.15-0.25 pre-frail; &gt;0.25 frail"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#section",
+    "href": "talks/2023-06-14/slides.html#section",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "",
+    "text": "Large-scale NIH study to gather health data from 1 million+ Americans\nFocus on those underrepresented in biomedical research\nMultimodal data collection includes surveys, electronic health records, biospecimens, and more"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#aou-fi",
+    "href": "talks/2023-06-14/slides.html#aou-fi",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "AoU-FI",
+    "text": "AoU-FI\n\n33 deficits based on items from multiple surveys\nCover multiple domains, including comorbidities, function, cognition, mental health, and geriatric syndromes\nCannot be weighted to heavily toward one domain (or it would be, e.g., a comorbidity index)\n\n9.8% of 200,000+ participants had complete data\n38% had data for &gt;80% of deficits (&gt;27/33)\n\n\nWong et al. (2023)"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#options-for-missing-items-in-an-indexscale",
+    "href": "talks/2023-06-14/slides.html#options-for-missing-items-in-an-indexscale",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Options for missing items in an index/scale",
+    "text": "Options for missing items in an index/scale\n\n\nComplete-case  Exclude those with any missing items\nProration Adjust denominator (person-mean imputation)\nMultiple imputation  Of individual items / total score\n\nThrowing away a lot of data, strong assumptions  \nDifferent weighting across domains  \nComputationally intensive, still requires assumptions"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#pattern-mixture-models-for-missingness-not-at-random-mnar",
+    "href": "talks/2023-06-14/slides.html#pattern-mixture-models-for-missingness-not-at-random-mnar",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Pattern-mixture models for missingness “not at random” (MNAR)",
+    "text": "Pattern-mixture models for missingness “not at random” (MNAR)\nModel how the distribution of missing data depends on missingness pattern\n\nFor example, a missingness pattern in which a given deficit is missing may be associated with a higher probability of that deficit\nCan’t tell from the observed data – by definition we are missing the item in that missingness pattern\n\n\n\nLittle (1993); Rubin (1987)"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#sensitivity-analysis-via-delta-adjustment",
+    "href": "talks/2023-06-14/slides.html#sensitivity-analysis-via-delta-adjustment",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Sensitivity analysis via delta adjustment",
+    "text": "Sensitivity analysis via delta adjustment\nA simple model for a single variable with missingness:\n\\[\nE[Y \\mid R, X] = \\beta_0 + \\beta_1X + \\color{IndianRed}{\\delta} I(R = \\color{SlateBlue}{r_0})\n\\]\nwhere \\(\\color{IndianRed}{\\delta}\\) parameterizes how much different the distribution (expectation) of \\(Y\\) is in observations with missing data patterns where it is missing (\\(\\color{SlateBlue}{r_0}\\))"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#multiple-imputation",
+    "href": "talks/2023-06-14/slides.html#multiple-imputation",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Multiple imputation",
+    "text": "Multiple imputation\nThe delta adjustment approach can be done in the context of multiple imputation, e.g., with MICE\n\nFit a model for the conditional expectation of \\(Y\\) as usual\nAdd \\(\\delta\\) to the modeled expectation and draw values of \\(Y\\)\nAnalyze multiple datasets as usual\n\n\n\nVan Buuren and Groothuis-Oudshoorn (2011); Buuren (2012)"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#shiny-app-to-elicit-parameters",
+    "href": "talks/2023-06-14/slides.html#shiny-app-to-elicit-parameters",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Shiny app to elicit parameters",
+    "text": "Shiny app to elicit parameters\n\n\n\nMason et al. (2017); D. Tompsett et al. (2020)"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#complications",
+    "href": "talks/2023-06-14/slides.html#complications",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Complications",
+    "text": "Complications\nWith multiple missing variables, interpretation of sensitivity parameter \\(\\delta\\) is different\n\nconditional on the missingness pattern of the other variables\nD. M. Tompsett et al. (2018) proposed a solution which involves eliciting more interpretable \\(\\delta\\)-like parameters and searching the solution space for the \\(\\delta\\)s they correspond to\ncomputationally infeasible with 33 missing items without further assumptions"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#missingness-patterns",
+    "href": "talks/2023-06-14/slides.html#missingness-patterns",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Missingness patterns",
+    "text": "Missingness patterns\nFor a given item \\(Y\\), we collapsed missingness patterns into:\n\ndata on \\(Y\\) and all surveys completed (group A)\ndata on \\(Y\\) but missing some surveys (group B)\nmissing data on \\(Y\\) but completed survey (group C)\nmissing survey on which \\(Y\\) is collected (group D)1\n\nso not known whether it would have been observed had survey been completed"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#interpretable-parameters",
+    "href": "talks/2023-06-14/slides.html#interpretable-parameters",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Interpretable parameters",
+    "text": "Interpretable parameters\nMost items are binary\n\nParameters on odds ratio scale suggested in literature\n\n“Non-respondents may have up to 1.3 times the odds of item compared to respondents who are similar in other ways”\n\nEven differences in means not particularly intuitive\n\n“Non-respondents may have up to 10 percentage points higher prevalence of item compared to respondents who are similar in other ways”\n\n\nStandardized means seem more interpretable"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#standardized-means",
+    "href": "talks/2023-06-14/slides.html#standardized-means",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Standardized means",
+    "text": "Standardized means\n\n\nFit a model for item among participants with complete data (group A), conditional on demographics, etc.\nPredict item prevalence among participants with other missing surveys, but complete item of interest (group B)\nCompare observed and predicted item prevalence in group B: differences are not accounted by demographics, instead by missing data pattern\n\n\n\n\n\n\nDifficulty with everyday activities"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#this-comparison-makes-specifying-the-sensitivity-parameters-more-concrete",
+    "href": "talks/2023-06-14/slides.html#this-comparison-makes-specifying-the-sensitivity-parameters-more-concrete",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "This comparison makes specifying the sensitivity parameters more concrete",
+    "text": "This comparison makes specifying the sensitivity parameters more concrete\n\n\n\n\nSevere fatigue"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#experts-in-this-population-can-combine-with-their-knowledge",
+    "href": "talks/2023-06-14/slides.html#experts-in-this-population-can-combine-with-their-knowledge",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Experts in this population can combine with their knowledge",
+    "text": "Experts in this population can combine with their knowledge\n\n\n\n\nDifficulty bathing"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#shiny-app-to-elicit-parameters-1",
+    "href": "talks/2023-06-14/slides.html#shiny-app-to-elicit-parameters-1",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Shiny app to elicit parameters",
+    "text": "Shiny app to elicit parameters"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#analysis-fi-distribution",
+    "href": "talks/2023-06-14/slides.html#analysis-fi-distribution",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Analysis: FI distribution",
+    "text": "Analysis: FI distribution\nSynthetic AoU dataset\n\ncomplete case\nproration &gt; 80% complete\nproration &gt; 50% complete\nMAR (MICE with no delta-adjustment)\nMNAR, drawing sensitivity parameters from various distributions taking in account possible correlations\n\ndraw from triangle distribution, individually\ncompute rank within all draws\ndraw across all items by rank to allow for correlation"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#distributions-of-sensitivity-parameters",
+    "href": "talks/2023-06-14/slides.html#distributions-of-sensitivity-parameters",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Distributions of sensitivity parameters",
+    "text": "Distributions of sensitivity parameters"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#average-fi-age-50-55",
+    "href": "talks/2023-06-14/slides.html#average-fi-age-50-55",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Average FI age 50-55",
+    "text": "Average FI age 50-55"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#age-differences-in-fi",
+    "href": "talks/2023-06-14/slides.html#age-differences-in-fi",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Age differences in FI",
+    "text": "Age differences in FI"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#conclusions-and-future-directions",
+    "href": "talks/2023-06-14/slides.html#conclusions-and-future-directions",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "Conclusions and future directions",
+    "text": "Conclusions and future directions\nObservations with missing data are quite different, but it’s not clear that reasonable non-random missingness makes any difference\n\nDeal with computational challenges\n\nIs it necessary to recompute frailty index in between every item?\n\nAt what point is this necessary?\n\n“Tipping point” analysis\n\n\nThanks to Chelsea Wong MD, Ariela Orkaby MD, Brianne Olivieri-Mui PhD"
+  },
+  {
+    "objectID": "talks/2023-06-14/slides.html#section-2",
+    "href": "talks/2023-06-14/slides.html#section-2",
+    "title": "Evaluating missingness assumptions for items in a frailty index",
+    "section": "",
+    "text": "Buuren, Stef van. 2012. Flexible Imputation of Missing Data. Chapman & Hall/CRC Interdisciplinary Statistics Series. Boca Raton, FL: CRC Press.\n\n\nLittle, Roderick J. A. 1993. “Pattern-Mixture Models for Multivariate Incomplete Data.” Journal of the American Statistical Association 88 (421): 125–34. https://doi.org/10.2307/2290705.\n\n\nMason, Alexina J, Manuel Gomes, Richard Grieve, Pinar Ulug, Janet T Powell, and James Carpenter. 2017. “Development of a Practical Approach to Expert Elicitation for Randomised Controlled Trials with Missing Health Outcomes: Application to the IMPROVE Trial.” Clinical Trials 14 (4): 357–67. https://doi.org/10.1177/1740774517711442.\n\n\nRubin, Donald B. 1987. Multiple Imputation for Nonresponse in Surveys. New York: John Wiley & Sons. https://doi.org/10.1002/9780470316696.\n\n\nTompsett, Daniel Mark, Finbarr Leacy, Margarita Moreno-Betancur, Jon Heron, and Ian R. White. 2018. “On the Use of the Not-at-Random Fully Conditional Specification (NARFCS) Procedure in Practice.” Statistics in Medicine 37 (15): 2338–53. https://doi.org/10.1002/sim.7643.\n\n\nTompsett, Daniel, Stephen Sutton, Shaun R. Seaman, and Ian R. White. 2020. “A General Method for Elicitation, Imputation, and Sensitivity Analysis for Incomplete Repeated Binary Data.” Statistics in Medicine 39 (22): 2921–35. https://doi.org/10.1002/sim.8584.\n\n\nVan Buuren, Stef, and Karin Groothuis-Oudshoorn. 2011. “Mice: Multivariate Imputation by Chained Equations in R.” Journal Of Statistical Software 45 (3): 1–67. https://doi.org/10.1177/0962280206074463.\n\n\nWong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Richard, Robert Cavanaugh, Justin Manjourides, Ariela R. Orkaby, and Brianne Olivieri-Mui. 2023. “Frailty Among Sexual and Gender Minority Older Adults: The All of Us Database.” Journal of Gerontology: Medical Sciences, in press."
   },
   {
     "objectID": "talks.html",
     "href": "talks.html",
     "title": "Talks",
     "section": "",
-    "text": "Evaluating missingness assumptions for items in a frailty index\n\n\nSER 2023\n\n\nHow much does missing survey data matter when constructing a frailty index?\n\n\n\n\n\n\nJun 2023\n\n\n\n\n\n\n  \n\n\n\n\nReproducible Epidemiology in R\n\n\nSER 2023\n\n\nSER pre-conference workshop\n\n\n\n\n\n\nJun 2023\n\n\n\n\n\n\n  \n\n\n\n\nIntroduction to {targets}\n\n\nMaine R User Group\n\n\nOverview of the targets package for reproducible data analysis.\n\n\n\n\n\n\nMay 2023\n\n\n\n\n\n\n  \n\n\n\n\nStudy design and analysis for time-dependent exposures during pregnancy\n\n\nSPER 2022\n\n\nSPER Advanced Methods Workshop, with Chelsea Messinger\n\n\n\n\n\n\nJun 2022\n\n\n\n\n\n\n  \n\n\n\n\nCausal inference in epidemiology using target trial principles: Applications in pregnancy and prostate cancer\n\n\nEPFL Statistics Seminar\n\n\nTarget trials can help design better observational studies.\n\n\n\n\n\n\nSep 2021\n\n\n\n\n\n\n  \n\n\n\n\nMultiple-Bias Sensitivity Analysis Using Bounds\n\n\nJSM 2021\n\n\nA framework for sensitivity analysis addressing unmeasured confounding, misclassification, and selection bias.\n\n\n\n\n\n\nAug 2021\n\n\n\n\n\n\n  \n\n\n\n\nChallenges in estimating effects of COVID-19 on preterm birth\n\n\nSER 2021\n\n\nAvoiding various biases when studying COVID-19 and preterm birth, presented in the infectious diseases session at SER 2021.\n\n\n\n\n\n\nJun 2021\n\n\n\n\n\n\n  \n\n\n\n\nCOVID-19 and preterm birth: Understanding the relationship\n\n\nSPER 2021\n\n\nSpeed presentation on the timing- and severity-specific effects of COVID-19 on preterm birth.\n\n\n\n\n\n\nJun 2021\n\n\n\n\n\n\n  \n\n\n\n\nE-values, unmeasured confounding, measurement error, and selection bias\n\n\nSER 2021\n\n\nPre-conference workshop with Maya Mathur.\n\n\n\n\n\n\nMay 2021\n\n\n\n\n\n\n  \n\n\n\n\nBias bounds and target trials for causal inference in observational data\n\n\n\n\n\nMy dissertation defense!\n\n\n\n\n\n\nMay 2021\n\n\n\n\n\n\n  \n\n\n\n\nSimple sensitivity analysis for selection bias using bounds\n\n\nCMStatistics 2020\n\n\nExtending a sensitivity analysis approach for unmeasured confounding to selection bias.\n\n\n\n\n\n\nDec 2020\n\n\n\n\n\n\n  \n\n\n\n\nThe Magic of R\n\n\nMaster of Food and Resource Economics Program, University of British Columbia\n\n\nA guest lecture to convince new learners of R just how cool it is.\n\n\n\n\n\n\nAug 2020\n\n\n\n\n\n\n  \n\n\n\n\nData gets personal\n\n\nRLadies Boston\n\n\nA data science/human interest story first shared at RLadies Boston.\n\n\n\n\n\n\nJan 2020\n\n\n\n\n\n\n  \n\n\n\n\nDirected Acyclic Graphs: An introduction\n\n\nKolokotrones Symposium, Harvard TH Chan School of Public Health\n\n\nThe basics of DAGs.\n\n\n\n\n\n\nDec 2018\n\n\n\n\n\n\nNo matching items"
+    "text": "Evaluating missingness assumptions for items in a frailty index\n\n\nSER 2023\n\n\nHow much does missing survey data matter when constructing a frailty index? \n\n\n\n\n\nJun 2023\n\n\n\n\n\n\n\n\n\n\n\n\nReproducible Epidemiology in R\n\n\nSER 2023\n\n\nSER pre-conference workshop \n\n\n\n\n\nJun 2023\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to {targets}\n\n\nMaine R User Group\n\n\nOverview of the targets package for reproducible data analysis. \n\n\n\n\n\nMay 2023\n\n\n\n\n\n\n\n\n\n\n\n\nStudy design and analysis for time-dependent exposures during pregnancy\n\n\nSPER 2022\n\n\nSPER Advanced Methods Workshop, with Chelsea Messinger \n\n\n\n\n\nJun 2022\n\n\n\n\n\n\n\n\n\n\n\n\nCausal inference in epidemiology using target trial principles: Applications in pregnancy and prostate cancer\n\n\nEPFL Statistics Seminar\n\n\nTarget trials can help design better observational studies. \n\n\n\n\n\nSep 2021\n\n\n\n\n\n\n\n\n\n\n\n\nMultiple-Bias Sensitivity Analysis Using Bounds\n\n\nJSM 2021\n\n\nA framework for sensitivity analysis addressing unmeasured confounding, misclassification, and selection bias. \n\n\n\n\n\nAug 2021\n\n\n\n\n\n\n\n\n\n\n\n\nChallenges in estimating effects of COVID-19 on preterm birth\n\n\nSER 2021\n\n\nAvoiding various biases when studying COVID-19 and preterm birth, presented in the infectious diseases session at SER 2021. \n\n\n\n\n\nJun 2021\n\n\n\n\n\n\n\n\n\n\n\n\nCOVID-19 and preterm birth: Understanding the relationship\n\n\nSPER 2021\n\n\nSpeed presentation on the timing- and severity-specific effects of COVID-19 on preterm birth. \n\n\n\n\n\nJun 2021\n\n\n\n\n\n\n\n\n\n\n\n\nE-values, unmeasured confounding, measurement error, and selection bias\n\n\nSER 2021\n\n\nPre-conference workshop with Maya Mathur. \n\n\n\n\n\nMay 2021\n\n\n\n\n\n\n\n\n\n\n\n\nBias bounds and target trials for causal inference in observational data\n\n\n\n\n\nMy dissertation defense! \n\n\n\n\n\nMay 2021\n\n\n\n\n\n\n\n\n\n\n\n\nSimple sensitivity analysis for selection bias using bounds\n\n\nCMStatistics 2020\n\n\nExtending a sensitivity analysis approach for unmeasured confounding to selection bias. \n\n\n\n\n\nDec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe Magic of R\n\n\nMaster of Food and Resource Economics Program, University of British Columbia\n\n\nA guest lecture to convince new learners of R just how cool it is. \n\n\n\n\n\nAug 2020\n\n\n\n\n\n\n\n\n\n\n\n\nData gets personal\n\n\nRLadies Boston\n\n\nA data science/human interest story first shared at RLadies Boston. \n\n\n\n\n\nJan 2020\n\n\n\n\n\n\n\n\n\n\n\n\nDirected Acyclic Graphs: An introduction\n\n\nKolokotrones Symposium, Harvard TH Chan School of Public Health\n\n\nThe basics of DAGs. \n\n\n\n\n\nDec 2018\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "teaching.html",
@@ -49,11 +203,11 @@
     "text": "Northeastern University\n\nPHTH 6800: Causal Inference in Public Health Research\nInstructor (spring 2023, spring 2024)\n\n\n\nEmory University Rollins School of Public Health\n\nEPI590R: R Bootcamp\nInstructor (summer 2023)\n\n\n\nHarvard TH Chan School of Public Health\n\nID543: Intro to R\nInstructor (summer 2023)\n\n\nEPI 207: Advanced Epidemiologic Methods\n(Head) Teaching fellow (fall 2018, fall 2019, fall 2020)\nCausal inference for time-varying exposures: g-formula, marginal structural models, g-estimation of structural nested models; static and dynamic treatment regimes.\n\n\nBST 256: Theories and Methods for Causality I\nTeaching fellow (fall 2020)\nStructural causal models, graphical models, algorithms for identification.\n\n\nIntroduction to R\nInstructor (fall 2019, summer 2020)\nDeveloped and taught short course to introduce R to graduate students. Topics included creating figures and tables, cleaning data, writing functions.\n\n\nIntroduction to Epidemiology\nCo-instructor (summer 2019, summer 2020)\nEpidemiology course for participants in the Harvard Summer Program in Biostatistics & Computational Biology.\n\n\nPHS 2000: Quantitative Research Methods in Population Health Sciences\nTeaching fellow (fall 2017, spring 2018, fall 2019)\nRegression models, sampling, longitudinal and multilevel analysis, time-varying confounding, mediation and interaction, econometric methods, missing data.\n\n\n\nUniversity of California, Berkeley\n\nPH 150A: Introduction to Epidemiology and Human Disease\nGraduate student instructor (spring 2016)\nBasic epidemiologic methods, overview of epidemiology of diseases/conditions of public health importance for undergraduates.\n\n\nPH 250A: Epidemiologic Methods\nGraduate student instructor (fall 2015)\nStudy design, sampling, data collection, analysis, inference for MPH students."
   },
   {
-    "objectID": "talks/2020-01-29/2020-01-29.html",
-    "href": "talks/2020-01-29/2020-01-29.html",
-    "title": "Data gets personal",
+    "objectID": "talks/2022-06-13/2022-06-13.html",
+    "href": "talks/2022-06-13/2022-06-13.html",
+    "title": "Study design and analysis for time-dependent exposures during pregnancy",
     "section": "",
-    "text": "Code"
+    "text": "Slides\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n(click image to download zip file)"
   },
   {
     "objectID": "talks/2023-05-31/slides.html#what-is-targets",
@@ -242,6 +396,6 @@
     "href": "publications.html",
     "title": "Publications",
     "section": "",
-    "text": "Title\n\n\nDate\n\n\nAuthors\n\n\nJournal\n\n\nPDF\n\n\n\n\n\n\nAllofus: An R package to facilitate use of the All of Us Researcher Workbench\n\n\n2024\n\n\nSmith LH, Cavanaugh R\n\n\npreprint\n\n\n   \n\n\n\n\nPregnancy episodes in All of Us: Harnessing multi-source data for pregnancy-related research\n\n\n2024\n\n\nSmith LH, Wang W, Keefe-Oates B\n\n\npreprint\n\n\n   \n\n\n\n\nBenzodiazepine initiation and the risk of falls or fall-related injuries in older adults following acute ischemic stroke\n\n\n2024\n\n\nSun S, Lomachinsky V, Smith LH, Newhouse JP, Westover MB, Blacker D, Schwamm L, Haneuse S, Moura LMVR\n\n\npreprint\n\n\n   \n\n\n\n\nDigital intervention engagement mediates the relationship between intrapersonal measures and pre-exposure prophylaxis adherence: A secondary analysis of a randomized controlled trial of sexual orientation and gender minority youth on pre-exposure prophylaxis\n\n\n2024\n\n\nWilliams MP, Manjourides J, Smith L, Rainer CB, Hightow-Weidman LB, Haley DF\n\n\npreprint\n\n\n   \n\n\n\n\nResearch letter: Clonidine is associated with faster first resolution of incident ICU delirium than antipsychotics\n\n\n2024\n\n\nWu TT, Steiger G, Smith L, Devlin JW, Slooter AJC\n\n\nJournal of Critical Care\n\n\n   \n\n\n\n\nBayesian safety surveillance with adaptive bias correction\n\n\n2023\n\n\nBu F, Schuemie MJ, Nishimura A, Smith LH, Kostka K, Falconer T, McLeggon JA, Ryan PB, Hripcsak G, Suchard MA\n\n\nStatistics in Medicine\n\n\n   \n\n\n\n\nSide effects of COVID-19 vaccinations in patients treated for breast cancer\n\n\n2023\n\n\nJuhel BC, Brunelle CL, Bernstein MC, Smith LH, Jung AW, Ababneh HS, Hausman EK, Bucci LK, Bernstein T, Naoum GE, Taghian AG\n\n\nClinical and Experimental Medicine\n\n\n   \n\n\n\n\nComparative effectiveness and safety of seizure prophylaxis among adults after acute ischemic stroke\n\n\n2023\n\n\nMoura LMVR, Donahue MA, Yan Z, Smith LH, Hsu J, Newhouse JP, Schwamm LH, Haneuse S, Hernandez-Diaz S, Blacker D\n\n\nStroke\n\n\n   \n\n\n\n\nNo short-term mortality from benzodiazepine use post-acute ischemic stroke after accounting for bias\n\n\n2023\n\n\nMoura LMVR, Yan Z, Donahue MA, Smith LH, Schwamm LH, Hsu J, Newhouse JP, Haneuse S, Blacker D, Hernandez-Diaz S\n\n\nJournal of Clinical Epidemiology\n\n\n   \n\n\n\n\nBias analyses to investigate the impact of differential participation: Application to a birth defects case-control study\n\n\n2023\n\n\nPeterson J, Kahrs JC, Adrien N, Wood ME, Olshan AF, Smith LH, Howley MM, Ailes EC, Romitti PA, Herring AH, Parker SE, Shaw GM, Politis MD\n\n\nPaediatric and Perinatal Epidemiology\n\n\n   \n\n\n\n\nIdentification of vaccine effects when exposure status is unknown\n\n\n2023\n\n\nStensrud MJ, Smith L\n\n\nEpidemiology\n\n\n   \n\n\n\n\nFrailty among sexual and gender minority older adults: The All of Us database\n\n\n2023\n\n\nWong CN, Wilczek MP, Smith LH, Bosse JD, Richard EL, Cavanaugh R, Manjourides J, Orkaby AR, Olivieri-Mui B\n\n\nThe Journals of Gerontology: Series A\n\n\n   \n\n\n\n\nData missingness reporting and use of methods to address it in critical care cohort studies\n\n\n2023\n\n\nWu TT, Smith LH, Vernooij LM, Patel E, Devlin JW\n\n\nCritical Care Explorations\n\n\n   \n\n\n\n\nEducational attainment past the traditional age of completion for two cohorts of US adults: Inequalities by gender and race/ethnicity.\n\n\n2022\n\n\nCohen AK, Ryan S, Smith LH, Ream RK, Glymour MM, Lopez A, Yen IH\n\n\nRace and Social Problems\n\n\n   \n\n\n\n\nFirst trimester COVID-19 and the risk of major congenital malformations–International Registry of Coronavirus Exposure in Pregnancy\n\n\n2022\n\n\nHernández-Díaz S, Smith LH, Wyszynski DF, Rasmussen SA\n\n\nBirth Defects Research\n\n\n   \n\n\n\n\nInternational Registry of Coronavirus in Pregnancy (IRCEP): Cohort description and methodological considerations\n\n\n2022\n\n\nHernández-Díaz S, Smith LH, Dollinger C, Schisterman EF, Bellocco R, Wyszynski DF\n\n\nAmerican Journal of Epidemiology\n\n\n   \n\n\n\n\nE-values for effect heterogeneity and approximations for causal interaction\n\n\n2022\n\n\nMathur MB, Smith LH, Yoshida K, Ding P, VanderWeele TJ\n\n\nInternational Journal of Epidemiology\n\n\n   \n\n\n\n\nMultifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF\n\n\n2022\n\n\nModest AM, Smith LH, Toth TL, Collier AY, Hacker MR\n\n\nPaediatric and Perinatal Epidemiology\n\n\n   \n\n\n\n\nEvaluating criminal justice reform during COVID-19: The need for a novel sentiment analysis package\n\n\n2022\n\n\nRamjee D, Smith LH, Doanvo A, Charpignon ML, McNulty-Nebel A, Lett E, Desai AN, Majumder MS\n\n\nPLOS Digital Health\n\n\n   \n\n\n\n\nEmulation of a target trial with sustained treatment strategies: An application to prostate cancer using both inverse probability weighting and the g-formula\n\n\n2022\n\n\nSmith LH, García-Albéniz X, Chan JM, Zhao S, Cowan JE, Broering JM, Cooperberg MR, Carroll PR, Hernán MA\n\n\nEuropean Journal of Epidemiology\n\n\n   \n\n\n\n\nTiming and severity of COVID-19 during pregnancy and risk of preterm birth in the International Registry of Coronavirus Exposure in Pregnancy\n\n\n2022\n\n\nSmith LH, Dollinger CY, VanderWeele TJ, Wyszynski DF, Hernández-Díaz S\n\n\nBMC Pregnancy and Childbirth\n\n\n   \n\n\n\n\nCOVID-19 pharmacotherapy utilization patterns during pregnancy: International Registry of Coronavirus Exposure in Pregnancy (IRCEP)\n\n\n2022\n\n\nWesthoff WJ, Smith LH, Wyszynski DF, Hernandez-Diaz S\n\n\nPharmacoepidemiology and Drug Safety\n\n\n   \n\n\n\n\nImportant questions deserve rigorous analysis: A cautionary note about selection bias\n\n\n2021\n\n\nPetito LC, Smith LH\n\n\nJournal of the American Heart Association\n\n\n   \n\n\n\n\nMediating to opportunity: The challenges of translating mediation estimands into policy recommendations\n\n\n2021\n\n\nSmith LH, Schwartz GL\n\n\nEpidemiology\n\n\n   \n\n\n\n\nMultiple-bias sensitivity analysis using bounds\n\n\n2021\n\n\nSmith LH, Mathur MB, VanderWeele TJ\n\n\nEpidemiology\n\n\n   \n\n\n\n\nThe importance of mediation in reproductive health studies\n\n\n2020\n\n\nFarland LV, Correia KFB, Dodge LE, Modest AM, Williams PL, Smith LH, Toth TL, Hacker MR, Missmer SA\n\n\nHuman Reproduction\n\n\n   \n\n\n\n\nSelection mechanisms and their consequences: Understanding and addressing selection bias\n\n\n2020\n\n\nSmith LH\n\n\nCurrent Epidemiology Reports\n\n\n   \n\n\n\n\nSimple sensitivity analysis for control selection bias\n\n\n2020\n\n\nSmith LH, VanderWeele TJ\n\n\nEpidemiology\n\n\n   \n\n\n\n\nBounding bias due to selection\n\n\n2019\n\n\nSmith LH, VanderWeele TJ\n\n\nEpidemiology\n\n\n   \n\n\n\n\nMediational E-values: Approximate sensitivity analysis for unmeasured mediator-outcome confounding\n\n\n2019\n\n\nSmith LH, VanderWeele TJ\n\n\nEpidemiology\n\n\n   \n\n\n\n\nHealth issues in the industrial port zone of Marseille, France: The FOS EPSEAL community-based cross-sectional survey\n\n\n2017\n\n\nCohen AK, Richards T, Allen BL, Ferrier Y, Lees J, Smith LH\n\n\nJournal of Public Health\n\n\n   \n\n\n\n\nMaternal prepregnancy weight and children’s behavioral and emotional outcomes\n\n\n2017\n\n\nDeardorff J, Smith LH, Petito L, Kim H, Abrams BF\n\n\nAmerican Journal of Preventive Medicine\n\n\n   \n\n\n\n\n\n\nNo matching items"
+    "text": "Title\n\n\nDate\n\n\nAuthors\n\n\nJournal\n\n\nPDF\n\n\n\n\n\n\nAllofus: An R package to facilitate use of the All of Us Researcher Workbench\n\n\n2024\n\n\nSmith LH, Cavanaugh R\n\n\npreprint\n\n\n   \n\n\n\n\nPregnancy episodes in All of Us: Harnessing multi-source data for pregnancy-related research\n\n\n2024\n\n\nSmith LH, Wang W, Keefe-Oates B\n\n\npreprint\n\n\n   \n\n\n\n\nBenzodiazepine initiation and the risk of falls or fall-related injuries in older adults following acute ischemic stroke\n\n\n2024\n\n\nSun S, Lomachinsky V, Smith LH, Newhouse JP, Westover MB, Blacker D, Schwamm L, Haneuse S, Moura LMVR\n\n\npreprint\n\n\n   \n\n\n\n\nDigital intervention engagement mediates the relationship between intrapersonal measures and pre-exposure prophylaxis adherence: A secondary analysis of a randomized controlled trial of sexual orientation and gender minority youth on pre-exposure prophylaxis\n\n\n2024\n\n\nWilliams MP, Manjourides J, Smith L, Rainer CB, Hightow-Weidman LB, Haley DF\n\n\npreprint\n\n\n   \n\n\n\n\nResearch letter: Clonidine is associated with faster first resolution of incident ICU delirium than antipsychotics\n\n\n2024\n\n\nWu TT, Steiger G, Smith L, Devlin JW, Slooter AJC\n\n\nJournal of Critical Care\n\n\n   \n\n\n\n\nBayesian safety surveillance with adaptive bias correction\n\n\n2023\n\n\nBu F, Schuemie MJ, Nishimura A, Smith LH, Kostka K, Falconer T, McLeggon JA, Ryan PB, Hripcsak G, Suchard MA\n\n\nStatistics in Medicine\n\n\n   \n\n\n\n\nSide effects of COVID-19 vaccinations in patients treated for breast cancer\n\n\n2023\n\n\nJuhel BC, Brunelle CL, Bernstein MC, Smith LH, Jung AW, Ababneh HS, Hausman EK, Bucci LK, Bernstein T, Naoum GE, Taghian AG\n\n\nClinical and Experimental Medicine\n\n\n   \n\n\n\n\nComparative effectiveness and safety of seizure prophylaxis among adults after acute ischemic stroke\n\n\n2023\n\n\nMoura LMVR, Donahue MA, Yan Z, Smith LH, Hsu J, Newhouse JP, Schwamm LH, Haneuse S, Hernandez-Diaz S, Blacker D\n\n\nStroke\n\n\n   \n\n\n\n\nNo short-term mortality from benzodiazepine use post-acute ischemic stroke after accounting for bias\n\n\n2023\n\n\nMoura LMVR, Yan Z, Donahue MA, Smith LH, Schwamm LH, Hsu J, Newhouse JP, Haneuse S, Blacker D, Hernandez-Diaz S\n\n\nJournal of Clinical Epidemiology\n\n\n   \n\n\n\n\nBias analyses to investigate the impact of differential participation: Application to a birth defects case-control study\n\n\n2023\n\n\nPeterson J, Kahrs JC, Adrien N, Wood ME, Olshan AF, Smith LH, Howley MM, Ailes EC, Romitti PA, Herring AH, Parker SE, Shaw GM, Politis MD\n\n\nPaediatric and Perinatal Epidemiology\n\n\n   \n\n\n\n\nIdentification of vaccine effects when exposure status is unknown\n\n\n2023\n\n\nStensrud MJ, Smith L\n\n\nEpidemiology\n\n\n   \n\n\n\n\nFrailty among sexual and gender minority older adults: The All of Us database\n\n\n2023\n\n\nWong CN, Wilczek MP, Smith LH, Bosse JD, Richard EL, Cavanaugh R, Manjourides J, Orkaby AR, Olivieri-Mui B\n\n\nThe Journals of Gerontology: Series A\n\n\n   \n\n\n\n\nData missingness reporting and use of methods to address it in critical care cohort studies\n\n\n2023\n\n\nWu TT, Smith LH, Vernooij LM, Patel E, Devlin JW\n\n\nCritical Care Explorations\n\n\n   \n\n\n\n\nEducational attainment past the traditional age of completion for two cohorts of US adults: Inequalities by gender and race/ethnicity.\n\n\n2022\n\n\nCohen AK, Ryan S, Smith LH, Ream RK, Glymour MM, Lopez A, Yen IH\n\n\nRace and Social Problems\n\n\n   \n\n\n\n\nFirst trimester COVID-19 and the risk of major congenital malformations–International Registry of Coronavirus Exposure in Pregnancy\n\n\n2022\n\n\nHernández-Díaz S, Smith LH, Wyszynski DF, Rasmussen SA\n\n\nBirth Defects Research\n\n\n   \n\n\n\n\nInternational Registry of Coronavirus in Pregnancy (IRCEP): Cohort description and methodological considerations\n\n\n2022\n\n\nHernández-Díaz S, Smith LH, Dollinger C, Schisterman EF, Bellocco R, Wyszynski DF\n\n\nAmerican Journal of Epidemiology\n\n\n   \n\n\n\n\nE-values for effect heterogeneity and approximations for causal interaction\n\n\n2022\n\n\nMathur MB, Smith LH, Yoshida K, Ding P, VanderWeele TJ\n\n\nInternational Journal of Epidemiology\n\n\n   \n\n\n\n\nMultifoetal gestations mediate the effect of in vitro fertilisation (IVF) on ischaemic placental disease in autologous oocyte IVF more than donor oocyte IVF\n\n\n2022\n\n\nModest AM, Smith LH, Toth TL, Collier AY, Hacker MR\n\n\nPaediatric and Perinatal Epidemiology\n\n\n   \n\n\n\n\nEvaluating criminal justice reform during COVID-19: The need for a novel sentiment analysis package\n\n\n2022\n\n\nRamjee D, Smith LH, Doanvo A, Charpignon ML, McNulty-Nebel A, Lett E, Desai AN, Majumder MS\n\n\nPLOS Digital Health\n\n\n   \n\n\n\n\nEmulation of a target trial with sustained treatment strategies: An application to prostate cancer using both inverse probability weighting and the g-formula\n\n\n2022\n\n\nSmith LH, García-Albéniz X, Chan JM, Zhao S, Cowan JE, Broering JM, Cooperberg MR, Carroll PR, Hernán MA\n\n\nEuropean Journal of Epidemiology\n\n\n   \n\n\n\n\nTiming and severity of COVID-19 during pregnancy and risk of preterm birth in the International Registry of Coronavirus Exposure in Pregnancy\n\n\n2022\n\n\nSmith LH, Dollinger CY, VanderWeele TJ, Wyszynski DF, Hernández-Díaz S\n\n\nBMC Pregnancy and Childbirth\n\n\n   \n\n\n\n\nCOVID-19 pharmacotherapy utilization patterns during pregnancy: International Registry of Coronavirus Exposure in Pregnancy (IRCEP)\n\n\n2022\n\n\nWesthoff WJ, Smith LH, Wyszynski DF, Hernandez-Diaz S\n\n\nPharmacoepidemiology and Drug Safety\n\n\n   \n\n\n\n\nImportant questions deserve rigorous analysis: A cautionary note about selection bias\n\n\n2021\n\n\nPetito LC, Smith LH\n\n\nJournal of the American Heart Association\n\n\n   \n\n\n\n\nMediating to opportunity: The challenges of translating mediation estimands into policy recommendations\n\n\n2021\n\n\nSmith LH, Schwartz GL\n\n\nEpidemiology\n\n\n   \n\n\n\n\nMultiple-bias sensitivity analysis using bounds\n\n\n2021\n\n\nSmith LH, Mathur MB, VanderWeele TJ\n\n\nEpidemiology\n\n\n   \n\n\n\n\nThe importance of mediation in reproductive health studies\n\n\n2020\n\n\nFarland LV, Correia KFB, Dodge LE, Modest AM, Williams PL, Smith LH, Toth TL, Hacker MR, Missmer SA\n\n\nHuman Reproduction\n\n\n   \n\n\n\n\nSelection mechanisms and their consequences: Understanding and addressing selection bias\n\n\n2020\n\n\nSmith LH\n\n\nCurrent Epidemiology Reports\n\n\n   \n\n\n\n\nSimple sensitivity analysis for control selection bias\n\n\n2020\n\n\nSmith LH, VanderWeele TJ\n\n\nEpidemiology\n\n\n   \n\n\n\n\nBounding bias due to selection\n\n\n2019\n\n\nSmith LH, VanderWeele TJ\n\n\nEpidemiology\n\n\n   \n\n\n\n\nMediational E-values: Approximate sensitivity analysis for unmeasured mediator-outcome confounding\n\n\n2019\n\n\nSmith LH, VanderWeele TJ\n\n\nEpidemiology\n\n\n   \n\n\n\n\nHealth issues in the industrial port zone of Marseille, France: The FOS EPSEAL community-based cross-sectional survey\n\n\n2017\n\n\nCohen AK, Richards T, Allen BL, Ferrier Y, Lees J, Smith LH\n\n\nJournal of Public Health\n\n\n   \n\n\n\n\nMaternal prepregnancy weight and children’s behavioral and emotional outcomes\n\n\n2017\n\n\nDeardorff J, Smith LH, Petito L, Kim H, Abrams BF\n\n\nAmerican Journal of Preventive Medicine\n\n\n   \n\n\n\n\n\nNo matching items"
   }
 ]

@@ -1,0 +1,42 @@
+---
+title: "Study design and analysis for time-dependent exposures during pregnancy"
+description: |
+  SPER Advanced Methods Workshop
+author:
+  - name: Louisa H. Smith
+  - name: Chelsea Messinger
+date: '2022-06-13'
+subtitle: SPER 2022
+image: snapshot.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+image_link <- function(image, url, border = FALSE, ...) {
+  border <- border * 2
+  htmltools::a(
+    href = url,
+    htmltools::img(src = image, style = paste0("max-width: 100%;border: ", border, "px solid;"), ...)
+  )
+}
+```
+  
+# Slides
+```{r}
+image_link("2022-06-13/snapshot.png",
+           "2022-06-13/slides-lhs.pdf", border = FALSE)
+```
+
+```{r}
+image_link("2022-06-13/snapshot-cm.png",
+           "2022-06-13/slides-cm.pdf", border = FALSE)
+```
+
+# Code
+
+(click image to download zip file)
+
+```{r}
+image_link("2022-06-13/snapshot-code.png",
+           "2022-06-13/code.zip", border = FALSE)
+```

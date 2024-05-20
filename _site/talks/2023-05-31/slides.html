@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="Louisa Smith l.smith@northeastern.edu">
   <meta name="dcterms.date" content="2023-05-31">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -386,7 +387,7 @@
     }
   </style>
 <meta property="og:title" content="Louisa H. Smith - Intro to {targets}">
-<meta property="og:site-name" content="Louisa H. Smith">
+<meta property="og:site_name" content="Louisa H. Smith">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -433,24 +434,24 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <section id="script-based-workflow" class="slide level2 smaller">
 <h2>Script-based workflow</h2>
 <p><code>01-data.R</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data.csv"</span>, <span class="at">col_types =</span> <span class="fu">cols</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Ozone))</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">write_rds</span>(data, <span class="st">"data.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data.csv"</span>, <span class="at">col_types =</span> <span class="fu">cols</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Ozone))</span>
+<span id="cb1-4"><a></a><span class="fu">write_rds</span>(data, <span class="st">"data.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>02-model.R</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"data.rds"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp, data) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="fu">coefficients</span>()</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">write_rds</span>(model, <span class="st">"model.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"data.rds"</span>)</span>
+<span id="cb2-3"><a></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp, data) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a></a>    <span class="fu">coefficients</span>()</span>
+<span id="cb2-5"><a></a><span class="fu">write_rds</span>(model, <span class="st">"model.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>03-plot.R</code></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>model <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"model.rds"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"data.rds"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> model[<span class="dv">1</span>], <span class="at">slope =</span> model[<span class="dv">2</span>])</span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="fu">ggsave</span>(<span class="st">"plot.png"</span>, plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a></a>model <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"model.rds"</span>)</span>
+<span id="cb3-3"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"data.rds"</span>)</span>
+<span id="cb3-4"><a></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb3-5"><a></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
+<span id="cb3-6"><a></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> model[<span class="dv">1</span>], <span class="at">slope =</span> model[<span class="dv">2</span>])</span>
+<span id="cb3-7"><a></a><span class="fu">ggsave</span>(<span class="st">"plot.png"</span>, plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <aside><div>
 <p>Based on example in <a href="https://books.ropensci.org/targets" class="uri">https://books.ropensci.org/targets</a></p>
@@ -471,41 +472,41 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </section>
 <section class="slide level2">
 
-<iframe data-external="1" src="https://player.vimeo.com/video/700982360" width="100%" height="100%" frameborder="0" allow="autoplay; title=" "="" fullscreen;="" picture-in-picture"="" allowfullscreen=""></iframe>
+<iframe data-external="1" src="https://player.vimeo.com/video/700982360" width="100%" height="100%" frameborder="0" title="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
 </section>
 <section id="targets-workflow" class="slide level2">
 <h2><code>{targets}</code> workflow</h2>
 <p><code>R/functions.R</code></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file) {</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">read_csv</span>(file, <span class="at">col_types =</span> <span class="fu">cols</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Ozone))</span>
-<span id="cb4-4"><a href="#cb4-4"></a>}</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp, data) <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>    <span class="fu">coefficients</span>()</span>
-<span id="cb4-9"><a href="#cb4-9"></a>}</span>
-<span id="cb4-10"><a href="#cb4-10"></a></span>
-<span id="cb4-11"><a href="#cb4-11"></a>plot_model <span class="ot">&lt;-</span> <span class="cf">function</span>(model, data) {</span>
-<span id="cb4-12"><a href="#cb4-12"></a>  <span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> model[<span class="dv">1</span>], <span class="at">slope =</span> model[<span class="dv">2</span>])</span>
-<span id="cb4-15"><a href="#cb4-15"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file) {</span>
+<span id="cb4-2"><a></a>  <span class="fu">read_csv</span>(file, <span class="at">col_types =</span> <span class="fu">cols</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Ozone))</span>
+<span id="cb4-4"><a></a>}</span>
+<span id="cb4-5"><a></a></span>
+<span id="cb4-6"><a></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb4-7"><a></a>  <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp, data) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a></a>    <span class="fu">coefficients</span>()</span>
+<span id="cb4-9"><a></a>}</span>
+<span id="cb4-10"><a></a></span>
+<span id="cb4-11"><a></a>plot_model <span class="ot">&lt;-</span> <span class="cf">function</span>(model, data) {</span>
+<span id="cb4-12"><a></a>  <span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb4-13"><a></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
+<span id="cb4-14"><a></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> model[<span class="dv">1</span>], <span class="at">slope =</span> model[<span class="dv">2</span>])</span>
+<span id="cb4-15"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="targets-workflow-1" class="slide level2">
 <h2><code>{targets}</code> workflow</h2>
 <p><code>_targets.R</code></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(targets)</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">tar_source</span>()</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">tar_option_set</span>(<span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>))</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">list</span>(</span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">tar_target</span>(file, <span class="st">"data.csv"</span>, <span class="at">format =</span> <span class="st">"file"</span>),</span>
-<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">tar_target</span>(data, <span class="fu">get_data</span>(file)),</span>
-<span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">tar_target</span>(model, <span class="fu">fit_model</span>(data)),</span>
-<span id="cb5-10"><a href="#cb5-10"></a>  <span class="fu">tar_target</span>(plot, <span class="fu">plot_model</span>(model, data))</span>
-<span id="cb5-11"><a href="#cb5-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(targets)</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="fu">tar_source</span>()</span>
+<span id="cb5-4"><a></a><span class="fu">tar_option_set</span>(<span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>))</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a><span class="fu">list</span>(</span>
+<span id="cb5-7"><a></a>  <span class="fu">tar_target</span>(file, <span class="st">"data.csv"</span>, <span class="at">format =</span> <span class="st">"file"</span>),</span>
+<span id="cb5-8"><a></a>  <span class="fu">tar_target</span>(data, <span class="fu">get_data</span>(file)),</span>
+<span id="cb5-9"><a></a>  <span class="fu">tar_target</span>(model, <span class="fu">fit_model</span>(data)),</span>
+<span id="cb5-10"><a></a>  <span class="fu">tar_target</span>(plot, <span class="fu">plot_model</span>(model, data))</span>
+<span id="cb5-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Run <code>tar_make()</code> to run pipeline</p>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -576,21 +577,21 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </section>
 <section id="targets.r-tips-and-tricks" class="slide level2">
 <h2><code>_targets.R</code> tips and tricks</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">list</span>(</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb7-3"><a href="#cb7-3"></a>    data_file,</span>
-<span id="cb7-4"><a href="#cb7-4"></a>    <span class="st">"data/raw_data.csv"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="at">format =</span> <span class="st">"file"</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>  ),</span>
-<span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb7-8"><a href="#cb7-8"></a>    raw_data,</span>
-<span id="cb7-9"><a href="#cb7-9"></a>    <span class="fu">read.csv</span>(data_file)</span>
-<span id="cb7-10"><a href="#cb7-10"></a>  ),</span>
-<span id="cb7-11"><a href="#cb7-11"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb7-12"><a href="#cb7-12"></a>    clean_data,</span>
-<span id="cb7-13"><a href="#cb7-13"></a>    <span class="fu">clean_data_function</span>(raw_data)</span>
-<span id="cb7-14"><a href="#cb7-14"></a>  )</span>
-<span id="cb7-15"><a href="#cb7-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">list</span>(</span>
+<span id="cb7-2"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb7-3"><a></a>    data_file,</span>
+<span id="cb7-4"><a></a>    <span class="st">"data/raw_data.csv"</span>,</span>
+<span id="cb7-5"><a></a>    <span class="at">format =</span> <span class="st">"file"</span></span>
+<span id="cb7-6"><a></a>  ),</span>
+<span id="cb7-7"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb7-8"><a></a>    raw_data,</span>
+<span id="cb7-9"><a></a>    <span class="fu">read.csv</span>(data_file)</span>
+<span id="cb7-10"><a></a>  ),</span>
+<span id="cb7-11"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb7-12"><a></a>    clean_data,</span>
+<span id="cb7-13"><a></a>    <span class="fu">clean_data_function</span>(raw_data)</span>
+<span id="cb7-14"><a></a>  )</span>
+<span id="cb7-15"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -607,24 +608,24 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </section>
 <section id="targets.r-tips-and-tricks-1" class="slide level2">
 <h2><code>_targets.R</code> tips and tricks</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>preparation <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  ...,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb8-4"><a href="#cb8-4"></a>    clean_data,</span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="fu">clean_data_function</span>(raw_data)</span>
-<span id="cb8-6"><a href="#cb8-6"></a>  )</span>
-<span id="cb8-7"><a href="#cb8-7"></a>)</span>
-<span id="cb8-8"><a href="#cb8-8"></a>modeling <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb8-9"><a href="#cb8-9"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb8-10"><a href="#cb8-10"></a>    linear_model,</span>
-<span id="cb8-11"><a href="#cb8-11"></a>    <span class="fu">linear_model_function</span>(clean_data)</span>
-<span id="cb8-12"><a href="#cb8-12"></a>  ),</span>
-<span id="cb8-13"><a href="#cb8-13"></a>  ...</span>
-<span id="cb8-14"><a href="#cb8-14"></a>)</span>
-<span id="cb8-15"><a href="#cb8-15"></a><span class="fu">list</span>(</span>
-<span id="cb8-16"><a href="#cb8-16"></a>  preparation,</span>
-<span id="cb8-17"><a href="#cb8-17"></a>  modeling</span>
-<span id="cb8-18"><a href="#cb8-18"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>preparation <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-2"><a></a>  ...,</span>
+<span id="cb8-3"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb8-4"><a></a>    clean_data,</span>
+<span id="cb8-5"><a></a>    <span class="fu">clean_data_function</span>(raw_data)</span>
+<span id="cb8-6"><a></a>  )</span>
+<span id="cb8-7"><a></a>)</span>
+<span id="cb8-8"><a></a>modeling <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-9"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb8-10"><a></a>    linear_model,</span>
+<span id="cb8-11"><a></a>    <span class="fu">linear_model_function</span>(clean_data)</span>
+<span id="cb8-12"><a></a>  ),</span>
+<span id="cb8-13"><a></a>  ...</span>
+<span id="cb8-14"><a></a>)</span>
+<span id="cb8-15"><a></a><span class="fu">list</span>(</span>
+<span id="cb8-16"><a></a>  preparation,</span>
+<span id="cb8-17"><a></a>  modeling</span>
+<span id="cb8-18"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="smaller">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -645,22 +646,22 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <h2><code>_targets.R</code> tips and tricks</h2>
 <div class="columns">
 <div class="column" style="width:65.5%;">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="do">## prepare ----</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>prepare <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="do">### cleanData.csv ----</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb9-5"><a href="#cb9-5"></a>    cleanData.csv,</span>
-<span id="cb9-6"><a href="#cb9-6"></a>    <span class="fu">file.path</span>(path_to_data, </span>
-<span id="cb9-7"><a href="#cb9-7"></a>              <span class="st">"cleanData.csv"</span>),</span>
-<span id="cb9-8"><a href="#cb9-8"></a>    <span class="at">format =</span> <span class="st">"file"</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a>  ),</span>
-<span id="cb9-10"><a href="#cb9-10"></a>  <span class="do">### newdat ----</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb9-12"><a href="#cb9-12"></a>    newdat,</span>
-<span id="cb9-13"><a href="#cb9-13"></a>    <span class="fu">read_csv</span>(cleanData.csv, </span>
-<span id="cb9-14"><a href="#cb9-14"></a>             <span class="at">guess_max =</span> <span class="dv">20000</span>)</span>
-<span id="cb9-15"><a href="#cb9-15"></a>  ),</span>
-<span id="cb9-16"><a href="#cb9-16"></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="do">## prepare ----</span></span>
+<span id="cb9-2"><a></a>prepare <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-3"><a></a>  <span class="do">### cleanData.csv ----</span></span>
+<span id="cb9-4"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb9-5"><a></a>    cleanData.csv,</span>
+<span id="cb9-6"><a></a>    <span class="fu">file.path</span>(path_to_data, </span>
+<span id="cb9-7"><a></a>              <span class="st">"cleanData.csv"</span>),</span>
+<span id="cb9-8"><a></a>    <span class="at">format =</span> <span class="st">"file"</span></span>
+<span id="cb9-9"><a></a>  ),</span>
+<span id="cb9-10"><a></a>  <span class="do">### newdat ----</span></span>
+<span id="cb9-11"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb9-12"><a></a>    newdat,</span>
+<span id="cb9-13"><a></a>    <span class="fu">read_csv</span>(cleanData.csv, </span>
+<span id="cb9-14"><a></a>             <span class="at">guess_max =</span> <span class="dv">20000</span>)</span>
+<span id="cb9-15"><a></a>  ),</span>
+<span id="cb9-16"><a></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:34.5%;">
 <p><img data-src="img/outline.png"></p>
 </div>
@@ -727,19 +728,19 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </section>
 <section id="what-does-report.qmd-look-like" class="slide level2">
 <h2>What does <code>report.qmd</code> look like?</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My report"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(targets)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(results)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(plots)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>There were <span class="in">`r results$n`</span> observations with a mean age of <span class="in">`r results$mean_age`</span>.</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plots<span class="sc">$</span>age_plot</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a></a><span class="co">---</span></span>
+<span id="cb10-2"><a></a><span class="an">title:</span><span class="co"> "My report"</span></span>
+<span id="cb10-3"><a></a><span class="co">---</span></span>
+<span id="cb10-4"><a></a><span class="in">```{r}</span></span>
+<span id="cb10-5"><a></a><span class="in">library(targets)</span></span>
+<span id="cb10-6"><a></a><span class="in">tar_load(results)</span></span>
+<span id="cb10-7"><a></a><span class="in">tar_load(plots)</span></span>
+<span id="cb10-8"><a></a><span class="in">```</span></span>
+<span id="cb10-9"><a></a>There were <span class="in">`r results$n`</span> observations with a mean age of <span class="in">`r results$mean_age`</span>.</span>
+<span id="cb10-10"><a></a><span class="in">```{r}</span></span>
+<span id="cb10-11"><a></a><span class="in">library(ggplot2)</span></span>
+<span id="cb10-12"><a></a><span class="in">plots$age_plot</span></span>
+<span id="cb10-13"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Because <code>report.qmd</code> depends on <code>results</code> and <code>plots</code>, it will only be re-rendered if either of those targets change.</p>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -761,38 +762,38 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="columns">
 <div class="column" style="width:39%;">
 <p><code>_targets.R</code></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(targets)</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">library</span>(tarchetypes)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">tar_source</span>()</span>
-<span id="cb11-4"><a href="#cb11-4"></a></span>
-<span id="cb11-5"><a href="#cb11-5"></a>targets_setup <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb11-7"><a href="#cb11-7"></a>    csv,</span>
-<span id="cb11-8"><a href="#cb11-8"></a>    <span class="st">"data/nlsy.csv"</span>,</span>
-<span id="cb11-9"><a href="#cb11-9"></a>    <span class="at">format =</span> <span class="st">"file"</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a>  ),</span>
-<span id="cb11-11"><a href="#cb11-11"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb11-12"><a href="#cb11-12"></a>    dat,</span>
-<span id="cb11-13"><a href="#cb11-13"></a>    readr<span class="sc">::</span><span class="fu">read_csv</span>(csv, </span>
-<span id="cb11-14"><a href="#cb11-14"></a>      <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-15"><a href="#cb11-15"></a>  )</span>
-<span id="cb11-16"><a href="#cb11-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(targets)</span>
+<span id="cb11-2"><a></a><span class="fu">library</span>(tarchetypes)</span>
+<span id="cb11-3"><a></a><span class="fu">tar_source</span>()</span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a>targets_setup <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb11-6"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb11-7"><a></a>    csv,</span>
+<span id="cb11-8"><a></a>    <span class="st">"data/nlsy.csv"</span>,</span>
+<span id="cb11-9"><a></a>    <span class="at">format =</span> <span class="st">"file"</span></span>
+<span id="cb11-10"><a></a>  ),</span>
+<span id="cb11-11"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb11-12"><a></a>    dat,</span>
+<span id="cb11-13"><a></a>    readr<span class="sc">::</span><span class="fu">read_csv</span>(csv, </span>
+<span id="cb11-14"><a></a>      <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-15"><a></a>  )</span>
+<span id="cb11-16"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:2%;">
 
 </div><div class="column" style="width:59%;">
 <p><code>R/functions.R</code></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>model_function <span class="ot">&lt;-</span> <span class="cf">function</span>(outcome_var, </span>
-<span id="cb12-2"><a href="#cb12-2"></a>                           sex_val, dat) {</span>
-<span id="cb12-3"><a href="#cb12-3"></a></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">lm</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(outcome_var, </span>
-<span id="cb12-5"><a href="#cb12-5"></a>      <span class="st">" ~ age_bir + income + factor(region)"</span>)) ,</span>
-<span id="cb12-6"><a href="#cb12-6"></a>     <span class="at">data =</span> dat, </span>
-<span id="cb12-7"><a href="#cb12-7"></a>     <span class="at">subset =</span> sex <span class="sc">==</span> sex_val)</span>
-<span id="cb12-8"><a href="#cb12-8"></a>}</span>
-<span id="cb12-9"><a href="#cb12-9"></a></span>
-<span id="cb12-10"><a href="#cb12-10"></a>coef_function <span class="ot">&lt;-</span> <span class="cf">function</span>(model) {</span>
-<span id="cb12-11"><a href="#cb12-11"></a>  <span class="fu">coef</span>(model)[[<span class="st">"age_bir"</span>]]</span>
-<span id="cb12-12"><a href="#cb12-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>model_function <span class="ot">&lt;-</span> <span class="cf">function</span>(outcome_var, </span>
+<span id="cb12-2"><a></a>                           sex_val, dat) {</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a>  <span class="fu">lm</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(outcome_var, </span>
+<span id="cb12-5"><a></a>      <span class="st">" ~ age_bir + income + factor(region)"</span>)) ,</span>
+<span id="cb12-6"><a></a>     <span class="at">data =</span> dat, </span>
+<span id="cb12-7"><a></a>     <span class="at">subset =</span> sex <span class="sc">==</span> sex_val)</span>
+<span id="cb12-8"><a></a>}</span>
+<span id="cb12-9"><a></a></span>
+<span id="cb12-10"><a></a>coef_function <span class="ot">&lt;-</span> <span class="cf">function</span>(model) {</span>
+<span id="cb12-11"><a></a>  <span class="fu">coef</span>(model)[[<span class="st">"age_bir"</span>]]</span>
+<span id="cb12-12"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>we want to investigate the relationship between age at first birth and hours of sleep on weekdays and weekends among moms and dads separately<sup>1</sup></p>
@@ -800,18 +801,18 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <section id="option-1" class="slide level2">
 <h2>Option 1</h2>
 <p>Create (and name) a separate target for each combination of sleep variable (<code>"sleep_wkdy"</code>, <code>"sleep_wknd"</code>) and sex (male: <code>1</code>, female: <code>2</code>):</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>targets_1 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb13-3"><a href="#cb13-3"></a>    model_1,</span>
-<span id="cb13-4"><a href="#cb13-4"></a>    <span class="fu">model_function</span>(<span class="at">outcome_var =</span> <span class="st">"sleep_wkdy"</span>, <span class="at">sex_val =</span> <span class="dv">1</span>, <span class="at">dat =</span> dat)</span>
-<span id="cb13-5"><a href="#cb13-5"></a>  ),</span>
-<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb13-7"><a href="#cb13-7"></a>    coef_1,</span>
-<span id="cb13-8"><a href="#cb13-8"></a>    <span class="fu">coef_function</span>(model_1)</span>
-<span id="cb13-9"><a href="#cb13-9"></a>  )</span>
-<span id="cb13-10"><a href="#cb13-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>targets_1 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb13-2"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb13-3"><a></a>    model_1,</span>
+<span id="cb13-4"><a></a>    <span class="fu">model_function</span>(<span class="at">outcome_var =</span> <span class="st">"sleep_wkdy"</span>, <span class="at">sex_val =</span> <span class="dv">1</span>, <span class="at">dat =</span> dat)</span>
+<span id="cb13-5"><a></a>  ),</span>
+<span id="cb13-6"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb13-7"><a></a>    coef_1,</span>
+<span id="cb13-8"><a></a>    <span class="fu">coef_function</span>(model_1)</span>
+<span id="cb13-9"><a></a>  )</span>
+<span id="cb13-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>… and so on…</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">tar_read</span>(coef_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">tar_read</span>(coef_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.00734859</code></pre>
@@ -821,22 +822,22 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <section id="option-2" class="slide level2">
 <h2>Option 2</h2>
 <p>Use <code>tarchetypes::tar_map()</code> to map over the combinations for you (static branching):</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>targets_2 <span class="ot">&lt;-</span> <span class="fu">tar_map</span>(</span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="at">values =</span> tidyr<span class="sc">::</span><span class="fu">crossing</span>(</span>
-<span id="cb16-3"><a href="#cb16-3"></a>    <span class="at">outcome =</span> <span class="fu">c</span>(<span class="st">"sleep_wkdy"</span>, <span class="st">"sleep_wknd"</span>),</span>
-<span id="cb16-4"><a href="#cb16-4"></a>    <span class="at">sex =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  ),</span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb16-7"><a href="#cb16-7"></a>    model_2,</span>
-<span id="cb16-8"><a href="#cb16-8"></a>    <span class="fu">model_function</span>(<span class="at">outcome_var =</span> outcome, <span class="at">sex_val =</span> sex, <span class="at">dat =</span> dat)</span>
-<span id="cb16-9"><a href="#cb16-9"></a>  ),</span>
-<span id="cb16-10"><a href="#cb16-10"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb16-11"><a href="#cb16-11"></a>    coef_2,</span>
-<span id="cb16-12"><a href="#cb16-12"></a>    <span class="fu">coef_function</span>(model_2)</span>
-<span id="cb16-13"><a href="#cb16-13"></a>  )</span>
-<span id="cb16-14"><a href="#cb16-14"></a>)</span>
-<span id="cb16-15"><a href="#cb16-15"></a><span class="fu">tar_load</span>(<span class="fu">starts_with</span>(<span class="st">"coef_2"</span>))</span>
-<span id="cb16-16"><a href="#cb16-16"></a><span class="fu">c</span>(coef_2_sleep_wkdy_1, coef_2_sleep_wkdy_2, coef_2_sleep_wknd_1, coef_2_sleep_wknd_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>targets_2 <span class="ot">&lt;-</span> <span class="fu">tar_map</span>(</span>
+<span id="cb16-2"><a></a>  <span class="at">values =</span> tidyr<span class="sc">::</span><span class="fu">crossing</span>(</span>
+<span id="cb16-3"><a></a>    <span class="at">outcome =</span> <span class="fu">c</span>(<span class="st">"sleep_wkdy"</span>, <span class="st">"sleep_wknd"</span>),</span>
+<span id="cb16-4"><a></a>    <span class="at">sex =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
+<span id="cb16-5"><a></a>  ),</span>
+<span id="cb16-6"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb16-7"><a></a>    model_2,</span>
+<span id="cb16-8"><a></a>    <span class="fu">model_function</span>(<span class="at">outcome_var =</span> outcome, <span class="at">sex_val =</span> sex, <span class="at">dat =</span> dat)</span>
+<span id="cb16-9"><a></a>  ),</span>
+<span id="cb16-10"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb16-11"><a></a>    coef_2,</span>
+<span id="cb16-12"><a></a>    <span class="fu">coef_function</span>(model_2)</span>
+<span id="cb16-13"><a></a>  )</span>
+<span id="cb16-14"><a></a>)</span>
+<span id="cb16-15"><a></a><span class="fu">tar_load</span>(<span class="fu">starts_with</span>(<span class="st">"coef_2"</span>))</span>
+<span id="cb16-16"><a></a><span class="fu">c</span>(coef_2_sleep_wkdy_1, coef_2_sleep_wkdy_2, coef_2_sleep_wknd_1, coef_2_sleep_wknd_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.00734859 0.01901772 0.02595109 0.01422970</code></pre>
@@ -846,12 +847,12 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <section id="option-2-cont." class="slide level2">
 <h2>Option 2, cont.</h2>
 <p>Use <code>tarchetypes::tar_combine()</code> to combine the results of a call to <code>tar_map()</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>combined <span class="ot">&lt;-</span> <span class="fu">tar_combine</span>(</span>
-<span id="cb18-2"><a href="#cb18-2"></a>  combined_coefs_2,</span>
-<span id="cb18-3"><a href="#cb18-3"></a>  targets_2[[<span class="st">"coef_2"</span>]],</span>
-<span id="cb18-4"><a href="#cb18-4"></a>  <span class="at">command =</span> vctrs<span class="sc">::</span><span class="fu">vec_c</span>(<span class="sc">!!!</span>.x),</span>
-<span id="cb18-5"><a href="#cb18-5"></a>)</span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="fu">tar_read</span>(combined_coefs_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>combined <span class="ot">&lt;-</span> <span class="fu">tar_combine</span>(</span>
+<span id="cb18-2"><a></a>  combined_coefs_2,</span>
+<span id="cb18-3"><a></a>  targets_2[[<span class="st">"coef_2"</span>]],</span>
+<span id="cb18-4"><a></a>  <span class="at">command =</span> vctrs<span class="sc">::</span><span class="fu">vec_c</span>(<span class="sc">!!!</span>.x),</span>
+<span id="cb18-5"><a></a>)</span>
+<span id="cb18-6"><a></a><span class="fu">tar_read</span>(combined_coefs_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>coef_2_sleep_wkdy_1 coef_2_sleep_wkdy_2 coef_2_sleep_wknd_1 coef_2_sleep_wknd_2 
@@ -865,27 +866,27 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <div class="smaller">
 <p>Use the <code>pattern =</code> argument of <code>tar_target()</code> (dynamic branching):</p>
 </div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>targets_3 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb20-3"><a href="#cb20-3"></a>    outcome_target,</span>
-<span id="cb20-4"><a href="#cb20-4"></a>    <span class="fu">c</span>(<span class="st">"sleep_wkdy"</span>, <span class="st">"sleep_wknd"</span>)</span>
-<span id="cb20-5"><a href="#cb20-5"></a>  ),</span>
-<span id="cb20-6"><a href="#cb20-6"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb20-7"><a href="#cb20-7"></a>    sex_target,</span>
-<span id="cb20-8"><a href="#cb20-8"></a>    <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a>  ),</span>
-<span id="cb20-10"><a href="#cb20-10"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb20-11"><a href="#cb20-11"></a>    model_3,</span>
-<span id="cb20-12"><a href="#cb20-12"></a>    <span class="fu">model_function</span>(<span class="at">outcome_var =</span> outcome_target, <span class="at">sex_val =</span> sex_target, <span class="at">dat =</span> dat),</span>
-<span id="cb20-13"><a href="#cb20-13"></a>    <span class="at">pattern =</span> <span class="fu">cross</span>(outcome_target, sex_target)</span>
-<span id="cb20-14"><a href="#cb20-14"></a>  ),</span>
-<span id="cb20-15"><a href="#cb20-15"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb20-16"><a href="#cb20-16"></a>    coef_3,</span>
-<span id="cb20-17"><a href="#cb20-17"></a>    <span class="fu">coef_function</span>(model_3),</span>
-<span id="cb20-18"><a href="#cb20-18"></a>    <span class="at">pattern =</span> <span class="fu">map</span>(model_3)</span>
-<span id="cb20-19"><a href="#cb20-19"></a>  )</span>
-<span id="cb20-20"><a href="#cb20-20"></a>)</span>
-<span id="cb20-21"><a href="#cb20-21"></a><span class="fu">tar_read</span>(coef_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>targets_3 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb20-2"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb20-3"><a></a>    outcome_target,</span>
+<span id="cb20-4"><a></a>    <span class="fu">c</span>(<span class="st">"sleep_wkdy"</span>, <span class="st">"sleep_wknd"</span>)</span>
+<span id="cb20-5"><a></a>  ),</span>
+<span id="cb20-6"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb20-7"><a></a>    sex_target,</span>
+<span id="cb20-8"><a></a>    <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
+<span id="cb20-9"><a></a>  ),</span>
+<span id="cb20-10"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb20-11"><a></a>    model_3,</span>
+<span id="cb20-12"><a></a>    <span class="fu">model_function</span>(<span class="at">outcome_var =</span> outcome_target, <span class="at">sex_val =</span> sex_target, <span class="at">dat =</span> dat),</span>
+<span id="cb20-13"><a></a>    <span class="at">pattern =</span> <span class="fu">cross</span>(outcome_target, sex_target)</span>
+<span id="cb20-14"><a></a>  ),</span>
+<span id="cb20-15"><a></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb20-16"><a></a>    coef_3,</span>
+<span id="cb20-17"><a></a>    <span class="fu">coef_function</span>(model_3),</span>
+<span id="cb20-18"><a></a>    <span class="at">pattern =</span> <span class="fu">map</span>(model_3)</span>
+<span id="cb20-19"><a></a>  )</span>
+<span id="cb20-20"><a></a>)</span>
+<span id="cb20-21"><a></a><span class="fu">tar_read</span>(coef_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>coef_3_85bbb1b6 coef_3_c47db1e2 coef_3_5ba8b6ec coef_3_19c76a86 
@@ -946,42 +947,42 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <section id="tarchetypes-repetition" class="slide level2">
 <h2><code>{tarchetypes}</code>: repetition</h2>
 <p><code>tar_rep()</code> repeats a target multiple times with the same arguments</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>targets_4 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">tar_rep</span>(</span>
-<span id="cb22-3"><a href="#cb22-3"></a>    bootstrap_coefs,</span>
-<span id="cb22-4"><a href="#cb22-4"></a>    dat <span class="sc">|&gt;</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>      dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a>      <span class="fu">model_function</span>(<span class="at">outcome_var =</span> <span class="st">"sleep_wkdy"</span>, <span class="at">sex_val =</span> <span class="dv">1</span>, <span class="at">dat =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a>      <span class="fu">coef_function</span>(),</span>
-<span id="cb22-8"><a href="#cb22-8"></a>    <span class="at">batches =</span> <span class="dv">10</span>,</span>
-<span id="cb22-9"><a href="#cb22-9"></a>    <span class="at">reps =</span> <span class="dv">10</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a>  )</span>
-<span id="cb22-11"><a href="#cb22-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>targets_4 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb22-2"><a></a>  <span class="fu">tar_rep</span>(</span>
+<span id="cb22-3"><a></a>    bootstrap_coefs,</span>
+<span id="cb22-4"><a></a>    dat <span class="sc">|&gt;</span></span>
+<span id="cb22-5"><a></a>      dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb22-6"><a></a>      <span class="fu">model_function</span>(<span class="at">outcome_var =</span> <span class="st">"sleep_wkdy"</span>, <span class="at">sex_val =</span> <span class="dv">1</span>, <span class="at">dat =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb22-7"><a></a>      <span class="fu">coef_function</span>(),</span>
+<span id="cb22-8"><a></a>    <span class="at">batches =</span> <span class="dv">10</span>,</span>
+<span id="cb22-9"><a></a>    <span class="at">reps =</span> <span class="dv">10</span></span>
+<span id="cb22-10"><a></a>  )</span>
+<span id="cb22-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The pipeline gets split into <code>batches</code> x <code>reps</code> chunks, each with its own random seed</p>
 </section>
 <section id="tarchetypes-mapping-over-iterations" class="slide level2">
 <h2><code>{tarchetypes}</code>: mapping over iterations</h2>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>sensitivity_scenarios <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="at">error =</span> <span class="fu">c</span>(<span class="st">"small"</span>, <span class="st">"medium"</span>, <span class="st">"large"</span>),</span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>)</span>
-<span id="cb23-5"><a href="#cb23-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sensitivity_scenarios <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb23-2"><a></a>  <span class="at">error =</span> <span class="fu">c</span>(<span class="st">"small"</span>, <span class="st">"medium"</span>, <span class="st">"large"</span>),</span>
+<span id="cb23-3"><a></a>  <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb23-4"><a></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>)</span>
+<span id="cb23-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>tar_map_rep()</code> repeats a target multiple times with different arguments</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>targets_5 <span class="ot">&lt;-</span> <span class="fu">tar_map_rep</span>(</span>
-<span id="cb24-2"><a href="#cb24-2"></a>  sensitivity_analysis,</span>
-<span id="cb24-3"><a href="#cb24-3"></a>  dat <span class="sc">|&gt;</span> </span>
-<span id="cb24-4"><a href="#cb24-4"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">sleep_wkdy =</span> sleep_wkdy <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(dat), mean, sd)) <span class="sc">|&gt;</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>    <span class="fu">model_function</span>(<span class="at">outcome_var =</span> <span class="st">"sleep_wkdy"</span>, <span class="at">sex_val =</span> <span class="dv">1</span>, <span class="at">dat =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb24-6"><a href="#cb24-6"></a>    <span class="fu">coef_function</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb24-7"><a href="#cb24-7"></a>    <span class="fu">data.frame</span>(<span class="at">coef =</span> _),</span>
-<span id="cb24-8"><a href="#cb24-8"></a>  <span class="at">values =</span> sensitivity_scenarios,</span>
-<span id="cb24-9"><a href="#cb24-9"></a>  <span class="at">batches =</span> <span class="dv">10</span>,</span>
-<span id="cb24-10"><a href="#cb24-10"></a>  <span class="at">reps =</span> <span class="dv">10</span></span>
-<span id="cb24-11"><a href="#cb24-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>targets_5 <span class="ot">&lt;-</span> <span class="fu">tar_map_rep</span>(</span>
+<span id="cb24-2"><a></a>  sensitivity_analysis,</span>
+<span id="cb24-3"><a></a>  dat <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">sleep_wkdy =</span> sleep_wkdy <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(dat), mean, sd)) <span class="sc">|&gt;</span></span>
+<span id="cb24-5"><a></a>    <span class="fu">model_function</span>(<span class="at">outcome_var =</span> <span class="st">"sleep_wkdy"</span>, <span class="at">sex_val =</span> <span class="dv">1</span>, <span class="at">dat =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb24-6"><a></a>    <span class="fu">coef_function</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb24-7"><a></a>    <span class="fu">data.frame</span>(<span class="at">coef =</span> _),</span>
+<span id="cb24-8"><a></a>  <span class="at">values =</span> sensitivity_scenarios,</span>
+<span id="cb24-9"><a></a>  <span class="at">batches =</span> <span class="dv">10</span>,</span>
+<span id="cb24-10"><a></a>  <span class="at">reps =</span> <span class="dv">10</span></span>
+<span id="cb24-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tarchetypes-mapping-over-iterations-1" class="slide level2">
 <h2><code>{tarchetypes}</code>: mapping over iterations</h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">tar_read</span>(sensitivity_analysis) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">tar_read</span>(sensitivity_analysis) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>           coef error mean  sd tar_batch tar_rep    tar_seed tar_group
@@ -994,11 +995,11 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 </div>
 </div>
 <p>Ideal for sensitivity analyses that require multiple iterations of the same pipeline with different parameters</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">tar_read</span>(sensitivity_analysis) <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(error) <span class="sc">|&gt;</span> </span>
-<span id="cb27-3"><a href="#cb27-3"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">q25 =</span> <span class="fu">quantile</span>(coef, .<span class="dv">25</span>),</span>
-<span id="cb27-4"><a href="#cb27-4"></a>                   <span class="at">median =</span> <span class="fu">median</span>(coef),</span>
-<span id="cb27-5"><a href="#cb27-5"></a>                   <span class="at">q75 =</span> <span class="fu">quantile</span>(coef, .<span class="dv">75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">tar_read</span>(sensitivity_analysis) <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(error) <span class="sc">|&gt;</span> </span>
+<span id="cb27-3"><a></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">q25 =</span> <span class="fu">quantile</span>(coef, .<span class="dv">25</span>),</span>
+<span id="cb27-4"><a></a>                   <span class="at">median =</span> <span class="fu">median</span>(coef),</span>
+<span id="cb27-5"><a></a>                   <span class="at">q75 =</span> <span class="fu">quantile</span>(coef, .<span class="dv">75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   error         q25      median         q75
@@ -1020,8 +1021,10 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
 <p>Thanks!</p>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
 
@@ -1051,7 +1054,6 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1350,10 +1352,27 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/louisahsmith\.com");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1363,8 +1382,17 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1378,7 +1406,11 @@ div.callout-caution{border-left-color:#88c0d0 !important}div.callout-caution.cal
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
