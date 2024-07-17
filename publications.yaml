@@ -1,21 +1,3 @@
-- title: "Allofus: An R package to facilitate use of the All of Us Researcher Workbench"
-  Authors: "**Smith LH**, Cavanaugh R"
-  date: 2024-01-01
-  path: https://doi.org/10.1101/2024.04.10.24305611
-  Journal: "preprint"
-  PDF: |
-    <a href="preprints/smith2024allofus.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
-- title: "Pregnancy episodes in All of Us: Harnessing multi-source data for pregnancy-related research"
-  Authors: "**Smith LH**, Wang W, Keefe-Oates B"
-  date: 2024-01-01
-  path: https://doi.org/10.1101/2024.04.10.24305609
-  Journal: "preprint"
-  PDF: |
-    <a href="preprints/smith2024pregnancy.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
 - title: "Benzodiazepine initiation and the risk of falls or fall-related injuries in older adults following acute ischemic stroke"
   Authors: "Sun S, Lomachinsky V, **Smith LH**, Newhouse JP, Westover MB, Blacker D, Schwamm L, Haneuse S, Moura LMVR"
   date: 2024-01-01
@@ -36,13 +18,10 @@
     </a>
 - title: "Bayesian safety surveillance with adaptive bias correction"
   Authors: "Bu F, Schuemie MJ, Nishimura A, **Smith LH**, Kostka K, Falconer T, McLeggon JA, Ryan PB, Hripcsak G, Suchard MA"
-  date: 2023-01-01
+  date: 2024-02-01
   path: https://doi.org/10.1002/sim.9968
   Journal: "Statistics in Medicine"
-  PDF: |
-    <a href="publications/bu2023bayesian.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
+  PDF: 
 - title: "Health issues in the industrial port zone of Marseille, France: The FOS EPSEAL community-based cross-sectional survey"
   Authors: "Cohen AK, Richards T, Allen BL, Ferrier Y, Lees J, **Smith LH**"
   date: 2017-01-01
@@ -239,6 +218,24 @@
   Journal: "BMC Pregnancy and Childbirth"
   PDF: |
     <a href="publications/smith2022timing.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "allofus: An R package to facilitate use of the All of Us Researcher Workbench"
+  Authors: "**Smith LH**, Cavanaugh R"
+  date: 2024-03-01
+  path: https://doi.org/10.1093/jamia/ocae198
+  Journal: "Journal of the American Medical Informatics Association"
+  PDF: |
+    <a href="publications/smith2024allofus.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Pregnancy episodes in All of Us: Harnessing multi-source data for pregnancy-related research"
+  Authors: "**Smith LH**, Wang W, Keefe-Oates B"
+  date: 2024-04-01
+  path: https://doi.org/10.1093/jamia/ocae195
+  Journal: "Journal of the American Medical Informatics Association"
+  PDF: |
+    <a href="publications/smith2024pregnancy.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
 - title: "Identification of vaccine effects when exposure status is unknown"

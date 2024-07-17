@@ -1,8 +1,11 @@
 {
-  "hash": "c0501d43acfa4806aacb3f09eedc43f6",
+  "hash": "3d841a171dfcc5128c32534b2753e274",
   "result": {
-    "markdown": "---\ntitle: \"Louisa H. Smith\"\nformat:\n  html:\n    toc: false\n    page-layout: full\nabout:\n  template: trestles\n  image: img/neu_headshotA_square.jpg\n  links:\n    - icon: envelope\n      href: mailto:louisahsmith@gmail.com\n    - icon: github\n      href: https://github.com/louisahsmith\n    - text: \"{{< iconify academicons google-scholar >}}\"\n      href: https://scholar.google.com/citations?user=KeltSA4AAAAJ&hl=en&oi=ao\n    - text: \"{{< iconify ri bluesky-fill >}}\"\n      href: https://bsky.app/profile/louisahsmith.com\n---\n\n::: {.cell}\n\n:::\n\n\nI am an assistant professor in the Department of Health Sciences and at the Roux Institute, Northeastern University. I am an epidemiologist and biostatistician with expertise in reproductive and perinatal epidemiology and causal inference. I am passionate about teaching and mentoring students in epidemiology and biostatistics.\n\n\n### Education\n\n- **PhD**, Population Health Sciences (Epidemiologic Methods)\n  - Harvard University\n- **SM**, Biostatistics\n  - Harvard University\n- **MS**, Epidemiology\n  - University of California, Berkeley\n- **AB**, Comparative Literature / Community Health\n  - Brown University\n\n",
-    "supporting": [],
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Louisa H. Smith\"\nformat:\n  html:\n    toc: false\n    page-layout: full\nabout:\n  template: trestles\n  image: img/neu_headshotA_square.jpg\n  links:\n    - icon: envelope\n      href: mailto:l.smith@northeastern.edu\n    - icon: github\n      href: https://github.com/louisahsmith\n    - text: \"{{< iconify academicons google-scholar >}}\"\n      href: https://scholar.google.com/citations?user=KeltSA4AAAAJ&hl=en&oi=ao\n    - text: \"{{< iconify ri bluesky-fill >}}\"\n      href: https://bsky.app/profile/louisahsmith.com\n---\n\n::: {.cell}\n\n:::\n\n\nI am an assistant professor in the Department of Health Sciences and at the Roux Institute, Northeastern University. I am an epidemiologist and biostatistician with expertise in reproductive and perinatal epidemiology and causal inference. I am passionate about teaching and mentoring students in epidemiology and biostatistics.\n\n\n### Education\n\n- **PhD**, Population Health Sciences (Epidemiologic Methods)\n  - Harvard University\n- **SM**, Biostatistics\n  - Harvard University\n- **MS**, Epidemiology\n  - University of California, Berkeley\n- **AB**, Comparative Literature / Community Health\n  - Brown University\n\n",
+    "supporting": [
+      "index_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

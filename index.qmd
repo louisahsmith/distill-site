@@ -9,7 +9,7 @@ about:
   image: img/neu_headshotA_square.jpg
   links:
     - icon: envelope
-      href: mailto:louisahsmith@gmail.com
+      href: mailto:l.smith@northeastern.edu
     - icon: github
       href: https://github.com/louisahsmith
     - text: "{{< iconify academicons google-scholar >}}"

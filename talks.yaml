@@ -126,3 +126,11 @@
    subtitle: SER 2023
    image: talks/2023-06-14/snapshot.png
    path: talks/2023-06-14/slides.qmd
+- title: "Second-guessing selection bias"
+  description: "Thoughts selection bias in the context of large-scale volunteer databases"
+  author:
+    - name: Louisa H. Smith
+  date: '2024-06-20'
+  subtitle: SER 2024
+  image: talks/2024-06-20/snapshot.png
+  path: talks/2024-06-20/slides.pdf
