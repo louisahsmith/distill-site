@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
+
+  <meta name="author" content="Louisa Smith, PhD">
+  <meta name="author" content="Rob Cavanaugh, PhD">
+  <title>Louisa H. Smith – allofus: an R package to facilitate use of the All of Us Researcher Workbench  </title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="allofus: an R package to facilitate use of the All of Us Researcher Workbench  – Louisa H. Smith">
+<meta property="og:site_name" content="Louisa H. Smith">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="roux-title-image.jpg" data-background-opacity="0.5" data-background-size="cover" logo="none" class="quarto-title-block center">
+  <h1 class="title">allofus: an R package to facilitate use of the <em>All of Us</em> Researcher Workbench <br><br></h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Louisa Smith, PhD 
+</div>
+        <p class="quarto-title-affiliation">
+            The Roux Institute at Northeastern University
+          </p>
+        <p class="quarto-title-affiliation">
+            Bouve College of Health Sciences, Northeastern University
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Rob Cavanaugh, PhD 
+</div>
+        <p class="quarto-title-affiliation">
+            The Roux Institute at Northeastern University
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="who-we-are" class="slide level2 smaller">
+<h2>Who we are</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="images/neu_headshotA_square_circle.jpeg" style="border-radius:50%;" width="300"></p>
+<p><em>Assistant professor</em></p>
+<ul>
+<li>causal inference, missing data and selection bias, pregnancy and reproductive health</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<p><img data-src="images/clipboard-3214775132.png" style="border-radius:50%;" width="300"></p>
+<p><em>Research data analyst</em></p>
+<ul>
+<li>health services research, neurorehabilitation, open-source software development</li>
+</ul>
+</div></div>
+<div class="fragment">
+<p><strong>mentoring other researchers using <em>All of Us</em> data</strong></p>
+</div>
+</section>
+<section id="challenges" class="slide level2 smaller">
+<h2>Challenges</h2>
+<ul>
+<li>Lack of programming skills
+<ul>
+<li>Health researchers often use R or SAS, some use python, few use SQL</li>
+<li><code>tidyverse</code> is (the most?) popular framework for R</li>
+</ul></li>
+<li><em>All of Us</em> data is complex
+<ul>
+<li>the OMOP CDM has a steep learning curve, plus the complexity of the other data (e.g., surveys)</li>
+<li>many researchers are trained on cleaner, more straightforward data</li>
+</ul></li>
+<li>Large scale observational health research is hard
+<ul>
+<li>defining cohorts with appropriate inclusion/exclusion criteria, exposure/outcome phenotypes, time under observation, etc.</li>
+<li>huge potential for confounding, selection bias, measurement error…</li>
+<li>reproducibility is critical</li>
+</ul></li>
+</ul>
+</section>
+<section id="allofus-r-package" class="slide level2">
+<h2><code>allofus</code> R package</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><img data-src="images/workflow.png"></p>
+</div><div class="column" style="width:30%;">
+<div>
+<ul>
+<li class="fragment">Build on existing tools/skills</li>
+<li class="fragment">Enable complex research</li>
+<li class="fragment">Efficient</li>
+<li class="fragment">Reproducible</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="when-to-start-antihypertensive-medications-during-pregnancy" class="slide level2 smaller">
+<h2>When to start antihypertensive medications during pregnancy?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Eligibility criteria</strong></td>
+<td>Pregnant, with chronic hypertension diagnosed prior to pregnancy but no prior use of antihypertensive medications</td>
+</tr>
+<tr class="even">
+<td><strong>Baseline (time zero)</strong></td>
+<td>First prenatal visit</td>
+</tr>
+<tr class="odd">
+<td><strong>Treatment strategies</strong></td>
+<td>Initiate antihypertensive medications 1) immediately vs.&nbsp;2) delayed vs.&nbsp;3) never</td>
+</tr>
+<tr class="even">
+<td><strong>Outcome</strong></td>
+<td>Composite of preeclampsia with severe features, medically indicated preterm birth at &lt;35 weeks of gestation, placental abruption, or fetal or neonatal death</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-start-antihypertensive-medications-during-pregnancy-1" class="slide level2">
+<h2>When to start antihypertensive medications during pregnancy?</h2>
+<p><span class="fragment" data-fragment-index="1">1. Define the cohort</span></p>
+<p><span class="fragment" data-fragment-index="2">2. Extract data from different domains to create a dataset with exposure, outcome, covariates</span></p>
+<p><span class="fragment fade-in-then-semi-out" data-fragment-index="3" style="color:darkgrey">3. Analyze the data</span></p>
+<div class="r-stack">
+<p><img data-src="images/clipboard-3380727214.png" class="fragment" data-fragment-index="1"></p>
+<p><img data-src="images/clipboard-1434146805.png" class="fragment" data-fragment-index="2"></p>
+</div>
+</section>
+<section id="where-to-begin" class="slide level2">
+<h2>Where to begin?</h2>
+
+<!-- ## Motivations -->
+<!-- -   Desire to make code easily readable and reproducible, particularly when creating complex cohorts and datasets -->
+<!-- -   Parallel work in OMOP data – want to take advantage of OHDSI tools -->
+<!-- -   Students want to use *All of Us* but find it overwhelming -->
+<!-- -   Familiarity with `tidyverse` packages and a lot of other tools built off the same framework -->
+<!-- -   As we were doing analyses, we were creating a lot of code we wanted to reuse -->
+<img data-src="images/clipboard-2973991945.png" class="r-stretch"></section>
+<section id="begin-in-r" class="slide level2">
+<h2>Begin in R</h2>
+<p>Everything is built on a direct connection to the <em>bigquery</em> database</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(allofus)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>con <span class="ot">&lt;-</span> <span class="fu">aou_connect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! Unable to connect to CDR</code></pre>
+</div>
+</div>
+</section>
+<section id="access-tables" class="slide level2">
+<h2>Access tables</h2>
+<p>Under the hood, <a href="https://dbplyr.tidyverse.org/"><code>dbplyr</code></a> (part of the <code>tidyverse</code>) allows researchers to use many of the same functions on a remote table that they would use on a dataframe</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>person <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"person"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'con' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">colnames</span>(person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+</div>
+</section>
+<section id="quick-data-manipulations-and-computations" class="slide level2">
+<h2>Quick data manipulations and computations</h2>
+<p>Users are running SQL queries without realizing they’re running SQL queries</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>person <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">mutate</span>(<span class="at">birth_decade =</span> <span class="fu">cut</span>(year_of_birth, </span>
+<span id="cb7-3"><a></a>                            <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1930</span>, <span class="dv">1940</span>, <span class="dv">1950</span>, <span class="dv">1960</span>, <span class="dv">1970</span>, </span>
+<span id="cb7-4"><a></a>                                       <span class="dv">1980</span>, <span class="dv">1990</span>, <span class="dv">2000</span>, <span class="dv">2010</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a></a>  <span class="fu">count</span>(birth_decade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in UseMethod("mutate"): no applicable method for 'mutate' applied to an object of class "function"</code></pre>
+</div>
+</div>
+</section>
+<section id="behind-the-scenes" class="slide level2">
+<h2>Behind the scenes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a></a><span class="kw">SELECT</span> `birth_decade`, <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">AS</span> `n`</span>
+<span id="cb9-2"><a></a><span class="kw">FROM</span> (</span>
+<span id="cb9-3"><a></a>  <span class="kw">SELECT</span></span>
+<span id="cb9-4"><a></a>    `person`.<span class="op">*</span>,</span>
+<span id="cb9-5"><a></a>    <span class="cf">CASE</span></span>
+<span id="cb9-6"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&lt;=</span> <span class="fl">1930.0</span>) <span class="cf">THEN</span> <span class="kw">NULL</span></span>
+<span id="cb9-7"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&lt;=</span> <span class="fl">1940.0</span>) <span class="cf">THEN</span> <span class="st">'(1930,1940]'</span></span>
+<span id="cb9-8"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&lt;=</span> <span class="fl">1950.0</span>) <span class="cf">THEN</span> <span class="st">'(1940,1950]'</span></span>
+<span id="cb9-9"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&lt;=</span> <span class="fl">1960.0</span>) <span class="cf">THEN</span> <span class="st">'(1950,1960]'</span></span>
+<span id="cb9-10"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&lt;=</span> <span class="fl">1970.0</span>) <span class="cf">THEN</span> <span class="st">'(1960,1970]'</span></span>
+<span id="cb9-11"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&lt;=</span> <span class="fl">1980.0</span>) <span class="cf">THEN</span> <span class="st">'(1970,1980]'</span></span>
+<span id="cb9-12"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&lt;=</span> <span class="fl">1990.0</span>) <span class="cf">THEN</span> <span class="st">'(1980,1990]'</span></span>
+<span id="cb9-13"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&lt;=</span> <span class="fl">2000.0</span>) <span class="cf">THEN</span> <span class="st">'(1990,2000]'</span></span>
+<span id="cb9-14"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&lt;=</span> <span class="fl">2010.0</span>) <span class="cf">THEN</span> <span class="st">'(2000,2010]'</span></span>
+<span id="cb9-15"><a></a><span class="cf">WHEN</span> (`year_of_birth` <span class="op">&gt;</span> <span class="fl">2010.0</span>) <span class="cf">THEN</span> <span class="kw">NULL</span></span>
+<span id="cb9-16"><a></a><span class="cf">END</span> <span class="kw">AS</span> `birth_decade`</span>
+<span id="cb9-17"><a></a>  <span class="kw">FROM</span> `person`</span>
+<span id="cb9-18"><a></a>) `q01`</span>
+<span id="cb9-19"><a></a><span class="kw">GROUP</span> <span class="kw">BY</span> `birth_decade`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-cohorts-with-cohort-builder" class="slide level2">
+<h2>Creating cohorts with Cohort Builder</h2>
+
+<img data-src="images/clipboard-1754030645.png" class="r-stretch"></section>
+<section id="creating-cohorts-with-allofus" class="slide level2">
+<h2>Creating cohorts with <code>allofus</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>reproductive_age_female <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"cb_search_person"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a></a>  <span class="fu">filter</span>(age_at_consent <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age_at_consent <span class="sc">&lt;=</span> <span class="dv">55</span>, </span>
+<span id="cb10-3"><a></a>         sex_at_birth <span class="sc">==</span> <span class="st">"Female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'con' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>hypertensive_disorder <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"concept_ancestor"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a></a>  <span class="fu">filter</span>(ancestor_concept_id <span class="sc">==</span> <span class="dv">316866</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a></a>  <span class="fu">inner_join</span>(</span>
+<span id="cb12-4"><a></a>    <span class="fu">tbl</span>(con, <span class="st">"condition_occurrence"</span>), </span>
+<span id="cb12-5"><a></a>    <span class="at">by =</span> <span class="fu">join_by</span>(descendant_concept_id <span class="sc">==</span> condition_concept_id)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-6"><a></a>  <span class="fu">distinct</span>(person_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'con' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>cohort <span class="ot">&lt;-</span> reproductive_age_female <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a></a>  <span class="fu">inner_join</span>(hypertensive_disorder, <span class="at">by =</span> <span class="fu">join_by</span>(person_id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'reproductive_age_female' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">tally</span>(cohort)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'cohort' not found</code></pre>
+</div>
+</div>
+</section>
+<section id="how-does-this-address-our-challenges" class="slide level2">
+<h2>How does this address our challenges?</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li>Abstracts away all the SQL code and take advantage of existing R skills</li>
+<li>Enables more complex cohort definitions, including those involving non-EHR data</li>
+<li>Easy to carry forward the cohort to extract data and create datasets</li>
+<li>Readable and reproducible</li>
+</ul>
+</div><div class="column" style="width:35%;">
+<p><img data-src="images/clipboard-1268433413.png"></p>
+</div></div>
+</section>
+<section id="creating-datasets-with-cohort-builder" class="slide level2">
+<h2>Creating datasets with Cohort Builder</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-2"><a></a><span class="fu">library</span>(bigrquery)</span>
+<span id="cb18-3"><a></a></span>
+<span id="cb18-4"><a></a><span class="co"># This query represents dataset "hypertension in pregnancy" for domain "person" and was generated for All of Us Registered Tier Dataset v7</span></span>
+<span id="cb18-5"><a></a>dataset_71250616_person_sql <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"</span></span>
+<span id="cb18-6"><a></a><span class="st">    SELECT</span></span>
+<span id="cb18-7"><a></a><span class="st">        person.person_id,</span></span>
+<span id="cb18-8"><a></a><span class="st">        person.gender_concept_id,</span></span>
+<span id="cb18-9"><a></a><span class="st">        p_gender_concept.concept_name as gender,</span></span>
+<span id="cb18-10"><a></a><span class="st">        person.birth_datetime as date_of_birth,</span></span>
+<span id="cb18-11"><a></a><span class="st">        person.race_concept_id,</span></span>
+<span id="cb18-12"><a></a><span class="st">        p_race_concept.concept_name as race,</span></span>
+<span id="cb18-13"><a></a><span class="st">        person.ethnicity_concept_id,</span></span>
+<span id="cb18-14"><a></a><span class="st">        p_ethnicity_concept.concept_name as ethnicity,</span></span>
+<span id="cb18-15"><a></a><span class="st">        person.sex_at_birth_concept_id,</span></span>
+<span id="cb18-16"><a></a><span class="st">        p_sex_at_birth_concept.concept_name as sex_at_birth </span></span>
+<span id="cb18-17"><a></a><span class="st">    FROM</span></span>
+<span id="cb18-18"><a></a><span class="st">        `person` person </span></span>
+<span id="cb18-19"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-20"><a></a><span class="st">        `concept` p_gender_concept </span></span>
+<span id="cb18-21"><a></a><span class="st">            ON person.gender_concept_id = p_gender_concept.concept_id </span></span>
+<span id="cb18-22"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-23"><a></a><span class="st">        `concept` p_race_concept </span></span>
+<span id="cb18-24"><a></a><span class="st">            ON person.race_concept_id = p_race_concept.concept_id </span></span>
+<span id="cb18-25"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-26"><a></a><span class="st">        `concept` p_ethnicity_concept </span></span>
+<span id="cb18-27"><a></a><span class="st">            ON person.ethnicity_concept_id = p_ethnicity_concept.concept_id </span></span>
+<span id="cb18-28"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-29"><a></a><span class="st">        `concept` p_sex_at_birth_concept </span></span>
+<span id="cb18-30"><a></a><span class="st">            ON person.sex_at_birth_concept_id = p_sex_at_birth_concept.concept_id  </span></span>
+<span id="cb18-31"><a></a><span class="st">    WHERE</span></span>
+<span id="cb18-32"><a></a><span class="st">        person.PERSON_ID IN (SELECT</span></span>
+<span id="cb18-33"><a></a><span class="st">            distinct person_id  </span></span>
+<span id="cb18-34"><a></a><span class="st">        FROM</span></span>
+<span id="cb18-35"><a></a><span class="st">            `cb_search_person` cb_search_person  </span></span>
+<span id="cb18-36"><a></a><span class="st">        WHERE</span></span>
+<span id="cb18-37"><a></a><span class="st">            cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-38"><a></a><span class="st">                person_id </span></span>
+<span id="cb18-39"><a></a><span class="st">            FROM</span></span>
+<span id="cb18-40"><a></a><span class="st">                `cb_search_person` p </span></span>
+<span id="cb18-41"><a></a><span class="st">            WHERE</span></span>
+<span id="cb18-42"><a></a><span class="st">                age_at_consent BETWEEN 18 AND 50 </span></span>
+<span id="cb18-43"><a></a><span class="st">            AND cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-44"><a></a><span class="st">                person_id </span></span>
+<span id="cb18-45"><a></a><span class="st">            FROM</span></span>
+<span id="cb18-46"><a></a><span class="st">                `person` p </span></span>
+<span id="cb18-47"><a></a><span class="st">            WHERE</span></span>
+<span id="cb18-48"><a></a><span class="st">                sex_at_birth_concept_id IN (45878463) ) </span></span>
+<span id="cb18-49"><a></a><span class="st">            AND cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-50"><a></a><span class="st">                criteria.person_id </span></span>
+<span id="cb18-51"><a></a><span class="st">            FROM</span></span>
+<span id="cb18-52"><a></a><span class="st">                (SELECT</span></span>
+<span id="cb18-53"><a></a><span class="st">                    DISTINCT person_id, entry_date, concept_id </span></span>
+<span id="cb18-54"><a></a><span class="st">                FROM</span></span>
+<span id="cb18-55"><a></a><span class="st">                    `cb_search_all_events` </span></span>
+<span id="cb18-56"><a></a><span class="st">                WHERE</span></span>
+<span id="cb18-57"><a></a><span class="st">                    (concept_id IN(SELECT</span></span>
+<span id="cb18-58"><a></a><span class="st">                        DISTINCT c.concept_id </span></span>
+<span id="cb18-59"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-60"><a></a><span class="st">                        `cb_criteria` c </span></span>
+<span id="cb18-61"><a></a><span class="st">                    JOIN</span></span>
+<span id="cb18-62"><a></a><span class="st">                        (SELECT</span></span>
+<span id="cb18-63"><a></a><span class="st">                            CAST(cr.id as string) AS id       </span></span>
+<span id="cb18-64"><a></a><span class="st">                        FROM</span></span>
+<span id="cb18-65"><a></a><span class="st">                            `cb_criteria` cr       </span></span>
+<span id="cb18-66"><a></a><span class="st">                        WHERE</span></span>
+<span id="cb18-67"><a></a><span class="st">                            concept_id IN (316866)       </span></span>
+<span id="cb18-68"><a></a><span class="st">                            AND full_text LIKE '%_rank1]%'      ) a </span></span>
+<span id="cb18-69"><a></a><span class="st">                            ON (c.path LIKE CONCAT('%.', a.id, '.%') </span></span>
+<span id="cb18-70"><a></a><span class="st">                            OR c.path LIKE CONCAT('%.', a.id) </span></span>
+<span id="cb18-71"><a></a><span class="st">                            OR c.path LIKE CONCAT(a.id, '.%') </span></span>
+<span id="cb18-72"><a></a><span class="st">                            OR c.path = a.id) </span></span>
+<span id="cb18-73"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-74"><a></a><span class="st">                        is_standard = 1 </span></span>
+<span id="cb18-75"><a></a><span class="st">                        AND is_selectable = 1) </span></span>
+<span id="cb18-76"><a></a><span class="st">                    AND is_standard = 1 )) criteria ) )"</span>, <span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb18-77"><a></a></span>
+<span id="cb18-78"><a></a><span class="co"># Formulate a Cloud Storage destination path for the data exported from BigQuery.</span></span>
+<span id="cb18-79"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: By default data exported multiple times on the same day will overwrite older copies.</span></span>
+<span id="cb18-80"><a></a><span class="co">#       But data exported on a different days will write to a new location so that historical</span></span>
+<span id="cb18-81"><a></a><span class="co">#       copies can be kept as the dataset definition is changed.</span></span>
+<span id="cb18-82"><a></a>person_71250616_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(</span>
+<span id="cb18-83"><a></a>  <span class="fu">Sys.getenv</span>(<span class="st">"WORKSPACE_BUCKET"</span>),</span>
+<span id="cb18-84"><a></a>  <span class="st">"bq_exports"</span>,</span>
+<span id="cb18-85"><a></a>  <span class="fu">Sys.getenv</span>(<span class="st">"OWNER_EMAIL"</span>),</span>
+<span id="cb18-86"><a></a>  <span class="fu">strftime</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="st">"%Y%m%d"</span>),  <span class="co"># Comment out this line if you want the export to always overwrite.</span></span>
+<span id="cb18-87"><a></a>  <span class="st">"person_71250616"</span>,</span>
+<span id="cb18-88"><a></a>  <span class="st">"person_71250616_*.csv"</span>)</span>
+<span id="cb18-89"><a></a><span class="fu">message</span>(<span class="fu">str_glue</span>(<span class="st">'The data will be written to {person_71250616_path}. Use this path when reading '</span>,</span>
+<span id="cb18-90"><a></a>                 <span class="st">'the data into your notebooks in the future.'</span>))</span>
+<span id="cb18-91"><a></a></span>
+<span id="cb18-92"><a></a><span class="co"># Perform the query and export the dataset to Cloud Storage as CSV files.</span></span>
+<span id="cb18-93"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: You only need to run `bq_table_save` once. After that, you can</span></span>
+<span id="cb18-94"><a></a><span class="co">#       just read data from the CSVs in Cloud Storage.</span></span>
+<span id="cb18-95"><a></a><span class="fu">bq_table_save</span>(</span>
+<span id="cb18-96"><a></a>  <span class="fu">bq_dataset_query</span>(<span class="fu">Sys.getenv</span>(<span class="st">"WORKSPACE_CDR"</span>), dataset_71250616_person_sql, <span class="at">billing =</span> <span class="fu">Sys.getenv</span>(<span class="st">"GOOGLE_PROJECT"</span>)),</span>
+<span id="cb18-97"><a></a>  person_71250616_path,</span>
+<span id="cb18-98"><a></a>  <span class="at">destination_format =</span> <span class="st">"CSV"</span>)</span>
+<span id="cb18-99"><a></a></span>
+<span id="cb18-100"><a></a></span>
+<span id="cb18-101"><a></a><span class="co"># Read the data directly from Cloud Storage into memory.</span></span>
+<span id="cb18-102"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: Alternatively you can `gsutil -m cp {person_71250616_path}` to copy these files</span></span>
+<span id="cb18-103"><a></a><span class="co">#       to the Jupyter disk.</span></span>
+<span id="cb18-104"><a></a>read_bq_export_from_workspace_bucket <span class="ot">&lt;-</span> <span class="cf">function</span>(export_path) {</span>
+<span id="cb18-105"><a></a>  col_types <span class="ot">&lt;-</span> <span class="fu">cols</span>(<span class="at">gender =</span> <span class="fu">col_character</span>(), <span class="at">race =</span> <span class="fu">col_character</span>(), <span class="at">ethnicity =</span> <span class="fu">col_character</span>(), <span class="at">sex_at_birth =</span> <span class="fu">col_character</span>())</span>
+<span id="cb18-106"><a></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb18-107"><a></a>    <span class="fu">map</span>(<span class="fu">system2</span>(<span class="st">'gsutil'</span>, <span class="at">args =</span> <span class="fu">c</span>(<span class="st">'ls'</span>, export_path), <span class="at">stdout =</span> <span class="cn">TRUE</span>, <span class="at">stderr =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-108"><a></a>        <span class="cf">function</span>(csv) {</span>
+<span id="cb18-109"><a></a>          <span class="fu">message</span>(<span class="fu">str_glue</span>(<span class="st">'Loading {csv}.'</span>))</span>
+<span id="cb18-110"><a></a>          chunk <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">pipe</span>(<span class="fu">str_glue</span>(<span class="st">'gsutil cat {csv}'</span>)), <span class="at">col_types =</span> col_types, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-111"><a></a>          <span class="cf">if</span> (<span class="fu">is.null</span>(col_types)) {</span>
+<span id="cb18-112"><a></a>            col_types <span class="ot">&lt;-</span> <span class="fu">spec</span>(chunk)</span>
+<span id="cb18-113"><a></a>          }</span>
+<span id="cb18-114"><a></a>          chunk</span>
+<span id="cb18-115"><a></a>        }))</span>
+<span id="cb18-116"><a></a>}</span>
+<span id="cb18-117"><a></a>dataset_71250616_person_df <span class="ot">&lt;-</span> <span class="fu">read_bq_export_from_workspace_bucket</span>(person_71250616_path)</span>
+<span id="cb18-118"><a></a></span>
+<span id="cb18-119"><a></a><span class="fu">dim</span>(dataset_71250616_person_df)</span>
+<span id="cb18-120"><a></a></span>
+<span id="cb18-121"><a></a><span class="fu">head</span>(dataset_71250616_person_df, <span class="dv">5</span>)</span>
+<span id="cb18-122"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-123"><a></a><span class="fu">library</span>(bigrquery)</span>
+<span id="cb18-124"><a></a></span>
+<span id="cb18-125"><a></a><span class="co"># This query represents dataset "hypertension in pregnancy" for domain "condition" and was generated for All of Us Registered Tier Dataset v7</span></span>
+<span id="cb18-126"><a></a>dataset_71250616_condition_sql <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"</span></span>
+<span id="cb18-127"><a></a><span class="st">    SELECT</span></span>
+<span id="cb18-128"><a></a><span class="st">        c_occurrence.person_id,</span></span>
+<span id="cb18-129"><a></a><span class="st">        c_occurrence.condition_concept_id,</span></span>
+<span id="cb18-130"><a></a><span class="st">        c_standard_concept.concept_name as standard_concept_name,</span></span>
+<span id="cb18-131"><a></a><span class="st">        c_standard_concept.concept_code as standard_concept_code,</span></span>
+<span id="cb18-132"><a></a><span class="st">        c_standard_concept.vocabulary_id as standard_vocabulary,</span></span>
+<span id="cb18-133"><a></a><span class="st">        c_occurrence.condition_start_datetime,</span></span>
+<span id="cb18-134"><a></a><span class="st">        c_occurrence.condition_end_datetime,</span></span>
+<span id="cb18-135"><a></a><span class="st">        c_occurrence.condition_type_concept_id,</span></span>
+<span id="cb18-136"><a></a><span class="st">        c_type.concept_name as condition_type_concept_name,</span></span>
+<span id="cb18-137"><a></a><span class="st">        c_occurrence.stop_reason,</span></span>
+<span id="cb18-138"><a></a><span class="st">        c_occurrence.visit_occurrence_id,</span></span>
+<span id="cb18-139"><a></a><span class="st">        visit.concept_name as visit_occurrence_concept_name,</span></span>
+<span id="cb18-140"><a></a><span class="st">        c_occurrence.condition_source_value,</span></span>
+<span id="cb18-141"><a></a><span class="st">        c_occurrence.condition_source_concept_id,</span></span>
+<span id="cb18-142"><a></a><span class="st">        c_source_concept.concept_name as source_concept_name,</span></span>
+<span id="cb18-143"><a></a><span class="st">        c_source_concept.concept_code as source_concept_code,</span></span>
+<span id="cb18-144"><a></a><span class="st">        c_source_concept.vocabulary_id as source_vocabulary,</span></span>
+<span id="cb18-145"><a></a><span class="st">        c_occurrence.condition_status_source_value,</span></span>
+<span id="cb18-146"><a></a><span class="st">        c_occurrence.condition_status_concept_id,</span></span>
+<span id="cb18-147"><a></a><span class="st">        c_status.concept_name as condition_status_concept_name </span></span>
+<span id="cb18-148"><a></a><span class="st">    FROM</span></span>
+<span id="cb18-149"><a></a><span class="st">        ( SELECT</span></span>
+<span id="cb18-150"><a></a><span class="st">            * </span></span>
+<span id="cb18-151"><a></a><span class="st">        FROM</span></span>
+<span id="cb18-152"><a></a><span class="st">            `condition_occurrence` c_occurrence </span></span>
+<span id="cb18-153"><a></a><span class="st">        WHERE</span></span>
+<span id="cb18-154"><a></a><span class="st">            (</span></span>
+<span id="cb18-155"><a></a><span class="st">                condition_concept_id IN (SELECT</span></span>
+<span id="cb18-156"><a></a><span class="st">                    DISTINCT c.concept_id </span></span>
+<span id="cb18-157"><a></a><span class="st">                FROM</span></span>
+<span id="cb18-158"><a></a><span class="st">                    `cb_criteria` c </span></span>
+<span id="cb18-159"><a></a><span class="st">                JOIN</span></span>
+<span id="cb18-160"><a></a><span class="st">                    (SELECT</span></span>
+<span id="cb18-161"><a></a><span class="st">                        CAST(cr.id as string) AS id       </span></span>
+<span id="cb18-162"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-163"><a></a><span class="st">                        `cb_criteria` cr       </span></span>
+<span id="cb18-164"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-165"><a></a><span class="st">                        concept_id IN (132685, 133816, 134414, 135601, 136743, 137613, 138811, 141084, 314090, 35622939, 4034096, 4057976, 4116344, 4283352, 433536, 438490, 439077, 439393, 443700)       </span></span>
+<span id="cb18-166"><a></a><span class="st">                        AND full_text LIKE '%_rank1]%'      ) a </span></span>
+<span id="cb18-167"><a></a><span class="st">                        ON (c.path LIKE CONCAT('%.', a.id, '.%') </span></span>
+<span id="cb18-168"><a></a><span class="st">                        OR c.path LIKE CONCAT('%.', a.id) </span></span>
+<span id="cb18-169"><a></a><span class="st">                        OR c.path LIKE CONCAT(a.id, '.%') </span></span>
+<span id="cb18-170"><a></a><span class="st">                        OR c.path = a.id) </span></span>
+<span id="cb18-171"><a></a><span class="st">                WHERE</span></span>
+<span id="cb18-172"><a></a><span class="st">                    is_standard = 1 </span></span>
+<span id="cb18-173"><a></a><span class="st">                    AND is_selectable = 1)</span></span>
+<span id="cb18-174"><a></a><span class="st">            )  </span></span>
+<span id="cb18-175"><a></a><span class="st">            AND (</span></span>
+<span id="cb18-176"><a></a><span class="st">                c_occurrence.PERSON_ID IN (SELECT</span></span>
+<span id="cb18-177"><a></a><span class="st">                    distinct person_id  </span></span>
+<span id="cb18-178"><a></a><span class="st">                FROM</span></span>
+<span id="cb18-179"><a></a><span class="st">                    `cb_search_person` cb_search_person  </span></span>
+<span id="cb18-180"><a></a><span class="st">                WHERE</span></span>
+<span id="cb18-181"><a></a><span class="st">                    cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-182"><a></a><span class="st">                        person_id </span></span>
+<span id="cb18-183"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-184"><a></a><span class="st">                        `cb_search_person` p </span></span>
+<span id="cb18-185"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-186"><a></a><span class="st">                        age_at_consent BETWEEN 18 AND 50 </span></span>
+<span id="cb18-187"><a></a><span class="st">                    AND cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-188"><a></a><span class="st">                        person_id </span></span>
+<span id="cb18-189"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-190"><a></a><span class="st">                        `person` p </span></span>
+<span id="cb18-191"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-192"><a></a><span class="st">                        sex_at_birth_concept_id IN (45878463) ) </span></span>
+<span id="cb18-193"><a></a><span class="st">                    AND cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-194"><a></a><span class="st">                        criteria.person_id </span></span>
+<span id="cb18-195"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-196"><a></a><span class="st">                        (SELECT</span></span>
+<span id="cb18-197"><a></a><span class="st">                            DISTINCT person_id, entry_date, concept_id </span></span>
+<span id="cb18-198"><a></a><span class="st">                        FROM</span></span>
+<span id="cb18-199"><a></a><span class="st">                            `cb_search_all_events` </span></span>
+<span id="cb18-200"><a></a><span class="st">                        WHERE</span></span>
+<span id="cb18-201"><a></a><span class="st">                            (concept_id IN(SELECT</span></span>
+<span id="cb18-202"><a></a><span class="st">                                DISTINCT c.concept_id </span></span>
+<span id="cb18-203"><a></a><span class="st">                            FROM</span></span>
+<span id="cb18-204"><a></a><span class="st">                                `cb_criteria` c </span></span>
+<span id="cb18-205"><a></a><span class="st">                            JOIN</span></span>
+<span id="cb18-206"><a></a><span class="st">                                (SELECT</span></span>
+<span id="cb18-207"><a></a><span class="st">                                    CAST(cr.id as string) AS id       </span></span>
+<span id="cb18-208"><a></a><span class="st">                                FROM</span></span>
+<span id="cb18-209"><a></a><span class="st">                                    `cb_criteria` cr       </span></span>
+<span id="cb18-210"><a></a><span class="st">                                WHERE</span></span>
+<span id="cb18-211"><a></a><span class="st">                                    concept_id IN (316866)       </span></span>
+<span id="cb18-212"><a></a><span class="st">                                    AND full_text LIKE '%_rank1]%'      ) a </span></span>
+<span id="cb18-213"><a></a><span class="st">                                    ON (c.path LIKE CONCAT('%.', a.id, '.%') </span></span>
+<span id="cb18-214"><a></a><span class="st">                                    OR c.path LIKE CONCAT('%.', a.id) </span></span>
+<span id="cb18-215"><a></a><span class="st">                                    OR c.path LIKE CONCAT(a.id, '.%') </span></span>
+<span id="cb18-216"><a></a><span class="st">                                    OR c.path = a.id) </span></span>
+<span id="cb18-217"><a></a><span class="st">                            WHERE</span></span>
+<span id="cb18-218"><a></a><span class="st">                                is_standard = 1 </span></span>
+<span id="cb18-219"><a></a><span class="st">                                AND is_selectable = 1) </span></span>
+<span id="cb18-220"><a></a><span class="st">                            AND is_standard = 1 )) criteria ) )</span></span>
+<span id="cb18-221"><a></a><span class="st">            )) c_occurrence </span></span>
+<span id="cb18-222"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-223"><a></a><span class="st">        `concept` c_standard_concept </span></span>
+<span id="cb18-224"><a></a><span class="st">            ON c_occurrence.condition_concept_id = c_standard_concept.concept_id </span></span>
+<span id="cb18-225"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-226"><a></a><span class="st">        `concept` c_type </span></span>
+<span id="cb18-227"><a></a><span class="st">            ON c_occurrence.condition_type_concept_id = c_type.concept_id </span></span>
+<span id="cb18-228"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-229"><a></a><span class="st">        `visit_occurrence` v </span></span>
+<span id="cb18-230"><a></a><span class="st">            ON c_occurrence.visit_occurrence_id = v.visit_occurrence_id </span></span>
+<span id="cb18-231"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-232"><a></a><span class="st">        `concept` visit </span></span>
+<span id="cb18-233"><a></a><span class="st">            ON v.visit_concept_id = visit.concept_id </span></span>
+<span id="cb18-234"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-235"><a></a><span class="st">        `concept` c_source_concept </span></span>
+<span id="cb18-236"><a></a><span class="st">            ON c_occurrence.condition_source_concept_id = c_source_concept.concept_id </span></span>
+<span id="cb18-237"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-238"><a></a><span class="st">        `concept` c_status </span></span>
+<span id="cb18-239"><a></a><span class="st">            ON c_occurrence.condition_status_concept_id = c_status.concept_id"</span>, <span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb18-240"><a></a></span>
+<span id="cb18-241"><a></a><span class="co"># Formulate a Cloud Storage destination path for the data exported from BigQuery.</span></span>
+<span id="cb18-242"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: By default data exported multiple times on the same day will overwrite older copies.</span></span>
+<span id="cb18-243"><a></a><span class="co">#       But data exported on a different days will write to a new location so that historical</span></span>
+<span id="cb18-244"><a></a><span class="co">#       copies can be kept as the dataset definition is changed.</span></span>
+<span id="cb18-245"><a></a>condition_71250616_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(</span>
+<span id="cb18-246"><a></a>  <span class="fu">Sys.getenv</span>(<span class="st">"WORKSPACE_BUCKET"</span>),</span>
+<span id="cb18-247"><a></a>  <span class="st">"bq_exports"</span>,</span>
+<span id="cb18-248"><a></a>  <span class="fu">Sys.getenv</span>(<span class="st">"OWNER_EMAIL"</span>),</span>
+<span id="cb18-249"><a></a>  <span class="fu">strftime</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="st">"%Y%m%d"</span>),  <span class="co"># Comment out this line if you want the export to always overwrite.</span></span>
+<span id="cb18-250"><a></a>  <span class="st">"condition_71250616"</span>,</span>
+<span id="cb18-251"><a></a>  <span class="st">"condition_71250616_*.csv"</span>)</span>
+<span id="cb18-252"><a></a><span class="fu">message</span>(<span class="fu">str_glue</span>(<span class="st">'The data will be written to {condition_71250616_path}. Use this path when reading '</span>,</span>
+<span id="cb18-253"><a></a>                 <span class="st">'the data into your notebooks in the future.'</span>))</span>
+<span id="cb18-254"><a></a></span>
+<span id="cb18-255"><a></a><span class="co"># Perform the query and export the dataset to Cloud Storage as CSV files.</span></span>
+<span id="cb18-256"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: You only need to run `bq_table_save` once. After that, you can</span></span>
+<span id="cb18-257"><a></a><span class="co">#       just read data from the CSVs in Cloud Storage.</span></span>
+<span id="cb18-258"><a></a><span class="fu">bq_table_save</span>(</span>
+<span id="cb18-259"><a></a>  <span class="fu">bq_dataset_query</span>(<span class="fu">Sys.getenv</span>(<span class="st">"WORKSPACE_CDR"</span>), dataset_71250616_condition_sql, <span class="at">billing =</span> <span class="fu">Sys.getenv</span>(<span class="st">"GOOGLE_PROJECT"</span>)),</span>
+<span id="cb18-260"><a></a>  condition_71250616_path,</span>
+<span id="cb18-261"><a></a>  <span class="at">destination_format =</span> <span class="st">"CSV"</span>)</span>
+<span id="cb18-262"><a></a></span>
+<span id="cb18-263"><a></a></span>
+<span id="cb18-264"><a></a><span class="co"># Read the data directly from Cloud Storage into memory.</span></span>
+<span id="cb18-265"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: Alternatively you can `gsutil -m cp {condition_71250616_path}` to copy these files</span></span>
+<span id="cb18-266"><a></a><span class="co">#       to the Jupyter disk.</span></span>
+<span id="cb18-267"><a></a>read_bq_export_from_workspace_bucket <span class="ot">&lt;-</span> <span class="cf">function</span>(export_path) {</span>
+<span id="cb18-268"><a></a>  col_types <span class="ot">&lt;-</span> <span class="fu">cols</span>(<span class="at">standard_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">standard_concept_code =</span> <span class="fu">col_character</span>(), <span class="at">standard_vocabulary =</span> <span class="fu">col_character</span>(), <span class="at">condition_type_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">stop_reason =</span> <span class="fu">col_character</span>(), <span class="at">visit_occurrence_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">condition_source_value =</span> <span class="fu">col_character</span>(), <span class="at">source_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">source_concept_code =</span> <span class="fu">col_character</span>(), <span class="at">source_vocabulary =</span> <span class="fu">col_character</span>(), <span class="at">condition_status_source_value =</span> <span class="fu">col_character</span>(), <span class="at">condition_status_concept_name =</span> <span class="fu">col_character</span>())</span>
+<span id="cb18-269"><a></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb18-270"><a></a>    <span class="fu">map</span>(<span class="fu">system2</span>(<span class="st">'gsutil'</span>, <span class="at">args =</span> <span class="fu">c</span>(<span class="st">'ls'</span>, export_path), <span class="at">stdout =</span> <span class="cn">TRUE</span>, <span class="at">stderr =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-271"><a></a>        <span class="cf">function</span>(csv) {</span>
+<span id="cb18-272"><a></a>          <span class="fu">message</span>(<span class="fu">str_glue</span>(<span class="st">'Loading {csv}.'</span>))</span>
+<span id="cb18-273"><a></a>          chunk <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">pipe</span>(<span class="fu">str_glue</span>(<span class="st">'gsutil cat {csv}'</span>)), <span class="at">col_types =</span> col_types, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-274"><a></a>          <span class="cf">if</span> (<span class="fu">is.null</span>(col_types)) {</span>
+<span id="cb18-275"><a></a>            col_types <span class="ot">&lt;-</span> <span class="fu">spec</span>(chunk)</span>
+<span id="cb18-276"><a></a>          }</span>
+<span id="cb18-277"><a></a>          chunk</span>
+<span id="cb18-278"><a></a>        }))</span>
+<span id="cb18-279"><a></a>}</span>
+<span id="cb18-280"><a></a>dataset_71250616_condition_df <span class="ot">&lt;-</span> <span class="fu">read_bq_export_from_workspace_bucket</span>(condition_71250616_path)</span>
+<span id="cb18-281"><a></a></span>
+<span id="cb18-282"><a></a><span class="fu">dim</span>(dataset_71250616_condition_df)</span>
+<span id="cb18-283"><a></a></span>
+<span id="cb18-284"><a></a><span class="fu">head</span>(dataset_71250616_condition_df, <span class="dv">5</span>)</span>
+<span id="cb18-285"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-286"><a></a><span class="fu">library</span>(bigrquery)</span>
+<span id="cb18-287"><a></a></span>
+<span id="cb18-288"><a></a><span class="co"># This query represents dataset "hypertension in pregnancy" for domain "measurement" and was generated for All of Us Registered Tier Dataset v7</span></span>
+<span id="cb18-289"><a></a>dataset_71250616_measurement_sql <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"</span></span>
+<span id="cb18-290"><a></a><span class="st">    SELECT</span></span>
+<span id="cb18-291"><a></a><span class="st">        measurement.person_id,</span></span>
+<span id="cb18-292"><a></a><span class="st">        measurement.measurement_concept_id,</span></span>
+<span id="cb18-293"><a></a><span class="st">        m_standard_concept.concept_name as standard_concept_name,</span></span>
+<span id="cb18-294"><a></a><span class="st">        m_standard_concept.concept_code as standard_concept_code,</span></span>
+<span id="cb18-295"><a></a><span class="st">        m_standard_concept.vocabulary_id as standard_vocabulary,</span></span>
+<span id="cb18-296"><a></a><span class="st">        measurement.measurement_datetime,</span></span>
+<span id="cb18-297"><a></a><span class="st">        measurement.measurement_type_concept_id,</span></span>
+<span id="cb18-298"><a></a><span class="st">        m_type.concept_name as measurement_type_concept_name,</span></span>
+<span id="cb18-299"><a></a><span class="st">        measurement.operator_concept_id,</span></span>
+<span id="cb18-300"><a></a><span class="st">        m_operator.concept_name as operator_concept_name,</span></span>
+<span id="cb18-301"><a></a><span class="st">        measurement.value_as_number,</span></span>
+<span id="cb18-302"><a></a><span class="st">        measurement.value_as_concept_id,</span></span>
+<span id="cb18-303"><a></a><span class="st">        m_value.concept_name as value_as_concept_name,</span></span>
+<span id="cb18-304"><a></a><span class="st">        measurement.unit_concept_id,</span></span>
+<span id="cb18-305"><a></a><span class="st">        m_unit.concept_name as unit_concept_name,</span></span>
+<span id="cb18-306"><a></a><span class="st">        measurement.range_low,</span></span>
+<span id="cb18-307"><a></a><span class="st">        measurement.range_high,</span></span>
+<span id="cb18-308"><a></a><span class="st">        measurement.visit_occurrence_id,</span></span>
+<span id="cb18-309"><a></a><span class="st">        m_visit.concept_name as visit_occurrence_concept_name,</span></span>
+<span id="cb18-310"><a></a><span class="st">        measurement.measurement_source_value,</span></span>
+<span id="cb18-311"><a></a><span class="st">        measurement.measurement_source_concept_id,</span></span>
+<span id="cb18-312"><a></a><span class="st">        m_source_concept.concept_name as source_concept_name,</span></span>
+<span id="cb18-313"><a></a><span class="st">        m_source_concept.concept_code as source_concept_code,</span></span>
+<span id="cb18-314"><a></a><span class="st">        m_source_concept.vocabulary_id as source_vocabulary,</span></span>
+<span id="cb18-315"><a></a><span class="st">        measurement.unit_source_value,</span></span>
+<span id="cb18-316"><a></a><span class="st">        measurement.value_source_value </span></span>
+<span id="cb18-317"><a></a><span class="st">    FROM</span></span>
+<span id="cb18-318"><a></a><span class="st">        ( SELECT</span></span>
+<span id="cb18-319"><a></a><span class="st">            * </span></span>
+<span id="cb18-320"><a></a><span class="st">        FROM</span></span>
+<span id="cb18-321"><a></a><span class="st">            `measurement` measurement </span></span>
+<span id="cb18-322"><a></a><span class="st">        WHERE</span></span>
+<span id="cb18-323"><a></a><span class="st">            (</span></span>
+<span id="cb18-324"><a></a><span class="st">                measurement_concept_id IN (SELECT</span></span>
+<span id="cb18-325"><a></a><span class="st">                    DISTINCT c.concept_id </span></span>
+<span id="cb18-326"><a></a><span class="st">                FROM</span></span>
+<span id="cb18-327"><a></a><span class="st">                    `cb_criteria` c </span></span>
+<span id="cb18-328"><a></a><span class="st">                JOIN</span></span>
+<span id="cb18-329"><a></a><span class="st">                    (SELECT</span></span>
+<span id="cb18-330"><a></a><span class="st">                        CAST(cr.id as string) AS id       </span></span>
+<span id="cb18-331"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-332"><a></a><span class="st">                        `cb_criteria` cr       </span></span>
+<span id="cb18-333"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-334"><a></a><span class="st">                        concept_id IN (21490851, 21490853, 3004249, 3005606, 3009395, 3012526, 3012888, 3013940, 3017490, 3018586, 3018592, 3018822, 3019962, 3027598, 3028737, 3031203, 3034703, 3035856, 36716965, 4060834, 40758413, 4152194, 4154790, 4232915, 4239021, 4248524, 4298393, 4302410, 44789315, 44789316)       </span></span>
+<span id="cb18-335"><a></a><span class="st">                        AND full_text LIKE '%_rank1]%'      ) a </span></span>
+<span id="cb18-336"><a></a><span class="st">                        ON (c.path LIKE CONCAT('%.', a.id, '.%') </span></span>
+<span id="cb18-337"><a></a><span class="st">                        OR c.path LIKE CONCAT('%.', a.id) </span></span>
+<span id="cb18-338"><a></a><span class="st">                        OR c.path LIKE CONCAT(a.id, '.%') </span></span>
+<span id="cb18-339"><a></a><span class="st">                        OR c.path = a.id) </span></span>
+<span id="cb18-340"><a></a><span class="st">                WHERE</span></span>
+<span id="cb18-341"><a></a><span class="st">                    is_standard = 1 </span></span>
+<span id="cb18-342"><a></a><span class="st">                    AND is_selectable = 1)</span></span>
+<span id="cb18-343"><a></a><span class="st">            )  </span></span>
+<span id="cb18-344"><a></a><span class="st">            AND (</span></span>
+<span id="cb18-345"><a></a><span class="st">                measurement.PERSON_ID IN (SELECT</span></span>
+<span id="cb18-346"><a></a><span class="st">                    distinct person_id  </span></span>
+<span id="cb18-347"><a></a><span class="st">                FROM</span></span>
+<span id="cb18-348"><a></a><span class="st">                    `cb_search_person` cb_search_person  </span></span>
+<span id="cb18-349"><a></a><span class="st">                WHERE</span></span>
+<span id="cb18-350"><a></a><span class="st">                    cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-351"><a></a><span class="st">                        person_id </span></span>
+<span id="cb18-352"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-353"><a></a><span class="st">                        `cb_search_person` p </span></span>
+<span id="cb18-354"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-355"><a></a><span class="st">                        age_at_consent BETWEEN 18 AND 50 </span></span>
+<span id="cb18-356"><a></a><span class="st">                    AND cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-357"><a></a><span class="st">                        person_id </span></span>
+<span id="cb18-358"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-359"><a></a><span class="st">                        `person` p </span></span>
+<span id="cb18-360"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-361"><a></a><span class="st">                        sex_at_birth_concept_id IN (45878463) ) </span></span>
+<span id="cb18-362"><a></a><span class="st">                    AND cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-363"><a></a><span class="st">                        criteria.person_id </span></span>
+<span id="cb18-364"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-365"><a></a><span class="st">                        (SELECT</span></span>
+<span id="cb18-366"><a></a><span class="st">                            DISTINCT person_id, entry_date, concept_id </span></span>
+<span id="cb18-367"><a></a><span class="st">                        FROM</span></span>
+<span id="cb18-368"><a></a><span class="st">                            `cb_search_all_events` </span></span>
+<span id="cb18-369"><a></a><span class="st">                        WHERE</span></span>
+<span id="cb18-370"><a></a><span class="st">                            (concept_id IN(SELECT</span></span>
+<span id="cb18-371"><a></a><span class="st">                                DISTINCT c.concept_id </span></span>
+<span id="cb18-372"><a></a><span class="st">                            FROM</span></span>
+<span id="cb18-373"><a></a><span class="st">                                `cb_criteria` c </span></span>
+<span id="cb18-374"><a></a><span class="st">                            JOIN</span></span>
+<span id="cb18-375"><a></a><span class="st">                                (SELECT</span></span>
+<span id="cb18-376"><a></a><span class="st">                                    CAST(cr.id as string) AS id       </span></span>
+<span id="cb18-377"><a></a><span class="st">                                FROM</span></span>
+<span id="cb18-378"><a></a><span class="st">                                    `cb_criteria` cr       </span></span>
+<span id="cb18-379"><a></a><span class="st">                                WHERE</span></span>
+<span id="cb18-380"><a></a><span class="st">                                    concept_id IN (316866)       </span></span>
+<span id="cb18-381"><a></a><span class="st">                                    AND full_text LIKE '%_rank1]%'      ) a </span></span>
+<span id="cb18-382"><a></a><span class="st">                                    ON (c.path LIKE CONCAT('%.', a.id, '.%') </span></span>
+<span id="cb18-383"><a></a><span class="st">                                    OR c.path LIKE CONCAT('%.', a.id) </span></span>
+<span id="cb18-384"><a></a><span class="st">                                    OR c.path LIKE CONCAT(a.id, '.%') </span></span>
+<span id="cb18-385"><a></a><span class="st">                                    OR c.path = a.id) </span></span>
+<span id="cb18-386"><a></a><span class="st">                            WHERE</span></span>
+<span id="cb18-387"><a></a><span class="st">                                is_standard = 1 </span></span>
+<span id="cb18-388"><a></a><span class="st">                                AND is_selectable = 1) </span></span>
+<span id="cb18-389"><a></a><span class="st">                            AND is_standard = 1 )) criteria ) )</span></span>
+<span id="cb18-390"><a></a><span class="st">            )) measurement </span></span>
+<span id="cb18-391"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-392"><a></a><span class="st">        `concept` m_standard_concept </span></span>
+<span id="cb18-393"><a></a><span class="st">            ON measurement.measurement_concept_id = m_standard_concept.concept_id </span></span>
+<span id="cb18-394"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-395"><a></a><span class="st">        `concept` m_type </span></span>
+<span id="cb18-396"><a></a><span class="st">            ON measurement.measurement_type_concept_id = m_type.concept_id </span></span>
+<span id="cb18-397"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-398"><a></a><span class="st">        `concept` m_operator </span></span>
+<span id="cb18-399"><a></a><span class="st">            ON measurement.operator_concept_id = m_operator.concept_id </span></span>
+<span id="cb18-400"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-401"><a></a><span class="st">        `concept` m_value </span></span>
+<span id="cb18-402"><a></a><span class="st">            ON measurement.value_as_concept_id = m_value.concept_id </span></span>
+<span id="cb18-403"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-404"><a></a><span class="st">        `concept` m_unit </span></span>
+<span id="cb18-405"><a></a><span class="st">            ON measurement.unit_concept_id = m_unit.concept_id </span></span>
+<span id="cb18-406"><a></a><span class="st">    LEFT JOIn</span></span>
+<span id="cb18-407"><a></a><span class="st">        `visit_occurrence` v </span></span>
+<span id="cb18-408"><a></a><span class="st">            ON measurement.visit_occurrence_id = v.visit_occurrence_id </span></span>
+<span id="cb18-409"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-410"><a></a><span class="st">        `concept` m_visit </span></span>
+<span id="cb18-411"><a></a><span class="st">            ON v.visit_concept_id = m_visit.concept_id </span></span>
+<span id="cb18-412"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-413"><a></a><span class="st">        `concept` m_source_concept </span></span>
+<span id="cb18-414"><a></a><span class="st">            ON measurement.measurement_source_concept_id = m_source_concept.concept_id"</span>, <span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb18-415"><a></a></span>
+<span id="cb18-416"><a></a><span class="co"># Formulate a Cloud Storage destination path for the data exported from BigQuery.</span></span>
+<span id="cb18-417"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: By default data exported multiple times on the same day will overwrite older copies.</span></span>
+<span id="cb18-418"><a></a><span class="co">#       But data exported on a different days will write to a new location so that historical</span></span>
+<span id="cb18-419"><a></a><span class="co">#       copies can be kept as the dataset definition is changed.</span></span>
+<span id="cb18-420"><a></a>measurement_71250616_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(</span>
+<span id="cb18-421"><a></a>  <span class="fu">Sys.getenv</span>(<span class="st">"WORKSPACE_BUCKET"</span>),</span>
+<span id="cb18-422"><a></a>  <span class="st">"bq_exports"</span>,</span>
+<span id="cb18-423"><a></a>  <span class="fu">Sys.getenv</span>(<span class="st">"OWNER_EMAIL"</span>),</span>
+<span id="cb18-424"><a></a>  <span class="fu">strftime</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="st">"%Y%m%d"</span>),  <span class="co"># Comment out this line if you want the export to always overwrite.</span></span>
+<span id="cb18-425"><a></a>  <span class="st">"measurement_71250616"</span>,</span>
+<span id="cb18-426"><a></a>  <span class="st">"measurement_71250616_*.csv"</span>)</span>
+<span id="cb18-427"><a></a><span class="fu">message</span>(<span class="fu">str_glue</span>(<span class="st">'The data will be written to {measurement_71250616_path}. Use this path when reading '</span>,</span>
+<span id="cb18-428"><a></a>                 <span class="st">'the data into your notebooks in the future.'</span>))</span>
+<span id="cb18-429"><a></a></span>
+<span id="cb18-430"><a></a><span class="co"># Perform the query and export the dataset to Cloud Storage as CSV files.</span></span>
+<span id="cb18-431"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: You only need to run `bq_table_save` once. After that, you can</span></span>
+<span id="cb18-432"><a></a><span class="co">#       just read data from the CSVs in Cloud Storage.</span></span>
+<span id="cb18-433"><a></a><span class="fu">bq_table_save</span>(</span>
+<span id="cb18-434"><a></a>  <span class="fu">bq_dataset_query</span>(<span class="fu">Sys.getenv</span>(<span class="st">"WORKSPACE_CDR"</span>), dataset_71250616_measurement_sql, <span class="at">billing =</span> <span class="fu">Sys.getenv</span>(<span class="st">"GOOGLE_PROJECT"</span>)),</span>
+<span id="cb18-435"><a></a>  measurement_71250616_path,</span>
+<span id="cb18-436"><a></a>  <span class="at">destination_format =</span> <span class="st">"CSV"</span>)</span>
+<span id="cb18-437"><a></a></span>
+<span id="cb18-438"><a></a></span>
+<span id="cb18-439"><a></a><span class="co"># Read the data directly from Cloud Storage into memory.</span></span>
+<span id="cb18-440"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: Alternatively you can `gsutil -m cp {measurement_71250616_path}` to copy these files</span></span>
+<span id="cb18-441"><a></a><span class="co">#       to the Jupyter disk.</span></span>
+<span id="cb18-442"><a></a>read_bq_export_from_workspace_bucket <span class="ot">&lt;-</span> <span class="cf">function</span>(export_path) {</span>
+<span id="cb18-443"><a></a>  col_types <span class="ot">&lt;-</span> <span class="fu">cols</span>(<span class="at">standard_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">standard_concept_code =</span> <span class="fu">col_character</span>(), <span class="at">standard_vocabulary =</span> <span class="fu">col_character</span>(), <span class="at">measurement_type_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">operator_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">value_as_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">unit_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">visit_occurrence_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">measurement_source_value =</span> <span class="fu">col_character</span>(), <span class="at">source_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">source_concept_code =</span> <span class="fu">col_character</span>(), <span class="at">source_vocabulary =</span> <span class="fu">col_character</span>(), <span class="at">unit_source_value =</span> <span class="fu">col_character</span>(), <span class="at">value_source_value =</span> <span class="fu">col_character</span>())</span>
+<span id="cb18-444"><a></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb18-445"><a></a>    <span class="fu">map</span>(<span class="fu">system2</span>(<span class="st">'gsutil'</span>, <span class="at">args =</span> <span class="fu">c</span>(<span class="st">'ls'</span>, export_path), <span class="at">stdout =</span> <span class="cn">TRUE</span>, <span class="at">stderr =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-446"><a></a>        <span class="cf">function</span>(csv) {</span>
+<span id="cb18-447"><a></a>          <span class="fu">message</span>(<span class="fu">str_glue</span>(<span class="st">'Loading {csv}.'</span>))</span>
+<span id="cb18-448"><a></a>          chunk <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">pipe</span>(<span class="fu">str_glue</span>(<span class="st">'gsutil cat {csv}'</span>)), <span class="at">col_types =</span> col_types, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-449"><a></a>          <span class="cf">if</span> (<span class="fu">is.null</span>(col_types)) {</span>
+<span id="cb18-450"><a></a>            col_types <span class="ot">&lt;-</span> <span class="fu">spec</span>(chunk)</span>
+<span id="cb18-451"><a></a>          }</span>
+<span id="cb18-452"><a></a>          chunk</span>
+<span id="cb18-453"><a></a>        }))</span>
+<span id="cb18-454"><a></a>}</span>
+<span id="cb18-455"><a></a>dataset_71250616_measurement_df <span class="ot">&lt;-</span> <span class="fu">read_bq_export_from_workspace_bucket</span>(measurement_71250616_path)</span>
+<span id="cb18-456"><a></a></span>
+<span id="cb18-457"><a></a><span class="fu">dim</span>(dataset_71250616_measurement_df)</span>
+<span id="cb18-458"><a></a></span>
+<span id="cb18-459"><a></a><span class="fu">head</span>(dataset_71250616_measurement_df, <span class="dv">5</span>)</span>
+<span id="cb18-460"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-461"><a></a><span class="fu">library</span>(bigrquery)</span>
+<span id="cb18-462"><a></a></span>
+<span id="cb18-463"><a></a><span class="co"># This query represents dataset "hypertension in pregnancy" for domain "drug" and was generated for All of Us Registered Tier Dataset v7</span></span>
+<span id="cb18-464"><a></a>dataset_71250616_drug_sql <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"</span></span>
+<span id="cb18-465"><a></a><span class="st">    SELECT</span></span>
+<span id="cb18-466"><a></a><span class="st">        d_exposure.person_id,</span></span>
+<span id="cb18-467"><a></a><span class="st">        d_exposure.drug_concept_id,</span></span>
+<span id="cb18-468"><a></a><span class="st">        d_standard_concept.concept_name as standard_concept_name,</span></span>
+<span id="cb18-469"><a></a><span class="st">        d_standard_concept.concept_code as standard_concept_code,</span></span>
+<span id="cb18-470"><a></a><span class="st">        d_standard_concept.vocabulary_id as standard_vocabulary,</span></span>
+<span id="cb18-471"><a></a><span class="st">        d_exposure.drug_exposure_start_datetime,</span></span>
+<span id="cb18-472"><a></a><span class="st">        d_exposure.drug_exposure_end_datetime,</span></span>
+<span id="cb18-473"><a></a><span class="st">        d_exposure.verbatim_end_date,</span></span>
+<span id="cb18-474"><a></a><span class="st">        d_exposure.drug_type_concept_id,</span></span>
+<span id="cb18-475"><a></a><span class="st">        d_type.concept_name as drug_type_concept_name,</span></span>
+<span id="cb18-476"><a></a><span class="st">        d_exposure.stop_reason,</span></span>
+<span id="cb18-477"><a></a><span class="st">        d_exposure.refills,</span></span>
+<span id="cb18-478"><a></a><span class="st">        d_exposure.quantity,</span></span>
+<span id="cb18-479"><a></a><span class="st">        d_exposure.days_supply,</span></span>
+<span id="cb18-480"><a></a><span class="st">        d_exposure.sig,</span></span>
+<span id="cb18-481"><a></a><span class="st">        d_exposure.route_concept_id,</span></span>
+<span id="cb18-482"><a></a><span class="st">        d_route.concept_name as route_concept_name,</span></span>
+<span id="cb18-483"><a></a><span class="st">        d_exposure.lot_number,</span></span>
+<span id="cb18-484"><a></a><span class="st">        d_exposure.visit_occurrence_id,</span></span>
+<span id="cb18-485"><a></a><span class="st">        d_visit.concept_name as visit_occurrence_concept_name,</span></span>
+<span id="cb18-486"><a></a><span class="st">        d_exposure.drug_source_value,</span></span>
+<span id="cb18-487"><a></a><span class="st">        d_exposure.drug_source_concept_id,</span></span>
+<span id="cb18-488"><a></a><span class="st">        d_source_concept.concept_name as source_concept_name,</span></span>
+<span id="cb18-489"><a></a><span class="st">        d_source_concept.concept_code as source_concept_code,</span></span>
+<span id="cb18-490"><a></a><span class="st">        d_source_concept.vocabulary_id as source_vocabulary,</span></span>
+<span id="cb18-491"><a></a><span class="st">        d_exposure.route_source_value,</span></span>
+<span id="cb18-492"><a></a><span class="st">        d_exposure.dose_unit_source_value </span></span>
+<span id="cb18-493"><a></a><span class="st">    FROM</span></span>
+<span id="cb18-494"><a></a><span class="st">        ( SELECT</span></span>
+<span id="cb18-495"><a></a><span class="st">            * </span></span>
+<span id="cb18-496"><a></a><span class="st">        FROM</span></span>
+<span id="cb18-497"><a></a><span class="st">            `drug_exposure` d_exposure </span></span>
+<span id="cb18-498"><a></a><span class="st">        WHERE</span></span>
+<span id="cb18-499"><a></a><span class="st">            (</span></span>
+<span id="cb18-500"><a></a><span class="st">                drug_concept_id IN (SELECT</span></span>
+<span id="cb18-501"><a></a><span class="st">                    DISTINCT ca.descendant_id </span></span>
+<span id="cb18-502"><a></a><span class="st">                FROM</span></span>
+<span id="cb18-503"><a></a><span class="st">                    `cb_criteria_ancestor` ca </span></span>
+<span id="cb18-504"><a></a><span class="st">                JOIN</span></span>
+<span id="cb18-505"><a></a><span class="st">                    (SELECT</span></span>
+<span id="cb18-506"><a></a><span class="st">                        DISTINCT c.concept_id       </span></span>
+<span id="cb18-507"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-508"><a></a><span class="st">                        `cb_criteria` c       </span></span>
+<span id="cb18-509"><a></a><span class="st">                    JOIN</span></span>
+<span id="cb18-510"><a></a><span class="st">                        (SELECT</span></span>
+<span id="cb18-511"><a></a><span class="st">                            CAST(cr.id as string) AS id             </span></span>
+<span id="cb18-512"><a></a><span class="st">                        FROM</span></span>
+<span id="cb18-513"><a></a><span class="st">                            `cb_criteria` cr             </span></span>
+<span id="cb18-514"><a></a><span class="st">                        WHERE</span></span>
+<span id="cb18-515"><a></a><span class="st">                            concept_id IN (21601664, 21601744)             </span></span>
+<span id="cb18-516"><a></a><span class="st">                            AND full_text LIKE '%_rank1]%'       ) a </span></span>
+<span id="cb18-517"><a></a><span class="st">                            ON (c.path LIKE CONCAT('%.', a.id, '.%') </span></span>
+<span id="cb18-518"><a></a><span class="st">                            OR c.path LIKE CONCAT('%.', a.id) </span></span>
+<span id="cb18-519"><a></a><span class="st">                            OR c.path LIKE CONCAT(a.id, '.%') </span></span>
+<span id="cb18-520"><a></a><span class="st">                            OR c.path = a.id) </span></span>
+<span id="cb18-521"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-522"><a></a><span class="st">                        is_standard = 1 </span></span>
+<span id="cb18-523"><a></a><span class="st">                        AND is_selectable = 1) b </span></span>
+<span id="cb18-524"><a></a><span class="st">                        ON (ca.ancestor_id = b.concept_id)))  </span></span>
+<span id="cb18-525"><a></a><span class="st">                    AND (d_exposure.PERSON_ID IN (SELECT</span></span>
+<span id="cb18-526"><a></a><span class="st">                        distinct person_id  </span></span>
+<span id="cb18-527"><a></a><span class="st">                FROM</span></span>
+<span id="cb18-528"><a></a><span class="st">                    `cb_search_person` cb_search_person  </span></span>
+<span id="cb18-529"><a></a><span class="st">                WHERE</span></span>
+<span id="cb18-530"><a></a><span class="st">                    cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-531"><a></a><span class="st">                        person_id </span></span>
+<span id="cb18-532"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-533"><a></a><span class="st">                        `cb_search_person` p </span></span>
+<span id="cb18-534"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-535"><a></a><span class="st">                        age_at_consent BETWEEN 18 AND 50</span></span>
+<span id="cb18-536"><a></a><span class="st">                    AND cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-537"><a></a><span class="st">                        person_id </span></span>
+<span id="cb18-538"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-539"><a></a><span class="st">                        `person` p </span></span>
+<span id="cb18-540"><a></a><span class="st">                    WHERE</span></span>
+<span id="cb18-541"><a></a><span class="st">                        sex_at_birth_concept_id IN (45878463) ) </span></span>
+<span id="cb18-542"><a></a><span class="st">                    AND cb_search_person.person_id IN (SELECT</span></span>
+<span id="cb18-543"><a></a><span class="st">                        criteria.person_id </span></span>
+<span id="cb18-544"><a></a><span class="st">                    FROM</span></span>
+<span id="cb18-545"><a></a><span class="st">                        (SELECT</span></span>
+<span id="cb18-546"><a></a><span class="st">                            DISTINCT person_id, entry_date, concept_id </span></span>
+<span id="cb18-547"><a></a><span class="st">                        FROM</span></span>
+<span id="cb18-548"><a></a><span class="st">                            `cb_search_all_events` </span></span>
+<span id="cb18-549"><a></a><span class="st">                        WHERE</span></span>
+<span id="cb18-550"><a></a><span class="st">                            (concept_id IN(SELECT</span></span>
+<span id="cb18-551"><a></a><span class="st">                                DISTINCT c.concept_id </span></span>
+<span id="cb18-552"><a></a><span class="st">                            FROM</span></span>
+<span id="cb18-553"><a></a><span class="st">                                `cb_criteria` c </span></span>
+<span id="cb18-554"><a></a><span class="st">                            JOIN</span></span>
+<span id="cb18-555"><a></a><span class="st">                                (SELECT</span></span>
+<span id="cb18-556"><a></a><span class="st">                                    CAST(cr.id as string) AS id       </span></span>
+<span id="cb18-557"><a></a><span class="st">                                FROM</span></span>
+<span id="cb18-558"><a></a><span class="st">                                    `cb_criteria` cr       </span></span>
+<span id="cb18-559"><a></a><span class="st">                                WHERE</span></span>
+<span id="cb18-560"><a></a><span class="st">                                    concept_id IN (316866)       </span></span>
+<span id="cb18-561"><a></a><span class="st">                                    AND full_text LIKE '%_rank1]%'      ) a </span></span>
+<span id="cb18-562"><a></a><span class="st">                                    ON (c.path LIKE CONCAT('%.', a.id, '.%') </span></span>
+<span id="cb18-563"><a></a><span class="st">                                    OR c.path LIKE CONCAT('%.', a.id) </span></span>
+<span id="cb18-564"><a></a><span class="st">                                    OR c.path LIKE CONCAT(a.id, '.%') </span></span>
+<span id="cb18-565"><a></a><span class="st">                                    OR c.path = a.id) </span></span>
+<span id="cb18-566"><a></a><span class="st">                            WHERE</span></span>
+<span id="cb18-567"><a></a><span class="st">                                is_standard = 1 </span></span>
+<span id="cb18-568"><a></a><span class="st">                                AND is_selectable = 1) </span></span>
+<span id="cb18-569"><a></a><span class="st">                            AND is_standard = 1 )) criteria ) )</span></span>
+<span id="cb18-570"><a></a><span class="st">            )) d_exposure </span></span>
+<span id="cb18-571"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-572"><a></a><span class="st">        `concept` d_standard_concept </span></span>
+<span id="cb18-573"><a></a><span class="st">            ON d_exposure.drug_concept_id = d_standard_concept.concept_id </span></span>
+<span id="cb18-574"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-575"><a></a><span class="st">        `concept` d_type </span></span>
+<span id="cb18-576"><a></a><span class="st">            ON d_exposure.drug_type_concept_id = d_type.concept_id </span></span>
+<span id="cb18-577"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-578"><a></a><span class="st">        `concept` d_route </span></span>
+<span id="cb18-579"><a></a><span class="st">            ON d_exposure.route_concept_id = d_route.concept_id </span></span>
+<span id="cb18-580"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-581"><a></a><span class="st">        `visit_occurrence` v </span></span>
+<span id="cb18-582"><a></a><span class="st">            ON d_exposure.visit_occurrence_id = v.visit_occurrence_id </span></span>
+<span id="cb18-583"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-584"><a></a><span class="st">        `concept` d_visit </span></span>
+<span id="cb18-585"><a></a><span class="st">            ON v.visit_concept_id = d_visit.concept_id </span></span>
+<span id="cb18-586"><a></a><span class="st">    LEFT JOIN</span></span>
+<span id="cb18-587"><a></a><span class="st">        `concept` d_source_concept </span></span>
+<span id="cb18-588"><a></a><span class="st">            ON d_exposure.drug_source_concept_id = d_source_concept.concept_id"</span>, <span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb18-589"><a></a></span>
+<span id="cb18-590"><a></a><span class="co"># Formulate a Cloud Storage destination path for the data exported from BigQuery.</span></span>
+<span id="cb18-591"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: By default data exported multiple times on the same day will overwrite older copies.</span></span>
+<span id="cb18-592"><a></a><span class="co">#       But data exported on a different days will write to a new location so that historical</span></span>
+<span id="cb18-593"><a></a><span class="co">#       copies can be kept as the dataset definition is changed.</span></span>
+<span id="cb18-594"><a></a>drug_71250616_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(</span>
+<span id="cb18-595"><a></a>  <span class="fu">Sys.getenv</span>(<span class="st">"WORKSPACE_BUCKET"</span>),</span>
+<span id="cb18-596"><a></a>  <span class="st">"bq_exports"</span>,</span>
+<span id="cb18-597"><a></a>  <span class="fu">Sys.getenv</span>(<span class="st">"OWNER_EMAIL"</span>),</span>
+<span id="cb18-598"><a></a>  <span class="fu">strftime</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="st">"%Y%m%d"</span>),  <span class="co"># Comment out this line if you want the export to always overwrite.</span></span>
+<span id="cb18-599"><a></a>  <span class="st">"drug_71250616"</span>,</span>
+<span id="cb18-600"><a></a>  <span class="st">"drug_71250616_*.csv"</span>)</span>
+<span id="cb18-601"><a></a><span class="fu">message</span>(<span class="fu">str_glue</span>(<span class="st">'The data will be written to {drug_71250616_path}. Use this path when reading '</span>,</span>
+<span id="cb18-602"><a></a>                 <span class="st">'the data into your notebooks in the future.'</span>))</span>
+<span id="cb18-603"><a></a></span>
+<span id="cb18-604"><a></a><span class="co"># Perform the query and export the dataset to Cloud Storage as CSV files.</span></span>
+<span id="cb18-605"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: You only need to run `bq_table_save` once. After that, you can</span></span>
+<span id="cb18-606"><a></a><span class="co">#       just read data from the CSVs in Cloud Storage.</span></span>
+<span id="cb18-607"><a></a><span class="fu">bq_table_save</span>(</span>
+<span id="cb18-608"><a></a>  <span class="fu">bq_dataset_query</span>(<span class="fu">Sys.getenv</span>(<span class="st">"WORKSPACE_CDR"</span>), dataset_71250616_drug_sql, <span class="at">billing =</span> <span class="fu">Sys.getenv</span>(<span class="st">"GOOGLE_PROJECT"</span>)),</span>
+<span id="cb18-609"><a></a>  drug_71250616_path,</span>
+<span id="cb18-610"><a></a>  <span class="at">destination_format =</span> <span class="st">"CSV"</span>)</span>
+<span id="cb18-611"><a></a></span>
+<span id="cb18-612"><a></a></span>
+<span id="cb18-613"><a></a><span class="co"># Read the data directly from Cloud Storage into memory.</span></span>
+<span id="cb18-614"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: Alternatively you can `gsutil -m cp {drug_71250616_path}` to copy these files</span></span>
+<span id="cb18-615"><a></a><span class="co">#       to the Jupyter disk.</span></span>
+<span id="cb18-616"><a></a>read_bq_export_from_workspace_bucket <span class="ot">&lt;-</span> <span class="cf">function</span>(export_path) {</span>
+<span id="cb18-617"><a></a>  col_types <span class="ot">&lt;-</span> <span class="fu">cols</span>(<span class="at">standard_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">standard_concept_code =</span> <span class="fu">col_character</span>(), <span class="at">standard_vocabulary =</span> <span class="fu">col_character</span>(), <span class="at">drug_type_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">stop_reason =</span> <span class="fu">col_character</span>(), <span class="at">sig =</span> <span class="fu">col_character</span>(), <span class="at">route_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">lot_number =</span> <span class="fu">col_character</span>(), <span class="at">visit_occurrence_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">drug_source_value =</span> <span class="fu">col_character</span>(), <span class="at">source_concept_name =</span> <span class="fu">col_character</span>(), <span class="at">source_concept_code =</span> <span class="fu">col_character</span>(), <span class="at">source_vocabulary =</span> <span class="fu">col_character</span>(), <span class="at">route_source_value =</span> <span class="fu">col_character</span>(), <span class="at">dose_unit_source_value =</span> <span class="fu">col_character</span>())</span>
+<span id="cb18-618"><a></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb18-619"><a></a>    <span class="fu">map</span>(<span class="fu">system2</span>(<span class="st">'gsutil'</span>, <span class="at">args =</span> <span class="fu">c</span>(<span class="st">'ls'</span>, export_path), <span class="at">stdout =</span> <span class="cn">TRUE</span>, <span class="at">stderr =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-620"><a></a>        <span class="cf">function</span>(csv) {</span>
+<span id="cb18-621"><a></a>          <span class="fu">message</span>(<span class="fu">str_glue</span>(<span class="st">'Loading {csv}.'</span>))</span>
+<span id="cb18-622"><a></a>          chunk <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">pipe</span>(<span class="fu">str_glue</span>(<span class="st">'gsutil cat {csv}'</span>)), <span class="at">col_types =</span> col_types, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-623"><a></a>          <span class="cf">if</span> (<span class="fu">is.null</span>(col_types)) {</span>
+<span id="cb18-624"><a></a>            col_types <span class="ot">&lt;-</span> <span class="fu">spec</span>(chunk)</span>
+<span id="cb18-625"><a></a>          }</span>
+<span id="cb18-626"><a></a>          chunk</span>
+<span id="cb18-627"><a></a>        }))</span>
+<span id="cb18-628"><a></a>}</span>
+<span id="cb18-629"><a></a>dataset_71250616_drug_df <span class="ot">&lt;-</span> <span class="fu">read_bq_export_from_workspace_bucket</span>(drug_71250616_path)</span>
+<span id="cb18-630"><a></a></span>
+<span id="cb18-631"><a></a><span class="fu">dim</span>(dataset_71250616_drug_df)</span>
+<span id="cb18-632"><a></a></span>
+<span id="cb18-633"><a></a><span class="fu">head</span>(dataset_71250616_drug_df, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-datasets-with-cohort-builder-1" class="slide level2">
+<h2>Creating datasets with Cohort Builder</h2>
+<p>I have 4 CSV files (over 6 million rows) stored in my bucket that I have to read back in to do more manipulation</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>gs://fc-secure-5dd899cc-249c-449a-b4b1-96abcc51898b/bq_exports/
+louisahsmith@researchallofus.org/20241106/person_71250616/
+person_71250616_*.csv
+
+gs://fc-secure-5dd899cc-249c-449a-b4b1-96abcc51898b/bq_exports/
+louisahsmith@researchallofus.org/20241106/condition_71250616/
+condition_71250616_*.csv
+
+gs://fc-secure-5dd899cc-249c-449a-b4b1-96abcc51898b/bq_exports/
+louisahsmith@researchallofus.org/20241106/measurement_71250616/
+measurement_71250616_*.csv
+
+gs://fc-secure-5dd899cc-249c-449a-b4b1-96abcc51898b/bq_exports/
+louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-datasets-with-allofus" class="slide level2">
+<h2>Creating datasets with <code>allofus</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>concept_ids <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21601664</span>, <span class="dv">21601744</span>, <span class="dv">21490851</span>, <span class="dv">21490853</span>, <span class="dv">3004249</span>, <span class="dv">3005606</span>, <span class="dv">3009395</span>, <span class="dv">3012526</span>, <span class="dv">3012888</span>, <span class="dv">3013940</span>, <span class="dv">3017490</span>, <span class="dv">3018586</span>, <span class="dv">3018592</span>, <span class="dv">3018822</span>, <span class="dv">3019962</span>, <span class="dv">3027598</span>, <span class="dv">3028737</span>, <span class="dv">3031203</span>, <span class="dv">3034703</span>, <span class="dv">3035856</span>, <span class="dv">36716965</span>, <span class="dv">4060834</span>, <span class="dv">40758413</span>, <span class="dv">4152194</span>, <span class="dv">4154790</span>, <span class="dv">4232915</span>, <span class="dv">4239021</span>, <span class="dv">4248524</span>, <span class="dv">4298393</span>, <span class="dv">4302410</span>, <span class="dv">44789315</span>, <span class="dv">44789316</span>, <span class="dv">132685</span>, <span class="dv">133816</span>, <span class="dv">134414</span>, <span class="dv">135601</span>, <span class="dv">136743</span>, <span class="dv">137613</span>, <span class="dv">138811</span>, <span class="dv">141084</span>, <span class="dv">314090</span>, <span class="dv">35622939</span>, <span class="dv">4034096</span>, <span class="dv">4057976</span>, <span class="dv">4116344</span>, <span class="dv">4283352</span>, <span class="dv">433536</span>, <span class="dv">438490</span>, <span class="dv">439077</span>, <span class="dv">439393</span>, <span class="dv">443700</span>)</span>
+<span id="cb20-2"><a></a></span>
+<span id="cb20-3"><a></a><span class="fu">aou_concept_set</span>(cohort, </span>
+<span id="cb20-4"><a></a>                <span class="at">concepts =</span> concept_ids, </span>
+<span id="cb20-5"><a></a>                <span class="at">domains =</span> <span class="fu">c</span>(<span class="st">"drug"</span>, <span class="st">"measurement"</span>, <span class="st">"condition"</span>), </span>
+<span id="cb20-6"><a></a>                <span class="at">output =</span> <span class="st">"all"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-7"><a></a>  <span class="fu">count</span>(concept_name, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `aou_concept_set()`:
+! No connection available.
+ℹ Provide a connection automatically by running `aou_connect()` before this
+  function.
+ℹ You can also provide `con` as an argument or default with
+  `options(aou.default.con = ...)`.</code></pre>
+</div>
+</div>
+</section>
+<section id="easily-introduce-temporal-relationships" class="slide level2 smaller">
+<h2>Easily introduce temporal relationships</h2>
+<p>Let’s imagine we have a pregnancy cohort with start date! <a href="https://doi.org/10.1093/jamia/ocae195">(10.1093/jamia/ocae195)</a></p>
+<!-- [^1]: Smith LH, Wang W, Keefe-Oates B. Pregnancy episodes in *All of Us* : harnessing multi-source data for pregnancy-related research. *Journal of the American Medical Informatics Association*. 2024. doi: [10.1093/jamia/ocae195](https://doi.org/10.1093/jamia/ocae195) -->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>cohort_no_drugs_prior <span class="ot">&lt;-</span> <span class="fu">aou_concept_set</span>(pregnancy_cohort,</span>
+<span id="cb22-2"><a></a>                                         <span class="at">concepts =</span> drug_concept_ids,</span>
+<span id="cb22-3"><a></a>                                         <span class="at">start_date =</span> <span class="cn">NULL</span>,</span>
+<span id="cb22-4"><a></a>                                         <span class="at">end_date =</span> <span class="st">"pregnancy_start_date"</span>,</span>
+<span id="cb22-5"><a></a>                                         <span class="at">domain =</span> <span class="st">"drug"</span>, </span>
+<span id="cb22-6"><a></a>                                         <span class="at">output =</span> <span class="st">"indicator"</span>,</span>
+<span id="cb22-7"><a></a>                                         <span class="at">concept_set_name =</span> <span class="st">"drugs_prior"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-8"><a></a>  <span class="fu">filter</span>(any_drugs_prior <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb22-9"><a></a></span>
+<span id="cb22-10"><a></a>cohort_no_drugs_hypertension <span class="ot">&lt;-</span> <span class="fu">aou_concept_set</span>(cohort_no_drugs_prior,</span>
+<span id="cb22-11"><a></a>                                                <span class="at">concepts =</span> hypertension_concept_ids,</span>
+<span id="cb22-12"><a></a>                                                <span class="at">start_date =</span> <span class="cn">NULL</span>,</span>
+<span id="cb22-13"><a></a>                                                <span class="at">end_date =</span> <span class="st">"pregnancy_start_date"</span>,</span>
+<span id="cb22-14"><a></a>                                                <span class="at">domain =</span> <span class="st">"condition"</span>, </span>
+<span id="cb22-15"><a></a>                                                <span class="at">output =</span> <span class="st">"indicator"</span>,</span>
+<span id="cb22-16"><a></a>                                                <span class="at">concept_set_name =</span> <span class="st">"hypertension_prior"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-17"><a></a>  <span class="fu">filter</span>(hypertension_prior <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="images/clipboard-3380727214.png" class="quarto-figure quarto-figure-center r-stretch" width="700"></section>
+<section id="easily-introduce-temporal-relationships-1" class="slide level2 smaller">
+<h2>Easily introduce temporal relationships</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>bp_during_and_prior <span class="ot">&lt;-</span> <span class="fu">aou_concept_set</span>(cohort_no_drugs_hypertension,</span>
+<span id="cb23-2"><a></a>                                       <span class="at">concepts =</span> bp_concept_ids,</span>
+<span id="cb23-3"><a></a>                                       <span class="at">start_date =</span> <span class="cn">NULL</span>,</span>
+<span id="cb23-4"><a></a>                                       <span class="at">end_date =</span> <span class="st">"pregnancy_end_date"</span>,</span>
+<span id="cb23-5"><a></a>                                       <span class="at">domain =</span> <span class="st">"measurement"</span>, </span>
+<span id="cb23-6"><a></a>                                       <span class="at">output =</span> <span class="st">"all"</span>)</span>
+<span id="cb23-7"><a></a></span>
+<span id="cb23-8"><a></a>all_drugs_during <span class="ot">&lt;-</span> <span class="fu">aou_concept_set</span>(cohort_no_drugs_hypertension,</span>
+<span id="cb23-9"><a></a>                                    <span class="at">concepts =</span> drug_concept_ids,</span>
+<span id="cb23-10"><a></a>                                    <span class="at">start_date =</span> <span class="st">"pregnancy_start_date"</span>,</span>
+<span id="cb23-11"><a></a>                                    <span class="at">end_date =</span> <span class="st">"pregnancy_end_date"</span>,</span>
+<span id="cb23-12"><a></a>                                    <span class="at">domain =</span> <span class="st">"drug"</span>, </span>
+<span id="cb23-13"><a></a>                                    <span class="at">output =</span> <span class="st">"all"</span>)</span>
+<span id="cb23-14"><a></a></span>
+<span id="cb23-15"><a></a>preeclampsia_outcomes <span class="ot">&lt;-</span> <span class="fu">aou_concept_set</span>(cohort_no_drugs_hypertension,</span>
+<span id="cb23-16"><a></a>                                         <span class="at">concepts =</span> preeclampsia_concept_ids,</span>
+<span id="cb23-17"><a></a>                                         <span class="at">start_date =</span> <span class="st">"pregnancy_start_date"</span>,</span>
+<span id="cb23-18"><a></a>                                         <span class="at">end_date =</span> <span class="st">"pregnancy_end_date"</span>,</span>
+<span id="cb23-19"><a></a>                                         <span class="at">domain =</span> <span class="st">"condition"</span>, </span>
+<span id="cb23-20"><a></a>                                         <span class="at">output =</span> <span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="images/clipboard-1434146805.png" class="quarto-figure quarto-figure-center r-stretch" width="700"></section>
+<section id="improved-efficiency" class="slide level2">
+<h2>Improved efficiency</h2>
+<ul>
+<li>We’re extracting a lot less data because we are
+<ol type="1">
+<li>Immediately using it for what we need (eligibility criteria)</li>
+<li>Restricting to the time periods of interest</li>
+</ol></li>
+<li>The data is not actually extracted or stored until we need it in a local R session (e.g, for figures, regressions, etc.)</li>
+<li>Edits are straightforward and code is easily readable</li>
+</ul>
+<p><em>vs.&nbsp;storing millions of rows of data in a bucket and transferring it every time you run a notebook</em></p>
+</section>
+<section id="when-you-do-store-data-we-have-functions-for-that" class="slide level2 smaller scrollable">
+<h2>When you do store data, we have functions for that!</h2>
+<table class="caption-top" style="width:99%;">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 53%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Workbench provided code snippet</th>
+<th><code>allofus</code> function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>List files in the bucket</td>
+<td><p><code># Get the bucket name</code></p>
+<p><code>my_bucket &lt;- Sys.getenv('WORKSPACE_BUCKET')</code></p>
+<p><code># List objects in the bucket</code></p>
+<p><code>system(paste0("gsutil ls -r ", my_bucket), intern=T)</code></p></td>
+<td><code>aou_ls_bucket()</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-you-do-store-data-we-have-functions-for-that-1" class="slide level2 smaller scrollable">
+<h2>When you do store data, we have functions for that!</h2>
+<table class="caption-top" style="width:99%;">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 54%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Workbench provided code snippet</th>
+<th><code>allofus</code> function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Move a file from the bucket to workspace disk</td>
+<td><p><code># replace 'test.csv' with the name of the file in your google bucket (don't delete the quotation marks)</code></p>
+<p><code>name_of_file_in_bucket &lt;- 'test.csv'</code></p>
+<p><code># Get the bucket name</code></p>
+<p><code>my_bucket &lt;- Sys.getenv('WORKSPACE_BUCKET')</code></p>
+<p><code># Copy the file from current workspace to the bucket</code></p>
+<p><code>system(paste0("gsutil cp ", my_bucket, "/data/", name_of_file_in_bucket, " ."), intern=T)</code></p>
+<p><code># Load the file into a dataframe</code></p>
+<p><code>my_dataframe &lt;- read_csv(name_of_file_in_bucket)</code></p></td>
+<td><code>aou_bucket_to_workspace( "test.csv")</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-you-do-store-data-we-have-functions-for-that-2" class="slide level2 smaller scrollable">
+<h2>When you do store data, we have functions for that!</h2>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 56%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Workbench provided code snippet</th>
+<th><code>allofus</code> function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Write a file to disk and move it to the bucket</td>
+<td><p><code># Replace df with THE NAME OF YOUR DATAFRAME</code></p>
+<p><code>my_dataframe &lt;- df</code></p>
+<p><code># Replace 'test.csv' with THE NAME of the file you're going to store in the bucket (don't delete the quotation marks)</code></p>
+<p><code>destination_filename &lt;- 'test.csv'</code></p>
+<p><code># store the dataframe in current workspace</code></p>
+<p><code>write_excel_csv(my_dataframe, destination_filename)</code></p>
+<p><code># Get the bucket name</code></p>
+<p><code>my_bucket &lt;- Sys.getenv('WORKSPACE_BUCKET')</code></p>
+<p><code># Copy the file from current workspace to the bucket</code></p>
+<p><code>system(paste0("gsutil cp ./", destination_filename, " ", my_bucket, "/data/"), intern=T)</code></p>
+<p><code># Check if file is in the bucket</code></p>
+<p><code>system(paste0("gsutil ls ", my_bucket, "/data/*.csv"), intern=T)</code></p></td>
+<td><p><code>write.csv(df, "test.csv")</code></p>
+<p><code>aou_workspace_to_bucket(df, "test.csv")</code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="integrating-ohdsi-software-for-cohort-building" class="slide level2">
+<h2>Integrating OHDSI software for cohort building</h2>
+
+<img data-src="images/clipboard-2853603321.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="survey-data" class="slide level2">
+<h2>Survey data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>survey_data <span class="ot">&lt;-</span> <span class="fu">aou_survey</span>(cohort,</span>
+<span id="cb24-2"><a></a>           <span class="at">questions =</span> <span class="fu">c</span>(<span class="dv">43529063</span>),</span>
+<span id="cb24-3"><a></a>           <span class="at">question_output =</span> <span class="fu">c</span>(<span class="st">"hypertension"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When was the survey question answered?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">colnames</span>(survey_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "person_id"         "hypertension"      "hypertension_date"</code></pre>
+</div>
+</div>
+</section>
+<section id="survey-data-1" class="slide level2">
+<h2>Survey data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">count</span>(survey_data, hypertension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  hypertension          n
+  &lt;chr&gt;             &lt;dbl&gt;
+1 &lt;NA&gt;              16229
+2 Yes                5579
+3 No                 4426
+4 Skip                280
+5 DontKnow             49
+6 PreferNotToAnswer     6</code></pre>
+</div>
+</div>
+<ul>
+<li>“Skip/Prefer not to answer/Don’t know” includes anyone who skipped the whole question</li>
+<li><code>NA</code> refers to participants who never saw the question.</li>
+<li>“No” assigned to respondents who answered the question, but didn’t select “Self”</li>
+</ul>
+</section>
+<section id="harder-to-figure-out-appropriate-denominator" class="slide level2">
+<h2>Harder to figure out appropriate denominator</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>survey_answers <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"ds_survey"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a></a>  <span class="fu">inner_join</span>(cohort, <span class="at">by =</span> <span class="fu">join_by</span>(person_id)) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a></a>  <span class="fu">filter</span>(question_concept_id <span class="sc">==</span> <span class="dv">836787</span>)</span>
+<span id="cb29-4"><a></a><span class="fu">count</span>(survey_answers, answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  answer                                                        n
+  &lt;chr&gt;                                                     &lt;int&gt;
+1 Including yourself, who ... (hypertension)? - Daughter      201
+2 Including yourself, who ... (hypertension)? - Father       4195
+3 Including yourself, who ... (hypertension)? - Grandparent  3915
+4 Including yourself, who ... (hypertension)? - Mother       4480
+5 Including yourself, who ... (hypertension)? - Self         5583
+6 Including yourself, who ... (hypertension)? - Sibling      2384
+7 Including yourself, who ... (hypertension)? - Son           213
+8 PMI: Skip                                                  1152</code></pre>
+</div>
+</div>
+</section>
+<section id="try-to-provide-information-to-improve-interpretability" class="slide level2">
+<h2>Try to provide information to improve interpretability</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>survey_data <span class="ot">&lt;-</span> <span class="fu">aou_survey</span>(cohort,</span>
+<span id="cb31-2"><a></a>           <span class="at">questions =</span> <span class="fu">c</span>(<span class="dv">43530468</span>),</span>
+<span id="cb31-3"><a></a>           <span class="at">question_output =</span> <span class="fu">c</span>(<span class="st">"hypertension_age_diagnosis"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ℹ One or more of the requested questions were only asked of people who responded that they had certain conditions.
+→ The top-level question(s) will be added to the output to provide context about missing data as column(s) `circulatorycondition_hypertension_yes`.
+    </code></pre>
+</div>
+</div>
+</section>
+<section id="section" class="slide level2" data-background-iframe="https://roux-ohdsi.github.io/allofus/vignettes/web_only/searchable_codebook.html" data-background-interactive="true">
+<h2></h2>
+</section>
+<section id="section-1" class="slide level2" data-background-iframe="https://roux-ohdsi.github.io/allofus/vignettes/web_only/health_codebook.html" data-background-interactive="true">
+<h2></h2>
+</section>
+<section id="section-2" class="slide level2" data-background-iframe="https://roux-ohdsi.github.io/allofus/vignettes/data.html" data-background-interactive="true">
+<h2></h2>
+</section>
+<section id="challenges-reprise" class="slide level2">
+<h2>Challenges (reprise)</h2>
+<ul>
+<li>Lack of programming skills
+<ul>
+<li><strong>the <code>allofus</code> package allows users to mostly avoid SQL and use the popular <code>tidyverse</code> R framework</strong></li>
+</ul></li>
+<li><em>All of Us</em> data is complex
+<ul>
+<li><strong>the <code>allofus</code> package allows for simpler methods of cohort and outcomes specification using the OMOP CDM data, including survey data in <em>All of Us</em></strong></li>
+</ul></li>
+<li>Large scale observational health research is hard
+<ul>
+<li><strong>the <code>allofus</code> package helps try to avoid (some) mistakes and make code intent clear</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="on-the-agenda" class="slide level2 smaller">
+<h2>On the agenda</h2>
+<ul>
+<li>Lack of programming skills
+<ul>
+<li>Improve and extend functions and documentation</li>
+<li>Expand the methods in this package to python</li>
+<li>Ensure long-term stability and robustness for R package and python library</li>
+</ul></li>
+<li><em>All of Us</em> data is complex
+<ul>
+<li>Build a suite a specific functions for genomics, fitbit data</li>
+<li>Add integrations with existing OHDSI tools</li>
+</ul></li>
+<li>Large scale observational health research is hard
+<ul>
+<li>Scale up tutorials and training materials that go beyond how to query the data
+<ul>
+<li>creating causal models</li>
+<li>defining and validating cohorts</li>
+<li>understanding, identifying, and accounting for confounding and bias</li>
+<li>dealing with missing data</li>
+<li>training in appropriate statistical methods for observational health research</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank you!</h2>
+<ul>
+<li>Smith LH, Cavanaugh R. allofus: an R package to facilitate use of the All of Us Researcher Workbench. Journal of the American Medical Informatics Association. 2024;ocae198. doi: <a href="https://doi.org/10.1093/jamia/ocae198">10.1093/jamia/ocae198</a></li>
+<li>GitHub (source code, bug reports): <a href="https://github.com/roux-ohdsi/allofus">github.com/roux-ohdsi/allofus</a></li>
+<li>Package site (tutorials, searchable codebooks): <a href="https://roux-ohdsi.github.io/allofus">roux-ohdsi.github.io/allofus</a></li>
+<li>Email: <a href="mailto:l.smith@northeastern.edu" class="email">l.smith@northeastern.edu</a>; <a href="mailto:r.cavanaugh@northeastern.edu" class="email">r.cavanaugh@northeastern.edu</a></li>
+</ul>
+
+<div class="quarto-auto-generated-content">
+<p><img src="roux-rb.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/louisahsmith\.com");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    <script type="text/javascript">
+      Reveal.on('ready', event => {
+        if (event.indexh === 0) {
+          document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+        }
+      });
+      Reveal.addEventListener('slidechanged', (event) => {
+        if (event.indexh === 0) {
+          Reveal.configure({ slideNumber: null });
+          document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+        }
+        if (event.indexh === 1) {
+          Reveal.configure({ slideNumber: 'c' });
+          document.querySelector("div.has-logo > img.slide-logo").style.display = null;
+        }
+      });
+    </script>
+    
+
+</body></html>

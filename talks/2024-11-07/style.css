@@ -1,0 +1,36 @@
+/* Hide logo on title slide */
+.title-slide .slide-logo {
+    display: none !important;
+}
+
+/* Adjust logo size and position */
+.slide-logo {
+    max-height: 60px !important;
+    right: 5px !important;
+    bottom: 0px !important;
+}
+
+/* Optional: Style your title slide text */
+.title-slide h1 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.title-slide h2, .title-slide h3 {
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.title{
+    font-size: 50px!important;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.quarto-title-author{
+  font-size: 35px!important;
+}
+
+.quarto-title-affiliation{
+  font-size: 20px!important;
+}

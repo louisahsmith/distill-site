@@ -11,42 +11,217 @@
     "href": "index.html",
     "title": "Louisa H. Smith",
     "section": "",
-    "text": "I am an assistant professor in the Department of Health Sciences and at the Roux Institute, Northeastern University. I am an epidemiologist and biostatistician with expertise in reproductive and perinatal epidemiology and causal inference. I am passionate about teaching and mentoring students in epidemiology and biostatistics.\n\nEducation\n\nPhD, Population Health Sciences (Epidemiologic Methods)\n\nHarvard University\n\nSM, Biostatistics\n\nHarvard University\n\nMS, Epidemiology\n\nUniversity of California, Berkeley\n\nAB, Comparative Literature / Community Health\n\nBrown University"
+    "text": "I am an assistant professor in the Department of Public Health & Health Sciences and at the Roux Institute, Northeastern University. I am an epidemiologist and biostatistician with expertise in reproductive and perinatal epidemiology and causal inference. I am passionate about teaching and mentoring students in epidemiology and biostatistics.\n\nEducation\n\nPhD, Population Health Sciences (Epidemiologic Methods)\n\nHarvard University\n\nSM, Biostatistics\n\nHarvard University\n\nMS, Epidemiology\n\nUniversity of California, Berkeley\n\nAB, Comparative Literature / Community Health\n\nBrown University"
   },
   {
-    "objectID": "talks/2020-12-19/2020-12-19.html",
-    "href": "talks/2020-12-19/2020-12-19.html",
-    "title": "Simple sensitivity analysis for selection bias using bounds",
+    "objectID": "talks/2021-09-17/2021-09-17.html",
+    "href": "talks/2021-09-17/2021-09-17.html",
+    "title": "Causal inference in epidemiology using target trial principles: Applications in pregnancy and prostate cancer",
     "section": "",
-    "text": "Paper"
+    "text": "Much of the evidence about what improves and impairs human health is derived from observational data. However, naïve analyses can result in biased and misleading conclusions. One tool that can help us better use observational data for causal inference is the target trial, which invokes the principles of randomized controlled trials to design and analyze observational studies.\nIn this talk I will present the design and analysis of two observational studies using these principles. First, I will describe some pitfalls in estimating the risk of preterm birth after COVID-19 and introduce a strategy to produce meaningful comparisons between pregnancies that were and weren’t affected by COVID-19. Using this method in a registry of pregnant women during the pandemic, we find a large increase in risk of preterm birth after severe COVID-19 late in pregnancy, but not after milder disease or earlier in pregnancy.\nNext, I will discuss an open question about prostate cancer treatment that is unlikely to ever be addressed in a trial, and I will describe how to answer it in observational data using inverse probability weighting or the parametric g-formula. A comparison of the results from each analysis points to the importance of fully specifying a sustained treatment strategy, as well as to inadequacies in our data for answering questions about this particular strategy."
   },
   {
-    "objectID": "talks/2021-05-07/2021-05-07.html",
-    "href": "talks/2021-05-07/2021-05-07.html",
-    "title": "Bias bounds and target trials for causal inference in observational data",
-    "section": "",
-    "text": "Dissertation\n\n\n Video"
+    "objectID": "talks/2023-05-31/slides.html#what-is-targets",
+    "href": "talks/2023-05-31/slides.html#what-is-targets",
+    "title": "Intro to {targets}",
+    "section": "What is {targets}?",
+    "text": "What is {targets}?\n\n\n\n\n\n\n\n\n\n“a Make-like pipeline tool for statistics and data science in R”\n\nmanage a sequence of computational steps\nonly update what needs updating\nensure that the results at the end of the pipeline are still valid"
   },
   {
-    "objectID": "talks/2022-06-13.html",
-    "href": "talks/2022-06-13.html",
+    "objectID": "talks/2023-05-31/slides.html#script-based-workflow",
+    "href": "talks/2023-05-31/slides.html#script-based-workflow",
+    "title": "Intro to {targets}",
+    "section": "Script-based workflow",
+    "text": "Script-based workflow\n01-data.R\nlibrary(tidyverse)\ndata &lt;- read_csv(\"data.csv\", col_types = cols()) %&gt;% \n    filter(!is.na(Ozone))\nwrite_rds(data, \"data.rds\")\n02-model.R\nlibrary(tidyverse)\ndata &lt;- read_rds(\"data.rds\")\nmodel &lt;- lm(Ozone ~ Temp, data) %&gt;% \n    coefficients()\nwrite_rds(model, \"model.rds\")\n03-plot.R\nlibrary(tidyverse)\nmodel &lt;- read_rds(\"model.rds\")\ndata &lt;- read_rds(\"data.rds\")\nggplot(data) +\n    geom_point(aes(x = Temp, y = Ozone)) +\n    geom_abline(intercept = model[1], slope = model[2])\nggsave(\"plot.png\", plot)\n\n\nBased on example in https://books.ropensci.org/targets"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#problems-with-script-based-workflow",
+    "href": "talks/2023-05-31/slides.html#problems-with-script-based-workflow",
+    "title": "Intro to {targets}",
+    "section": "Problems with script-based workflow",
+    "text": "Problems with script-based workflow\n\nReproducibility: if you change something in one script, you have to remember to re-run the scripts that depend on it\nEfficiency: that means you’ll usually rerun all the scripts even if they don’t depend on the change\nScalability: if you have a lot of scripts, it’s hard to keep track of which ones depend on which\nFile management: you have to keep track of which files are inputs and which are outputs and where they’re saved"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#targets-workflow",
+    "href": "talks/2023-05-31/slides.html#targets-workflow",
+    "title": "Intro to {targets}",
+    "section": "{targets} workflow",
+    "text": "{targets} workflow\nR/functions.R\nget_data &lt;- function(file) {\n  read_csv(file, col_types = cols()) %&gt;%\n    filter(!is.na(Ozone))\n}\n\nfit_model &lt;- function(data) {\n  lm(Ozone ~ Temp, data) %&gt;%\n    coefficients()\n}\n\nplot_model &lt;- function(model, data) {\n  ggplot(data) +\n    geom_point(aes(x = Temp, y = Ozone)) +\n    geom_abline(intercept = model[1], slope = model[2])\n}"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#targets-workflow-1",
+    "href": "talks/2023-05-31/slides.html#targets-workflow-1",
+    "title": "Intro to {targets}",
+    "section": "{targets} workflow",
+    "text": "{targets} workflow\n_targets.R\nlibrary(targets)\n\ntar_source()\ntar_option_set(packages = c(\"tidyverse\"))\n\nlist(\n  tar_target(file, \"data.csv\", format = \"file\"),\n  tar_target(data, get_data(file)),\n  tar_target(model, fit_model(data)),\n  tar_target(plot, plot_model(model, data))\n)\nRun tar_make() to run pipeline\n\n\n\n\n\n\nTip\n\n\nuse_targets() will generate a _targets.R script for you to fill in."
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#targets-workflow-2",
+    "href": "talks/2023-05-31/slides.html#targets-workflow-2",
+    "title": "Intro to {targets}",
+    "section": "{targets} workflow",
+    "text": "{targets} workflow\nTargets are “hidden” away where you don’t need to manage them\n├── _targets.R\n├── data.csv\n├── R/\n│   ├── functions.R\n├── _targets/\n│   ├── objects\n│          ├── data\n│          ├── model\n│          ├── plot\n\n\n\n\n\n\nTip\n\n\nYou can of course have multiple files in R/; tar_source() will source them all"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#my-typical-workflow-with-targets",
+    "href": "talks/2023-05-31/slides.html#my-typical-workflow-with-targets",
+    "title": "Intro to {targets}",
+    "section": "My typical workflow with {targets}",
+    "text": "My typical workflow with {targets}\n\n\nRead in some data and do some cleaning until it’s in the form I want to work with.\nWrap that in a function and save the file in R/.\nRun use_targets() and edit _targets.R accordingly, so that I list the data file as a target and clean_data as the output of the cleaning function.\n\nRun tar_make().\nRun tar_load(clean_data) so that I can work on the next step of my workflow.\nAdd the next function and corresponding target when I’ve solidified that step.\n\n\n\n\n\n\n\n\nTip\n\n\nI usually include library(targets) in my project .Rprofile so that I can always call tar_load() on the fly"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks",
+    "href": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks",
+    "title": "Intro to {targets}",
+    "section": "_targets.R tips and tricks",
+    "text": "_targets.R tips and tricks\nlist(\n  tar_target(\n    data_file,\n    \"data/raw_data.csv\",\n    format = \"file\"\n  ),\n  tar_target(\n    raw_data,\n    read.csv(data_file)\n  ),\n  tar_target(\n    clean_data,\n    clean_data_function(raw_data)\n  )\n)\n\n\n\n\n\n\nTip\n\n\nI like to pair my functions/targets by name so that the workflow is clear to me"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks-1",
+    "href": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks-1",
+    "title": "Intro to {targets}",
+    "section": "_targets.R tips and tricks",
+    "text": "_targets.R tips and tricks\npreparation &lt;- list(\n  ...,\n  tar_target(\n    clean_data,\n    clean_data_function(raw_data)\n  )\n)\nmodeling &lt;- list(\n  tar_target(\n    linear_model,\n    linear_model_function(clean_data)\n  ),\n  ...\n)\nlist(\n  preparation,\n  modeling\n)\n\n\n\n\n\n\n\nTip\n\n\nBy grouping the targets into lists, I can easily comment out chunks of the pipeline to not run the whole thing"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks-2",
+    "href": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks-2",
+    "title": "Intro to {targets}",
+    "section": "_targets.R tips and tricks",
+    "text": "_targets.R tips and tricks\n\n\n## prepare ----\nprepare &lt;- list(\n  ### cleanData.csv ----\n  tar_target(\n    cleanData.csv,\n    file.path(path_to_data, \n              \"cleanData.csv\"),\n    format = \"file\"\n  ),\n  ### newdat ----\n  tar_target(\n    newdat,\n    read_csv(cleanData.csv, \n             guess_max = 20000)\n  ),\n  ...\n\n\n\n\n\n\n\n\n\nTip\n\n\nIn big projects, I comment my _targets.R file so that I can use the RStudio outline pane to navigate the pipeline (my buggy function)"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#key-targets-functions",
+    "href": "talks/2023-05-31/slides.html#key-targets-functions",
+    "title": "Intro to {targets}",
+    "section": "Key {targets} functions",
+    "text": "Key {targets} functions\n\nuse_targets() gets you started with a _targets.R script to fill in\ntar_make() runs the pipeline and saves the results in _targets/objects/\ntar_make_future() runs the pipeline in parallel1\ntar_load() loads the results of a target into the global environment\n(e.g., tar_load(clean_data))\ntar_read() reads the results of a target into the global environment\n(e.g., dat &lt;- tar_read(clean_data))\ntar_visnetwork() creates a network diagram of the pipeline\ntar_outdated() checks which targets need to be updated\ntar_prune() deletes targets that are no longer in _targets.R\ntar_destroy() deletes the .targets/ directory if you need to burn everything down and start again\n\nNote: {targets} is moving to a new distributed computing strategy using {crew}"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#target-factories",
+    "href": "talks/2023-05-31/slides.html#target-factories",
+    "title": "Intro to {targets}",
+    "section": "“target factories”",
+    "text": "“target factories”"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#tarchetypes-reports",
+    "href": "talks/2023-05-31/slides.html#tarchetypes-reports",
+    "title": "Intro to {targets}",
+    "section": "{tarchetypes}: reports",
+    "text": "{tarchetypes}: reports\nRender documents that depend on targets loaded with tar_load() or tar_read().\n\ntar_render() renders an R Markdown document\ntar_quarto() renders a Quarto document (or project)\n\n\n\n\n\n\n\nWarning\n\n\nIt can’t detect dependencies like tar_load(ends_with(\"plot\"))"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#what-does-report.qmd-look-like",
+    "href": "talks/2023-05-31/slides.html#what-does-report.qmd-look-like",
+    "title": "Intro to {targets}",
+    "section": "What does report.qmd look like?",
+    "text": "What does report.qmd look like?\n---\ntitle: \"My report\"\n---\n```{r}\nlibrary(targets)\ntar_load(results)\ntar_load(plots)\n```\nThere were `r results$n` observations with a mean age of `r results$mean_age`.\n```{r}\nlibrary(ggplot2)\nplots$age_plot\n```\nBecause report.qmd depends on results and plots, it will only be re-rendered if either of those targets change.\n\n\n\n\n\n\nTip\n\n\nThe extra_files = argument can be used to force it to depend on additional non-target files"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#tarchetypes-branching",
+    "href": "talks/2023-05-31/slides.html#tarchetypes-branching",
+    "title": "Intro to {targets}",
+    "section": "{tarchetypes}: branching",
+    "text": "{tarchetypes}: branching\nUsing data from the National Longitudinal Survey of Youth,\n\n\n_targets.R\nlibrary(targets)\nlibrary(tarchetypes)\ntar_source()\n\ntargets_setup &lt;- list(\n  tar_target(\n    csv,\n    \"data/nlsy.csv\",\n    format = \"file\"\n  ),\n  tar_target(\n    dat,\n    readr::read_csv(csv, \n      show_col_types = FALSE)\n  )\n)\n\n\n\nR/functions.R\nmodel_function &lt;- function(outcome_var, \n                           sex_val, dat) {\n\n  lm(as.formula(paste(outcome_var, \n      \" ~ age_bir + income + factor(region)\")) ,\n     data = dat, \n     subset = sex == sex_val)\n}\n\ncoef_function &lt;- function(model) {\n  coef(model)[[\"age_bir\"]]\n}\n\nwe want to investigate the relationship between age at first birth and hours of sleep on weekdays and weekends among moms and dads separately1\nData and code at https://github.com/louisahsmith/targets-example"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#option-1",
+    "href": "talks/2023-05-31/slides.html#option-1",
+    "title": "Intro to {targets}",
+    "section": "Option 1",
+    "text": "Option 1\nCreate (and name) a separate target for each combination of sleep variable (\"sleep_wkdy\", \"sleep_wknd\") and sex (male: 1, female: 2):\ntargets_1 &lt;- list(\n  tar_target(\n    model_1,\n    model_function(outcome_var = \"sleep_wkdy\", sex_val = 1, dat = dat)\n  ),\n  tar_target(\n    coef_1,\n    coef_function(model_1)\n  )\n)\n… and so on…\ntar_read(coef_1)\n\n\n[1] 0.00734859"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#option-2",
+    "href": "talks/2023-05-31/slides.html#option-2",
+    "title": "Intro to {targets}",
+    "section": "Option 2",
+    "text": "Option 2\nUse tarchetypes::tar_map() to map over the combinations for you (static branching):\ntargets_2 &lt;- tar_map(\n  values = tidyr::crossing(\n    outcome = c(\"sleep_wkdy\", \"sleep_wknd\"),\n    sex = 1:2\n  ),\n  tar_target(\n    model_2,\n    model_function(outcome_var = outcome, sex_val = sex, dat = dat)\n  ),\n  tar_target(\n    coef_2,\n    coef_function(model_2)\n  )\n)\ntar_load(starts_with(\"coef_2\"))\nc(coef_2_sleep_wkdy_1, coef_2_sleep_wkdy_2, coef_2_sleep_wknd_1, coef_2_sleep_wknd_2)\n\n\n[1] 0.00734859 0.01901772 0.02595109 0.01422970"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#option-2-cont.",
+    "href": "talks/2023-05-31/slides.html#option-2-cont.",
+    "title": "Intro to {targets}",
+    "section": "Option 2, cont.",
+    "text": "Option 2, cont.\nUse tarchetypes::tar_combine() to combine the results of a call to tar_map():\ncombined &lt;- tar_combine(\n  combined_coefs_2,\n  targets_2[[\"coef_2\"]],\n  command = vctrs::vec_c(!!!.x),\n)\ntar_read(combined_coefs_2)\n\n\ncoef_2_sleep_wkdy_1 coef_2_sleep_wkdy_2 coef_2_sleep_wknd_1 coef_2_sleep_wknd_2 \n         0.00734859          0.01901772          0.02595109          0.01422970 \n\n\ncommand = vctrs::vec_c(!!!.x) is the default, but you can supply your own function to combine the results"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#option-3",
+    "href": "talks/2023-05-31/slides.html#option-3",
+    "title": "Intro to {targets}",
+    "section": "Option 3",
+    "text": "Option 3\n\nUse the pattern = argument of tar_target() (dynamic branching):\n\ntargets_3 &lt;- list(\n  tar_target(\n    outcome_target,\n    c(\"sleep_wkdy\", \"sleep_wknd\")\n  ),\n  tar_target(\n    sex_target,\n    1:2\n  ),\n  tar_target(\n    model_3,\n    model_function(outcome_var = outcome_target, sex_val = sex_target, dat = dat),\n    pattern = cross(outcome_target, sex_target)\n  ),\n  tar_target(\n    coef_3,\n    coef_function(model_3),\n    pattern = map(model_3)\n  )\n)\ntar_read(coef_3)\n\n\ncoef_3_85bbb1b6 coef_3_c47db1e2 coef_3_5ba8b6ec coef_3_19c76a86 \n     0.00734859      0.01901772      0.02595109      0.01422970"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#branching",
+    "href": "talks/2023-05-31/slides.html#branching",
+    "title": "Intro to {targets}",
+    "section": "Branching",
+    "text": "Branching\n\n\n\n\n\n\n\nDynamic\nStatic\n\n\n\n\nPipeline creates new targets at runtime.\nAll targets defined in advance.\n\n\nCryptic target names.\nFriendly target names.\n\n\nScales to hundreds of branches.\nDoes not scale as easily for tar_visnetwork() etc.\n\n\nNo metaprogramming required.\nFamiliarity with metaprogramming is helpful.\n\n\n\n\n\nFrom https://books.ropensci.org/targets/dynamic.html#branching"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#branching-1",
+    "href": "talks/2023-05-31/slides.html#branching-1",
+    "title": "Intro to {targets}",
+    "section": "Branching",
+    "text": "Branching\n\nThe book also has an example of using metaprogramming to map over different functions\n\ni.e. fit multiple models with the same arguments\n\nStatic and dynamic branching can be combined\n\ne.g. tar_map(values = ..., tar_target(..., pattern = map(...)))\n\nBranching can lead to slowdowns in the pipeline (see book for suggestions)"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#tarchetypes-repetition",
+    "href": "talks/2023-05-31/slides.html#tarchetypes-repetition",
+    "title": "Intro to {targets}",
+    "section": "{tarchetypes}: repetition",
+    "text": "{tarchetypes}: repetition\ntar_rep() repeats a target multiple times with the same arguments\ntargets_4 &lt;- list(\n  tar_rep(\n    bootstrap_coefs,\n    dat |&gt;\n      dplyr::slice_sample(prop = 1, replace = TRUE) |&gt;\n      model_function(outcome_var = \"sleep_wkdy\", sex_val = 1, dat = _) |&gt;\n      coef_function(),\n    batches = 10,\n    reps = 10\n  )\n)\nThe pipeline gets split into batches x reps chunks, each with its own random seed"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#tarchetypes-mapping-over-iterations",
+    "href": "talks/2023-05-31/slides.html#tarchetypes-mapping-over-iterations",
+    "title": "Intro to {targets}",
+    "section": "{tarchetypes}: mapping over iterations",
+    "text": "{tarchetypes}: mapping over iterations\nsensitivity_scenarios &lt;- tibble::tibble(\n  error = c(\"small\", \"medium\", \"large\"),\n  mean = c(1, 2, 3),\n  sd = c(0.5, 0.75, 1)\n)\ntar_map_rep() repeats a target multiple times with different arguments\ntargets_5 &lt;- tar_map_rep(\n  sensitivity_analysis,\n  dat |&gt; \n    dplyr::mutate(sleep_wkdy = sleep_wkdy + rnorm(nrow(dat), mean, sd)) |&gt;\n    model_function(outcome_var = \"sleep_wkdy\", sex_val = 1, dat = _) |&gt;\n    coef_function() |&gt; \n    data.frame(coef = _),\n  values = sensitivity_scenarios,\n  batches = 10,\n  reps = 10\n)"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#tarchetypes-mapping-over-iterations-1",
+    "href": "talks/2023-05-31/slides.html#tarchetypes-mapping-over-iterations-1",
+    "title": "Intro to {targets}",
+    "section": "{tarchetypes}: mapping over iterations",
+    "text": "{tarchetypes}: mapping over iterations\ntar_read(sensitivity_analysis) |&gt; head()\n\n\n           coef error mean  sd tar_batch tar_rep    tar_seed tar_group\n1  0.0061384611 small    1 0.5         1       1 -1018279263         2\n2 -0.0005346553 small    1 0.5         1       2  -720048594         2\n3  0.0073674844 small    1 0.5         1       3 -1478913096         2\n4  0.0039254289 small    1 0.5         1       4 -1181272269         2\n5  0.0108489430 small    1 0.5         1       5   135877686         2\n6  0.0029473286 small    1 0.5         1       6  -564559689         2\n\n\nIdeal for sensitivity analyses that require multiple iterations of the same pipeline with different parameters\ntar_read(sensitivity_analysis) |&gt;\n  dplyr::group_by(error) |&gt; \n  dplyr::summarize(q25 = quantile(coef, .25),\n                   median = median(coef),\n                   q75 = quantile(coef, .75))\n\n\n   error         q25      median         q75\n1  large 0.001427986 0.007318120 0.011399772\n2 medium 0.004158480 0.007770285 0.011367160\n3  small 0.004058926 0.006614599 0.009004322"
+  },
+  {
+    "objectID": "talks/2023-05-31/slides.html#the-end",
+    "href": "talks/2023-05-31/slides.html#the-end",
+    "title": "Intro to {targets}",
+    "section": "The end",
+    "text": "The end\n\n{targets} is a great tool for managing complex workflows\n{tarchetypes} makes it even more powerful\nThe user manual is a great resource for learning more\nPlay around with some of the examples I showed\n\n\nThanks!"
+  },
+  {
+    "objectID": "talks/2022-06-13/2022-06-13.html",
+    "href": "talks/2022-06-13/2022-06-13.html",
     "title": "Study design and analysis for time-dependent exposures during pregnancy",
     "section": "",
     "text": "Slides\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n(click image to download zip file)"
   },
   {
-    "objectID": "talks/2020-01-29/2020-01-29.html",
-    "href": "talks/2020-01-29/2020-01-29.html",
-    "title": "Data gets personal",
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
     "section": "",
-    "text": "Code"
+    "text": "Northeastern University\n\nPHTH 2210: Foundations of Biostatistics\nCo-instructor (fall 2024)\nUndergraduate course introducing basic statistical concepts and methods for public health and health sciences students.\n\n\nPHTH 6800: Causal Inference in Public Health Research\nInstructor (spring 2023, 2024)\nPhD course introducing potential outcomes, causal graphs, g-formula, marginal structural models, quasi-experimental methods, and more.\n\n\n\nEmory University Rollins School of Public Health\n\nEPI590R: R Bootcamp\nInstructor (summer 2023, 2024)\nBest practices and tools for data management, tables and figures, and reproducible research in R.\n\n\n\nHarvard TH Chan School of Public Health\n\nID543: Intro to R\nInstructor (summer 2023, 2024)\nIntroduction to R for MPH students.\n\n\nEPI 207: Advanced Epidemiologic Methods\n(Head) Teaching fellow (fall 2018, fall 2019, fall 2020)\nCausal inference for time-varying exposures: g-formula, marginal structural models, g-estimation of structural nested models; static and dynamic treatment regimes.\n\n\nBST 256: Theories and Methods for Causality I\nTeaching fellow (fall 2020)\nStructural causal models, graphical models, algorithms for identification.\n\n\nIntroduction to R\nInstructor (fall 2019, summer 2020)\nDeveloped and taught short course to introduce R to graduate students. Topics included creating figures and tables, cleaning data, writing functions.\n\n\nIntroduction to Epidemiology\nCo-instructor (summer 2019, summer 2020)\nEpidemiology course for participants in the Harvard Summer Program in Biostatistics & Computational Biology.\n\n\nPHS 2000: Quantitative Research Methods in Population Health Sciences\nTeaching fellow (fall 2017, spring 2018, fall 2019)\nRegression models, sampling, longitudinal and multilevel analysis, time-varying confounding, mediation and interaction, econometric methods, missing data.\n\n\n\nUniversity of California, Berkeley\n\nPH 150A: Introduction to Epidemiology and Human Disease\nGraduate student instructor (spring 2016)\nBasic epidemiologic methods, overview of epidemiology of diseases/conditions of public health importance for undergraduates.\n\n\nPH 250A: Epidemiologic Methods\nGraduate student instructor (fall 2015)\nStudy design, sampling, data collection, analysis, inference for MPH students."
+  },
+  {
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks",
+    "section": "",
+    "text": "allofus: an R package to facilitate use of the All of Us Researcher Workbench\n\n\n\n\n\nPresentation to various groups of All of Us Research Program stakeholders\n\n\n\n\n\nNov 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSecond-guessing selection bias\n\n\nSER 2024\n\n\nThoughts on selection bias in the context of large-scale volunteer databases\n\n\n\n\n\nJun 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEvaluating missingness assumptions for items in a frailty index\n\n\nSER 2023\n\n\nHow much does missing survey data matter when constructing a frailty index? \n\n\n\n\n\nJun 2023\n\n\n\n\n\n\n\n\n\n\n\n\nReproducible Epidemiology in R\n\n\nSER 2023\n\n\nSER pre-conference workshop \n\n\n\n\n\nJun 2023\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to {targets}\n\n\nMaine R User Group\n\n\nOverview of the targets package for reproducible data analysis. \n\n\n\n\n\nMay 2023\n\n\n\n\n\n\n\n\n\n\n\n\nStudy design and analysis for time-dependent exposures during pregnancy\n\n\nSPER 2022\n\n\nSPER Advanced Methods Workshop, with Chelsea Messinger \n\n\n\n\n\nJun 2022\n\n\n\n\n\n\n\n\n\n\n\n\nCausal inference in epidemiology using target trial principles: Applications in pregnancy and prostate cancer\n\n\nEPFL Statistics Seminar\n\n\nTarget trials can help design better observational studies. \n\n\n\n\n\nSep 2021\n\n\n\n\n\n\n\n\n\n\n\n\nMultiple-Bias Sensitivity Analysis Using Bounds\n\n\nJSM 2021\n\n\nA framework for sensitivity analysis addressing unmeasured confounding, misclassification, and selection bias. \n\n\n\n\n\nAug 2021\n\n\n\n\n\n\n\n\n\n\n\n\nChallenges in estimating effects of COVID-19 on preterm birth\n\n\nSER 2021\n\n\nAvoiding various biases when studying COVID-19 and preterm birth, presented in the infectious diseases session at SER 2021. \n\n\n\n\n\nJun 2021\n\n\n\n\n\n\n\n\n\n\n\n\nCOVID-19 and preterm birth: Understanding the relationship\n\n\nSPER 2021\n\n\nSpeed presentation on the timing- and severity-specific effects of COVID-19 on preterm birth. \n\n\n\n\n\nJun 2021\n\n\n\n\n\n\n\n\n\n\n\n\nE-values, unmeasured confounding, measurement error, and selection bias\n\n\nSER 2021\n\n\nPre-conference workshop with Maya Mathur. \n\n\n\n\n\nMay 2021\n\n\n\n\n\n\n\n\n\n\n\n\nBias bounds and target trials for causal inference in observational data\n\n\n\n\n\nMy dissertation defense! \n\n\n\n\n\nMay 2021\n\n\n\n\n\n\n\n\n\n\n\n\nSimple sensitivity analysis for selection bias using bounds\n\n\nCMStatistics 2020\n\n\nExtending a sensitivity analysis approach for unmeasured confounding to selection bias. \n\n\n\n\n\nDec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe Magic of R\n\n\nMaster of Food and Resource Economics Program, University of British Columbia\n\n\nA guest lecture to convince new learners of R just how cool it is. \n\n\n\n\n\nAug 2020\n\n\n\n\n\n\n\n\n\n\n\n\nData gets personal\n\n\nRLadies Boston\n\n\nA data science/human interest story first shared at RLadies Boston. \n\n\n\n\n\nJan 2020\n\n\n\n\n\n\n\n\n\n\n\n\nDirected Acyclic Graphs: An introduction\n\n\nKolokotrones Symposium, Harvard TH Chan School of Public Health\n\n\nThe basics of DAGs. \n\n\n\n\n\nDec 2018\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "talks/2023-06-14/slides.html#context-deficit-accumulation-frailty-index",
     "href": "talks/2023-06-14/slides.html#context-deficit-accumulation-frailty-index",
     "title": "Evaluating missingness assumptions for items in a frailty index",
     "section": "Context: deficit-accumulation frailty index",
-    "text": "Context: deficit-accumulation frailty index\n\n\n\n\n\n\n\nFrailty is a syndrome of vulnerability more common in older adults\nA frailty index is a quantitative measure of the aggregate burden of age-related health deficits\n\n\n\n\n\nFI = # of deficits / # of possible deficits\n\n\n\n&lt;0.15 robust; 0.15-0.25 pre-frail; &gt;0.25 frail"
+    "text": "Context: deficit-accumulation frailty index\n\n\n\n\n\n\n\nFrailty is a syndrome of vulnerability more common in older adults\nA frailty index is a quantitative measure of the aggregate burden of age-related health deficits\n\n\n\n\nFI = # of deficits / # of possible deficits\n\n\n\n&lt;0.15 robust; 0.15-0.25 pre-frail; &gt;0.25 frail"
   },
   {
     "objectID": "talks/2023-06-14/slides.html#section",
@@ -189,207 +364,242 @@
     "text": "Buuren, Stef van. 2012. Flexible Imputation of Missing Data. Chapman & Hall/CRC Interdisciplinary Statistics Series. Boca Raton, FL: CRC Press.\n\n\nLittle, Roderick J. A. 1993. “Pattern-Mixture Models for Multivariate Incomplete Data.” Journal of the American Statistical Association 88 (421): 125–34. https://doi.org/10.2307/2290705.\n\n\nMason, Alexina J, Manuel Gomes, Richard Grieve, Pinar Ulug, Janet T Powell, and James Carpenter. 2017. “Development of a Practical Approach to Expert Elicitation for Randomised Controlled Trials with Missing Health Outcomes: Application to the IMPROVE Trial.” Clinical Trials 14 (4): 357–67. https://doi.org/10.1177/1740774517711442.\n\n\nRubin, Donald B. 1987. Multiple Imputation for Nonresponse in Surveys. New York: John Wiley & Sons. https://doi.org/10.1002/9780470316696.\n\n\nTompsett, Daniel Mark, Finbarr Leacy, Margarita Moreno-Betancur, Jon Heron, and Ian R. White. 2018. “On the Use of the Not-at-Random Fully Conditional Specification (NARFCS) Procedure in Practice.” Statistics in Medicine 37 (15): 2338–53. https://doi.org/10.1002/sim.7643.\n\n\nTompsett, Daniel, Stephen Sutton, Shaun R. Seaman, and Ian R. White. 2020. “A General Method for Elicitation, Imputation, and Sensitivity Analysis for Incomplete Repeated Binary Data.” Statistics in Medicine 39 (22): 2921–35. https://doi.org/10.1002/sim.8584.\n\n\nVan Buuren, Stef, and Karin Groothuis-Oudshoorn. 2011. “Mice: Multivariate Imputation by Chained Equations in R.” Journal Of Statistical Software 45 (3): 1–67. https://doi.org/10.1177/0962280206074463.\n\n\nWong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Richard, Robert Cavanaugh, Justin Manjourides, Ariela R. Orkaby, and Brianne Olivieri-Mui. 2023. “Frailty Among Sexual and Gender Minority Older Adults: The All of Us Database.” Journal of Gerontology: Medical Sciences, in press."
   },
   {
-    "objectID": "talks.html",
-    "href": "talks.html",
-    "title": "Talks",
+    "objectID": "talks/2020-01-29/2020-01-29.html",
+    "href": "talks/2020-01-29/2020-01-29.html",
+    "title": "Data gets personal",
     "section": "",
-    "text": "Second-guessing selection bias\n\n\nSER 2024\n\n\nThoughts selection bias in the context of large-scale volunteer databases\n\n\n\n\n\nJun 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEvaluating missingness assumptions for items in a frailty index\n\n\nSER 2023\n\n\nHow much does missing survey data matter when constructing a frailty index? \n\n\n\n\n\nJun 2023\n\n\n\n\n\n\n\n\n\n\n\n\nReproducible Epidemiology in R\n\n\nSER 2023\n\n\nSER pre-conference workshop \n\n\n\n\n\nJun 2023\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to {targets}\n\n\nMaine R User Group\n\n\nOverview of the targets package for reproducible data analysis. \n\n\n\n\n\nMay 2023\n\n\n\n\n\n\n\n\n\n\n\n\nStudy design and analysis for time-dependent exposures during pregnancy\n\n\nSPER 2022\n\n\nSPER Advanced Methods Workshop, with Chelsea Messinger \n\n\n\n\n\nJun 2022\n\n\n\n\n\n\n\n\n\n\n\n\nCausal inference in epidemiology using target trial principles: Applications in pregnancy and prostate cancer\n\n\nEPFL Statistics Seminar\n\n\nTarget trials can help design better observational studies. \n\n\n\n\n\nSep 2021\n\n\n\n\n\n\n\n\n\n\n\n\nMultiple-Bias Sensitivity Analysis Using Bounds\n\n\nJSM 2021\n\n\nA framework for sensitivity analysis addressing unmeasured confounding, misclassification, and selection bias. \n\n\n\n\n\nAug 2021\n\n\n\n\n\n\n\n\n\n\n\n\nChallenges in estimating effects of COVID-19 on preterm birth\n\n\nSER 2021\n\n\nAvoiding various biases when studying COVID-19 and preterm birth, presented in the infectious diseases session at SER 2021. \n\n\n\n\n\nJun 2021\n\n\n\n\n\n\n\n\n\n\n\n\nCOVID-19 and preterm birth: Understanding the relationship\n\n\nSPER 2021\n\n\nSpeed presentation on the timing- and severity-specific effects of COVID-19 on preterm birth. \n\n\n\n\n\nJun 2021\n\n\n\n\n\n\n\n\n\n\n\n\nE-values, unmeasured confounding, measurement error, and selection bias\n\n\nSER 2021\n\n\nPre-conference workshop with Maya Mathur. \n\n\n\n\n\nMay 2021\n\n\n\n\n\n\n\n\n\n\n\n\nBias bounds and target trials for causal inference in observational data\n\n\n\n\n\nMy dissertation defense! \n\n\n\n\n\nMay 2021\n\n\n\n\n\n\n\n\n\n\n\n\nSimple sensitivity analysis for selection bias using bounds\n\n\nCMStatistics 2020\n\n\nExtending a sensitivity analysis approach for unmeasured confounding to selection bias. \n\n\n\n\n\nDec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe Magic of R\n\n\nMaster of Food and Resource Economics Program, University of British Columbia\n\n\nA guest lecture to convince new learners of R just how cool it is. \n\n\n\n\n\nAug 2020\n\n\n\n\n\n\n\n\n\n\n\n\nData gets personal\n\n\nRLadies Boston\n\n\nA data science/human interest story first shared at RLadies Boston. \n\n\n\n\n\nJan 2020\n\n\n\n\n\n\n\n\n\n\n\n\nDirected Acyclic Graphs: An introduction\n\n\nKolokotrones Symposium, Harvard TH Chan School of Public Health\n\n\nThe basics of DAGs. \n\n\n\n\n\nDec 2018\n\n\n\n\n\n\nNo matching items"
+    "text": "Code"
   },
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
-    "section": "",
-    "text": "Northeastern University\n\nPHTH 6800: Causal Inference in Public Health Research\nInstructor (spring 2023, spring 2024)\n\n\n\nEmory University Rollins School of Public Health\n\nEPI590R: R Bootcamp\nInstructor (summer 2023)\n\n\n\nHarvard TH Chan School of Public Health\n\nID543: Intro to R\nInstructor (summer 2023)\n\n\nEPI 207: Advanced Epidemiologic Methods\n(Head) Teaching fellow (fall 2018, fall 2019, fall 2020)\nCausal inference for time-varying exposures: g-formula, marginal structural models, g-estimation of structural nested models; static and dynamic treatment regimes.\n\n\nBST 256: Theories and Methods for Causality I\nTeaching fellow (fall 2020)\nStructural causal models, graphical models, algorithms for identification.\n\n\nIntroduction to R\nInstructor (fall 2019, summer 2020)\nDeveloped and taught short course to introduce R to graduate students. Topics included creating figures and tables, cleaning data, writing functions.\n\n\nIntroduction to Epidemiology\nCo-instructor (summer 2019, summer 2020)\nEpidemiology course for participants in the Harvard Summer Program in Biostatistics & Computational Biology.\n\n\nPHS 2000: Quantitative Research Methods in Population Health Sciences\nTeaching fellow (fall 2017, spring 2018, fall 2019)\nRegression models, sampling, longitudinal and multilevel analysis, time-varying confounding, mediation and interaction, econometric methods, missing data.\n\n\n\nUniversity of California, Berkeley\n\nPH 150A: Introduction to Epidemiology and Human Disease\nGraduate student instructor (spring 2016)\nBasic epidemiologic methods, overview of epidemiology of diseases/conditions of public health importance for undergraduates.\n\n\nPH 250A: Epidemiologic Methods\nGraduate student instructor (fall 2015)\nStudy design, sampling, data collection, analysis, inference for MPH students."
-  },
-  {
-    "objectID": "talks/2022-06-13/2022-06-13.html",
-    "href": "talks/2022-06-13/2022-06-13.html",
+    "objectID": "talks/2022-06-13.html",
+    "href": "talks/2022-06-13.html",
     "title": "Study design and analysis for time-dependent exposures during pregnancy",
     "section": "",
     "text": "Slides\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n(click image to download zip file)"
   },
   {
-    "objectID": "talks/2023-05-31/slides.html#what-is-targets",
-    "href": "talks/2023-05-31/slides.html#what-is-targets",
-    "title": "Intro to {targets}",
-    "section": "What is {targets}?",
-    "text": "What is {targets}?\n\n\n\n\n\n\n\n\n\n“a Make-like pipeline tool for statistics and data science in R”\n\nmanage a sequence of computational steps\nonly update what needs updating\nensure that the results at the end of the pipeline are still valid"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#script-based-workflow",
-    "href": "talks/2023-05-31/slides.html#script-based-workflow",
-    "title": "Intro to {targets}",
-    "section": "Script-based workflow",
-    "text": "Script-based workflow\n01-data.R\nlibrary(tidyverse)\ndata &lt;- read_csv(\"data.csv\", col_types = cols()) %&gt;% \n    filter(!is.na(Ozone))\nwrite_rds(data, \"data.rds\")\n02-model.R\nlibrary(tidyverse)\ndata &lt;- read_rds(\"data.rds\")\nmodel &lt;- lm(Ozone ~ Temp, data) %&gt;% \n    coefficients()\nwrite_rds(model, \"model.rds\")\n03-plot.R\nlibrary(tidyverse)\nmodel &lt;- read_rds(\"model.rds\")\ndata &lt;- read_rds(\"data.rds\")\nggplot(data) +\n    geom_point(aes(x = Temp, y = Ozone)) +\n    geom_abline(intercept = model[1], slope = model[2])\nggsave(\"plot.png\", plot)\n\n\nBased on example in https://books.ropensci.org/targets"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#problems-with-script-based-workflow",
-    "href": "talks/2023-05-31/slides.html#problems-with-script-based-workflow",
-    "title": "Intro to {targets}",
-    "section": "Problems with script-based workflow",
-    "text": "Problems with script-based workflow\n\nReproducibility: if you change something in one script, you have to remember to re-run the scripts that depend on it\nEfficiency: that means you’ll usually rerun all the scripts even if they don’t depend on the change\nScalability: if you have a lot of scripts, it’s hard to keep track of which ones depend on which\nFile management: you have to keep track of which files are inputs and which are outputs and where they’re saved"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#targets-workflow",
-    "href": "talks/2023-05-31/slides.html#targets-workflow",
-    "title": "Intro to {targets}",
-    "section": "{targets} workflow",
-    "text": "{targets} workflow\nR/functions.R\nget_data &lt;- function(file) {\n  read_csv(file, col_types = cols()) %&gt;%\n    filter(!is.na(Ozone))\n}\n\nfit_model &lt;- function(data) {\n  lm(Ozone ~ Temp, data) %&gt;%\n    coefficients()\n}\n\nplot_model &lt;- function(model, data) {\n  ggplot(data) +\n    geom_point(aes(x = Temp, y = Ozone)) +\n    geom_abline(intercept = model[1], slope = model[2])\n}"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#targets-workflow-1",
-    "href": "talks/2023-05-31/slides.html#targets-workflow-1",
-    "title": "Intro to {targets}",
-    "section": "{targets} workflow",
-    "text": "{targets} workflow\n_targets.R\nlibrary(targets)\n\ntar_source()\ntar_option_set(packages = c(\"tidyverse\"))\n\nlist(\n  tar_target(file, \"data.csv\", format = \"file\"),\n  tar_target(data, get_data(file)),\n  tar_target(model, fit_model(data)),\n  tar_target(plot, plot_model(model, data))\n)\nRun tar_make() to run pipeline\n\n\n\n\n\n\nTip\n\n\nuse_targets() will generate a _targets.R script for you to fill in."
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#targets-workflow-2",
-    "href": "talks/2023-05-31/slides.html#targets-workflow-2",
-    "title": "Intro to {targets}",
-    "section": "{targets} workflow",
-    "text": "{targets} workflow\nTargets are “hidden” away where you don’t need to manage them\n├── _targets.R\n├── data.csv\n├── R/\n│   ├── functions.R\n├── _targets/\n│   ├── objects\n│          ├── data\n│          ├── model\n│          ├── plot\n\n\n\n\n\n\nTip\n\n\nYou can of course have multiple files in R/; tar_source() will source them all"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#my-typical-workflow-with-targets",
-    "href": "talks/2023-05-31/slides.html#my-typical-workflow-with-targets",
-    "title": "Intro to {targets}",
-    "section": "My typical workflow with {targets}",
-    "text": "My typical workflow with {targets}\n\n\nRead in some data and do some cleaning until it’s in the form I want to work with.\nWrap that in a function and save the file in R/.\nRun use_targets() and edit _targets.R accordingly, so that I list the data file as a target and clean_data as the output of the cleaning function.\n\nRun tar_make().\nRun tar_load(clean_data) so that I can work on the next step of my workflow.\nAdd the next function and corresponding target when I’ve solidified that step.\n\n\n\n\n\n\n\n\nTip\n\n\nI usually include library(targets) in my project .Rprofile so that I can always call tar_load() on the fly"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks",
-    "href": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks",
-    "title": "Intro to {targets}",
-    "section": "_targets.R tips and tricks",
-    "text": "_targets.R tips and tricks\nlist(\n  tar_target(\n    data_file,\n    \"data/raw_data.csv\",\n    format = \"file\"\n  ),\n  tar_target(\n    raw_data,\n    read.csv(data_file)\n  ),\n  tar_target(\n    clean_data,\n    clean_data_function(raw_data)\n  )\n)\n\n\n\n\n\n\nTip\n\n\nI like to pair my functions/targets by name so that the workflow is clear to me"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks-1",
-    "href": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks-1",
-    "title": "Intro to {targets}",
-    "section": "_targets.R tips and tricks",
-    "text": "_targets.R tips and tricks\npreparation &lt;- list(\n  ...,\n  tar_target(\n    clean_data,\n    clean_data_function(raw_data)\n  )\n)\nmodeling &lt;- list(\n  tar_target(\n    linear_model,\n    linear_model_function(clean_data)\n  ),\n  ...\n)\nlist(\n  preparation,\n  modeling\n)\n\n\n\n\n\n\n\nTip\n\n\nBy grouping the targets into lists, I can easily comment out chunks of the pipeline to not run the whole thing"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks-2",
-    "href": "talks/2023-05-31/slides.html#targets.r-tips-and-tricks-2",
-    "title": "Intro to {targets}",
-    "section": "_targets.R tips and tricks",
-    "text": "_targets.R tips and tricks\n\n\n## prepare ----\nprepare &lt;- list(\n  ### cleanData.csv ----\n  tar_target(\n    cleanData.csv,\n    file.path(path_to_data, \n              \"cleanData.csv\"),\n    format = \"file\"\n  ),\n  ### newdat ----\n  tar_target(\n    newdat,\n    read_csv(cleanData.csv, \n             guess_max = 20000)\n  ),\n  ...\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nIn big projects, I comment my _targets.R file so that I can use the RStudio outline pane to navigate the pipeline (my buggy function)"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#key-targets-functions",
-    "href": "talks/2023-05-31/slides.html#key-targets-functions",
-    "title": "Intro to {targets}",
-    "section": "Key {targets} functions",
-    "text": "Key {targets} functions\n\nuse_targets() gets you started with a _targets.R script to fill in\ntar_make() runs the pipeline and saves the results in _targets/objects/\ntar_make_future() runs the pipeline in parallel1\ntar_load() loads the results of a target into the global environment\n(e.g., tar_load(clean_data))\ntar_read() reads the results of a target into the global environment\n(e.g., dat &lt;- tar_read(clean_data))\ntar_visnetwork() creates a network diagram of the pipeline\ntar_outdated() checks which targets need to be updated\ntar_prune() deletes targets that are no longer in _targets.R\ntar_destroy() deletes the .targets/ directory if you need to burn everything down and start again\n\nNote: {targets} is moving to a new distributed computing strategy using {crew}"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#target-factories",
-    "href": "talks/2023-05-31/slides.html#target-factories",
-    "title": "Intro to {targets}",
-    "section": "“target factories”",
-    "text": "“target factories”"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#tarchetypes-reports",
-    "href": "talks/2023-05-31/slides.html#tarchetypes-reports",
-    "title": "Intro to {targets}",
-    "section": "{tarchetypes}: reports",
-    "text": "{tarchetypes}: reports\nRender documents that depend on targets loaded with tar_load() or tar_read().\n\ntar_render() renders an R Markdown document\ntar_quarto() renders a Quarto document (or project)\n\n\n\n\n\n\n\nWarning\n\n\nIt can’t detect dependencies like tar_load(ends_with(\"plot\"))"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#what-does-report.qmd-look-like",
-    "href": "talks/2023-05-31/slides.html#what-does-report.qmd-look-like",
-    "title": "Intro to {targets}",
-    "section": "What does report.qmd look like?",
-    "text": "What does report.qmd look like?\n---\ntitle: \"My report\"\n---\n```{r}\nlibrary(targets)\ntar_load(results)\ntar_load(plots)\n```\nThere were `r results$n` observations with a mean age of `r results$mean_age`.\n```{r}\nlibrary(ggplot2)\nplots$age_plot\n```\nBecause report.qmd depends on results and plots, it will only be re-rendered if either of those targets change.\n\n\n\n\n\n\nTip\n\n\nThe extra_files = argument can be used to force it to depend on additional non-target files"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#tarchetypes-branching",
-    "href": "talks/2023-05-31/slides.html#tarchetypes-branching",
-    "title": "Intro to {targets}",
-    "section": "{tarchetypes}: branching",
-    "text": "{tarchetypes}: branching\nUsing data from the National Longitudinal Survey of Youth,\n\n\n_targets.R\nlibrary(targets)\nlibrary(tarchetypes)\ntar_source()\n\ntargets_setup &lt;- list(\n  tar_target(\n    csv,\n    \"data/nlsy.csv\",\n    format = \"file\"\n  ),\n  tar_target(\n    dat,\n    readr::read_csv(csv, \n      show_col_types = FALSE)\n  )\n)\n\n\n\nR/functions.R\nmodel_function &lt;- function(outcome_var, \n                           sex_val, dat) {\n\n  lm(as.formula(paste(outcome_var, \n      \" ~ age_bir + income + factor(region)\")) ,\n     data = dat, \n     subset = sex == sex_val)\n}\n\ncoef_function &lt;- function(model) {\n  coef(model)[[\"age_bir\"]]\n}\n\n\nwe want to investigate the relationship between age at first birth and hours of sleep on weekdays and weekends among moms and dads separately1\nData and code at https://github.com/louisahsmith/targets-example"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#option-1",
-    "href": "talks/2023-05-31/slides.html#option-1",
-    "title": "Intro to {targets}",
-    "section": "Option 1",
-    "text": "Option 1\nCreate (and name) a separate target for each combination of sleep variable (\"sleep_wkdy\", \"sleep_wknd\") and sex (male: 1, female: 2):\ntargets_1 &lt;- list(\n  tar_target(\n    model_1,\n    model_function(outcome_var = \"sleep_wkdy\", sex_val = 1, dat = dat)\n  ),\n  tar_target(\n    coef_1,\n    coef_function(model_1)\n  )\n)\n… and so on…\ntar_read(coef_1)\n\n\n[1] 0.00734859"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#option-2",
-    "href": "talks/2023-05-31/slides.html#option-2",
-    "title": "Intro to {targets}",
-    "section": "Option 2",
-    "text": "Option 2\nUse tarchetypes::tar_map() to map over the combinations for you (static branching):\ntargets_2 &lt;- tar_map(\n  values = tidyr::crossing(\n    outcome = c(\"sleep_wkdy\", \"sleep_wknd\"),\n    sex = 1:2\n  ),\n  tar_target(\n    model_2,\n    model_function(outcome_var = outcome, sex_val = sex, dat = dat)\n  ),\n  tar_target(\n    coef_2,\n    coef_function(model_2)\n  )\n)\ntar_load(starts_with(\"coef_2\"))\nc(coef_2_sleep_wkdy_1, coef_2_sleep_wkdy_2, coef_2_sleep_wknd_1, coef_2_sleep_wknd_2)\n\n\n[1] 0.00734859 0.01901772 0.02595109 0.01422970"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#option-2-cont.",
-    "href": "talks/2023-05-31/slides.html#option-2-cont.",
-    "title": "Intro to {targets}",
-    "section": "Option 2, cont.",
-    "text": "Option 2, cont.\nUse tarchetypes::tar_combine() to combine the results of a call to tar_map():\ncombined &lt;- tar_combine(\n  combined_coefs_2,\n  targets_2[[\"coef_2\"]],\n  command = vctrs::vec_c(!!!.x),\n)\ntar_read(combined_coefs_2)\n\n\ncoef_2_sleep_wkdy_1 coef_2_sleep_wkdy_2 coef_2_sleep_wknd_1 coef_2_sleep_wknd_2 \n         0.00734859          0.01901772          0.02595109          0.01422970 \n\n\ncommand = vctrs::vec_c(!!!.x) is the default, but you can supply your own function to combine the results"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#option-3",
-    "href": "talks/2023-05-31/slides.html#option-3",
-    "title": "Intro to {targets}",
-    "section": "Option 3",
-    "text": "Option 3\n\nUse the pattern = argument of tar_target() (dynamic branching):\n\ntargets_3 &lt;- list(\n  tar_target(\n    outcome_target,\n    c(\"sleep_wkdy\", \"sleep_wknd\")\n  ),\n  tar_target(\n    sex_target,\n    1:2\n  ),\n  tar_target(\n    model_3,\n    model_function(outcome_var = outcome_target, sex_val = sex_target, dat = dat),\n    pattern = cross(outcome_target, sex_target)\n  ),\n  tar_target(\n    coef_3,\n    coef_function(model_3),\n    pattern = map(model_3)\n  )\n)\ntar_read(coef_3)\n\n\ncoef_3_85bbb1b6 coef_3_c47db1e2 coef_3_5ba8b6ec coef_3_19c76a86 \n     0.00734859      0.01901772      0.02595109      0.01422970"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#branching",
-    "href": "talks/2023-05-31/slides.html#branching",
-    "title": "Intro to {targets}",
-    "section": "Branching",
-    "text": "Branching\n\n\n\n\n\n\n\nDynamic\nStatic\n\n\n\n\nPipeline creates new targets at runtime.\nAll targets defined in advance.\n\n\nCryptic target names.\nFriendly target names.\n\n\nScales to hundreds of branches.\nDoes not scale as easily for tar_visnetwork() etc.\n\n\nNo metaprogramming required.\nFamiliarity with metaprogramming is helpful.\n\n\n\n\n\nFrom https://books.ropensci.org/targets/dynamic.html#branching"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#branching-1",
-    "href": "talks/2023-05-31/slides.html#branching-1",
-    "title": "Intro to {targets}",
-    "section": "Branching",
-    "text": "Branching\n\nThe book also has an example of using metaprogramming to map over different functions\n\ni.e. fit multiple models with the same arguments\n\nStatic and dynamic branching can be combined\n\ne.g. tar_map(values = ..., tar_target(..., pattern = map(...)))\n\nBranching can lead to slowdowns in the pipeline (see book for suggestions)"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#tarchetypes-repetition",
-    "href": "talks/2023-05-31/slides.html#tarchetypes-repetition",
-    "title": "Intro to {targets}",
-    "section": "{tarchetypes}: repetition",
-    "text": "{tarchetypes}: repetition\ntar_rep() repeats a target multiple times with the same arguments\ntargets_4 &lt;- list(\n  tar_rep(\n    bootstrap_coefs,\n    dat |&gt;\n      dplyr::slice_sample(prop = 1, replace = TRUE) |&gt;\n      model_function(outcome_var = \"sleep_wkdy\", sex_val = 1, dat = _) |&gt;\n      coef_function(),\n    batches = 10,\n    reps = 10\n  )\n)\nThe pipeline gets split into batches x reps chunks, each with its own random seed"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#tarchetypes-mapping-over-iterations",
-    "href": "talks/2023-05-31/slides.html#tarchetypes-mapping-over-iterations",
-    "title": "Intro to {targets}",
-    "section": "{tarchetypes}: mapping over iterations",
-    "text": "{tarchetypes}: mapping over iterations\nsensitivity_scenarios &lt;- tibble::tibble(\n  error = c(\"small\", \"medium\", \"large\"),\n  mean = c(1, 2, 3),\n  sd = c(0.5, 0.75, 1)\n)\ntar_map_rep() repeats a target multiple times with different arguments\ntargets_5 &lt;- tar_map_rep(\n  sensitivity_analysis,\n  dat |&gt; \n    dplyr::mutate(sleep_wkdy = sleep_wkdy + rnorm(nrow(dat), mean, sd)) |&gt;\n    model_function(outcome_var = \"sleep_wkdy\", sex_val = 1, dat = _) |&gt;\n    coef_function() |&gt; \n    data.frame(coef = _),\n  values = sensitivity_scenarios,\n  batches = 10,\n  reps = 10\n)"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#tarchetypes-mapping-over-iterations-1",
-    "href": "talks/2023-05-31/slides.html#tarchetypes-mapping-over-iterations-1",
-    "title": "Intro to {targets}",
-    "section": "{tarchetypes}: mapping over iterations",
-    "text": "{tarchetypes}: mapping over iterations\ntar_read(sensitivity_analysis) |&gt; head()\n\n\n           coef error mean  sd tar_batch tar_rep    tar_seed tar_group\n1  0.0061384611 small    1 0.5         1       1 -1018279263         2\n2 -0.0005346553 small    1 0.5         1       2  -720048594         2\n3  0.0073674844 small    1 0.5         1       3 -1478913096         2\n4  0.0039254289 small    1 0.5         1       4 -1181272269         2\n5  0.0108489430 small    1 0.5         1       5   135877686         2\n6  0.0029473286 small    1 0.5         1       6  -564559689         2\n\n\nIdeal for sensitivity analyses that require multiple iterations of the same pipeline with different parameters\ntar_read(sensitivity_analysis) |&gt;\n  dplyr::group_by(error) |&gt; \n  dplyr::summarize(q25 = quantile(coef, .25),\n                   median = median(coef),\n                   q75 = quantile(coef, .75))\n\n\n   error         q25      median         q75\n1  large 0.001427986 0.007318120 0.011399772\n2 medium 0.004158480 0.007770285 0.011367160\n3  small 0.004058926 0.006614599 0.009004322"
-  },
-  {
-    "objectID": "talks/2023-05-31/slides.html#the-end",
-    "href": "talks/2023-05-31/slides.html#the-end",
-    "title": "Intro to {targets}",
-    "section": "The end",
-    "text": "The end\n\n{targets} is a great tool for managing complex workflows\n{tarchetypes} makes it even more powerful\nThe user manual is a great resource for learning more\nPlay around with some of the examples I showed\n\n\nThanks!"
-  },
-  {
-    "objectID": "talks/2021-09-17/2021-09-17.html",
-    "href": "talks/2021-09-17/2021-09-17.html",
-    "title": "Causal inference in epidemiology using target trial principles: Applications in pregnancy and prostate cancer",
+    "objectID": "talks/2021-05-07/2021-05-07.html",
+    "href": "talks/2021-05-07/2021-05-07.html",
+    "title": "Bias bounds and target trials for causal inference in observational data",
     "section": "",
-    "text": "Much of the evidence about what improves and impairs human health is derived from observational data. However, naïve analyses can result in biased and misleading conclusions. One tool that can help us better use observational data for causal inference is the target trial, which invokes the principles of randomized controlled trials to design and analyze observational studies.\nIn this talk I will present the design and analysis of two observational studies using these principles. First, I will describe some pitfalls in estimating the risk of preterm birth after COVID-19 and introduce a strategy to produce meaningful comparisons between pregnancies that were and weren’t affected by COVID-19. Using this method in a registry of pregnant women during the pandemic, we find a large increase in risk of preterm birth after severe COVID-19 late in pregnancy, but not after milder disease or earlier in pregnancy.\nNext, I will discuss an open question about prostate cancer treatment that is unlikely to ever be addressed in a trial, and I will describe how to answer it in observational data using inverse probability weighting or the parametric g-formula. A comparison of the results from each analysis points to the importance of fully specifying a sustained treatment strategy, as well as to inadequacies in our data for answering questions about this particular strategy."
+    "text": "Dissertation\n\n\n Video"
+  },
+  {
+    "objectID": "talks/2020-12-19/2020-12-19.html",
+    "href": "talks/2020-12-19/2020-12-19.html",
+    "title": "Simple sensitivity analysis for selection bias using bounds",
+    "section": "",
+    "text": "Paper"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#who-we-are",
+    "href": "talks/2024-11-07/allofus-r-package.html#who-we-are",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Who we are",
+    "text": "Who we are\n\n\n\nAssistant professor\n\ncausal inference, missing data and selection bias, pregnancy and reproductive health\n\n\n\n\n\nResearch data analyst\n\nhealth services research, neurorehabilitation, open-source software development\n\n\n\nmentoring other researchers using All of Us data"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#challenges",
+    "href": "talks/2024-11-07/allofus-r-package.html#challenges",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Challenges",
+    "text": "Challenges\n\nLack of programming skills\n\nHealth researchers often use R or SAS, some use python, few use SQL\ntidyverse is (the most?) popular framework for R\n\nAll of Us data is complex\n\nthe OMOP CDM has a steep learning curve, plus the complexity of the other data (e.g., surveys)\nmany researchers are trained on cleaner, more straightforward data\n\nLarge scale observational health research is hard\n\ndefining cohorts with appropriate inclusion/exclusion criteria, exposure/outcome phenotypes, time under observation, etc.\nhuge potential for confounding, selection bias, measurement error…\nreproducibility is critical"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#allofus-r-package",
+    "href": "talks/2024-11-07/allofus-r-package.html#allofus-r-package",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "allofus R package",
+    "text": "allofus R package\n\n\n\n\n\n\nBuild on existing tools/skills\nEnable complex research\nEfficient\nReproducible"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#when-to-start-antihypertensive-medications-during-pregnancy",
+    "href": "talks/2024-11-07/allofus-r-package.html#when-to-start-antihypertensive-medications-during-pregnancy",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "When to start antihypertensive medications during pregnancy?",
+    "text": "When to start antihypertensive medications during pregnancy?\n\n\n\n\n\n\n\nEligibility criteria\nPregnant, with chronic hypertension diagnosed prior to pregnancy but no prior use of antihypertensive medications\n\n\nBaseline (time zero)\nFirst prenatal visit\n\n\nTreatment strategies\nInitiate antihypertensive medications 1) immediately vs. 2) delayed vs. 3) never\n\n\nOutcome\nComposite of preeclampsia with severe features, medically indicated preterm birth at &lt;35 weeks of gestation, placental abruption, or fetal or neonatal death"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#when-to-start-antihypertensive-medications-during-pregnancy-1",
+    "href": "talks/2024-11-07/allofus-r-package.html#when-to-start-antihypertensive-medications-during-pregnancy-1",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "When to start antihypertensive medications during pregnancy?",
+    "text": "When to start antihypertensive medications during pregnancy?\n1. Define the cohort\n2. Extract data from different domains to create a dataset with exposure, outcome, covariates\n3. Analyze the data"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#where-to-begin",
+    "href": "talks/2024-11-07/allofus-r-package.html#where-to-begin",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Where to begin?",
+    "text": "Where to begin?"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#begin-in-r",
+    "href": "talks/2024-11-07/allofus-r-package.html#begin-in-r",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Begin in R",
+    "text": "Begin in R\nEverything is built on a direct connection to the bigquery database\n\nlibrary(allofus)\nlibrary(tidyverse)\n\ncon &lt;- aou_connect()\n\nError:\n! Unable to connect to CDR"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#access-tables",
+    "href": "talks/2024-11-07/allofus-r-package.html#access-tables",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Access tables",
+    "text": "Access tables\nUnder the hood, dbplyr (part of the tidyverse) allows researchers to use many of the same functions on a remote table that they would use on a dataframe\n\nperson &lt;- tbl(con, \"person\")\n\nError: object 'con' not found\n\ncolnames(person)\n\nNULL"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#quick-data-manipulations-and-computations",
+    "href": "talks/2024-11-07/allofus-r-package.html#quick-data-manipulations-and-computations",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Quick data manipulations and computations",
+    "text": "Quick data manipulations and computations\nUsers are running SQL queries without realizing they’re running SQL queries\n\nperson |&gt;\n  mutate(birth_decade = cut(year_of_birth, \n                            breaks = c(1930, 1940, 1950, 1960, 1970, \n                                       1980, 1990, 2000, 2010))) |&gt;\n  count(birth_decade)\n\nError in UseMethod(\"mutate\"): no applicable method for 'mutate' applied to an object of class \"function\""
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#behind-the-scenes",
+    "href": "talks/2024-11-07/allofus-r-package.html#behind-the-scenes",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Behind the scenes",
+    "text": "Behind the scenes\n\nSELECT `birth_decade`, count(*) AS `n`\nFROM (\n  SELECT\n    `person`.*,\n    CASE\nWHEN (`year_of_birth` &lt;= 1930.0) THEN NULL\nWHEN (`year_of_birth` &lt;= 1940.0) THEN '(1930,1940]'\nWHEN (`year_of_birth` &lt;= 1950.0) THEN '(1940,1950]'\nWHEN (`year_of_birth` &lt;= 1960.0) THEN '(1950,1960]'\nWHEN (`year_of_birth` &lt;= 1970.0) THEN '(1960,1970]'\nWHEN (`year_of_birth` &lt;= 1980.0) THEN '(1970,1980]'\nWHEN (`year_of_birth` &lt;= 1990.0) THEN '(1980,1990]'\nWHEN (`year_of_birth` &lt;= 2000.0) THEN '(1990,2000]'\nWHEN (`year_of_birth` &lt;= 2010.0) THEN '(2000,2010]'\nWHEN (`year_of_birth` &gt; 2010.0) THEN NULL\nEND AS `birth_decade`\n  FROM `person`\n) `q01`\nGROUP BY `birth_decade`"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#creating-cohorts-with-cohort-builder",
+    "href": "talks/2024-11-07/allofus-r-package.html#creating-cohorts-with-cohort-builder",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Creating cohorts with Cohort Builder",
+    "text": "Creating cohorts with Cohort Builder"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#creating-cohorts-with-allofus",
+    "href": "talks/2024-11-07/allofus-r-package.html#creating-cohorts-with-allofus",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Creating cohorts with allofus",
+    "text": "Creating cohorts with allofus\n\nreproductive_age_female &lt;- tbl(con, \"cb_search_person\") |&gt; \n  filter(age_at_consent &gt;= 18 & age_at_consent &lt;= 55, \n         sex_at_birth == \"Female\")\n\nError: object 'con' not found\n\nhypertensive_disorder &lt;- tbl(con, \"concept_ancestor\") |&gt; \n  filter(ancestor_concept_id == 316866) |&gt; \n  inner_join(\n    tbl(con, \"condition_occurrence\"), \n    by = join_by(descendant_concept_id == condition_concept_id)) |&gt; \n  distinct(person_id)\n\nError: object 'con' not found\n\ncohort &lt;- reproductive_age_female |&gt; \n  inner_join(hypertensive_disorder, by = join_by(person_id))\n\nError: object 'reproductive_age_female' not found\n\ntally(cohort)\n\nError: object 'cohort' not found"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#how-does-this-address-our-challenges",
+    "href": "talks/2024-11-07/allofus-r-package.html#how-does-this-address-our-challenges",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "How does this address our challenges?",
+    "text": "How does this address our challenges?\n\n\n\nAbstracts away all the SQL code and take advantage of existing R skills\nEnables more complex cohort definitions, including those involving non-EHR data\nEasy to carry forward the cohort to extract data and create datasets\nReadable and reproducible"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#creating-datasets-with-cohort-builder",
+    "href": "talks/2024-11-07/allofus-r-package.html#creating-datasets-with-cohort-builder",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Creating datasets with Cohort Builder",
+    "text": "Creating datasets with Cohort Builder\n\nlibrary(tidyverse)\nlibrary(bigrquery)\n\n# This query represents dataset \"hypertension in pregnancy\" for domain \"person\" and was generated for All of Us Registered Tier Dataset v7\ndataset_71250616_person_sql &lt;- paste(\"\n    SELECT\n        person.person_id,\n        person.gender_concept_id,\n        p_gender_concept.concept_name as gender,\n        person.birth_datetime as date_of_birth,\n        person.race_concept_id,\n        p_race_concept.concept_name as race,\n        person.ethnicity_concept_id,\n        p_ethnicity_concept.concept_name as ethnicity,\n        person.sex_at_birth_concept_id,\n        p_sex_at_birth_concept.concept_name as sex_at_birth \n    FROM\n        `person` person \n    LEFT JOIN\n        `concept` p_gender_concept \n            ON person.gender_concept_id = p_gender_concept.concept_id \n    LEFT JOIN\n        `concept` p_race_concept \n            ON person.race_concept_id = p_race_concept.concept_id \n    LEFT JOIN\n        `concept` p_ethnicity_concept \n            ON person.ethnicity_concept_id = p_ethnicity_concept.concept_id \n    LEFT JOIN\n        `concept` p_sex_at_birth_concept \n            ON person.sex_at_birth_concept_id = p_sex_at_birth_concept.concept_id  \n    WHERE\n        person.PERSON_ID IN (SELECT\n            distinct person_id  \n        FROM\n            `cb_search_person` cb_search_person  \n        WHERE\n            cb_search_person.person_id IN (SELECT\n                person_id \n            FROM\n                `cb_search_person` p \n            WHERE\n                age_at_consent BETWEEN 18 AND 50 \n            AND cb_search_person.person_id IN (SELECT\n                person_id \n            FROM\n                `person` p \n            WHERE\n                sex_at_birth_concept_id IN (45878463) ) \n            AND cb_search_person.person_id IN (SELECT\n                criteria.person_id \n            FROM\n                (SELECT\n                    DISTINCT person_id, entry_date, concept_id \n                FROM\n                    `cb_search_all_events` \n                WHERE\n                    (concept_id IN(SELECT\n                        DISTINCT c.concept_id \n                    FROM\n                        `cb_criteria` c \n                    JOIN\n                        (SELECT\n                            CAST(cr.id as string) AS id       \n                        FROM\n                            `cb_criteria` cr       \n                        WHERE\n                            concept_id IN (316866)       \n                            AND full_text LIKE '%_rank1]%'      ) a \n                            ON (c.path LIKE CONCAT('%.', a.id, '.%') \n                            OR c.path LIKE CONCAT('%.', a.id) \n                            OR c.path LIKE CONCAT(a.id, '.%') \n                            OR c.path = a.id) \n                    WHERE\n                        is_standard = 1 \n                        AND is_selectable = 1) \n                    AND is_standard = 1 )) criteria ) )\", sep=\"\")\n\n# Formulate a Cloud Storage destination path for the data exported from BigQuery.\n# NOTE: By default data exported multiple times on the same day will overwrite older copies.\n#       But data exported on a different days will write to a new location so that historical\n#       copies can be kept as the dataset definition is changed.\nperson_71250616_path &lt;- file.path(\n  Sys.getenv(\"WORKSPACE_BUCKET\"),\n  \"bq_exports\",\n  Sys.getenv(\"OWNER_EMAIL\"),\n  strftime(lubridate::now(), \"%Y%m%d\"),  # Comment out this line if you want the export to always overwrite.\n  \"person_71250616\",\n  \"person_71250616_*.csv\")\nmessage(str_glue('The data will be written to {person_71250616_path}. Use this path when reading ',\n                 'the data into your notebooks in the future.'))\n\n# Perform the query and export the dataset to Cloud Storage as CSV files.\n# NOTE: You only need to run `bq_table_save` once. After that, you can\n#       just read data from the CSVs in Cloud Storage.\nbq_table_save(\n  bq_dataset_query(Sys.getenv(\"WORKSPACE_CDR\"), dataset_71250616_person_sql, billing = Sys.getenv(\"GOOGLE_PROJECT\")),\n  person_71250616_path,\n  destination_format = \"CSV\")\n\n\n# Read the data directly from Cloud Storage into memory.\n# NOTE: Alternatively you can `gsutil -m cp {person_71250616_path}` to copy these files\n#       to the Jupyter disk.\nread_bq_export_from_workspace_bucket &lt;- function(export_path) {\n  col_types &lt;- cols(gender = col_character(), race = col_character(), ethnicity = col_character(), sex_at_birth = col_character())\n  bind_rows(\n    map(system2('gsutil', args = c('ls', export_path), stdout = TRUE, stderr = TRUE),\n        function(csv) {\n          message(str_glue('Loading {csv}.'))\n          chunk &lt;- read_csv(pipe(str_glue('gsutil cat {csv}')), col_types = col_types, show_col_types = FALSE)\n          if (is.null(col_types)) {\n            col_types &lt;- spec(chunk)\n          }\n          chunk\n        }))\n}\ndataset_71250616_person_df &lt;- read_bq_export_from_workspace_bucket(person_71250616_path)\n\ndim(dataset_71250616_person_df)\n\nhead(dataset_71250616_person_df, 5)\nlibrary(tidyverse)\nlibrary(bigrquery)\n\n# This query represents dataset \"hypertension in pregnancy\" for domain \"condition\" and was generated for All of Us Registered Tier Dataset v7\ndataset_71250616_condition_sql &lt;- paste(\"\n    SELECT\n        c_occurrence.person_id,\n        c_occurrence.condition_concept_id,\n        c_standard_concept.concept_name as standard_concept_name,\n        c_standard_concept.concept_code as standard_concept_code,\n        c_standard_concept.vocabulary_id as standard_vocabulary,\n        c_occurrence.condition_start_datetime,\n        c_occurrence.condition_end_datetime,\n        c_occurrence.condition_type_concept_id,\n        c_type.concept_name as condition_type_concept_name,\n        c_occurrence.stop_reason,\n        c_occurrence.visit_occurrence_id,\n        visit.concept_name as visit_occurrence_concept_name,\n        c_occurrence.condition_source_value,\n        c_occurrence.condition_source_concept_id,\n        c_source_concept.concept_name as source_concept_name,\n        c_source_concept.concept_code as source_concept_code,\n        c_source_concept.vocabulary_id as source_vocabulary,\n        c_occurrence.condition_status_source_value,\n        c_occurrence.condition_status_concept_id,\n        c_status.concept_name as condition_status_concept_name \n    FROM\n        ( SELECT\n            * \n        FROM\n            `condition_occurrence` c_occurrence \n        WHERE\n            (\n                condition_concept_id IN (SELECT\n                    DISTINCT c.concept_id \n                FROM\n                    `cb_criteria` c \n                JOIN\n                    (SELECT\n                        CAST(cr.id as string) AS id       \n                    FROM\n                        `cb_criteria` cr       \n                    WHERE\n                        concept_id IN (132685, 133816, 134414, 135601, 136743, 137613, 138811, 141084, 314090, 35622939, 4034096, 4057976, 4116344, 4283352, 433536, 438490, 439077, 439393, 443700)       \n                        AND full_text LIKE '%_rank1]%'      ) a \n                        ON (c.path LIKE CONCAT('%.', a.id, '.%') \n                        OR c.path LIKE CONCAT('%.', a.id) \n                        OR c.path LIKE CONCAT(a.id, '.%') \n                        OR c.path = a.id) \n                WHERE\n                    is_standard = 1 \n                    AND is_selectable = 1)\n            )  \n            AND (\n                c_occurrence.PERSON_ID IN (SELECT\n                    distinct person_id  \n                FROM\n                    `cb_search_person` cb_search_person  \n                WHERE\n                    cb_search_person.person_id IN (SELECT\n                        person_id \n                    FROM\n                        `cb_search_person` p \n                    WHERE\n                        age_at_consent BETWEEN 18 AND 50 \n                    AND cb_search_person.person_id IN (SELECT\n                        person_id \n                    FROM\n                        `person` p \n                    WHERE\n                        sex_at_birth_concept_id IN (45878463) ) \n                    AND cb_search_person.person_id IN (SELECT\n                        criteria.person_id \n                    FROM\n                        (SELECT\n                            DISTINCT person_id, entry_date, concept_id \n                        FROM\n                            `cb_search_all_events` \n                        WHERE\n                            (concept_id IN(SELECT\n                                DISTINCT c.concept_id \n                            FROM\n                                `cb_criteria` c \n                            JOIN\n                                (SELECT\n                                    CAST(cr.id as string) AS id       \n                                FROM\n                                    `cb_criteria` cr       \n                                WHERE\n                                    concept_id IN (316866)       \n                                    AND full_text LIKE '%_rank1]%'      ) a \n                                    ON (c.path LIKE CONCAT('%.', a.id, '.%') \n                                    OR c.path LIKE CONCAT('%.', a.id) \n                                    OR c.path LIKE CONCAT(a.id, '.%') \n                                    OR c.path = a.id) \n                            WHERE\n                                is_standard = 1 \n                                AND is_selectable = 1) \n                            AND is_standard = 1 )) criteria ) )\n            )) c_occurrence \n    LEFT JOIN\n        `concept` c_standard_concept \n            ON c_occurrence.condition_concept_id = c_standard_concept.concept_id \n    LEFT JOIN\n        `concept` c_type \n            ON c_occurrence.condition_type_concept_id = c_type.concept_id \n    LEFT JOIN\n        `visit_occurrence` v \n            ON c_occurrence.visit_occurrence_id = v.visit_occurrence_id \n    LEFT JOIN\n        `concept` visit \n            ON v.visit_concept_id = visit.concept_id \n    LEFT JOIN\n        `concept` c_source_concept \n            ON c_occurrence.condition_source_concept_id = c_source_concept.concept_id \n    LEFT JOIN\n        `concept` c_status \n            ON c_occurrence.condition_status_concept_id = c_status.concept_id\", sep=\"\")\n\n# Formulate a Cloud Storage destination path for the data exported from BigQuery.\n# NOTE: By default data exported multiple times on the same day will overwrite older copies.\n#       But data exported on a different days will write to a new location so that historical\n#       copies can be kept as the dataset definition is changed.\ncondition_71250616_path &lt;- file.path(\n  Sys.getenv(\"WORKSPACE_BUCKET\"),\n  \"bq_exports\",\n  Sys.getenv(\"OWNER_EMAIL\"),\n  strftime(lubridate::now(), \"%Y%m%d\"),  # Comment out this line if you want the export to always overwrite.\n  \"condition_71250616\",\n  \"condition_71250616_*.csv\")\nmessage(str_glue('The data will be written to {condition_71250616_path}. Use this path when reading ',\n                 'the data into your notebooks in the future.'))\n\n# Perform the query and export the dataset to Cloud Storage as CSV files.\n# NOTE: You only need to run `bq_table_save` once. After that, you can\n#       just read data from the CSVs in Cloud Storage.\nbq_table_save(\n  bq_dataset_query(Sys.getenv(\"WORKSPACE_CDR\"), dataset_71250616_condition_sql, billing = Sys.getenv(\"GOOGLE_PROJECT\")),\n  condition_71250616_path,\n  destination_format = \"CSV\")\n\n\n# Read the data directly from Cloud Storage into memory.\n# NOTE: Alternatively you can `gsutil -m cp {condition_71250616_path}` to copy these files\n#       to the Jupyter disk.\nread_bq_export_from_workspace_bucket &lt;- function(export_path) {\n  col_types &lt;- cols(standard_concept_name = col_character(), standard_concept_code = col_character(), standard_vocabulary = col_character(), condition_type_concept_name = col_character(), stop_reason = col_character(), visit_occurrence_concept_name = col_character(), condition_source_value = col_character(), source_concept_name = col_character(), source_concept_code = col_character(), source_vocabulary = col_character(), condition_status_source_value = col_character(), condition_status_concept_name = col_character())\n  bind_rows(\n    map(system2('gsutil', args = c('ls', export_path), stdout = TRUE, stderr = TRUE),\n        function(csv) {\n          message(str_glue('Loading {csv}.'))\n          chunk &lt;- read_csv(pipe(str_glue('gsutil cat {csv}')), col_types = col_types, show_col_types = FALSE)\n          if (is.null(col_types)) {\n            col_types &lt;- spec(chunk)\n          }\n          chunk\n        }))\n}\ndataset_71250616_condition_df &lt;- read_bq_export_from_workspace_bucket(condition_71250616_path)\n\ndim(dataset_71250616_condition_df)\n\nhead(dataset_71250616_condition_df, 5)\nlibrary(tidyverse)\nlibrary(bigrquery)\n\n# This query represents dataset \"hypertension in pregnancy\" for domain \"measurement\" and was generated for All of Us Registered Tier Dataset v7\ndataset_71250616_measurement_sql &lt;- paste(\"\n    SELECT\n        measurement.person_id,\n        measurement.measurement_concept_id,\n        m_standard_concept.concept_name as standard_concept_name,\n        m_standard_concept.concept_code as standard_concept_code,\n        m_standard_concept.vocabulary_id as standard_vocabulary,\n        measurement.measurement_datetime,\n        measurement.measurement_type_concept_id,\n        m_type.concept_name as measurement_type_concept_name,\n        measurement.operator_concept_id,\n        m_operator.concept_name as operator_concept_name,\n        measurement.value_as_number,\n        measurement.value_as_concept_id,\n        m_value.concept_name as value_as_concept_name,\n        measurement.unit_concept_id,\n        m_unit.concept_name as unit_concept_name,\n        measurement.range_low,\n        measurement.range_high,\n        measurement.visit_occurrence_id,\n        m_visit.concept_name as visit_occurrence_concept_name,\n        measurement.measurement_source_value,\n        measurement.measurement_source_concept_id,\n        m_source_concept.concept_name as source_concept_name,\n        m_source_concept.concept_code as source_concept_code,\n        m_source_concept.vocabulary_id as source_vocabulary,\n        measurement.unit_source_value,\n        measurement.value_source_value \n    FROM\n        ( SELECT\n            * \n        FROM\n            `measurement` measurement \n        WHERE\n            (\n                measurement_concept_id IN (SELECT\n                    DISTINCT c.concept_id \n                FROM\n                    `cb_criteria` c \n                JOIN\n                    (SELECT\n                        CAST(cr.id as string) AS id       \n                    FROM\n                        `cb_criteria` cr       \n                    WHERE\n                        concept_id IN (21490851, 21490853, 3004249, 3005606, 3009395, 3012526, 3012888, 3013940, 3017490, 3018586, 3018592, 3018822, 3019962, 3027598, 3028737, 3031203, 3034703, 3035856, 36716965, 4060834, 40758413, 4152194, 4154790, 4232915, 4239021, 4248524, 4298393, 4302410, 44789315, 44789316)       \n                        AND full_text LIKE '%_rank1]%'      ) a \n                        ON (c.path LIKE CONCAT('%.', a.id, '.%') \n                        OR c.path LIKE CONCAT('%.', a.id) \n                        OR c.path LIKE CONCAT(a.id, '.%') \n                        OR c.path = a.id) \n                WHERE\n                    is_standard = 1 \n                    AND is_selectable = 1)\n            )  \n            AND (\n                measurement.PERSON_ID IN (SELECT\n                    distinct person_id  \n                FROM\n                    `cb_search_person` cb_search_person  \n                WHERE\n                    cb_search_person.person_id IN (SELECT\n                        person_id \n                    FROM\n                        `cb_search_person` p \n                    WHERE\n                        age_at_consent BETWEEN 18 AND 50 \n                    AND cb_search_person.person_id IN (SELECT\n                        person_id \n                    FROM\n                        `person` p \n                    WHERE\n                        sex_at_birth_concept_id IN (45878463) ) \n                    AND cb_search_person.person_id IN (SELECT\n                        criteria.person_id \n                    FROM\n                        (SELECT\n                            DISTINCT person_id, entry_date, concept_id \n                        FROM\n                            `cb_search_all_events` \n                        WHERE\n                            (concept_id IN(SELECT\n                                DISTINCT c.concept_id \n                            FROM\n                                `cb_criteria` c \n                            JOIN\n                                (SELECT\n                                    CAST(cr.id as string) AS id       \n                                FROM\n                                    `cb_criteria` cr       \n                                WHERE\n                                    concept_id IN (316866)       \n                                    AND full_text LIKE '%_rank1]%'      ) a \n                                    ON (c.path LIKE CONCAT('%.', a.id, '.%') \n                                    OR c.path LIKE CONCAT('%.', a.id) \n                                    OR c.path LIKE CONCAT(a.id, '.%') \n                                    OR c.path = a.id) \n                            WHERE\n                                is_standard = 1 \n                                AND is_selectable = 1) \n                            AND is_standard = 1 )) criteria ) )\n            )) measurement \n    LEFT JOIN\n        `concept` m_standard_concept \n            ON measurement.measurement_concept_id = m_standard_concept.concept_id \n    LEFT JOIN\n        `concept` m_type \n            ON measurement.measurement_type_concept_id = m_type.concept_id \n    LEFT JOIN\n        `concept` m_operator \n            ON measurement.operator_concept_id = m_operator.concept_id \n    LEFT JOIN\n        `concept` m_value \n            ON measurement.value_as_concept_id = m_value.concept_id \n    LEFT JOIN\n        `concept` m_unit \n            ON measurement.unit_concept_id = m_unit.concept_id \n    LEFT JOIn\n        `visit_occurrence` v \n            ON measurement.visit_occurrence_id = v.visit_occurrence_id \n    LEFT JOIN\n        `concept` m_visit \n            ON v.visit_concept_id = m_visit.concept_id \n    LEFT JOIN\n        `concept` m_source_concept \n            ON measurement.measurement_source_concept_id = m_source_concept.concept_id\", sep=\"\")\n\n# Formulate a Cloud Storage destination path for the data exported from BigQuery.\n# NOTE: By default data exported multiple times on the same day will overwrite older copies.\n#       But data exported on a different days will write to a new location so that historical\n#       copies can be kept as the dataset definition is changed.\nmeasurement_71250616_path &lt;- file.path(\n  Sys.getenv(\"WORKSPACE_BUCKET\"),\n  \"bq_exports\",\n  Sys.getenv(\"OWNER_EMAIL\"),\n  strftime(lubridate::now(), \"%Y%m%d\"),  # Comment out this line if you want the export to always overwrite.\n  \"measurement_71250616\",\n  \"measurement_71250616_*.csv\")\nmessage(str_glue('The data will be written to {measurement_71250616_path}. Use this path when reading ',\n                 'the data into your notebooks in the future.'))\n\n# Perform the query and export the dataset to Cloud Storage as CSV files.\n# NOTE: You only need to run `bq_table_save` once. After that, you can\n#       just read data from the CSVs in Cloud Storage.\nbq_table_save(\n  bq_dataset_query(Sys.getenv(\"WORKSPACE_CDR\"), dataset_71250616_measurement_sql, billing = Sys.getenv(\"GOOGLE_PROJECT\")),\n  measurement_71250616_path,\n  destination_format = \"CSV\")\n\n\n# Read the data directly from Cloud Storage into memory.\n# NOTE: Alternatively you can `gsutil -m cp {measurement_71250616_path}` to copy these files\n#       to the Jupyter disk.\nread_bq_export_from_workspace_bucket &lt;- function(export_path) {\n  col_types &lt;- cols(standard_concept_name = col_character(), standard_concept_code = col_character(), standard_vocabulary = col_character(), measurement_type_concept_name = col_character(), operator_concept_name = col_character(), value_as_concept_name = col_character(), unit_concept_name = col_character(), visit_occurrence_concept_name = col_character(), measurement_source_value = col_character(), source_concept_name = col_character(), source_concept_code = col_character(), source_vocabulary = col_character(), unit_source_value = col_character(), value_source_value = col_character())\n  bind_rows(\n    map(system2('gsutil', args = c('ls', export_path), stdout = TRUE, stderr = TRUE),\n        function(csv) {\n          message(str_glue('Loading {csv}.'))\n          chunk &lt;- read_csv(pipe(str_glue('gsutil cat {csv}')), col_types = col_types, show_col_types = FALSE)\n          if (is.null(col_types)) {\n            col_types &lt;- spec(chunk)\n          }\n          chunk\n        }))\n}\ndataset_71250616_measurement_df &lt;- read_bq_export_from_workspace_bucket(measurement_71250616_path)\n\ndim(dataset_71250616_measurement_df)\n\nhead(dataset_71250616_measurement_df, 5)\nlibrary(tidyverse)\nlibrary(bigrquery)\n\n# This query represents dataset \"hypertension in pregnancy\" for domain \"drug\" and was generated for All of Us Registered Tier Dataset v7\ndataset_71250616_drug_sql &lt;- paste(\"\n    SELECT\n        d_exposure.person_id,\n        d_exposure.drug_concept_id,\n        d_standard_concept.concept_name as standard_concept_name,\n        d_standard_concept.concept_code as standard_concept_code,\n        d_standard_concept.vocabulary_id as standard_vocabulary,\n        d_exposure.drug_exposure_start_datetime,\n        d_exposure.drug_exposure_end_datetime,\n        d_exposure.verbatim_end_date,\n        d_exposure.drug_type_concept_id,\n        d_type.concept_name as drug_type_concept_name,\n        d_exposure.stop_reason,\n        d_exposure.refills,\n        d_exposure.quantity,\n        d_exposure.days_supply,\n        d_exposure.sig,\n        d_exposure.route_concept_id,\n        d_route.concept_name as route_concept_name,\n        d_exposure.lot_number,\n        d_exposure.visit_occurrence_id,\n        d_visit.concept_name as visit_occurrence_concept_name,\n        d_exposure.drug_source_value,\n        d_exposure.drug_source_concept_id,\n        d_source_concept.concept_name as source_concept_name,\n        d_source_concept.concept_code as source_concept_code,\n        d_source_concept.vocabulary_id as source_vocabulary,\n        d_exposure.route_source_value,\n        d_exposure.dose_unit_source_value \n    FROM\n        ( SELECT\n            * \n        FROM\n            `drug_exposure` d_exposure \n        WHERE\n            (\n                drug_concept_id IN (SELECT\n                    DISTINCT ca.descendant_id \n                FROM\n                    `cb_criteria_ancestor` ca \n                JOIN\n                    (SELECT\n                        DISTINCT c.concept_id       \n                    FROM\n                        `cb_criteria` c       \n                    JOIN\n                        (SELECT\n                            CAST(cr.id as string) AS id             \n                        FROM\n                            `cb_criteria` cr             \n                        WHERE\n                            concept_id IN (21601664, 21601744)             \n                            AND full_text LIKE '%_rank1]%'       ) a \n                            ON (c.path LIKE CONCAT('%.', a.id, '.%') \n                            OR c.path LIKE CONCAT('%.', a.id) \n                            OR c.path LIKE CONCAT(a.id, '.%') \n                            OR c.path = a.id) \n                    WHERE\n                        is_standard = 1 \n                        AND is_selectable = 1) b \n                        ON (ca.ancestor_id = b.concept_id)))  \n                    AND (d_exposure.PERSON_ID IN (SELECT\n                        distinct person_id  \n                FROM\n                    `cb_search_person` cb_search_person  \n                WHERE\n                    cb_search_person.person_id IN (SELECT\n                        person_id \n                    FROM\n                        `cb_search_person` p \n                    WHERE\n                        age_at_consent BETWEEN 18 AND 50\n                    AND cb_search_person.person_id IN (SELECT\n                        person_id \n                    FROM\n                        `person` p \n                    WHERE\n                        sex_at_birth_concept_id IN (45878463) ) \n                    AND cb_search_person.person_id IN (SELECT\n                        criteria.person_id \n                    FROM\n                        (SELECT\n                            DISTINCT person_id, entry_date, concept_id \n                        FROM\n                            `cb_search_all_events` \n                        WHERE\n                            (concept_id IN(SELECT\n                                DISTINCT c.concept_id \n                            FROM\n                                `cb_criteria` c \n                            JOIN\n                                (SELECT\n                                    CAST(cr.id as string) AS id       \n                                FROM\n                                    `cb_criteria` cr       \n                                WHERE\n                                    concept_id IN (316866)       \n                                    AND full_text LIKE '%_rank1]%'      ) a \n                                    ON (c.path LIKE CONCAT('%.', a.id, '.%') \n                                    OR c.path LIKE CONCAT('%.', a.id) \n                                    OR c.path LIKE CONCAT(a.id, '.%') \n                                    OR c.path = a.id) \n                            WHERE\n                                is_standard = 1 \n                                AND is_selectable = 1) \n                            AND is_standard = 1 )) criteria ) )\n            )) d_exposure \n    LEFT JOIN\n        `concept` d_standard_concept \n            ON d_exposure.drug_concept_id = d_standard_concept.concept_id \n    LEFT JOIN\n        `concept` d_type \n            ON d_exposure.drug_type_concept_id = d_type.concept_id \n    LEFT JOIN\n        `concept` d_route \n            ON d_exposure.route_concept_id = d_route.concept_id \n    LEFT JOIN\n        `visit_occurrence` v \n            ON d_exposure.visit_occurrence_id = v.visit_occurrence_id \n    LEFT JOIN\n        `concept` d_visit \n            ON v.visit_concept_id = d_visit.concept_id \n    LEFT JOIN\n        `concept` d_source_concept \n            ON d_exposure.drug_source_concept_id = d_source_concept.concept_id\", sep=\"\")\n\n# Formulate a Cloud Storage destination path for the data exported from BigQuery.\n# NOTE: By default data exported multiple times on the same day will overwrite older copies.\n#       But data exported on a different days will write to a new location so that historical\n#       copies can be kept as the dataset definition is changed.\ndrug_71250616_path &lt;- file.path(\n  Sys.getenv(\"WORKSPACE_BUCKET\"),\n  \"bq_exports\",\n  Sys.getenv(\"OWNER_EMAIL\"),\n  strftime(lubridate::now(), \"%Y%m%d\"),  # Comment out this line if you want the export to always overwrite.\n  \"drug_71250616\",\n  \"drug_71250616_*.csv\")\nmessage(str_glue('The data will be written to {drug_71250616_path}. Use this path when reading ',\n                 'the data into your notebooks in the future.'))\n\n# Perform the query and export the dataset to Cloud Storage as CSV files.\n# NOTE: You only need to run `bq_table_save` once. After that, you can\n#       just read data from the CSVs in Cloud Storage.\nbq_table_save(\n  bq_dataset_query(Sys.getenv(\"WORKSPACE_CDR\"), dataset_71250616_drug_sql, billing = Sys.getenv(\"GOOGLE_PROJECT\")),\n  drug_71250616_path,\n  destination_format = \"CSV\")\n\n\n# Read the data directly from Cloud Storage into memory.\n# NOTE: Alternatively you can `gsutil -m cp {drug_71250616_path}` to copy these files\n#       to the Jupyter disk.\nread_bq_export_from_workspace_bucket &lt;- function(export_path) {\n  col_types &lt;- cols(standard_concept_name = col_character(), standard_concept_code = col_character(), standard_vocabulary = col_character(), drug_type_concept_name = col_character(), stop_reason = col_character(), sig = col_character(), route_concept_name = col_character(), lot_number = col_character(), visit_occurrence_concept_name = col_character(), drug_source_value = col_character(), source_concept_name = col_character(), source_concept_code = col_character(), source_vocabulary = col_character(), route_source_value = col_character(), dose_unit_source_value = col_character())\n  bind_rows(\n    map(system2('gsutil', args = c('ls', export_path), stdout = TRUE, stderr = TRUE),\n        function(csv) {\n          message(str_glue('Loading {csv}.'))\n          chunk &lt;- read_csv(pipe(str_glue('gsutil cat {csv}')), col_types = col_types, show_col_types = FALSE)\n          if (is.null(col_types)) {\n            col_types &lt;- spec(chunk)\n          }\n          chunk\n        }))\n}\ndataset_71250616_drug_df &lt;- read_bq_export_from_workspace_bucket(drug_71250616_path)\n\ndim(dataset_71250616_drug_df)\n\nhead(dataset_71250616_drug_df, 5)"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#creating-datasets-with-cohort-builder-1",
+    "href": "talks/2024-11-07/allofus-r-package.html#creating-datasets-with-cohort-builder-1",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Creating datasets with Cohort Builder",
+    "text": "Creating datasets with Cohort Builder\nI have 4 CSV files (over 6 million rows) stored in my bucket that I have to read back in to do more manipulation\n\n\ngs://fc-secure-5dd899cc-249c-449a-b4b1-96abcc51898b/bq_exports/\nlouisahsmith@researchallofus.org/20241106/person_71250616/\nperson_71250616_*.csv\n\ngs://fc-secure-5dd899cc-249c-449a-b4b1-96abcc51898b/bq_exports/\nlouisahsmith@researchallofus.org/20241106/condition_71250616/\ncondition_71250616_*.csv\n\ngs://fc-secure-5dd899cc-249c-449a-b4b1-96abcc51898b/bq_exports/\nlouisahsmith@researchallofus.org/20241106/measurement_71250616/\nmeasurement_71250616_*.csv\n\ngs://fc-secure-5dd899cc-249c-449a-b4b1-96abcc51898b/bq_exports/\nlouisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#creating-datasets-with-allofus",
+    "href": "talks/2024-11-07/allofus-r-package.html#creating-datasets-with-allofus",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Creating datasets with allofus",
+    "text": "Creating datasets with allofus\n\nconcept_ids &lt;- c(21601664, 21601744, 21490851, 21490853, 3004249, 3005606, 3009395, 3012526, 3012888, 3013940, 3017490, 3018586, 3018592, 3018822, 3019962, 3027598, 3028737, 3031203, 3034703, 3035856, 36716965, 4060834, 40758413, 4152194, 4154790, 4232915, 4239021, 4248524, 4298393, 4302410, 44789315, 44789316, 132685, 133816, 134414, 135601, 136743, 137613, 138811, 141084, 314090, 35622939, 4034096, 4057976, 4116344, 4283352, 433536, 438490, 439077, 439393, 443700)\n\naou_concept_set(cohort, \n                concepts = concept_ids, \n                domains = c(\"drug\", \"measurement\", \"condition\"), \n                output = \"all\") |&gt; \n  count(concept_name, sort = TRUE)\n\nError in `aou_concept_set()`:\n! No connection available.\nℹ Provide a connection automatically by running `aou_connect()` before this\n  function.\nℹ You can also provide `con` as an argument or default with\n  `options(aou.default.con = ...)`."
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#easily-introduce-temporal-relationships",
+    "href": "talks/2024-11-07/allofus-r-package.html#easily-introduce-temporal-relationships",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Easily introduce temporal relationships",
+    "text": "Easily introduce temporal relationships\nLet’s imagine we have a pregnancy cohort with start date! (10.1093/jamia/ocae195)\n\n\ncohort_no_drugs_prior &lt;- aou_concept_set(pregnancy_cohort,\n                                         concepts = drug_concept_ids,\n                                         start_date = NULL,\n                                         end_date = \"pregnancy_start_date\",\n                                         domain = \"drug\", \n                                         output = \"indicator\",\n                                         concept_set_name = \"drugs_prior\") |&gt; \n  filter(any_drugs_prior == 0)\n\ncohort_no_drugs_hypertension &lt;- aou_concept_set(cohort_no_drugs_prior,\n                                                concepts = hypertension_concept_ids,\n                                                start_date = NULL,\n                                                end_date = \"pregnancy_start_date\",\n                                                domain = \"condition\", \n                                                output = \"indicator\",\n                                                concept_set_name = \"hypertension_prior\") |&gt; \n  filter(hypertension_prior == 1)"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#easily-introduce-temporal-relationships-1",
+    "href": "talks/2024-11-07/allofus-r-package.html#easily-introduce-temporal-relationships-1",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Easily introduce temporal relationships",
+    "text": "Easily introduce temporal relationships\n\nbp_during_and_prior &lt;- aou_concept_set(cohort_no_drugs_hypertension,\n                                       concepts = bp_concept_ids,\n                                       start_date = NULL,\n                                       end_date = \"pregnancy_end_date\",\n                                       domain = \"measurement\", \n                                       output = \"all\")\n\nall_drugs_during &lt;- aou_concept_set(cohort_no_drugs_hypertension,\n                                    concepts = drug_concept_ids,\n                                    start_date = \"pregnancy_start_date\",\n                                    end_date = \"pregnancy_end_date\",\n                                    domain = \"drug\", \n                                    output = \"all\")\n\npreeclampsia_outcomes &lt;- aou_concept_set(cohort_no_drugs_hypertension,\n                                         concepts = preeclampsia_concept_ids,\n                                         start_date = \"pregnancy_start_date\",\n                                         end_date = \"pregnancy_end_date\",\n                                         domain = \"condition\", \n                                         output = \"all\")"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#improved-efficiency",
+    "href": "talks/2024-11-07/allofus-r-package.html#improved-efficiency",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Improved efficiency",
+    "text": "Improved efficiency\n\nWe’re extracting a lot less data because we are\n\nImmediately using it for what we need (eligibility criteria)\nRestricting to the time periods of interest\n\nThe data is not actually extracted or stored until we need it in a local R session (e.g, for figures, regressions, etc.)\nEdits are straightforward and code is easily readable\n\nvs. storing millions of rows of data in a bucket and transferring it every time you run a notebook"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#when-you-do-store-data-we-have-functions-for-that",
+    "href": "talks/2024-11-07/allofus-r-package.html#when-you-do-store-data-we-have-functions-for-that",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "When you do store data, we have functions for that!",
+    "text": "When you do store data, we have functions for that!\n\n\n\n\n\n\n\n\nTask\nWorkbench provided code snippet\nallofus function\n\n\n\n\nList files in the bucket\n# Get the bucket name\nmy_bucket &lt;- Sys.getenv('WORKSPACE_BUCKET')\n# List objects in the bucket\nsystem(paste0(\"gsutil ls -r \", my_bucket), intern=T)\naou_ls_bucket()"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#when-you-do-store-data-we-have-functions-for-that-1",
+    "href": "talks/2024-11-07/allofus-r-package.html#when-you-do-store-data-we-have-functions-for-that-1",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "When you do store data, we have functions for that!",
+    "text": "When you do store data, we have functions for that!\n\n\n\n\n\n\n\n\nTask\nWorkbench provided code snippet\nallofus function\n\n\n\n\nMove a file from the bucket to workspace disk\n# replace 'test.csv' with the name of the file in your google bucket (don't delete the quotation marks)\nname_of_file_in_bucket &lt;- 'test.csv'\n# Get the bucket name\nmy_bucket &lt;- Sys.getenv('WORKSPACE_BUCKET')\n# Copy the file from current workspace to the bucket\nsystem(paste0(\"gsutil cp \", my_bucket, \"/data/\", name_of_file_in_bucket, \" .\"), intern=T)\n# Load the file into a dataframe\nmy_dataframe &lt;- read_csv(name_of_file_in_bucket)\naou_bucket_to_workspace( \"test.csv\")"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#when-you-do-store-data-we-have-functions-for-that-2",
+    "href": "talks/2024-11-07/allofus-r-package.html#when-you-do-store-data-we-have-functions-for-that-2",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "When you do store data, we have functions for that!",
+    "text": "When you do store data, we have functions for that!\n\n\n\n\n\n\n\n\nTask\nWorkbench provided code snippet\nallofus function\n\n\n\n\nWrite a file to disk and move it to the bucket\n# Replace df with THE NAME OF YOUR DATAFRAME\nmy_dataframe &lt;- df\n# Replace 'test.csv' with THE NAME of the file you're going to store in the bucket (don't delete the quotation marks)\ndestination_filename &lt;- 'test.csv'\n# store the dataframe in current workspace\nwrite_excel_csv(my_dataframe, destination_filename)\n# Get the bucket name\nmy_bucket &lt;- Sys.getenv('WORKSPACE_BUCKET')\n# Copy the file from current workspace to the bucket\nsystem(paste0(\"gsutil cp ./\", destination_filename, \" \", my_bucket, \"/data/\"), intern=T)\n# Check if file is in the bucket\nsystem(paste0(\"gsutil ls \", my_bucket, \"/data/*.csv\"), intern=T)\nwrite.csv(df, \"test.csv\")\naou_workspace_to_bucket(df, \"test.csv\")"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#integrating-ohdsi-software-for-cohort-building",
+    "href": "talks/2024-11-07/allofus-r-package.html#integrating-ohdsi-software-for-cohort-building",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Integrating OHDSI software for cohort building",
+    "text": "Integrating OHDSI software for cohort building"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#survey-data",
+    "href": "talks/2024-11-07/allofus-r-package.html#survey-data",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Survey data",
+    "text": "Survey data\n\nsurvey_data &lt;- aou_survey(cohort,\n           questions = c(43529063),\n           question_output = c(\"hypertension\"))\n\nWhen was the survey question answered?\n\ncolnames(survey_data)\n\n\n\n[1] \"person_id\"         \"hypertension\"      \"hypertension_date\""
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#survey-data-1",
+    "href": "talks/2024-11-07/allofus-r-package.html#survey-data-1",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Survey data",
+    "text": "Survey data\n\ncount(survey_data, hypertension)\n\n\n\n# A tibble: 6 × 2\n  hypertension          n\n  &lt;chr&gt;             &lt;dbl&gt;\n1 &lt;NA&gt;              16229\n2 Yes                5579\n3 No                 4426\n4 Skip                280\n5 DontKnow             49\n6 PreferNotToAnswer     6\n\n\n\n“Skip/Prefer not to answer/Don’t know” includes anyone who skipped the whole question\nNA refers to participants who never saw the question.\n“No” assigned to respondents who answered the question, but didn’t select “Self”"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#harder-to-figure-out-appropriate-denominator",
+    "href": "talks/2024-11-07/allofus-r-package.html#harder-to-figure-out-appropriate-denominator",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Harder to figure out appropriate denominator",
+    "text": "Harder to figure out appropriate denominator\n\nsurvey_answers &lt;- tbl(con, \"ds_survey\") |&gt; \n  inner_join(cohort, by = join_by(person_id)) |&gt; \n  filter(question_concept_id == 836787)\ncount(survey_answers, answer)\n\n\n\n# A tibble: 8 × 2\n  answer                                                        n\n  &lt;chr&gt;                                                     &lt;int&gt;\n1 Including yourself, who ... (hypertension)? - Daughter      201\n2 Including yourself, who ... (hypertension)? - Father       4195\n3 Including yourself, who ... (hypertension)? - Grandparent  3915\n4 Including yourself, who ... (hypertension)? - Mother       4480\n5 Including yourself, who ... (hypertension)? - Self         5583\n6 Including yourself, who ... (hypertension)? - Sibling      2384\n7 Including yourself, who ... (hypertension)? - Son           213\n8 PMI: Skip                                                  1152"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#try-to-provide-information-to-improve-interpretability",
+    "href": "talks/2024-11-07/allofus-r-package.html#try-to-provide-information-to-improve-interpretability",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Try to provide information to improve interpretability",
+    "text": "Try to provide information to improve interpretability\n\nsurvey_data &lt;- aou_survey(cohort,\n           questions = c(43530468),\n           question_output = c(\"hypertension_age_diagnosis\"))\n\n\n\n\nℹ One or more of the requested questions were only asked of people who responded that they had certain conditions.\n→ The top-level question(s) will be added to the output to provide context about missing data as column(s) `circulatorycondition_hypertension_yes`."
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#challenges-reprise",
+    "href": "talks/2024-11-07/allofus-r-package.html#challenges-reprise",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Challenges (reprise)",
+    "text": "Challenges (reprise)\n\nLack of programming skills\n\nthe allofus package allows users to mostly avoid SQL and use the popular tidyverse R framework\n\nAll of Us data is complex\n\nthe allofus package allows for simpler methods of cohort and outcomes specification using the OMOP CDM data, including survey data in All of Us\n\nLarge scale observational health research is hard\n\nthe allofus package helps try to avoid (some) mistakes and make code intent clear"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#on-the-agenda",
+    "href": "talks/2024-11-07/allofus-r-package.html#on-the-agenda",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "On the agenda",
+    "text": "On the agenda\n\nLack of programming skills\n\nImprove and extend functions and documentation\nExpand the methods in this package to python\nEnsure long-term stability and robustness for R package and python library\n\nAll of Us data is complex\n\nBuild a suite a specific functions for genomics, fitbit data\nAdd integrations with existing OHDSI tools\n\nLarge scale observational health research is hard\n\nScale up tutorials and training materials that go beyond how to query the data\n\ncreating causal models\ndefining and validating cohorts\nunderstanding, identifying, and accounting for confounding and bias\ndealing with missing data\ntraining in appropriate statistical methods for observational health research"
+  },
+  {
+    "objectID": "talks/2024-11-07/allofus-r-package.html#thank-you",
+    "href": "talks/2024-11-07/allofus-r-package.html#thank-you",
+    "title": "allofus: an R package to facilitate use of the All of Us Researcher Workbench ",
+    "section": "Thank you!",
+    "text": "Thank you!\n\nSmith LH, Cavanaugh R. allofus: an R package to facilitate use of the All of Us Researcher Workbench. Journal of the American Medical Informatics Association. 2024;ocae198. doi: 10.1093/jamia/ocae198\nGitHub (source code, bug reports): github.com/roux-ohdsi/allofus\nPackage site (tutorials, searchable codebooks): roux-ohdsi.github.io/allofus\nEmail: l.smith@northeastern.edu; r.cavanaugh@northeastern.edu"
   },
   {
     "objectID": "publications.html",

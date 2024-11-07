@@ -8,10 +8,10 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.554">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Louisa Smith">
-  <title>Louisa H. Smith - Evaluating missingness assumptions for items in a frailty index</title>
+  <title>Louisa H. Smith – Evaluating missingness assumptions for items in a frailty index</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -341,7 +341,7 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Louisa H. Smith - Evaluating missingness assumptions for items in a frailty index">
+<meta property="og:title" content="Evaluating missingness assumptions for items in a frailty index – Louisa H. Smith">
 <meta property="og:site_name" content="Louisa H. Smith">
 </head>
 <body class="quarto-light">
@@ -375,8 +375,7 @@ div.callout-caution{border-left-color:#5e81ac !important}div.callout-caution.cal
 <p>A frailty index is a quantitative measure of the aggregate burden of age-related health deficits</p>
 </div><div class="column" style="width:60%;">
 <p><img data-src="https://images.unsplash.com/photo-1626668011660-051379e9b211?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1770&amp;q=80"></p>
-</div>
-</div>
+</div></div>
 <div class="center">
 <p>FI = # of deficits / # of possible deficits</p>
 </div>
@@ -395,8 +394,7 @@ div.callout-caution{border-left-color:#5e81ac !important}div.callout-caution.cal
 <li>Focus on those underrepresented in biomedical research</li>
 <li>Multimodal data collection includes surveys, electronic health records, biospecimens, and more</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="aou-fi" class="slide level2">
 <h2>AoU-FI</h2>
@@ -422,8 +420,7 @@ div.callout-caution{border-left-color:#5e81ac !important}div.callout-caution.cal
 <p>Throwing away <em>a lot</em> of data, strong assumptions <br> <br></p>
 <p>Different weighting across domains <br> <br></p>
 <p>Computationally intensive, still requires assumptions</p>
-</div>
-</div>
+</div></div>
 <!-- ## Understanding assumptions -->
 <!-- Let's consider the joint distribution of the [missing]{.red} and [observed]{.blue} data and the [missingness pattern]{.green}, all conditional on the [fully observed variables]{.orange}: -->
 <!-- $$ -->
@@ -969,18 +966,7 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1012,7 +998,29 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/louisahsmith\.com");
@@ -1020,7 +1028,7 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

@@ -127,10 +127,18 @@
    image: talks/2023-06-14/snapshot.png
    path: talks/2023-06-14/slides.qmd
 - title: "Second-guessing selection bias"
-  description: "Thoughts selection bias in the context of large-scale volunteer databases"
+  description: "Thoughts on selection bias in the context of large-scale volunteer databases"
   author:
     - name: Louisa H. Smith
   date: '2024-06-20'
   subtitle: SER 2024
   image: talks/2024-06-20/snapshot.png
   path: talks/2024-06-20/slides.pdf
+- title: "`allofus`: an R package to facilitate use of the *All of Us* Researcher Workbench"
+  description: "Presentation to various groups of *All of Us* Research Program stakeholders"
+  author:
+    - name: Louisa H. Smith
+    - name: Rob Cavanaugh
+  date: '2024-11-07'
+  image: talks/2024-11-07/snapshot.png
+  path: talks/2024-11-07/allofus-r-package.html
