@@ -26,7 +26,6 @@ execute:
   warning: true
   error: true
   # eval: false
-  freeze: true
   cache: true
 include-after: |
   <script type="text/javascript">

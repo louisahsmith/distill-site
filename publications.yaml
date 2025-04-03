@@ -1,27 +1,12 @@
-- title: "Benzodiazepine initiation and the risk of falls or fall-related injuries in older adults following acute ischemic stroke"
-  Authors: "Sun S, Lomachinsky V, **Smith LH**, Newhouse JP, Westover MB, Blacker D, Schwamm L, Haneuse S, Moura LMVR"
-  date: 2024-01-01
-  path: https://doi.org/10.1101/2024.02.06.24302430
-  Journal: "preprint"
-  PDF: |
-    <a href="preprints/sun2024benzodiazepine.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
-- title: "Digital intervention engagement mediates the relationship between intrapersonal measures and pre-exposure prophylaxis adherence: A secondary analysis of a randomized controlled trial of sexual orientation and gender minority youth on pre-exposure prophylaxis"
-  Authors: "Williams MP, Manjourides J, **Smith L,** Rainer CB, Hightow-Weidman LB, Haley DF"
-  date: 2024-01-01
-  path: https://doi.org/10.2196/preprints.57619
-  Journal: "preprint"
-  PDF: |
-    <a href="preprints/williams2024digital.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
 - title: "Bayesian safety surveillance with adaptive bias correction"
   Authors: "Bu F, Schuemie MJ, Nishimura A, **Smith LH**, Kostka K, Falconer T, McLeggon JA, Ryan PB, Hripcsak G, Suchard MA"
-  date: 2024-02-01
+  date: 2023-01-01
   path: https://doi.org/10.1002/sim.9968
   Journal: "Statistics in Medicine"
-  PDF: 
+  PDF: |
+    <a href="publications/bu2023bayesian.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "Health issues in the industrial port zone of Marseille, France: The FOS EPSEAL community-based cross-sectional survey"
   Authors: "Cohen AK, Richards T, Allen BL, Ferrier Y, Lees J, **Smith LH**"
   date: 2017-01-01
@@ -31,16 +16,13 @@
     <a href="publications/cohen2017health.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Educational attainment past the traditional age of completion for two cohorts of US adults: Inequalities by gender and race/ethnicity."
+- title: "Educational Attainment Past the Traditional Age of Completion for Two Cohorts of US Adults: Inequalities by Gender and Race/Ethnicity"
   Authors: "Cohen AK, Ryan S, **Smith LH**, Ream RK, Glymour MM, Lopez A, Yen IH"
-  date: 2022-01-01
+  date: 2021-01-01
   path: https://doi.org/10.1007/s12552-021-09352-1
   Journal: "Race and Social Problems"
-  PDF: |
-    <a href="publications/cohen2022educational.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
-- title: "Maternal prepregnancy weight and children’s behavioral and emotional outcomes"
+  PDF: 
+- title: "Maternal Prepregnancy Weight and Children’s Behavioral and Emotional Outcomes"
   Authors: "Deardorff J, **Smith LH**, Petito L, Kim H, Abrams BF"
   date: 2017-01-01
   path: https://doi.org/10.1016/j.amepre.2017.05.013
@@ -58,6 +40,15 @@
     <a href="publications/farland2020importance.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
+- title: "Sanctuary policies and type 2 diabetes medication prescription trends among community health center patients"
+  Authors: "Goglichidze S, Wang W, **Smith LH**, Ezekiel-Herrera D, Heintzman JD, Marino M, Lucas JA, Crookes DM"
+  date: 2025-01-01
+  path: https://doi.org/10.1093/haschl/qxae178
+  Journal: "Health Affairs Scholar"
+  PDF: |
+    <a href="publications/goglichidze2025sanctuary.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "First trimester COVID-19 and the risk of major congenital malformations–International Registry of Coronavirus Exposure in Pregnancy"
   Authors: "Hernández-Díaz S, **Smith LH**, Wyszynski DF, Rasmussen SA"
   date: 2022-01-01
@@ -67,8 +58,8 @@
     <a href="publications/hernandez-diaz2022first.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "International Registry of Coronavirus in Pregnancy (IRCEP): Cohort description and methodological considerations"
-  Authors: "Hernández-Díaz S, **Smith LH**, Dollinger C, Schisterman EF, Bellocco R, Wyszynski DF"
+- title: "International Registry of Coronavirus Exposure in Pregnancy (IRCEP): Cohort Description and Methodological Considerations"
+  Authors: "Hernández-Díaz S, **Smith LH**, Dollinger C, Rasmussen SA, Schisterman EF, Bellocco R, Wyszynski DF"
   date: 2022-01-01
   path: https://doi.org/10.1093/aje/kwac046
   Journal: "American Journal of Epidemiology"
@@ -103,7 +94,7 @@
     <a href="publications/modest2022multifoetal.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Comparative effectiveness and safety of seizure prophylaxis among adults after acute ischemic stroke"
+- title: "Comparative Effectiveness and Safety of Seizure Prophylaxis Among Adults After Acute Ischemic Stroke"
   Authors: "Moura LMVR, Donahue MA, Yan Z, **Smith LH**, Hsu J, Newhouse JP, Schwamm LH, Haneuse S, Hernandez-Diaz S, Blacker D"
   date: 2023-01-01
   path: https://doi.org/10.1161/strokeaha.122.039946
@@ -123,22 +114,19 @@
     </a>
 - title: "Bias analyses to investigate the impact of differential participation: Application to a birth defects case-control study"
   Authors: "Peterson J, Kahrs JC, Adrien N, Wood ME, Olshan AF, **Smith LH**, Howley MM, Ailes EC, Romitti PA, Herring AH, Parker SE, Shaw GM, Politis MD"
-  date: 2023-01-01
+  date: 2024-01-01
   path: https://doi.org/10.1111/ppe.13026
   Journal: "Paediatric and Perinatal Epidemiology"
   PDF: |
-    <a href="publications/peterson2023bias.pdf">
+    <a href="publications/peterson2024bias.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Important questions deserve rigorous analysis: A cautionary note about selection bias"
+- title: "Important Questions Deserve Rigorous Analysis: A Cautionary Note About Selection Bias"
   Authors: "Petito LC, **Smith LH**"
-  date: 2021-01-01
+  date: 2022-01-01
   path: https://doi.org/10.1161/jaha.121.023234
   Journal: "Journal of the American Heart Association"
-  PDF: |
-    <a href="publications/petito2021important.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
+  PDF: 
 - title: "Evaluating criminal justice reform during COVID-19: The need for a novel sentiment analysis package"
   Authors: "Ramjee D, **Smith LH**, Doanvo A, Charpignon ML, McNulty-Nebel A, Lett E, Desai AN, Majumder MS"
   date: 2022-01-01
@@ -148,7 +136,7 @@
     <a href="publications/ramjee2022evaluating.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Bounding bias due to selection"
+- title: "Bounding Bias Due to Selection"
   Authors: "**Smith LH**, VanderWeele TJ"
   date: 2019-01-01
   path: https://doi.org/10.1097/ede.0000000000001032
@@ -157,7 +145,7 @@
     <a href="publications/smith2019bounding.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Mediational E-values: Approximate sensitivity analysis for unmeasured mediator-outcome confounding"
+- title: "Mediational E-values"
   Authors: "**Smith LH**, VanderWeele TJ"
   date: 2019-01-01
   path: https://doi.org/10.1097/ede.0000000000001064
@@ -166,7 +154,7 @@
     <a href="publications/smith2019mediational.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Selection mechanisms and their consequences: Understanding and addressing selection bias"
+- title: "Selection Mechanisms and Their Consequences: Understanding and Addressing Selection Bias"
   Authors: "**Smith LH**"
   date: 2020-01-01
   path: https://doi.org/10.1007/s40471-020-00241-6
@@ -175,7 +163,7 @@
     <a href="publications/smith2020selection.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Simple sensitivity analysis for control selection bias"
+- title: "Simple Sensitivity Analysis for Control Selection Bias"
   Authors: "**Smith LH**, VanderWeele TJ"
   date: 2020-01-01
   path: https://doi.org/10.1097/ede.0000000000001207
@@ -184,7 +172,7 @@
     <a href="publications/smith2020simple.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Mediating to opportunity: The challenges of translating mediation estimands into policy recommendations"
+- title: "Mediating to Opportunity: The Challenges of Translating Mediation Estimands into Policy Recommendations"
   Authors: "**Smith LH**, Schwartz GL"
   date: 2021-01-01
   path: https://doi.org/10.1097/ede.0000000000001335
@@ -193,7 +181,7 @@
     <a href="publications/smith2021mediating.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Multiple-bias sensitivity analysis using bounds"
+- title: "Multiple-bias Sensitivity Analysis Using Bounds"
   Authors: "**Smith LH**, Mathur MB, VanderWeele TJ"
   date: 2021-01-01
   path: https://doi.org/10.1097/ede.0000000000001380
@@ -220,25 +208,25 @@
     <a href="publications/smith2022timing.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "allofus: An R package to facilitate use of the All of Us Researcher Workbench"
+- title: "Allofus: An R package to facilitate use of the <i>All</i> <i>of</i> <i>Us</i> Researcher Workbench"
   Authors: "**Smith LH**, Cavanaugh R"
-  date: 2024-03-01
+  date: 2024-01-01
   path: https://doi.org/10.1093/jamia/ocae198
   Journal: "Journal of the American Medical Informatics Association"
   PDF: |
     <a href="publications/smith2024allofus.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Pregnancy episodes in All of Us: Harnessing multi-source data for pregnancy-related research"
+- title: "Pregnancy episodes in <i>All</i> <i>of</i> <i>Us</i>: Harnessing multi-source data for pregnancy-related research"
   Authors: "**Smith LH**, Wang W, Keefe-Oates B"
-  date: 2024-04-01
+  date: 2024-01-01
   path: https://doi.org/10.1093/jamia/ocae195
   Journal: "Journal of the American Medical Informatics Association"
   PDF: |
     <a href="publications/smith2024pregnancy.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Identification of vaccine effects when exposure status is unknown"
+- title: "Identification of Vaccine Effects When Exposure Status Is Unknown"
   Authors: "Stensrud MJ, **Smith L**"
   date: 2023-01-01
   path: https://doi.org/10.1097/ede.0000000000001573
@@ -247,16 +235,40 @@
     <a href="publications/stensrud2023identification.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "COVID-19 pharmacotherapy utilization patterns during pregnancy: International Registry of Coronavirus Exposure in Pregnancy (IRCEP)"
+- title: "Benzodiazepine Initiation and the Risk of Falls or Fall-Related Injuries in Older Adults Following Acute Ischemic Stroke"
+  Authors: "Sun S, Lomachinsky V, **Smith LH**, Newhouse JP, Westover MB, Blacker DL, Schwamm LH, Haneuse S, Moura LMVR"
+  date: 2025-01-01
+  path: https://doi.org/10.1212/CPJ.0000000000200452
+  Journal: "Neurology Clinical Practice"
+  PDF: |
+    <a href="publications/sun2025benzodiazepine.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Comparing the impact of targeting limited driving pressure to low tidal volume ventilation on mortality in mechanically ventilated adults with COVID-19 ARDS: An exploratory target trial emulation"
+  Authors: "Tanios M, Wu TT, Nguyen HM, **Smith L,** Mahidhara R, Devlin JW"
+  date: 2024-01-01
+  path: https://doi.org/10.1136/bmjresp-2024-002439
+  Journal: "BMJ Open Respiratory Research"
+  PDF: |
+    <a href="publications/tanios2024comparing.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "COVID-19 pharmacotherapy utilization patterns during pregnancy: International Registry of Coronavirus Exposure in Pregnancy"
   Authors: "Westhoff WJ, **Smith LH**, Wyszynski DF, Hernandez-Diaz S"
   date: 2022-01-01
   path: https://doi.org/10.1002/pds.5440
   Journal: "Pharmacoepidemiology and Drug Safety"
+  PDF: 
+- title: "Studying the Digital Intervention Engagement–Mediated Relationship Between Intrapersonal Measures and Pre-Exposure Prophylaxis Adherence in Sexual and Gender Minority Youth: Secondary Analysis of a Randomized Controlled Trial"
+  Authors: "Williams MP, Manjourides J, **Smith LH**, Rainer CB, Hightow-Weidman LB, Haley DF"
+  date: 2025-01-01
+  path: https://doi.org/10.2196/57619
+  Journal: "Journal of Medical Internet Research"
   PDF: |
-    <a href="publications/westhoff2022covid.pdf">
+    <a href="publications/williams2025studying.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Frailty among sexual and gender minority older adults: The All of Us database"
+- title: "Frailty Among Sexual and Gender Minority Older Adults: The All of Us Database"
   Authors: "Wong CN, Wilczek MP, **Smith LH**, Bosse JD, Richard EL, Cavanaugh R, Manjourides J, Orkaby AR, Olivieri-Mui B"
   date: 2023-01-01
   path: https://doi.org/10.1093/gerona/glad149
@@ -265,7 +277,16 @@
     <a href="publications/wong2023frailty.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Data missingness reporting and use of methods to address it in critical care cohort studies"
+- title: "Assessing how frailty and healthcare delays mediate the association between sexual and gender minority status and healthcare utilization in the <i>All</i> <i>of</i> <i>Us</i> Research Program"
+  Authors: "Wong CN, **Smith LH**, Cavanaugh R, Kim DH, Streed CG, Kapadia F, Olivieri-Mui B"
+  date: 2024-01-01
+  path: https://doi.org/10.1093/jamia/ocae205
+  Journal: "Journal of the American Medical Informatics Association"
+  PDF: |
+    <a href="publications/wong2024assessing.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Data Missingness Reporting and Use of Methods to Address It in Critical Care Cohort Studies"
   Authors: "Wu TT, **Smith LH**, Vernooij LM, Patel E, Devlin JW"
   date: 2023-01-01
   path: https://doi.org/10.1097/CCE.0000000000001005
