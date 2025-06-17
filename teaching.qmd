@@ -6,7 +6,7 @@ title: Teaching
 
 #### PHTH 2210: Foundations of Biostatistics
 
-Co-instructor (fall 2024)
+Co-instructor (fall 2024, spring 2025)
 
 *Undergraduate course introducing basic statistical concepts and methods for public health and health sciences students.*
 
@@ -28,7 +28,7 @@ Instructor (summer 2023, 2024)
 
 #### [ID543: Intro to R](https://id543.louisahsmith.com)
 
-Instructor (summer 2023, 2024)
+Instructor (summer 2023-2025)
 
 *Introduction to R for MPH students.*
 
