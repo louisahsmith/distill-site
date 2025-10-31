@@ -20,7 +20,7 @@ Instructor (spring 2023, 2024)
 
 #### [EPI590R: R Bootcamp](https://epi590r.louisahsmith.com/)
 
-Instructor (summer 2023, 2024)
+Instructor (summer 2023-2025)
 
 *Best practices and tools for data management, tables and figures, and reproducible research in R.*
 

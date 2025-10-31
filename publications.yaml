@@ -124,6 +124,15 @@
     <a href="publications/moura2023no.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
+- title: "Initiation of antiseizure medications in patients with brain abscess"
+  Authors: "Nielsen VM, Klompas M, Manjourides J, **Smith LH**"
+  date: 2025-01-01
+  path: https://doi.org/10.1001/jamanetworkopen.2025.24557
+  Journal: "JAMA Network Open"
+  PDF: |
+    <a href="publications/nielsen2025initiation.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "Bias analyses to investigate the impact of differential participation: Application to a birth defects case-control study"
   Authors: "Peterson J, Kahrs JC, Adrien N, Wood ME, Olshan AF, **Smith LH**, Howley MM, Ailes EC, Romitti PA, Herring AH, Parker SE, Shaw GM, Politis MD"
   date: 2024-01-01
@@ -241,6 +250,15 @@
     <a href="publications/smith2024pregnancy.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
+- title: "Identifiability and interpretation of estimands under selection in perinatal research"
+  Authors: "**Smith LH**"
+  date: 2025-01-01
+  path: https://doi.org/10.1111/ppe.70073
+  Journal: "Paediatric and Perinatal Epidemiology"
+  PDF: |
+    <a href="publications/smith2025identifiability.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "Identification of vaccine effects when exposure status is unknown"
   Authors: "Stensrud MJ, **Smith L**"
   date: 2023-01-01
@@ -277,6 +295,12 @@
     <a href="publications/westhoff2022covid19.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
+- title: "Characterizing the role of neighborhood disadvantage in a digital PrEP intervention for young sexual and gender minority men"
+  Authors: "Williams MP, Manjourides J, **Smith LH**, Rainer CB, Hightow-Weidman L, Haley DF"
+  date: 2025-01-01
+  path: https://doi.org/10.1007/s10461-025-04860-2
+  Journal: "AIDS and Behavior"
+  PDF: 
 - title: "Neighborhood disadvantage, syndemic conditions, and PrEP non-adherence in young sexual and gender minority men"
   Authors: "Williams MP, Manjourides J, **Smith LH**, Rainer CB, Hightow-Weidman L, Haley DF"
   date: 2025-01-01

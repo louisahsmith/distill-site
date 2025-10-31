@@ -142,3 +142,17 @@
   date: '2024-11-07'
   image: talks/2024-11-07/snapshot.png
   path: talks/2024-11-07/allofus-r-package.html
+- title: "Workshop on perinatal causal inference"
+  description: "Workshop in Oslo, Norway"
+  author:
+    - name: Louisa H. Smith
+  date: '2025-09-11'
+  image: talks/2025-09-11/snapshot.png
+  path: https://oslo-workshop.louisahsmith.com/
+- title: "Target trial emulation in pregnancy research"
+  description: "Guest lecture at Boston University"
+  author:
+    - name: Louisa H. Smith
+  date: '2025-10-31'
+  image: talks/2025-10-31/snapshot.png
+  path: talks/2025-10-31/slides.html
