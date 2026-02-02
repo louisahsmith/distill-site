@@ -16,7 +16,10 @@ listing:
 
 ```{r}
 library(tidyverse)
-all_pubs <- rmarkdown::pandoc_citeproc_convert("~/Documents/CV/library.bib", type = "list")
+reviewed <- rmarkdown::pandoc_citeproc_convert("~/GitHub/CV/Reviewed.bib", type = "list")
+# reports <- rmarkdown::pandoc_citeproc_convert("~/GitHub/CV/reports.bib", type = "list")
+non_reviewed <- rmarkdown::pandoc_citeproc_convert("~/GitHub/CV/Non-reviewed.bib", type = "list")
+all_pubs <- c(reviewed, non_reviewed)
 ids <- map_chr(all_pubs, pluck, "id")
 zotero_files <- file.path("~/Documents/Zotero/Me",  paste0(ids, ".pdf"))
 local_files <- file.path("publications",  paste0(ids, ".pdf"))
@@ -26,6 +29,7 @@ walk2(local_files, zotero_files, ~{
   }
 })
 files <- ifelse(file.exists(local_files), local_files, NA)
+# safe_pluck <- function(x, y) ifelse(is.null(pluck(x, y)), NA, pluck(x, y))
 dois <- map_chr(all_pubs, pluck, "DOI")
 journals <- map_chr(all_pubs, pluck, "container-title")
 titles <- map_chr(all_pubs, pluck, "title")
@@ -35,8 +39,8 @@ safe_family <- function(x) ifelse(is.null(pluck(x, "family")), NA, pluck(x, "fam
 family_names <- map(map(authors, ~map_chr(.x, safe_family)), na.omit)
 safe_given <- function(x) ifelse(is.null(pluck(x, "given")), NA, str_extract_all(pluck(x, "given"), "[A-Z]"))
 first_initials <- map(map(map(authors, ~map(.x, safe_given)), ~map_chr(map(.x, pluck, 1), str_c, collapse = "")), na.omit)
-pubs <- tibble(doi = dois, journal = journals, title = titles, year = years, 
-               family = family_names, initials = first_initials, pdf = files) |> 
+pubs <- tibble(doi = dois, journal = journals, title = titles, year = years,
+               family = family_names, initials = first_initials, pdf = files) |>
   mutate(authors = map2_chr(family, initials, ~str_c(.x,  " ", .y, collapse = ", ")),
          authors = str_replace_all(authors, "Smith L,", "**Smith L,**"),
          authors = str_replace_all(authors, "Smith L$", "**Smith L**"),
@@ -58,7 +62,7 @@ pubs <- tibble(doi = dois, journal = journals, title = titles, year = years,
 ```
 
 ```{r}
-all_pubs <- rmarkdown::pandoc_citeproc_convert("~/Documents/CV/preprints.bib", type = "list")
+all_pubs <- rmarkdown::pandoc_citeproc_convert("~/Documents/xxxCV/preprints.bib", type = "list")
 ids <- map_chr(all_pubs, pluck, "id")
 zotero_files <- file.path("~/Documents/Zotero/Preprints",  paste0(ids, ".pdf"))
 local_files <- file.path("preprints",  paste0(ids, ".pdf"))
@@ -76,8 +80,8 @@ safe_family <- function(x) ifelse(is.null(pluck(x, "family")), NA, pluck(x, "fam
 family_names <- map(map(authors, ~map_chr(.x, safe_family)), na.omit)
 safe_given <- function(x) ifelse(is.null(pluck(x, "given")), NA, str_extract_all(pluck(x, "given"), "[A-Z]"))
 first_initials <- map(map(map(authors, ~map(.x, safe_given)), ~map_chr(map(.x, pluck, 1), str_c, collapse = "")), na.omit)
-preprints <- tibble(doi = dois, title = titles, year = years, 
-               family = family_names, initials = first_initials, pdf = files) |> 
+preprints <- tibble(doi = dois, title = titles, year = years,
+               family = family_names, initials = first_initials, pdf = files) |>
   mutate(authors = map2_chr(family, initials, ~str_c(.x,  " ", .y, collapse = ", ")),
          authors = str_replace_all(authors, "Smith L,", "**Smith L,**"),
          authors = str_replace_all(authors, "Smith L$", "**Smith L**"),

@@ -1,0 +1,1217 @@
+---
+title: "Trips from Lausanne"
+subtitle: "August/September 2021"
+format:
+  html:
+    code-fold: false
+execute:
+  warning: false
+  message: false
+  echo: false
+---
+
+I am very grateful to have had the opportunity to spend August and September 2021 in Lausanne, Switzerland, visiting L'École Polytechnique Fédérale de Lausanne (EPFL). The Swiss train system was having a deal on the GA travelcard that summer to promote domestic tourism after COVID-19, so I was able to take advantage (as I was a resident with a local address) and buy a 30-day pass that allowed unlimited travel on nearly all transport in Switzerland for about $350 (I could also use it on local transit withing Lausanne). I was working during this time but managed to fit in a number of day trips around the country, all from my base in Lausanne. It was a lot of travel time and connections, but I was able to work on the train when I wasn't looking out the window at the stunning scenery.
+
+I tracked my hikes using my Apple watch, and retroactively tracked each transit leg on [trainlog.me](). Below are summaries of each trip, with maps, details of any hikes (though I didn't keep track of my city walks), and some photos. I am writing this up 4.5 years later, so my memory of some details is a bit fuzzy!
+
+```{r}
+#| echo: false
+#| include: false
+
+# Function to read and display GPX tracks using R
+library(xml2)
+library(leaflet)
+
+read_gpx <- function(file_path) {
+  # Read GPX file
+  gpx <- read_xml(file_path)
+
+  # Try with namespace first (hiking tracks)
+  ns <- xml_ns(gpx)
+  trkpts <- xml_find_all(gpx, ".//d1:trkpt", ns)
+
+  # If no points found, try without namespace (train tracks)
+  if (length(trkpts) == 0) {
+    trkpts <- xml_find_all(gpx, ".//trkpt")
+  }
+
+  # Extract coordinates from attributes
+  lats <- as.numeric(xml_attr(trkpts, "lat"))
+  lons <- as.numeric(xml_attr(trkpts, "lon"))
+
+  # Extract elevations (may not exist in train tracks)
+  # Try with namespace first
+  ele_nodes <- xml_find_all(gpx, ".//d1:ele", ns)
+
+  # If no elevation nodes found, try without namespace
+  if (length(ele_nodes) == 0) {
+    ele_nodes <- xml_find_all(gpx, ".//ele")
+  }
+
+  if (length(ele_nodes) > 0) {
+    eles <- as.numeric(xml_text(ele_nodes))
+  } else {
+    eles <- rep(NA, length(lats))
+  }
+
+  # Return as data frame
+  data.frame(
+    lat = lats,
+    lon = lons,
+    ele = eles
+  )
+}
+
+create_hike_map <- function(gpx_file, title = "Hike Map") {
+  # Read GPX data
+  track_data <- read_gpx(gpx_file)
+
+  # Calculate statistics
+  n_points <- nrow(track_data)
+
+  # Only calculate elevation stats if elevation data exists
+  has_elevation <- !all(is.na(track_data$ele))
+
+  if (has_elevation) {
+    # Convert meters to feet
+    ele_gain_m <- sum(pmax(0, diff(track_data$ele)), na.rm = TRUE)
+    ele_gain_ft <- ele_gain_m * 3.28084
+    min_ele_ft <- min(track_data$ele, na.rm = TRUE) * 3.28084
+    max_ele_ft <- max(track_data$ele, na.rm = TRUE) * 3.28084
+  }
+
+  # Estimate distance (simplified - actual distance would use Haversine formula)
+  distances <- sqrt(diff(track_data$lat)^2 + diff(track_data$lon)^2) * 111  # rough km conversion
+  total_dist_km <- sum(distances, na.rm = TRUE)
+  total_dist_mi <- total_dist_km * 0.621371  # Convert km to miles
+
+  # Create map
+  m <- leaflet(track_data) %>%
+    addTiles() %>%
+    addPolylines(
+      lng = ~lon,
+      lat = ~lat,
+      color = "red",
+      weight = 3,
+      opacity = 0.7
+    ) %>%
+    addMarkers(
+      lng = track_data$lon[1],
+      lat = track_data$lat[1],
+      popup = "Start",
+      label = "Start"
+    ) %>%
+    addMarkers(
+      lng = track_data$lon[n_points],
+      lat = track_data$lat[n_points],
+      popup = "End",
+      label = "End"
+    )
+
+  # Add statistics box
+  if (has_elevation) {
+    stats_html <- sprintf(
+      "<div style='background: white; padding: 10px; border-radius: 5px;'>
+      <b>%s</b><br>
+      Distance: %.2f mi<br>
+      Elevation Gain: %.0f ft<br>
+      Min Elevation: %.0f ft<br>
+      Max Elevation: %.0f ft
+      </div>",
+      title, total_dist_mi, ele_gain_ft, min_ele_ft, max_ele_ft
+    )
+  } else {
+    stats_html <- sprintf(
+      "<div style='background: white; padding: 10px; border-radius: 5px;'>
+      <b>%s</b><br>
+      Distance: %.2f mi
+      </div>",
+      title, total_dist_mi
+    )
+  }
+
+  m <- m %>% addControl(html = stats_html, position = "bottomleft")
+
+  return(m)
+}
+
+# Function to create combined transit map with multiple legs
+create_combined_transit_map <- function(legs) {
+  # legs is a list where each element has: file, label, mode
+  # mode is one of: "train", "ferry", "bus", "cable"
+
+  # Color scheme for different modes
+  mode_colors <- list(
+    train = "blue",
+    ferry = "pink",
+    bus = "orange",
+    cable = "purple",
+    hike = "red"
+  )
+
+  # Initialize empty map
+  m <- leaflet() %>% addTiles()
+
+  all_lats <- c()
+  all_lons <- c()
+
+  # Add each leg to the map
+  for (i in seq_along(legs)) {
+    leg <- legs[[i]]
+    track_data <- read_gpx(leg$file)
+
+    if (nrow(track_data) > 0) {
+      # Store coordinates for auto-centering
+      all_lats <- c(all_lats, track_data$lat)
+      all_lons <- c(all_lons, track_data$lon)
+
+      # Get color for this mode
+      color <- mode_colors[[leg$mode]]
+      if (is.null(color)) color <- "gray"
+
+      # Add line for this leg
+      m <- m %>%
+        addPolylines(
+          data = track_data,
+          lng = ~lon,
+          lat = ~lat,
+          color = color,
+          weight = if(leg$mode %in% c("hike", "ferry")) 3 else 2,
+          opacity = if(leg$mode %in% c("hike", "ferry")) 0.8 else 0.6,
+          label = leg$label
+        )
+
+      # Add marker at the end of each leg (connection point)
+      n_points <- nrow(track_data)
+      m <- m %>%
+        addCircleMarkers(
+          lng = track_data$lon[n_points],
+          lat = track_data$lat[n_points],
+          radius = 5,
+          color = "white",
+          fillColor = color,
+          fillOpacity = 0.8,
+          weight = 2,
+          popup = leg$label
+        )
+    }
+  }
+
+  # Add start marker for first leg
+  if (length(legs) > 0) {
+    first_track <- read_gpx(legs[[1]]$file)
+    if (nrow(first_track) > 0) {
+      m <- m %>%
+        addMarkers(
+          lng = first_track$lon[1],
+          lat = first_track$lat[1],
+          popup = "Start",
+          label = "Start"
+        )
+    }
+  }
+
+  # Center map on all points
+  if (length(all_lats) > 0) {
+    m <- m %>%
+      fitBounds(
+        lng1 = min(all_lons),
+        lat1 = min(all_lats),
+        lng2 = max(all_lons),
+        lat2 = max(all_lats)
+      )
+  }
+
+  # Add legend
+  m <- m %>%
+    addControl(
+      html = "<div style='background: white; padding: 10px; border-radius: 5px;'>
+        <b>Transport Modes</b><br>
+        <span style='color: blue;'>━━</span> Train<br>
+        <span style='color: pink;'>━━</span> Ferry<br>
+        <span style='color: orange;'>━━</span> Bus<br>
+        <span style='color: purple;'>━━</span> Cable Car<br>
+        <span style='color: red;'>━━</span> Hike
+      </div>",
+      position = "bottomleft"
+    )
+
+  return(m)
+}
+
+# Function to create photo carousel
+# Initialize a counter for unique IDs (this persists across function calls in a session)
+if (!exists("carousel_counter", envir = .GlobalEnv)) {
+  assign("carousel_counter", 0, envir = .GlobalEnv)
+}
+
+create_photo_carousel <- function(photos) {
+  # photos is a list where each element has: file, caption
+  # Example: list(list(file = "photos/img1.jpg", caption = "View from summit"))
+
+  if (length(photos) == 0) {
+    return(htmltools::HTML("<p>No photos available</p>"))
+  }
+
+  # Generate unique ID for this carousel using counter
+  carousel_counter <- get("carousel_counter", envir = .GlobalEnv)
+  carousel_counter <- carousel_counter + 1
+  assign("carousel_counter", carousel_counter, envir = .GlobalEnv)
+  carousel_id <- paste0("carousel-", carousel_counter)
+
+  # Build slides HTML
+  slides_html <- ""
+  for (photo in photos) {
+    slides_html <- paste0(slides_html, sprintf(
+      '<div class="carousel-slide">
+        <img src="%s" alt="%s">
+        <p class="caption">%s</p>
+      </div>',
+      photo$file,
+      photo$caption,
+      photo$caption
+    ))
+  }
+
+  # Build complete carousel HTML
+  carousel_html <- sprintf(
+    '<div class="carousel-container" id="%s">
+      %s
+      <button class="carousel-btn prev" onclick="moveSlide(-1, \'%s\')">❮</button>
+      <button class="carousel-btn next" onclick="moveSlide(1, \'%s\')">❯</button>
+      <div class="carousel-dots"></div>
+    </div>',
+    carousel_id,
+    slides_html,
+    carousel_id,
+    carousel_id
+  )
+
+  return(htmltools::HTML(carousel_html))
+}
+```
+
+```{css}
+#| echo: false
+
+/* Photo Carousel Styles */
+.carousel-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.carousel-slide {
+  display: none;
+  text-align: center;
+}
+
+.carousel-slide img {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.carousel-slide .caption {
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-dots {
+  text-align: center;
+  padding: 15px 0 0 0;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active, .dot:hover {
+  background-color: #717171;
+}
+```
+
+```{js}
+#| echo: false
+
+// Photo Carousel JavaScript
+window.carousels = window.carousels || {};
+
+function initCarousel(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  // Check if already initialized
+  if (window.carousels[containerId]) {
+    return;
+  }
+
+  const slides = container.querySelectorAll('.carousel-slide');
+  const dotsContainer = container.querySelector('.carousel-dots');
+
+  if (slides.length === 0) return;
+
+  let currentSlide = 0;
+
+  // Clear any existing dots
+  dotsContainer.innerHTML = '';
+
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.onclick = () => showSlide(index);
+    dotsContainer.appendChild(dot);
+  });
+
+  function showSlide(n) {
+    slides.forEach(s => s.style.display = 'none');
+    const dots = dotsContainer.querySelectorAll('.dot');
+    dots.forEach(d => d.classList.remove('active'));
+
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].style.display = 'block';
+    dots[currentSlide].classList.add('active');
+  }
+
+  window.carousels[containerId] = {
+    moveSlide: function(n) {
+      showSlide(currentSlide + n);
+    },
+    initialized: true
+  };
+
+  showSlide(0);
+}
+
+window.moveSlide = function(n, containerId) {
+  if (!window.carousels[containerId]) {
+    initCarousel(containerId);
+  }
+  if (window.carousels[containerId]) {
+    window.carousels[containerId].moveSlide(n);
+  }
+};
+
+// Initialize all visible carousels
+function initAllCarousels() {
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    // Only initialize if visible or in active tab
+    const isVisible = container.offsetParent !== null;
+    if (isVisible || container.closest('.tab-pane')) {
+      initCarousel(container.id);
+    }
+  });
+}
+
+// Run on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAllCarousels);
+} else {
+  initAllCarousels();
+}
+
+// Initialize when tabs are shown
+document.addEventListener('shown.bs.tab', initAllCarousels);
+document.addEventListener('click', function(e) {
+  if (e.target.matches('[role="tab"]') || e.target.closest('[role="tab"]')) {
+    setTimeout(initAllCarousels, 50);
+  }
+});
+
+// Also try to initialize on any tab panel shown event
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.attributeName === 'class' || mutation.attributeName === 'style') {
+      const target = mutation.target;
+      if (target.classList && target.classList.contains('tab-pane')) {
+        setTimeout(initAllCarousels, 50);
+      }
+    }
+  });
+});
+
+// Observe the document for changes
+setTimeout(() => {
+  document.querySelectorAll('.tab-pane').forEach(pane => {
+    observer.observe(pane, { attributes: true });
+  });
+}, 1000);
+```
+
+## Aigle to Leysin
+
+The first trip was a train ride along Lake Geneva to Aigle, then a hike up terraced vineyards and forested slopes to Leysin, with an extension out to the Nid d'Aigle (Eagle's Nest) viewpoint. The first part of the hike was just a really steep walk up a path that went by farms and houses, then through forest. The last part was on a rocky trail up to the viewpoint, which had stunning views of the Rhone valley and the Dents du Midi (Chablais Alps). The whole walk up I was wishing I could walk backwards as the view behind me was great. I got to enjoy it when I took the cog railway back down to Aigle---I couldn't keep my head or camera out of the window! I remember chatting with a woman waiting for the train who was impressed that I spoke (ok) French. In general it is easy to get by in Switzerland with just English, as the Swiss people are used to not necessarily sharing a common language, but I was glad to be based in the French-speaking part of the country.
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Aigle-484051.gpx', label = 'Lausanne → Aigle', mode = 'train'),
+  list(file = 'gpx_data/Aigle_Leysin.gpx', label = 'Aigle → Leysin (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Leysin-Feydey - Aigle-484056.gpx', label = 'Leysin-Feydey → Aigle', mode = 'train'),
+  list(file = 'Trainlog_gpx/Aigle - Lausanne-484059.gpx', label = 'Aigle → Lausanne', mode = 'train')
+))
+```
+
+### Hike Detail
+
+**Start:** Aigle (1300 ft)
+
+**End:** Leysin (4100 ft; via Nid d'Aigle)
+
+```{r}
+create_hike_map('gpx_data/Aigle_Leysin.gpx', 'Aigle to Leysin')
+```
+
+### Photos
+
+```{r}
+create_photo_carousel(list(
+  list(file = "photos/Aigle/1.jpeg", caption = "View from Nid d'Aigle"),
+  list(file = "photos/Aigle/2.jpeg", caption = "Taking the cog railway back down into Aigle")
+))
+```
+
+:::
+
+## Évian-les-Bains
+
+Right across Lake Geneva from Lausanne is the French spa town of Évian-les-Bains. The ferry that crosses the lake was covered by the GA travelcard, so I took advantage of that to make a quick international trip. The ferry ride itself took about 30 minutes. Once in Évian, I wandered around the town, and of course filled my bottle with the famous mineral water at the source. I also took the (free!) funicular up the hill to get a view over the town and lake.
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne-Ouchy - Évian-les-Bains-484061.gpx', label = 'Lausanne-Ouchy → Évian', mode = 'ferry'),
+  list(file = 'Trainlog_gpx/Évian-les-Bains - Bains dÉvian - Évian-les-Bains - Neuvecelle-631111.gpx', label = "Évian les Bains → Neuvecelle", mode = "train"),
+  list(file = 'Trainlog_gpx/Évian-les-Bains - Lausanne-Ouchy-484064.gpx', label = 'Évian → Lausanne-Ouchy', mode = 'ferry')
+))
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+  list(file = "photos/Evian/3.jpeg", caption = ""),
+  list(file = "photos/Evian/4.jpeg", caption = "The source of Évian water"),
+  list(file = "photos/Evian/5.jpeg", caption = "Funicular station")
+))
+```
+
+:::
+
+## Gruyères & Gstaad
+
+I love Gruyère cheese, so I was dying to visit the town where it's made. I took a tour of the factory, had a fondue lunch, and climbed up to the medieval castle overlooking the town. After exploring Gruyères, I continued on the scenic Golden Pass line from Montbovon to Gstaad, a famous resort town, and my first time in German-speaking Switzerland. I got there on an old but fancy train but it looks like soon after my trip there was a [big innovation](https://www.cnn.com/travel/article/golden-pass-express-switzerland) in the world of trains (new trains with automatic shifting from narrow gauge to standard gauge). My way back took me down a beautiful descent to Montreux on Lake Geneva, and I made plans to return to walk around.
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Romont-484777.gpx', label = 'Lausanne → Romont', mode = 'train'),
+  list(file = 'Trainlog_gpx/Romont - Gruyères-484778.gpx', label = 'Romont → Gruyères', mode = 'train'),
+  list(file = 'Trainlog_gpx/Gruyères - Montbovon-484780.gpx', label = 'Gruyères → Montbovon', mode = 'train'),
+  list(file = 'Trainlog_gpx/Montbovon - Gstaad-484781.gpx', label = 'Montbovon → Gstaad', mode = 'train'),
+  list(file = 'Trainlog_gpx/Gstaad - Montreux-484784.gpx', label = 'Gstaad → Montreux', mode = 'train'),
+  list(file = 'Trainlog_gpx/Montreux - Lausanne-484785.gpx', label = 'Montreux → Lausanne', mode = 'train')
+))
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+  list(file = "photos/Gruyères/6.jpeg", caption = "So much cheese"),
+  list(file = "photos/Gruyères/7.jpeg", caption = "Fondue and wine"),
+  list(file = "photos/Gruyères/8.jpeg", caption = "Train views"),
+  list(file = "photos/Gruyères/9.jpeg", caption = "GoldenPass train (old version)")
+))
+```
+
+:::
+
+## Zermatt to the Matterhorn
+
+The Matterhorn was a must-see, as my grandparents had gone to Switzerland when I was a kid and brought me back a Zermatt t-shirt. It claims to be the most photographed mountain in the world, and is quite stunning. It is also one of the most deadliest peaks (according to [Wikipedia](https://en.wikipedia.org/wiki/Matterhorn)), and I was obviously not going to climb it alone and on a day trip, but I decided I would try to climb to Hörnlihütte, a hut at 10,700 ft where climbers often spend the night before summitting. This was probably where I first appreciated the Swiss signage for hiking trails, as it was very clear which paths to take, (approximately) how long each segment would take, as well as their difficulty level. There were some sketchy moments holding onto ropes on rockfaces in the wind, but all in all it was very do-able for a day hike (about 7 hours round trip, with plenty of breaks for lunch and snacks and photos).
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Visp-484786.gpx', label = 'Lausanne → Visp', mode = 'train'),
+  list(file = 'Trainlog_gpx/Visp - Zermatt-484787.gpx', label = 'Visp → Zermatt', mode = 'train'),
+  list(file = 'gpx_data/Matterhorn_Zermatt_station_to_Hörnlihütte_.gpx', label = 'Zermatt → Hörnlihütte (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Zermatt - Visp-484788.gpx', label = 'Zermatt → Visp', mode = 'train'),
+  list(file = 'Trainlog_gpx/Visp - Lausanne-484789.gpx', label = 'Visp → Lausanne', mode = 'train')
+))
+```
+
+### Hike Detail
+
+**Start:** Zermatt station (5200 ft)
+**End:** Zermatt via Hörnlihütte (10,700 ft)
+
+```{r}
+create_hike_map('gpx_data/Matterhorn_Zermatt_station_to_Hörnlihütte_.gpx', 'Zermatt to Hörnlihütte')
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+  list(file = "photos/Zermatt/10.jpeg", caption = "It looks so far off"),
+    list(file = "photos/Zermatt/11.jpeg", caption = "4h50min to Hörnlihütte"),
+        list(file = "photos/Zermatt/12.jpeg", caption = "Schwarzsee (lunch stop)"),
+            list(file = "photos/Zermatt/13.jpeg", caption = "Turn here, don't just walk off this cliff"),
+                list(file = "photos/Zermatt/14.jpeg", caption = "Honestly I didn't love some of these sections"),
+                    list(file = "photos/Zermatt/15.jpeg", caption = "At last! The summit is so close yet so far...")
+))
+```
+
+:::
+
+## St-Ursanne
+
+After a long day up the Matterhorn, I took a relaxed trip the next day to the Jura region in northwestern Switzerland. I visited the medieval town of St-Ursanne, which is perched on a sandy corner of the Doubs River. I visited the abbey as well as the somewhat creepy [shrine](https://en.wikipedia.org/wiki/File:Eremit_Saint_Ursanne.JPG) of St Ursicinus, who was a hermit there in the 7th century. This was my first but not last time traveling via Biel/Bienne, which fascinated me because on the border of the French and Germon regions, it is fully bilingual, even down to its official name with its slash.
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - BielBienne-484792.gpx', label = 'Lausanne → Biel/Bienne', mode = 'train'),
+  list(file = 'Trainlog_gpx/BielBienne - St-Ursanne-484793.gpx', label = 'Biel/Bienne → St-Ursanne', mode = 'train'),
+  list(file = 'Trainlog_gpx/St-Ursanne - Delémont-489158.gpx', label = 'St-Ursanne → Delémont', mode = 'train'),
+  list(file = 'Trainlog_gpx/Delémont - BielBienne-489160.gpx', label = 'Delémont → Biel/Bienne', mode = 'train'),
+  list(file = 'Trainlog_gpx/BielBienne - Lausanne-489161.gpx', label = 'Biel/Bienne → Lausanne', mode = 'train')
+))
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+  list(file = "photos/St-Ursanne/16.jpeg", caption = "A gentle walk after the Matterhorn"),
+    list(file = "photos/St-Ursanne/17.jpeg", caption = ""),
+        list(file = "photos/St-Ursanne/18.jpeg", caption = "Abbey"),
+            list(file = "photos/St-Ursanne/19.jpeg", caption = "")
+))
+```
+
+:::
+
+## Montreux
+
+Wanting to explore Montreux (heart of the Swiss Riviera) after passing through on the way back from Gstaad, I took a quick trip there one late afternoon/evening (a 20-minute ride from Lausanne). I walked along the lakeside promenade and down to the Château de Chillon, a beautiful castle on a small island right offshore.
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Montreux-489162.gpx', label = 'Lausanne → Montreux', mode = 'train'),
+  list(file = 'Trainlog_gpx/Montreux - Lausanne-489163.gpx', label = 'Montreux → Lausanne', mode = 'train')
+))
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+  list(file = "photos/Montreux/20.jpeg", caption = ""),
+    list(file = "photos/Montreux/21.jpeg", caption = "Basically a built-in moat")
+))
+```
+
+:::
+
+## Geneva
+
+I didn't actually spend much time in Geneva while I was in Switzerland, despite being just down the river, but my friend Emma lives there so one afternoon I met her for a swim (actually I'm not sure we atually swam!) at les Bains des Pâquis, a popular lakeside spot. We also had a nice dinner and a walk around town.
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Geneva Railway Station-489166.gpx', label = 'Lausanne → Geneva', mode = 'train'),
+  list(file = 'Trainlog_gpx/Geneva Railway Station - Lausanne-489167.gpx', label = 'Geneva → Lausanne', mode = 'train')
+))
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+  list(file = "photos/Geneva/22.jpeg", caption = "")
+))
+```
+
+:::
+
+## Bern
+
+Bern was gorgeous. I wandered along the river, around the old town, up the hill to the Rose Garden, and visited Einstein. I didn't really capture it in photos, but the surrounding landscape was beautiful and it was clearly the gateway to a lot of outdoor adventuring in the Bernese Oberland.
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Bern-489168.gpx', label = 'Lausanne → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Lausanne-489169.gpx', label = 'Bern → Lausanne', mode = 'train')
+))
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+  list(file = "photos/Bern/23.jpeg", caption = "Wedding photos"),
+    list(file = "photos/Bern/24.jpeg", caption = "Sit down and have a chat")
+))
+```
+
+:::
+
+## Col des Mosses
+
+I returned to Aigle, the site of my first hike, but then continued on via another train and bus to Col des Mosses, a mountain pass in the Vaud Alps. From there I did a hike up to Pic Chaussy, where I should have had a stunning view aross the valley, but unfortunately it was pretty socked in that afternoon. Later I came out of the clouds and had great views on the way back down to Les Mosses, walking by a lot of alpine farms with cows. I brought my own lunch (as I always do on hikes) but I remember there was a nice restaurant by the lake. Between easy transit to trailheads, incredibly well-marked trails, and sit-down meals, Swiss hiking culture is very different from what I'm used to!
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Aigle-489170.gpx', label = 'Lausanne → Aigle', mode = 'train'),
+  list(file = 'Trainlog_gpx/Aigle - Le Sépey-489172.gpx', label = 'Aigle → Le Sépey', mode = 'train'),
+  list(file = 'Trainlog_gpx/Ormont-Dessous - Le Sépey gare - Col des Mosses-489174.gpx', label = 'Le Sépey → Col des Mosses', mode = 'bus'),
+  list(file = 'gpx_data/Ormont_Dessous.gpx', label = 'Col des Mosses area (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Col des Mosses - Ormont-Dessous - Le Sépey gare-489175.gpx', label = 'Col des Mosses → Le Sépey', mode = 'bus'),
+  list(file = 'Trainlog_gpx/Le Sépey - Aigle-489173.gpx', label = 'Le Sépey → Aigle', mode = 'train'),
+  list(file = 'Trainlog_gpx/Aigle - Lausanne-489171.gpx', label = 'Aigle → Lausanne', mode = 'train')
+))
+```
+
+### Hike Detail
+
+**Start:** Les Mosses (4700 ft)
+
+**End:** Les Mosses via Pic Chaussy (7700 ft)
+
+```{r}
+create_hike_map('gpx_data/Ormont_Dessous.gpx', 'Col des Mosses')
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+  list(file = "photos/Les Mosses/25.jpeg", caption = "I guess I won't go this way..."),
+    list(file = "photos/Les Mosses/26.jpeg", caption = ""),
+        list(file = "photos/Les Mosses/27.jpeg", caption = "A map of what I can't see"),
+            list(file = "photos/Les Mosses/28.jpeg", caption = "This is the quintessential Swiss photo for me")
+))
+```
+
+:::
+
+## Harder Kulm--Augstmatthorn--Oberried am Brienzersee
+
+This was probably a top-10 lifetime hike for me (except for the last couple of miles, which were some of my least favorite!). I took the train to Interlaken ("between lakes") and walked up to Harder Kulm, a viewpoint above the town (I could have taken the cable car but what would have been the fun in that?!) From there I hiked along the ridge to Augstmatthorn, which had incredible views of Lake Brienz (it really is that color), as well as the Jungfrau and Eiger peaks across the valley. The hike along the ridge did not have a lot of elevation change but it was exposed and there were some sketchy steep and rocky spots, so it was still somewhat strenuous. The way down to the village of Oberried am Brienzersee was incredibly steep, miserable, and never-ending. It probably did not help that I caught up to two American guys that I then could not drop and was forced to chat with as we all struggled down the hill. I do remember telling them where to catch the train as I apparently was the only one who had planned on how to get back!
+
+<!-- https://www.alltrails.com/trail/switzerland/bern/harder-kulm-augustmatthorn-oberreid -->
+
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+      list(file = 'Trainlog_gpx/Lausanne - Bern-489179.gpx', label = 'Lausanne → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Lausanne-489178.gpx', label = 'Bern → Lausanne', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Interlaken Ost-489180.gpx', label = 'Bern → Interlaken Ost', mode = 'train'),
+  list(file = 'gpx_data/Interlaken_Oberried_Brienz.gpx', label = 'Oberried → Brienz (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Oberried - Interlaken Ost-629488.gpx', label = 'Oberried → Interlaken Ost', mode = 'train'),
+  list(file = 'Trainlog_gpx/Interlaken Ost - Bern-489181.gpx', label = 'Interlaken Ost → Bern', mode = 'train')
+))
+```
+
+### Hike Detail
+
+**Start:** Interlaken Ost (1900 ft)
+
+**End:** Oberried am Brienzersee (1900 ft) via Augstmatthorn (7000 ft)
+
+```{r}
+create_hike_map('gpx_data/Interlaken_Oberried_Brienz.gpx', 'Interlaken to Brienz')
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+    list(file = "photos/Habkern/29.jpeg", caption = "Interlaken"),
+    list(file = "photos/Habkern/30.jpeg", caption = "Looking back to where I've come from"),
+        list(file = "photos/Habkern/31.jpeg", caption = "And forward to where I still have to go (and then down that...)")
+))
+```
+
+:::
+
+## Lake Lucerne
+
+This was probably my most extensive day of transit, with only a short hike segment. I took the train to Lucerne, then a ferry to Weggis, and walked through town to take a cable car to Rigi Kaltbad (this one is included on the GA travelcard!). From there I hiked up to Rigi Kulm, the summit of Mount Rigi. The excitement up there was the cog railway down to Arth-Goldau. I sat next to a little boy who was a train fanatic (see his hat in the photos) and from whom I learned the German word for train ("Zug"). (I have also now learned that the Mount Washington Cog Railway was the first in the world, but the first one in continental Europe, a couple of years later, was to Rigi Kulm.) I then took a train to Flüelen, and from there a ferry back to Lucerne. The ferry ride was incredible---I felt like I was on Lake Como (where I've never been...).
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Lucerne - Luzern-489190.gpx', label = 'Lausanne → Lucerne', mode = 'train'),
+  list(file = 'Trainlog_gpx/Luzern Bahnhofquai - Weggis-489195.gpx', label = 'Luzern → Weggis', mode = 'ferry'),
+  list(file = 'Trainlog_gpx/Weggis Luftseilbahn - Rigi Kaltbad-489198.gpx', label = 'Weggis → Rigi Kaltbad', mode = 'cable'),
+  list(file = 'gpx_data/Rigi_Kaltbad_Arth.gpx', label = 'Rigi Kaltbad → Arth-Goldau (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Rigi Kulm - Arth-Goldau Rigibahn-629465.gpx', label = 'Rigi Kulm → Arth-Goldau', mode = 'train'),
+  list(file = 'Trainlog_gpx/Arth-Goldau - Flüelen-629466.gpx', label = 'Arth-Goldau → Flüelen', mode = 'train'),
+  list(file = 'Trainlog_gpx/Flüelen See - Luzern Bahnhofquai-629467.gpx', label = 'Flüelen → Luzern', mode = 'ferry'),
+  list(file = 'Trainlog_gpx/Lucerne - Luzern - Lausanne-629468.gpx', label = 'Lucerne → Lausanne', mode = 'train')
+))
+```
+
+### Hike Detail
+
+**Start:** Rigi Kaltbad (4700 ft)
+
+**End:** Rigi Kulm (5900 ft)
+
+```{r}
+create_hike_map('gpx_data/Rigi_Kaltbad_Arth.gpx', 'Rigi Kaltbad to Arth')
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+    list(file = "photos/Lucerne/32.jpeg", caption = "From the sky"),
+    list(file = "photos/Lucerne/33.jpeg", caption = ""),
+        list(file = "photos/Lucerne/34.jpeg", caption = "Adorable train enthusiast"),
+            list(file = "photos/Lucerne/35.jpeg", caption = ""),
+                list(file = "photos/Lucerne/36.jpeg", caption = "")
+))
+```
+
+:::
+
+## Nyon & Saint-Cergue
+
+This trip was an outlier, as Emma picked me up at the train station in Nyon and drove me to the trailhead. For some reason I didn't record this hike, so I've kind of made up the route, but I do remember it starting to rain and getting stuck (literally) behind a herd of cattle. It was very chill because Emma was carrying her baby!
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Nyon-629469.gpx', label = 'Lausanne → Nyon', mode = 'train'),
+  list(file = 'gpx_data/Hike_with_Emma.gpx', label = 'Nyon area (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Nyon - Lausanne-629470.gpx', label = 'Nyon → Lausanne', mode = 'train')
+))
+```
+
+### Hike Detail
+
+**Start:** Saint-Cergue (3900 ft)
+
+**End:** Saint-Cergue
+
+```{r}
+create_hike_map('gpx_data/Hike_with_Emma.gpx', 'Nyon Area Hike')
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+    list(file = "photos/St-Cergue/37.jpeg", caption = ""),
+    list(file = "photos/St-Cergue/38.jpeg", caption = "Stuck behind cows in the rain")
+))
+```
+
+:::
+
+## Jungfrau Region
+
+Another long day with a standout hike. This time I continued past Interlaken to Lauterbrunnen, where I took a bus to Stechelberg and then a cable car (included on the GA again!) up to Gimmelwald. From there I did a loop with views of the Jungfraujoch as well as waterfalls in the Lauterbrunnen Valley. There were also very friendly goats. On the way back I took the train out to Grindelwald just to see another famous Swiss mountain town and its great views of peaks like Mönch and Eiger.
+
+<!-- https://www.alltrails.com/trail/switzerland/bern/gimmelwald-berghotel-obersteinberg-stechenberg -->
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Bern-629471.gpx', label = 'Lausanne → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Interlaken Ost-629472.gpx', label = 'Bern → Interlaken Ost', mode = 'train'),
+  list(file = 'Trainlog_gpx/Interlaken Ost - Lauterbrunnen-629473.gpx', label = 'Interlaken Ost → Lauterbrunnen', mode = 'train'),
+  list(file = 'Trainlog_gpx/Lauterbrunnen Bahnhof - Stechelberg Schilthornbahn-629474.gpx', label = 'Lauterbrunnen → Stechelberg', mode = 'bus'),
+  list(file = 'Trainlog_gpx/Stechelberg Schilthornbahn - Gimmelwald Schilthornbahn-629475.gpx', label = 'Stechelberg → Gimmelwald', mode = 'cable'), # did this work
+  list(file = 'gpx_data/GOTOES_260202-031450-StiYX.gpx', label = 'Gimmelwald → Stechelberg (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Lauterbrunnen - Stechelberg Hotel - Lauterbrunnen Bahnhof-629476.gpx', label = 'Stechelberg → Lauterbrunnen', mode = 'bus'), # did this work
+  list(file = 'Trainlog_gpx/Lauterbrunnen - Zweilütschinen-629478.gpx', label = 'Lauterbrunnen → Zweilütschinen', mode = 'train'),
+  list(file = 'Trainlog_gpx/Zweilütschinen - Grindelwald-629479.gpx', label = 'Zweilütschinen → Grindelwald', mode = 'train'),
+  list(file = 'Trainlog_gpx/Grindelwald - Interlaken Ost-629481.gpx', label = 'Grindelwald → Interlaken Ost', mode = 'train'),
+  list(file = 'Trainlog_gpx/Interlaken Ost - Bern-629483.gpx', label = 'Interlaken Ost → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Lausanne-629484.gpx', label = 'Bern → Lausanne', mode = 'train')
+))
+```
+
+### Hike Detail
+
+**Start:** Gimmelwald (4500 ft)
+
+**End:** Stechelberg (3000 ft) via various viewpoints (6600 ft)
+
+```{r}
+create_hike_map('gpx_data/GOTOES_260202-031450-StiYX.gpx', 'Gimmelwald to Aletsch Glacier')
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+    list(file = "photos/Stechelberg/39.jpeg", caption = "Hard at work"),
+    list(file = "photos/Stechelberg/40.jpeg", caption = ""),
+        list(file = "photos/Stechelberg/41.jpeg", caption = ""),
+            list(file = "photos/Stechelberg/42.jpeg", caption = "My new friend"),
+                list(file = "photos/Stechelberg/43.jpeg", caption = "")
+))
+```
+
+:::
+
+## Basel & Zürich
+
+I wanted to visit Basel and Zürich, so I planned a long day to hit both cities. First I visited the Basler Papiermühle (paper mill museum) which was fascinating, then wandered around the old town before lunch with a friend. In the afternoon I took the train to Zürich, where I spent the evening walking around. To be honest I don't remember much about Zürich but wanted to get a feel for it!
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Bern-629487.gpx', label = 'Lausanne → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Basel SBB-629489.gpx', label = 'Bern → Basel', mode = 'train'),
+  list(file = 'Trainlog_gpx/Basel SBB - Zürich Hauptbahnhof-629490.gpx', label = 'Basel → Zürich', mode = 'train'),
+  list(file = 'Trainlog_gpx/Zürich Hauptbahnhof - Lausanne-629491.gpx', label = 'Zürich → Lausanne', mode = 'train')
+))
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+    list(file = "photos/Basel & Zürich/44.jpeg", caption = "I learned how to make paper (and made some myself!)"),
+    list(file = "photos/Basel & Zürich/45.jpeg", caption = ""),
+        list(file = "photos/Basel & Zürich/46.jpeg", caption = "Zürich"),
+            list(file = "photos/Basel & Zürich/47.jpeg", caption = "Zürich")
+))
+```
+
+:::
+
+## Venice & Milan
+
+My only overnight trip took me from Lausanne to Venice via the Eurostar. This was also the only trip I had to pay for separately (Italian portion only). It was still a Covid lull, so Venice was not as crowded as it usually is, and it was even better than I could have imagined. I tried to capture it in photos but found myself stopping around every corner to take another shot, and none of them do it justice. On the way back I stopped in Milan for a few hours to see the Duomo and walk around, before taking local trains back, which also involved a wander around the town of Domodossola. My first time in Italy but hopefully not my last!
+
+::: {.panel-tabset}
+
+### Complete Route Map
+
+```{r}
+create_combined_transit_map(list(
+  list(file = 'Trainlog_gpx/Lausanne - Venice - Venezia Santa Lucia-629492.gpx', label = 'Lausanne → Venice', mode = 'train'),
+  list(file = 'Trainlog_gpx/Venice - Venezia Santa Lucia - Milano Centrale-629497.gpx', label = 'Venice → Milan', mode = 'train'),
+  list(file = 'Trainlog_gpx/Milano Centrale - Domodossola-629498.gpx', label = 'Milan → Domodossola', mode = 'train'),
+  list(file = 'Trainlog_gpx/Domodossola - Brig-629500.gpx', label = 'Domodossola → Brig', mode = 'train'),
+  list(file = 'Trainlog_gpx/Brig - Lausanne-629501.gpx', label = 'Brig → Lausanne', mode = 'train')
+))
+```
+
+### Photos
+```{r}
+create_photo_carousel(list(
+    list(file = "photos/Venice & Milan/48.jpeg", caption = ""),
+    list(file = "photos/Venice & Milan/49.jpeg", caption = "Looking out through the Bridge of Sighs"),
+    list(file = "photos/Venice & Milan/50.jpeg", caption = "Public transit in Venice"),
+    list(file = "photos/Venice & Milan/51.jpeg", caption = "Duomo di Milano"),
+    list(file = "photos/Venice & Milan/52.jpeg", caption = "")
+))
+```
+:::
+
+---
+
+## Summary
+
+I covered approximately 3500 miles using Switzerland's integrated transport system---primarily SBB (Swiss Federal Railways), but also ferries, buses, and aerial cable cars. According to [trainlog.me](), I have covered 22% of Switzerland's rail network. I felt like I could get anywhere I wanted to go without a car. Public transit was incredibly easy to navigate (even in the German-speaking regions), I felt very safe everywhere I went, and I think the longest train delay I had was 9 minutes. Plus the views from the train windows were almost as good as those from the mountaintops!
+
+```{r}
+
+# Collect all legs from all days
+all_legs <- list(
+  # August 13 - Leysin
+  list(file = 'Trainlog_gpx/Lausanne - Aigle-484051.gpx', label = 'Lausanne → Aigle', mode = 'train'),
+  list(file = 'gpx_data/Aigle_Leysin.gpx', label = 'Aigle → Leysin (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Leysin-Feydey - Aigle-484056.gpx', label = 'Leysin-Feydey → Aigle', mode = 'train'),
+  list(file = 'Trainlog_gpx/Aigle - Lausanne-484059.gpx', label = 'Aigle → Lausanne', mode = 'train'),
+
+  # August 14 - Évian
+  list(file = 'Trainlog_gpx/Lausanne-Ouchy - Évian-les-Bains-484061.gpx', label = 'Lausanne → Évian', mode = 'ferry'),
+    list(file = 'Trainlog_gpx/Évian-les-Bains - Bains dÉvian - Évian-les-Bains - Neuvecelle-631111.gpx', label = "Évian les Bains → Neuvecelle", mode = "train"),
+  list(file = 'Trainlog_gpx/Évian-les-Bains - Lausanne-Ouchy-484064.gpx', label = 'Évian → Lausanne', mode = 'ferry'),
+
+  # August 18 - Golden Pass
+  list(file = 'Trainlog_gpx/Lausanne - Romont-484777.gpx', label = 'Lausanne → Romont', mode = 'train'),
+  list(file = 'Trainlog_gpx/Romont - Gruyères-484778.gpx', label = 'Romont → Gruyères', mode = 'train'),
+  list(file = 'Trainlog_gpx/Gruyères - Montbovon-484780.gpx', label = 'Gruyères → Montbovon', mode = 'train'),
+  list(file = 'Trainlog_gpx/Montbovon - Gstaad-484781.gpx', label = 'Montbovon → Gstaad', mode = 'train'),
+  list(file = 'Trainlog_gpx/Gstaad - Montreux-484784.gpx', label = 'Gstaad → Montreux', mode = 'train'),
+  list(file = 'Trainlog_gpx/Montreux - Lausanne-484785.gpx', label = 'Montreux → Lausanne', mode = 'train'),
+
+  # August 21 - Zermatt
+  list(file = 'Trainlog_gpx/Lausanne - Visp-484786.gpx', label = 'Lausanne → Visp', mode = 'train'),
+  list(file = 'Trainlog_gpx/Visp - Zermatt-484787.gpx', label = 'Visp → Zermatt', mode = 'train'),
+  list(file = 'gpx_data/Matterhorn_Zermatt_station_to_Hörnlihütte_.gpx', label = 'Zermatt → Hörnlihütte (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Zermatt - Visp-484788.gpx', label = 'Zermatt → Visp', mode = 'train'),
+  list(file = 'Trainlog_gpx/Visp - Lausanne-484789.gpx', label = 'Visp → Lausanne', mode = 'train'),
+
+  # August 22 - Jura
+  list(file = 'Trainlog_gpx/Lausanne - BielBienne-484792.gpx', label = 'Lausanne → Biel/Bienne', mode = 'train'),
+  list(file = 'Trainlog_gpx/BielBienne - St-Ursanne-484793.gpx', label = 'Biel/Bienne → St-Ursanne', mode = 'train'),
+  list(file = 'Trainlog_gpx/St-Ursanne - Delémont-489158.gpx', label = 'St-Ursanne → Delémont', mode = 'train'),
+  list(file = 'Trainlog_gpx/Delémont - BielBienne-489160.gpx', label = 'Delémont → Biel/Bienne', mode = 'train'),
+  list(file = 'Trainlog_gpx/BielBienne - Lausanne-489161.gpx', label = 'Biel/Bienne → Lausanne', mode = 'train'),
+
+  # August 25 - Montreux
+  list(file = 'Trainlog_gpx/Lausanne - Montreux-489162.gpx', label = 'Lausanne → Montreux', mode = 'train'),
+  list(file = 'Trainlog_gpx/Montreux - Lausanne-489163.gpx', label = 'Montreux → Lausanne', mode = 'train'),
+
+  # August 26 - Geneva
+  list(file = 'Trainlog_gpx/Lausanne - Geneva Railway Station-489166.gpx', label = 'Lausanne → Geneva', mode = 'train'),
+  list(file = 'Trainlog_gpx/Geneva Railway Station - Lausanne-489167.gpx', label = 'Geneva → Lausanne', mode = 'train'),
+
+  # August 27 - Bern
+  list(file = 'Trainlog_gpx/Lausanne - Bern-489168.gpx', label = 'Lausanne → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Lausanne-489169.gpx', label = 'Bern → Lausanne', mode = 'train'),
+
+  # August 28 - Col des Mosses
+  list(file = 'Trainlog_gpx/Lausanne - Aigle-489170.gpx', label = 'Lausanne → Aigle', mode = 'train'),
+  list(file = 'Trainlog_gpx/Aigle - Le Sépey-489172.gpx', label = 'Aigle → Le Sépey', mode = 'train'),
+  list(file = 'Trainlog_gpx/Ormont-Dessous - Le Sépey gare - Col des Mosses-489174.gpx', label = 'Le Sépey → Col des Mosses', mode = 'bus'),
+  list(file = 'gpx_data/Ormont_Dessous.gpx', label = 'Col des Mosses (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Col des Mosses - Ormont-Dessous - Le Sépey gare-489175.gpx', label = 'Col des Mosses → Le Sépey', mode = 'bus'),
+  list(file = 'Trainlog_gpx/Le Sépey - Aigle-489173.gpx', label = 'Le Sépey → Aigle', mode = 'train'),
+  list(file = 'Trainlog_gpx/Aigle - Lausanne-489171.gpx', label = 'Aigle → Lausanne', mode = 'train'),
+
+  # September 1 - Interlaken
+  list(file = 'Trainlog_gpx/Bern - Lausanne-489178.gpx', label = 'Bern → Lausanne', mode = 'train'),
+  list(file = 'Trainlog_gpx/Lausanne - Bern-489179.gpx', label = 'Lausanne → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Interlaken Ost-489180.gpx', label = 'Bern → Interlaken', mode = 'train'),
+  list(file = 'gpx_data/Interlaken_Oberried_Brienz.gpx', label = 'Oberried → Brienz (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Oberried - Interlaken Ost-629488.gpx', label = 'Oberried → Interlaken', mode = 'train'),
+  list(file = 'Trainlog_gpx/Interlaken Ost - Bern-489181.gpx', label = 'Interlaken → Bern', mode = 'train'),
+
+  # September 4 - Rigi
+  list(file = 'Trainlog_gpx/Lausanne - Lucerne - Luzern-489190.gpx', label = 'Lausanne → Lucerne', mode = 'train'),
+  list(file = 'Trainlog_gpx/Luzern Bahnhofquai - Weggis-489195.gpx', label = 'Luzern → Weggis', mode = 'ferry'),
+  list(file = 'Trainlog_gpx/Weggis Luftseilbahn - Rigi Kaltbad-489198.gpx', label = 'Weggis → Rigi Kaltbad', mode = 'cable'),
+  list(file = 'gpx_data/Rigi_Kaltbad_Arth.gpx', label = 'Rigi Kaltbad → Rigi Kulm (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Rigi Kulm - Arth-Goldau Rigibahn-629465.gpx', label = 'Rigi Kulm → Arth-Goldau', mode = 'train'),
+  list(file = 'Trainlog_gpx/Arth-Goldau - Flüelen-629466.gpx', label = 'Arth-Goldau → Flüelen', mode = 'train'),
+  list(file = 'Trainlog_gpx/Flüelen See - Luzern Bahnhofquai-629467.gpx', label = 'Flüelen → Luzern', mode = 'ferry'),
+  list(file = 'Trainlog_gpx/Lucerne - Luzern - Lausanne-629468.gpx', label = 'Lucerne → Lausanne', mode = 'train'),
+
+  # September 5 - Nyon
+  list(file = 'Trainlog_gpx/Lausanne - Nyon-629469.gpx', label = 'Lausanne → Nyon', mode = 'train'),
+  list(file = 'gpx_data/Hike_with_Emma.gpx', label = 'Nyon (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Nyon - Lausanne-629470.gpx', label = 'Nyon → Lausanne', mode = 'train'),
+
+  # September 7 - Jungfrau
+  list(file = 'Trainlog_gpx/Lausanne - Bern-629471.gpx', label = 'Lausanne → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Interlaken Ost-629472.gpx', label = 'Bern → Interlaken', mode = 'train'),
+  list(file = 'Trainlog_gpx/Interlaken Ost - Lauterbrunnen-629473.gpx', label = 'Interlaken → Lauterbrunnen', mode = 'train'),
+  list(file = 'Trainlog_gpx/Lauterbrunnen Bahnhof - Stechelberg Schilthornbahn-629474.gpx', label = 'Lauterbrunnen → Stechelberg', mode = 'bus'),
+  list(file = 'Trainlog_gpx/Stechelberg Schilthornbahn - Gimmelwald Schilthornbahn-629475.gpx', label = 'Stechelberg → Gimmelwald', mode = 'cable'),
+  list(file = 'gpx_data/GOTOES_260202-031450-StiYX.gpx', label = 'Gimmelwald → Stechelberg (hike)', mode = 'hike'),
+  list(file = 'Trainlog_gpx/Lauterbrunnen - Stechelberg Hotel - Lauterbrunnen Bahnhof-629476.gpx', label = 'Stechelberg → Lauterbrunnen', mode = 'bus'),
+  list(file = 'Trainlog_gpx/Lauterbrunnen - Zweilütschinen-629478.gpx', label = 'Lauterbrunnen → Zweilütschinen', mode = 'train'),
+  list(file = 'Trainlog_gpx/Zweilütschinen - Grindelwald-629479.gpx', label = 'Zweilütschinen → Grindelwald', mode = 'train'),
+  list(file = 'Trainlog_gpx/Grindelwald - Interlaken Ost-629481.gpx', label = 'Grindelwald → Interlaken', mode = 'train'),
+  list(file = 'Trainlog_gpx/Interlaken Ost - Bern-629483.gpx', label = 'Interlaken → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Lausanne-629484.gpx', label = 'Bern → Lausanne', mode = 'train'),
+
+  # September 8 - Basel & Zürich
+  list(file = 'Trainlog_gpx/Lausanne - Bern-629487.gpx', label = 'Lausanne → Bern', mode = 'train'),
+  list(file = 'Trainlog_gpx/Bern - Basel SBB-629489.gpx', label = 'Bern → Basel', mode = 'train'),
+  list(file = 'Trainlog_gpx/Basel SBB - Zürich Hauptbahnhof-629490.gpx', label = 'Basel → Zürich', mode = 'train'),
+  list(file = 'Trainlog_gpx/Zürich Hauptbahnhof - Lausanne-629491.gpx', label = 'Zürich → Lausanne', mode = 'train'),
+
+  # September 10-12 - Venice
+  list(file = 'Trainlog_gpx/Lausanne - Venice - Venezia Santa Lucia-629492.gpx', label = 'Lausanne → Venice', mode = 'train'),
+  list(file = 'Trainlog_gpx/Venice - Venezia Santa Lucia - Milano Centrale-629497.gpx', label = 'Venice → Milan', mode = 'train'),
+  list(file = 'Trainlog_gpx/Milano Centrale - Domodossola-629498.gpx', label = 'Milan → Domodossola', mode = 'train'),
+  list(file = 'Trainlog_gpx/Domodossola - Brig-629500.gpx', label = 'Domodossola → Brig', mode = 'train'),
+  list(file = 'Trainlog_gpx/Brig - Lausanne-629501.gpx', label = 'Brig → Lausanne', mode = 'train')
+)
+
+# Initialize distance counters by mode
+dist_by_mode <- list(train = 0, ferry = 0, bus = 0, cable = 0, hike = 0)
+
+# Color scheme for different modes
+mode_colors <- list(
+  train = "blue",
+  ferry = "pink",
+  bus = "orange",
+  cable = "purple",
+  hike = "red"
+)
+
+# Initialize map
+m <- leaflet() %>% addTiles()
+
+# Add Switzerland border
+library(rnaturalearth)
+library(sf)
+switzerland <- ne_countries(scale = "large", country = "Switzerland", returnclass = "sf")
+m <- m %>% addPolygons(data = switzerland, weight = 3, color = "darkgreen",
+                       fillOpacity = 0, opacity = 0.8)
+
+all_lats <- c()
+all_lons <- c()
+
+# Add each leg to the map and calculate distances
+for (i in seq_along(all_legs)) {
+  leg <- all_legs[[i]]
+  track_data <- read_gpx(leg$file)
+
+  if (nrow(track_data) > 0) {
+    # Store coordinates for auto-centering
+    all_lats <- c(all_lats, track_data$lat)
+    all_lons <- c(all_lons, track_data$lon)
+
+    # Calculate distance for this leg
+    distances <- sqrt(diff(track_data$lat)^2 + diff(track_data$lon)^2) * 111
+    leg_dist_km <- sum(distances, na.rm = TRUE)
+    leg_dist_mi <- leg_dist_km * 0.621371
+
+    # Add to mode total
+    dist_by_mode[[leg$mode]] <- dist_by_mode[[leg$mode]] + leg_dist_mi
+
+    # Get color for this mode
+    color <- mode_colors[[leg$mode]]
+    if (is.null(color)) color <- "gray"
+
+    # Add line for this leg
+    m <- m %>%
+      addPolylines(
+        data = track_data,
+        lng = ~lon,
+        lat = ~lat,
+        color = color,
+        weight = if(leg$mode == "hike") 2.5 else 1.5,
+        opacity = 0.5,
+        label = leg$label
+      )
+  }
+}
+
+# Center map on all points
+if (length(all_lats) > 0) {
+  m <- m %>%
+    fitBounds(
+      lng1 = min(all_lons),
+      lat1 = min(all_lats),
+      lng2 = max(all_lons),
+      lat2 = max(all_lats)
+    )
+}
+
+# Calculate totals
+total_miles <- sum(unlist(dist_by_mode))
+
+# Add legend with statistics
+legend_html <- sprintf(
+  "<div style='background: white; padding: 10px; border-radius: 5px; font-size: 12px;'>
+  <b>Transport Modes & Distances</b><br>
+  <span style='color: blue;'>━━</span> Train: %.1f mi<br>
+  <span style='color: pink;'>━━</span> Ferry: %.1f mi<br>
+  <span style='color: orange;'>━━</span> Bus: %.1f mi<br>
+  <span style='color: purple;'>━━</span> Cable Car: %.1f mi<br>
+  <span style='color: red;'>━━</span> Hiking: %.1f mi<br>
+  <br>
+  <b>Total: %.1f miles</b>
+  </div>",
+  dist_by_mode$train,
+  dist_by_mode$ferry,
+  dist_by_mode$bus,
+  dist_by_mode$cable,
+  dist_by_mode$hike,
+  total_miles
+)
+
+m <- m %>%
+  addControl(
+    html = legend_html,
+    position = "bottomleft"
+  )
+
+m
+```
+
+## Notes
+
+Distances and elevations are approximate based on GPX data and may vary from actual values. I used AI to organize the material that I collected and wrote and to write the code to display the maps and photos.

@@ -1,8 +1,8 @@
 {
-  "hash": "c29069779841719839ef163aaffc9aaf",
+  "hash": "d5621a6dd60068c9211c041a1d7b3bde",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: Publications\nformat:\n  html:\n    toc: false\n    page-layout: full\nlisting:\n  contents: publications.yaml\n  sort-ui: false\n  filter-ui: false\n  type: table\n  sort: \"date desc\"\n  date-format: \"YYYY\"\n  fields: [title, date, Authors, Journal, PDF]\n---\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::",
+    "markdown": "---\ntitle: Publications\nformat:\n  html:\n    toc: false\n    page-layout: full\nlisting:\n  contents: publications.yaml\n  sort-ui: false\n  filter-ui: false\n  type: table\n  sort: \"date desc\"\n  date-format: \"YYYY\"\n  fields: [title, date, Authors, Journal, PDF]\n---\n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.cell}\n\n:::\n\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

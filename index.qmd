@@ -20,7 +20,7 @@ about:
 
 ```{r}
 #| output: false
-file.copy("~/Documents/CV dossier/cv.pdf", "files/louisahsmith_cv.pdf", overwrite = TRUE)
+file.copy("~/GitHub/CV/louisahsmith_cv.pdf", "files/louisahsmith_cv.pdf", overwrite = TRUE)
 ```
 
 I am an assistant professor in the Department of Public Health & Health Sciences and at the Roux Institute, Northeastern University. I am an epidemiologist and biostatistician with expertise in reproductive and perinatal epidemiology and causal inference. I am passionate about teaching and mentoring students in epidemiology and biostatistics.
@@ -36,4 +36,3 @@ I am an assistant professor in the Department of Public Health & Health Sciences
   - University of California, Berkeley
 - **AB**, Comparative Literature / Community Health
   - Brown University
-

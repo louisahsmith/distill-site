@@ -88,6 +88,15 @@
     <a href="publications/juhel2023side.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
+- title: "Using large biobanks for psychiatric genomic research: Consistency of clinical and genetic aspects of recorded depression across US states in the All of Us Research Program"
+  Authors: "Keyes KM, Gimbrone C, Rutherford C, Zhang Y, Choi K, **Smith L,** Greenland P, Smoller JW, Argos M"
+  date: 2026-01-01
+  path: https://doi.org/10.1017/S0033291725102420
+  Journal: "Psychological Medicine"
+  PDF: |
+    <a href="publications/keyes2026using.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "E-values for effect heterogeneity and approximations for causal interaction"
   Authors: "Mathur MB, **Smith LH**, Yoshida K, Ding P, VanderWeele TJ"
   date: 2022-01-01
@@ -142,15 +151,6 @@
     <a href="publications/peterson2024bias.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Important questions deserve rigorous analysis: A cautionary note about selection bias"
-  Authors: "Petito LC, **Smith LH**"
-  date: 2022-01-01
-  path: https://doi.org/10.1161/jaha.121.023234
-  Journal: "Journal of the American Heart Association"
-  PDF: |
-    <a href="publications/petito2022important.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
 - title: "Evaluating criminal justice reform during COVID-19: The need for a novel sentiment analysis package"
   Authors: "Ramjee D, **Smith LH**, Doanvo A, Charpignon ML, McNulty-Nebel A, Lett E, Desai AN, Majumder MS"
   date: 2022-01-01
@@ -194,15 +194,6 @@
   Journal: "Epidemiology"
   PDF: |
     <a href="publications/smith2020simple.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
-- title: "Mediating to opportunity: The challenges of translating mediation estimands into policy recommendations"
-  Authors: "**Smith LH**, Schwartz GL"
-  date: 2021-01-01
-  path: https://doi.org/10.1097/ede.0000000000001335
-  Journal: "Epidemiology"
-  PDF: |
-    <a href="publications/smith2021mediating.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
 - title: "Multiple-bias sensitivity analysis using bounds"
@@ -250,15 +241,6 @@
     <a href="publications/smith2024pregnancy.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Identifiability and interpretation of estimands under selection in perinatal research"
-  Authors: "**Smith LH**"
-  date: 2025-01-01
-  path: https://doi.org/10.1111/ppe.70073
-  Journal: "Paediatric and Perinatal Epidemiology"
-  PDF: |
-    <a href="publications/smith2025identifiability.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
 - title: "Identification of vaccine effects when exposure status is unknown"
   Authors: "Stensrud MJ, **Smith L**"
   date: 2023-01-01
@@ -300,7 +282,10 @@
   date: 2025-01-01
   path: https://doi.org/10.1007/s10461-025-04860-2
   Journal: "AIDS and Behavior"
-  PDF: 
+  PDF: |
+    <a href="publications/williams2025characterizing.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "Neighborhood disadvantage, syndemic conditions, and PrEP non-adherence in young sexual and gender minority men"
   Authors: "Williams MP, Manjourides J, **Smith LH**, Rainer CB, Hightow-Weidman L, Haley DF"
   date: 2025-01-01
@@ -337,6 +322,12 @@
     <a href="publications/wong2024assessing.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
+- title: "The mediating role of frailty in healthcare utilization among sexual and gender minorities: A comparison of generalist, specialist, and mental health visits"
+  Authors: "Wong CN, Cavanaugh R, **Smith LH**, Kim DH, StreedJr. CG, Kapadia F, Olivieri-Mui B"
+  date: 2026-01-01
+  path: https://doi.org/10.1177/07334648261418733
+  Journal: "Journal of Applied Gerontology"
+  PDF: 
 - title: "Data missingness reporting and use of methods to address it in critical care cohort studies"
   Authors: "Wu TT, **Smith LH**, Vernooij LM, Patel E, Devlin JW"
   date: 2023-01-01
@@ -353,5 +344,41 @@
   Journal: "Journal of Critical Care"
   PDF: |
     <a href="publications/wu2024research.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "BNT162b2 mRNA COVID-19 vaccine effectiveness in pregnancy: Emulating trial NCT04754594 using observational data from Norwegian health registries"
+  Authors: "Zidan M, Trinh NTH, Desalegn A, **Smith LH**, Van Gelder MMHJ, Nordeng H, Lupattelli A"
+  date: 2025-01-01
+  path: https://doi.org/10.1016/j.vaccine.2025.127908
+  Journal: "Vaccine"
+  PDF: |
+    <a href="publications/zidan2025bnt162b2.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Important questions deserve rigorous analysis: A cautionary note about selection bias"
+  Authors: "Petito LC, **Smith LH**"
+  date: 2022-01-01
+  path: https://doi.org/10.1161/jaha.121.023234
+  Journal: "Journal of the American Heart Association"
+  PDF: |
+    <a href="publications/petito2022important.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Mediating to opportunity: The challenges of translating mediation estimands into policy recommendations"
+  Authors: "**Smith LH**, Schwartz GL"
+  date: 2021-01-01
+  path: https://doi.org/10.1097/ede.0000000000001335
+  Journal: "Epidemiology"
+  PDF: |
+    <a href="publications/smith2021mediating.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Identifiability and interpretation of estimands under selection in perinatal research"
+  Authors: "**Smith LH**"
+  date: 2025-01-01
+  path: https://doi.org/10.1111/ppe.70073
+  Journal: "Paediatric and Perinatal Epidemiology"
+  PDF: |
+    <a href="publications/smith2025identifiability.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>

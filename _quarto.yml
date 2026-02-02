@@ -27,8 +27,8 @@ format:
     theme:
       - yeti
       - custom.scss
-  
-execute: 
+
+execute:
   echo: false
   message: false
   warning: false
