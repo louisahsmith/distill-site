@@ -997,7 +997,7 @@ create_photo_carousel(list(
 
 ## Summary
 
-I covered approximately 3500 miles using Switzerland's integrated transport system---primarily SBB (Swiss Federal Railways), but also ferries, buses, and aerial cable cars. According to [trainlog.me](), I have covered 22% of Switzerland's rail network. I felt like I could get anywhere I wanted to go without a car. Public transit was incredibly easy to navigate (even in the German-speaking regions), I felt very safe everywhere I went, and I think the longest train delay I had was 9 minutes. Plus the views from the train windows were almost as good as those from the mountaintops!
+I covered approximately 3500 miles using Switzerland's integrated transport system---primarily SBB (Swiss Federal Railways), but also ferries, buses, and aerial cable cars. According to [trainlog.me](), I have covered 22% of Switzerland's rail network. (It's clear from the map below that I have the entire eastern half of the country still to explore!) I felt like I could get anywhere I wanted to go without a car. Public transit was incredibly easy to navigate (even in the German-speaking regions), I felt very safe everywhere I went, and I think the longest train delay I had was 9 minutes. Plus the views from the train windows were almost as good as those from the mountaintops!
 
 ```{r}
 
@@ -1214,4 +1214,4 @@ m
 
 ## Notes
 
-Distances and elevations are approximate based on GPX data and may vary from actual values. I used AI to organize the material that I collected and wrote and to write the code to display the maps and photos.
+Distances and elevations are approximate based on GPX data and may vary from actual values. I used AI to organize the material that I collected and wrote myself, and to write the code to display the maps and photos.
