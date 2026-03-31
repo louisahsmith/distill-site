@@ -3,3 +3,9 @@
   to = "https://louisahsmith.shinyapps.io/selection-bias/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "https://www.selection-bias.louisahsmith.com/*"
+  to = "https://selection-bias.louisahsmith.com/:splat"
+  status = 301
+  force = true
