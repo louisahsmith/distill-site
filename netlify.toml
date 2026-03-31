@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://selection-bias.louisahsmith.com/*"
+  to = "https://louisahsmith.shinyapps.io/selection-bias/:splat"
+  status = 301
+  force = true
