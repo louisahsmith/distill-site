@@ -4,17 +4,17 @@ title: Teaching
 
 ### Northeastern University
 
+#### PHTH 6800: Causal Inference in Public Health Research
+
+Instructor (spring 2023, 2024, 2026)
+
+*PhD course introducing potential outcomes, causal graphs, g-formula, marginal structural models, quasi-experimental methods, and more.*
+
 #### PHTH 2210: Foundations of Biostatistics
 
 Co-instructor (fall 2024, spring 2025)
 
 *Undergraduate course introducing basic statistical concepts and methods for public health and health sciences students.*
-
-#### PHTH 6800: Causal Inference in Public Health Research
-
-Instructor (spring 2023, 2024)
-
-*PhD course introducing potential outcomes, causal graphs, g-formula, marginal structural models, quasi-experimental methods, and more.*
 
 ### Emory University Rollins School of Public Health
 
@@ -28,7 +28,7 @@ Instructor (summer 2023-2025)
 
 #### [ID543: Intro to R](https://id543.louisahsmith.com)
 
-Instructor (summer 2023-2025)
+Instructor (summer 2023-2026)
 
 *Introduction to R for MPH students.*
 

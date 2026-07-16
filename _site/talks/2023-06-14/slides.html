@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Louisa Smith">
   <title>Louisa H. Smith – Evaluating missingness assumptions for items in a frailty index</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,7 +35,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -49,7 +51,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-36e620d604a362fc2b9b121fc174f172.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-75c4c0e0db986f098d12ae784b70d8c6.css">
   <link rel="stylesheet" href="www/styles.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -281,14 +283,14 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 <p><img data-src="img/app.png" height="570"></p>
 
 <aside><div>
-<p><span class="citation" data-cites="mason2017development">Mason et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="tompsett2020general">D. Tompsett et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2020</a>)</span></p>
+<p><span class="citation" data-cites="mason2017development">Mason et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="tompsett2020general">Tompsett et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2020</a>)</span></p>
 </div></aside></section>
 <section id="complications" class="slide level2">
 <h2>Complications</h2>
 <p>With multiple missing variables, interpretation of sensitivity parameter <span class="math inline">\(\delta\)</span> is different</p>
 <ul>
 <li>conditional on the missingness pattern of the other variables</li>
-<li><span class="citation" data-cites="tompsett2018use">D. M. Tompsett et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2018</a>)</span> proposed a solution which involves eliciting more interpretable <span class="math inline">\(\delta\)</span>-like parameters and searching the solution space for the <span class="math inline">\(\delta\)</span>s they correspond to</li>
+<li><span class="citation" data-cites="tompsett2018use">Tompsett et al. (<a href="#/section-2" role="doc-biblioref" onclick="">2018</a>)</span> proposed a solution which involves eliciting more interpretable <span class="math inline">\(\delta\)</span>-like parameters and searching the solution space for the <span class="math inline">\(\delta\)</span>s they correspond to</li>
 <li>computationally infeasible with 33 missing items without further assumptions</li>
 </ul>
 </section>
@@ -454,9 +456,9 @@ E[Y \mid R, X] = \beta_0 + \beta_1X + \color{IndianRed}{\delta} I(R = \color{Sla
 <!-- “Multiple-model multiple imputation”, developed by Siddique et al. (Siddique et al., 2012; Siddique et al., 2014) -->
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-buuren2012flexible" class="csl-entry" role="listitem">
-Buuren, Stef van. 2012. <em>Flexible Imputation of Missing Data</em>. Chapman &amp; <span>Hall</span>/<span>CRC</span> Interdisciplinary Statistics Series. <span>Boca Raton, FL</span>: <span>CRC Press</span>.
+Buuren, Stef van. 2012. <em>Flexible Imputation of Missing Data</em>. Chapman &amp; <span>Hall</span>/<span>CRC</span> Interdisciplinary Statistics Series. <span>CRC Press</span>.
 </div>
 <div id="ref-little1993patternmixture" class="csl-entry" role="listitem">
 Little, Roderick J. A. 1993. <span>“Pattern-Mixture Models for Multivariate Incomplete Data.”</span> <em>Journal of the American Statistical Association</em> 88 (421): 125–34. <a href="https://doi.org/10.2307/2290705">https://doi.org/10.2307/2290705</a>.
@@ -465,7 +467,7 @@ Little, Roderick J. A. 1993. <span>“Pattern-Mixture Models for Multivariate In
 Mason, Alexina J, Manuel Gomes, Richard Grieve, Pinar Ulug, Janet T Powell, and James Carpenter. 2017. <span>“Development of a Practical Approach to Expert Elicitation for Randomised Controlled Trials with Missing Health Outcomes: Application to the <span>IMPROVE</span> Trial.”</span> <em>Clinical Trials</em> 14 (4): 357–67. <a href="https://doi.org/10.1177/1740774517711442">https://doi.org/10.1177/1740774517711442</a>.
 </div>
 <div id="ref-rubin1987multiple" class="csl-entry" role="listitem">
-Rubin, Donald B. 1987. <em>Multiple Imputation for Nonresponse in Surveys</em>. New York: John Wiley &amp; Sons. <a href="https://doi.org/10.1002/9780470316696">https://doi.org/10.1002/9780470316696</a>.
+Rubin, Donald B. 1987. <em>Multiple Imputation for Nonresponse in Surveys</em>. John Wiley &amp; Sons. <a href="https://doi.org/10.1002/9780470316696">https://doi.org/10.1002/9780470316696</a>.
 </div>
 <div id="ref-tompsett2018use" class="csl-entry" role="listitem">
 Tompsett, Daniel Mark, Finbarr Leacy, Margarita Moreno-Betancur, Jon Heron, and Ian R. White. 2018. <span>“On the Use of the Not-at-Random Fully Conditional Specification (<span>NARFCS</span>) Procedure in Practice.”</span> <em>Statistics in Medicine</em> 37 (15): 2338–53. <a href="https://doi.org/10.1002/sim.7643">https://doi.org/10.1002/sim.7643</a>.
@@ -477,7 +479,7 @@ Tompsett, Daniel, Stephen Sutton, Shaun R. Seaman, and Ian R. White. 2020. <span
 Van Buuren, Stef, and Karin Groothuis-Oudshoorn. 2011. <span>“Mice: Multivariate Imputation by Chained Equations in <span>R</span>.”</span> <em>Journal Of Statistical Software</em> 45 (3): 1–67. <a href="https://doi.org/10.1177/0962280206074463">https://doi.org/10.1177/0962280206074463</a>.
 </div>
 <div id="ref-wong2023frailty" class="csl-entry" role="listitem">
-Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Richard, Robert Cavanaugh, Justin Manjourides, Ariela R. Orkaby, and Brianne Olivieri-Mui. 2023. <span>“Frailty Among <span>Sexual</span> and <span>Gender Minority Older Adults</span>: <span>The All</span> of <span>Us Database</span>.”</span> <em>Journal of Gerontology: Medical Sciences</em>, in press.
+Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, et al. 2023. <span>“Frailty Among <span>Sexual</span> and <span>Gender Minority Older Adults</span>: <span>The All</span> of <span>Us Database</span>.”</span> <em>Journal of Gerontology: Medical Sciences</em>, in press.
 </div>
 </div>
 </section>
@@ -672,7 +674,7 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -784,13 +786,14 @@ Wong, Chelsea, Michael P. Wilczek, Louisa H. Smith, Jordon D. Bosse, Erin L. Ric
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

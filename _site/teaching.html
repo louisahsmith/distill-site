@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Teaching – Louisa H. Smith</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -36,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5246ecf83b900f2309b64ce64f86536e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-81643a2bf299cf53f6e1175b651fb640.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -147,15 +150,15 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="northeastern-university" class="level3">
 <h3 class="anchored" data-anchor-id="northeastern-university">Northeastern University</h3>
+<section id="phth-6800-causal-inference-in-public-health-research" class="level4">
+<h4 class="anchored" data-anchor-id="phth-6800-causal-inference-in-public-health-research">PHTH 6800: Causal Inference in Public Health Research</h4>
+<p>Instructor (spring 2023, 2024, 2026)</p>
+<p><em>PhD course introducing potential outcomes, causal graphs, g-formula, marginal structural models, quasi-experimental methods, and more.</em></p>
+</section>
 <section id="phth-2210-foundations-of-biostatistics" class="level4">
 <h4 class="anchored" data-anchor-id="phth-2210-foundations-of-biostatistics">PHTH 2210: Foundations of Biostatistics</h4>
 <p>Co-instructor (fall 2024, spring 2025)</p>
 <p><em>Undergraduate course introducing basic statistical concepts and methods for public health and health sciences students.</em></p>
-</section>
-<section id="phth-6800-causal-inference-in-public-health-research" class="level4">
-<h4 class="anchored" data-anchor-id="phth-6800-causal-inference-in-public-health-research">PHTH 6800: Causal Inference in Public Health Research</h4>
-<p>Instructor (spring 2023, 2024)</p>
-<p><em>PhD course introducing potential outcomes, causal graphs, g-formula, marginal structural models, quasi-experimental methods, and more.</em></p>
 </section>
 </section>
 <section id="emory-university-rollins-school-of-public-health" class="level3">
@@ -170,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="harvard-th-chan-school-of-public-health">Harvard TH Chan School of Public Health</h3>
 <section id="id543-intro-to-r" class="level4">
 <h4 class="anchored" data-anchor-id="id543-intro-to-r"><a href="https://id543.louisahsmith.com">ID543: Intro to R</a></h4>
-<p>Instructor (summer 2023-2025)</p>
+<p>Instructor (summer 2023-2026)</p>
 <p><em>Introduction to R for MPH students.</em></p>
 </section>
 <section id="epi-207-advanced-epidemiologic-methods" class="level4">
@@ -267,13 +270,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

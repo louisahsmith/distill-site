@@ -156,3 +156,10 @@
   date: '2025-10-31'
   image: talks/2025-10-31/snapshot.png
   path: talks/2025-10-31/slides.html
+- title: "R for R Users"
+  description: "SER Workshop with Malcolm Barrett ([part 2](https://r-for-r-users.netlify.app/slides_part_2.html))"
+  author:
+    - name: Louisa H. Smith
+  date: '2026-06-32'
+  image: talks/2026-06-23-snapshot.png
+  path: https://r-for-r-users.netlify.app/slides_part_1.html

@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Louisa Smith, PhD">
   <meta name="author" content="Rob Cavanaugh, PhD">
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -96,7 +99,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-6e7ffb7f6812d59915ab722224d044e8.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-c74fe1055f9b0c1008c0fc6ca86a1a3e.css">
   <link rel="stylesheet" href="style.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -330,18 +333,18 @@ Rob Cavanaugh, PhD
 <h2>Begin in R</h2>
 <p>Everything is built on a direct connection to the <em>bigquery</em> database</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(allofus)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(allofus)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a>con <span class="ot">&lt;-</span> <span class="fu">aou_connect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a>con <span class="ot">&lt;-</span> <span class="fu">aou_connect</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="access-tables" class="slide level2">
 <h2>Access tables</h2>
 <p>Under the hood, <a href="https://dbplyr.tidyverse.org/"><code>dbplyr</code></a> (part of the <code>tidyverse</code>) allows researchers to use many of the same functions on a remote table that they would use on a dataframe</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>person <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"person"</span>)</span>
-<span id="cb2-2"><a></a><span class="fu">colnames</span>(person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>person <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"person"</span>)</span>
+<span id="cb2-2"><a></a><span class="fu">colnames</span>(person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "person_id"                       "gender_concept_id"              
  [3] "year_of_birth"                   "month_of_birth"                 
@@ -362,11 +365,11 @@ Rob Cavanaugh, PhD
 <h2>Quick data manipulations and computations</h2>
 <p>Users are running SQL queries without realizing they’re running SQL queries</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>person <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>person <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a></a>  <span class="fu">mutate</span>(<span class="at">birth_decade =</span> <span class="fu">cut</span>(year_of_birth, </span>
 <span id="cb4-3"><a></a>                            <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1930</span>, <span class="dv">1940</span>, <span class="dv">1950</span>, <span class="dv">1960</span>, <span class="dv">1970</span>, </span>
 <span id="cb4-4"><a></a>                                       <span class="dv">1980</span>, <span class="dv">1990</span>, <span class="dv">2000</span>, <span class="dv">2010</span>))) <span class="sc">|&gt;</span></span>
-<span id="cb4-5"><a></a>  <span class="fu">count</span>(birth_decade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a></a>  <span class="fu">count</span>(birth_decade)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [9 x 2]
 # Database: BigQueryConnection
@@ -387,7 +390,7 @@ Rob Cavanaugh, PhD
 <section id="behind-the-scenes" class="slide level2">
 <h2>Behind the scenes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a></a><span class="kw">SELECT</span> `birth_decade`, <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">AS</span> `n`</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a></a><span class="kw">SELECT</span> `birth_decade`, <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">AS</span> `n`</span>
 <span id="cb6-2"><a></a><span class="kw">FROM</span> (</span>
 <span id="cb6-3"><a></a>  <span class="kw">SELECT</span></span>
 <span id="cb6-4"><a></a>    `person`.<span class="op">*</span>,</span>
@@ -405,7 +408,7 @@ Rob Cavanaugh, PhD
 <span id="cb6-16"><a></a><span class="cf">END</span> <span class="kw">AS</span> `birth_decade`</span>
 <span id="cb6-17"><a></a>  <span class="kw">FROM</span> `person`</span>
 <span id="cb6-18"><a></a>) `q01`</span>
-<span id="cb6-19"><a></a><span class="kw">GROUP</span> <span class="kw">BY</span> `birth_decade`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-19"><a></a><span class="kw">GROUP</span> <span class="kw">BY</span> `birth_decade`</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="creating-cohorts-with-cohort-builder" class="slide level2">
@@ -415,7 +418,7 @@ Rob Cavanaugh, PhD
 <section id="creating-cohorts-with-allofus" class="slide level2">
 <h2>Creating cohorts with <code>allofus</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>reproductive_age_female <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"cb_search_person"</span>) <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>reproductive_age_female <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"cb_search_person"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-2"><a></a>  <span class="fu">filter</span>(age_at_consent <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age_at_consent <span class="sc">&lt;=</span> <span class="dv">55</span>, </span>
 <span id="cb7-3"><a></a>         sex_at_birth <span class="sc">==</span> <span class="st">"Female"</span>)</span>
 <span id="cb7-4"><a></a></span>
@@ -429,7 +432,7 @@ Rob Cavanaugh, PhD
 <span id="cb7-12"><a></a>cohort <span class="ot">&lt;-</span> reproductive_age_female <span class="sc">|&gt;</span> </span>
 <span id="cb7-13"><a></a>  <span class="fu">inner_join</span>(hypertensive_disorder, <span class="at">by =</span> <span class="fu">join_by</span>(person_id))</span>
 <span id="cb7-14"><a></a></span>
-<span id="cb7-15"><a></a><span class="fu">tally</span>(cohort)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-15"><a></a><span class="fu">tally</span>(cohort)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [1 x 1]
 # Database: BigQueryConnection
@@ -456,7 +459,7 @@ Rob Cavanaugh, PhD
 <section id="creating-datasets-with-cohort-builder" class="slide level2">
 <h2>Creating datasets with Cohort Builder</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb9-2"><a></a><span class="fu">library</span>(bigrquery)</span>
 <span id="cb9-3"><a></a></span>
 <span id="cb9-4"><a></a><span class="co"># This query represents dataset "hypertension in pregnancy" for domain "person" and was generated for All of Us Registered Tier Dataset v7</span></span>
@@ -1088,7 +1091,7 @@ Rob Cavanaugh, PhD
 <span id="cb9-630"><a></a></span>
 <span id="cb9-631"><a></a><span class="fu">dim</span>(dataset_71250616_drug_df)</span>
 <span id="cb9-632"><a></a></span>
-<span id="cb9-633"><a></a><span class="fu">head</span>(dataset_71250616_drug_df, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-633"><a></a><span class="fu">head</span>(dataset_71250616_drug_df, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="creating-datasets-with-cohort-builder-1" class="slide level2">
@@ -1116,13 +1119,13 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
 <section id="creating-datasets-with-allofus" class="slide level2">
 <h2>Creating datasets with <code>allofus</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>concept_ids <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21601664</span>, <span class="dv">21601744</span>, <span class="dv">21490851</span>, <span class="dv">21490853</span>, <span class="dv">3004249</span>, <span class="dv">3005606</span>, <span class="dv">3009395</span>, <span class="dv">3012526</span>, <span class="dv">3012888</span>, <span class="dv">3013940</span>, <span class="dv">3017490</span>, <span class="dv">3018586</span>, <span class="dv">3018592</span>, <span class="dv">3018822</span>, <span class="dv">3019962</span>, <span class="dv">3027598</span>, <span class="dv">3028737</span>, <span class="dv">3031203</span>, <span class="dv">3034703</span>, <span class="dv">3035856</span>, <span class="dv">36716965</span>, <span class="dv">4060834</span>, <span class="dv">40758413</span>, <span class="dv">4152194</span>, <span class="dv">4154790</span>, <span class="dv">4232915</span>, <span class="dv">4239021</span>, <span class="dv">4248524</span>, <span class="dv">4298393</span>, <span class="dv">4302410</span>, <span class="dv">44789315</span>, <span class="dv">44789316</span>, <span class="dv">132685</span>, <span class="dv">133816</span>, <span class="dv">134414</span>, <span class="dv">135601</span>, <span class="dv">136743</span>, <span class="dv">137613</span>, <span class="dv">138811</span>, <span class="dv">141084</span>, <span class="dv">314090</span>, <span class="dv">35622939</span>, <span class="dv">4034096</span>, <span class="dv">4057976</span>, <span class="dv">4116344</span>, <span class="dv">4283352</span>, <span class="dv">433536</span>, <span class="dv">438490</span>, <span class="dv">439077</span>, <span class="dv">439393</span>, <span class="dv">443700</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>concept_ids <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21601664</span>, <span class="dv">21601744</span>, <span class="dv">21490851</span>, <span class="dv">21490853</span>, <span class="dv">3004249</span>, <span class="dv">3005606</span>, <span class="dv">3009395</span>, <span class="dv">3012526</span>, <span class="dv">3012888</span>, <span class="dv">3013940</span>, <span class="dv">3017490</span>, <span class="dv">3018586</span>, <span class="dv">3018592</span>, <span class="dv">3018822</span>, <span class="dv">3019962</span>, <span class="dv">3027598</span>, <span class="dv">3028737</span>, <span class="dv">3031203</span>, <span class="dv">3034703</span>, <span class="dv">3035856</span>, <span class="dv">36716965</span>, <span class="dv">4060834</span>, <span class="dv">40758413</span>, <span class="dv">4152194</span>, <span class="dv">4154790</span>, <span class="dv">4232915</span>, <span class="dv">4239021</span>, <span class="dv">4248524</span>, <span class="dv">4298393</span>, <span class="dv">4302410</span>, <span class="dv">44789315</span>, <span class="dv">44789316</span>, <span class="dv">132685</span>, <span class="dv">133816</span>, <span class="dv">134414</span>, <span class="dv">135601</span>, <span class="dv">136743</span>, <span class="dv">137613</span>, <span class="dv">138811</span>, <span class="dv">141084</span>, <span class="dv">314090</span>, <span class="dv">35622939</span>, <span class="dv">4034096</span>, <span class="dv">4057976</span>, <span class="dv">4116344</span>, <span class="dv">4283352</span>, <span class="dv">433536</span>, <span class="dv">438490</span>, <span class="dv">439077</span>, <span class="dv">439393</span>, <span class="dv">443700</span>)</span>
 <span id="cb11-2"><a></a></span>
 <span id="cb11-3"><a></a><span class="fu">aou_concept_set</span>(cohort, </span>
 <span id="cb11-4"><a></a>                <span class="at">concepts =</span> concept_ids, </span>
 <span id="cb11-5"><a></a>                <span class="at">domains =</span> <span class="fu">c</span>(<span class="st">"drug"</span>, <span class="st">"measurement"</span>, <span class="st">"condition"</span>), </span>
 <span id="cb11-6"><a></a>                <span class="at">output =</span> <span class="st">"all"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb11-7"><a></a>  <span class="fu">count</span>(concept_name, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-7"><a></a>  <span class="fu">count</span>(concept_name, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:     SQL [?? x 2]
 # Database:   BigQueryConnection
@@ -1148,7 +1151,7 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
 <p>Let’s imagine we have a pregnancy cohort with start date! <a href="https://doi.org/10.1093/jamia/ocae195">(10.1093/jamia/ocae195)</a></p>
 <!-- [^1]: Smith LH, Wang W, Keefe-Oates B. Pregnancy episodes in *All of Us* : harnessing multi-source data for pregnancy-related research. *Journal of the American Medical Informatics Association*. 2024. doi: [10.1093/jamia/ocae195](https://doi.org/10.1093/jamia/ocae195) -->
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>cohort_no_drugs_prior <span class="ot">&lt;-</span> <span class="fu">aou_concept_set</span>(pregnancy_cohort,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>cohort_no_drugs_prior <span class="ot">&lt;-</span> <span class="fu">aou_concept_set</span>(pregnancy_cohort,</span>
 <span id="cb13-2"><a></a>                                         <span class="at">concepts =</span> drug_concept_ids,</span>
 <span id="cb13-3"><a></a>                                         <span class="at">start_date =</span> <span class="cn">NULL</span>,</span>
 <span id="cb13-4"><a></a>                                         <span class="at">end_date =</span> <span class="st">"pregnancy_start_date"</span>,</span>
@@ -1164,14 +1167,14 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
 <span id="cb13-14"><a></a>                                                <span class="at">domain =</span> <span class="st">"condition"</span>, </span>
 <span id="cb13-15"><a></a>                                                <span class="at">output =</span> <span class="st">"indicator"</span>,</span>
 <span id="cb13-16"><a></a>                                                <span class="at">concept_set_name =</span> <span class="st">"hypertension_prior"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb13-17"><a></a>  <span class="fu">filter</span>(hypertension_prior <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-17"><a></a>  <span class="fu">filter</span>(hypertension_prior <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="images/clipboard-3380727214.png" class="quarto-figure quarto-figure-center r-stretch" width="700"></section>
 <section id="easily-introduce-temporal-relationships-1" class="slide level2 smaller">
 <h2>Easily introduce temporal relationships</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>bp_during_and_prior <span class="ot">&lt;-</span> <span class="fu">aou_concept_set</span>(cohort_no_drugs_hypertension,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>bp_during_and_prior <span class="ot">&lt;-</span> <span class="fu">aou_concept_set</span>(cohort_no_drugs_hypertension,</span>
 <span id="cb14-2"><a></a>                                       <span class="at">concepts =</span> bp_concept_ids,</span>
 <span id="cb14-3"><a></a>                                       <span class="at">start_date =</span> <span class="cn">NULL</span>,</span>
 <span id="cb14-4"><a></a>                                       <span class="at">end_date =</span> <span class="st">"pregnancy_end_date"</span>,</span>
@@ -1190,7 +1193,7 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
 <span id="cb14-17"><a></a>                                         <span class="at">start_date =</span> <span class="st">"pregnancy_start_date"</span>,</span>
 <span id="cb14-18"><a></a>                                         <span class="at">end_date =</span> <span class="st">"pregnancy_end_date"</span>,</span>
 <span id="cb14-19"><a></a>                                         <span class="at">domain =</span> <span class="st">"condition"</span>, </span>
-<span id="cb14-20"><a></a>                                         <span class="at">output =</span> <span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-20"><a></a>                                         <span class="at">output =</span> <span class="st">"all"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="images/clipboard-1434146805.png" class="quarto-figure quarto-figure-center r-stretch" width="700"></section>
@@ -1308,13 +1311,13 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
 <section id="survey-data" class="slide level2">
 <h2>Survey data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>survey_data <span class="ot">&lt;-</span> <span class="fu">aou_survey</span>(cohort,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>survey_data <span class="ot">&lt;-</span> <span class="fu">aou_survey</span>(cohort,</span>
 <span id="cb15-2"><a></a>           <span class="at">questions =</span> <span class="fu">c</span>(<span class="dv">43529063</span>),</span>
-<span id="cb15-3"><a></a>           <span class="at">question_output =</span> <span class="fu">c</span>(<span class="st">"hypertension"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a></a>           <span class="at">question_output =</span> <span class="fu">c</span>(<span class="st">"hypertension"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>When was the survey question answered?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">colnames</span>(survey_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">colnames</span>(survey_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1325,7 +1328,7 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
 <section id="survey-data-1" class="slide level2">
 <h2>Survey data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">count</span>(survey_data, hypertension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">count</span>(survey_data, hypertension)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1349,10 +1352,10 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
 <section id="harder-to-figure-out-appropriate-denominator" class="slide level2">
 <h2>Harder to figure out appropriate denominator</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>survey_answers <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"ds_survey"</span>) <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>survey_answers <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"ds_survey"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb20-2"><a></a>  <span class="fu">inner_join</span>(cohort, <span class="at">by =</span> <span class="fu">join_by</span>(person_id)) <span class="sc">|&gt;</span> </span>
 <span id="cb20-3"><a></a>  <span class="fu">filter</span>(question_concept_id <span class="sc">==</span> <span class="dv">836787</span>)</span>
-<span id="cb20-4"><a></a><span class="fu">count</span>(survey_answers, answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-4"><a></a><span class="fu">count</span>(survey_answers, answer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1373,9 +1376,9 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
 <section id="try-to-provide-information-to-improve-interpretability" class="slide level2">
 <h2>Try to provide information to improve interpretability</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>survey_data <span class="ot">&lt;-</span> <span class="fu">aou_survey</span>(cohort,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>survey_data <span class="ot">&lt;-</span> <span class="fu">aou_survey</span>(cohort,</span>
 <span id="cb22-2"><a></a>           <span class="at">questions =</span> <span class="fu">c</span>(<span class="dv">43530468</span>),</span>
-<span id="cb22-3"><a></a>           <span class="at">question_output =</span> <span class="fu">c</span>(<span class="st">"hypertension_age_diagnosis"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-3"><a></a>           <span class="at">question_output =</span> <span class="fu">c</span>(<span class="st">"hypertension_age_diagnosis"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1640,7 +1643,7 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1752,13 +1755,14 @@ louisahsmith@researchallofus.org/20241106/drug_71250616/drug_71250616_*.csv</cod
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Louisa Smith">
   <meta name="dcterms.date" content="2024-10-31">
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -99,7 +102,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -116,7 +118,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2c1b5f745a11cfad616ebade4a4a7d24.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -321,7 +323,7 @@ Louisa Smith
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>The target trial is a <em>design</em> concept, not an analysis method. It has guided study design in epidemiology for decades but recently popularized as an explicit framework <span class="citation" data-cites="hernan2016using">(<a href="#/references" role="doc-biblioref" onclick="">Miguel A. Hernán and Robins 2016</a>)</span>.</p>
+<p>The target trial is a <em>design</em> concept, not an analysis method. It has guided study design in epidemiology for decades but recently popularized as an explicit framework <span class="citation" data-cites="hernan2016using">(<a href="#/references" role="doc-biblioref" onclick="">Hernán and Robins 2016</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -479,7 +481,7 @@ Louisa Smith
 <img data-src="images/clipboard-1135635490.png" class="r-stretch"></section>
 <section id="section-1" class="slide level2 smaller scrollable">
 <h2></h2>
-<h4 id="pharmaceutical-example-zidan2025bnt162b2">Pharmaceutical example (<span class="citation" data-cites="zidan2025bnt162b2">Zidan et al. (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>)</h4>
+<h4 id="pharmaceutical-example-zidan2025bnt162b2">Pharmaceutical example (<span class="citation" data-cites="zidan2025bnt162b2"><span class="nocase">Zidan et al.</span> (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>)</h4>
 <table class="caption-top">
 <colgroup>
 <col style="width: 12%">
@@ -757,7 +759,7 @@ Louisa Smith
 <section>
 <section id="emulating-target-trials-with-clone-censor-weighting" class="title-slide slide level1 center">
 <h1>Emulating target trials with clone-censor weighting</h1>
-<p>This example is somewhat based on an example about comparing duration of treatment in <span class="citation" data-cites="hernan2018how">Miguel A. Hernán (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></p>
+<p>This example is somewhat based on an example about comparing duration of treatment in <span class="citation" data-cites="hernan2018how">Hernán (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></p>
 </section>
 <section id="does-vaccination-timing-in-pregnancy-affect-live-birth" class="slide level2">
 <h2>Does vaccination timing in pregnancy affect live birth?</h2>
@@ -793,7 +795,7 @@ Louisa Smith
 <p>16 pregnant people randomly assigned to 4 strategies:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Person</th>
@@ -1067,7 +1069,7 @@ Louisa Smith
 <p>Same 16 people, but now we don’t know their assigned strategy:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Person</th>
@@ -1399,7 +1401,7 @@ Louisa Smith
 <p>For each person, create clones for all treatment strategies</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Person</th>
@@ -1616,7 +1618,7 @@ Louisa Smith
 <h2>Treatment strategy Vax T1</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Person</th>
@@ -1905,10 +1907,10 @@ Louisa Smith
 <section id="original-data" class="slide level2">
 <h2>Original Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a>trial_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"ccw-example-data.csv"</span>)</span>
-<span id="cb1-4"><a></a>trial_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a>trial_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 10
    person assigned loss_t1 vax_t1 loss_t2 vax_t2 preterm vax_t3  term livebirth
@@ -1936,12 +1938,12 @@ Louisa Smith
 <h2>Step 1: Cloning</h2>
 <p>Each person is cloned into 4 copies (one for each vaccination strategy: 0, 1, 2, 3)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>cloned_data <span class="ot">&lt;-</span> trial_data <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>cloned_data <span class="ot">&lt;-</span> trial_data <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a></a>  <span class="fu">crossing</span>(<span class="at">strategy =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a></a>  <span class="fu">relocate</span>(strategy, <span class="at">.after =</span> person)</span>
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a>cloned_data <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a></a>  <span class="fu">count</span>(strategy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a></a>  <span class="fu">count</span>(strategy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
   strategy     n
@@ -1957,7 +1959,7 @@ Louisa Smith
 <section id="step-2-censoring-1" class="slide level2">
 <h2>Step 2: Censoring</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>censored_data <span class="ot">&lt;-</span> cloned_data <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>censored_data <span class="ot">&lt;-</span> cloned_data <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a></a>  <span class="fu">mutate</span>(</span>
 <span id="cb5-3"><a></a>    <span class="co"># T1: only at risk if survived T1</span></span>
 <span id="cb5-4"><a></a>    <span class="at">censored_t1 =</span> <span class="fu">case_when</span>(</span>
@@ -1966,7 +1968,7 @@ Louisa Smith
 <span id="cb5-7"><a></a>      strategy <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by not vaccinating</span></span>
 <span id="cb5-8"><a></a>      <span class="at">.default =</span> <span class="cn">FALSE</span>  <span class="co"># Followed strategy</span></span>
 <span id="cb5-9"><a></a>    ),</span>
-<span id="cb5-10"><a></a>    </span>
+<span id="cb5-10"><a></a></span>
 <span id="cb5-11"><a></a>    <span class="co"># T2: only at risk if uncensored and unvaccinated at T1 and survived T2</span></span>
 <span id="cb5-12"><a></a>    <span class="at">censored_t2 =</span> <span class="fu">case_when</span>(</span>
 <span id="cb5-13"><a></a>      <span class="fu">is.na</span>(censored_t1) <span class="sc">|</span> censored_t1 <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already censored or had outcome at T1</span></span>
@@ -1976,7 +1978,7 @@ Louisa Smith
 <span id="cb5-17"><a></a>      strategy <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> vax_t2 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by not vaccinating</span></span>
 <span id="cb5-18"><a></a>      <span class="at">.default =</span> <span class="cn">FALSE</span>  <span class="co"># Followed strategy</span></span>
 <span id="cb5-19"><a></a>    ),</span>
-<span id="cb5-20"><a></a>    </span>
+<span id="cb5-20"><a></a></span>
 <span id="cb5-21"><a></a>    <span class="co"># T3: only at risk if uncensored and unvaccinated at T2 and survived T3</span></span>
 <span id="cb5-22"><a></a>    <span class="at">censored_t3 =</span> <span class="fu">case_when</span>(</span>
 <span id="cb5-23"><a></a>      <span class="fu">is.na</span>(censored_t2) <span class="sc">|</span> censored_t2 <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already censored or had outcome at T2</span></span>
@@ -1986,18 +1988,18 @@ Louisa Smith
 <span id="cb5-27"><a></a>      strategy <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> vax_t3 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by not vaccinating</span></span>
 <span id="cb5-28"><a></a>      <span class="at">.default =</span> <span class="cn">FALSE</span>  <span class="co"># Followed strategy</span></span>
 <span id="cb5-29"><a></a>    ),</span>
-<span id="cb5-30"><a></a>    </span>
+<span id="cb5-30"><a></a></span>
 <span id="cb5-31"><a></a>    <span class="co"># Final censoring: censored if ANY time point is TRUE</span></span>
 <span id="cb5-32"><a></a>    <span class="at">censored =</span> (censored_t1) <span class="sc">|</span> (censored_t2) <span class="sc">|</span> (censored_t3),</span>
 <span id="cb5-33"><a></a>    <span class="at">censored =</span> <span class="fu">replace_na</span>(censored, <span class="cn">FALSE</span>)</span>
-<span id="cb5-34"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-34"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="censoring-summary" class="slide level2">
 <h2>Censoring Summary</h2>
 <p>Different numbers contribute to each strategy:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>censored_data <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>censored_data <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a></a>  <span class="fu">group_by</span>(strategy) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a></a>  <span class="fu">summarise</span>(</span>
 <span id="cb6-4"><a></a>    <span class="at">n_total =</span> <span class="fu">n</span>(),</span>
@@ -2006,7 +2008,7 @@ Louisa Smith
 <span id="cb6-7"><a></a>    <span class="at">censored_t3 =</span> <span class="fu">sum</span>(censored_t3 <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb6-8"><a></a>    <span class="at">total_censored =</span> <span class="fu">sum</span>(censored),</span>
 <span id="cb6-9"><a></a>    <span class="at">uncensored =</span> <span class="fu">sum</span>(<span class="sc">!</span>censored)</span>
-<span id="cb6-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-10"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
   strategy n_total censored_t1 censored_t2 censored_t3 total_censored uncensored
@@ -2029,16 +2031,16 @@ Louisa Smith
 <section id="vaccination-in-t1-censoring-strategy-0-2-and-3-or-not-strategy-1" class="slide level2">
 <h2>Vaccination in T1 = censoring (strategy 0, 2, and 3) or not (strategy 1)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>trial_data <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>trial_data <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(vax_t1)) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">pull</span>(vax_t1, <span class="at">name =</span> person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a></a>  <span class="fu">pull</span>(vax_t1, <span class="at">name =</span> person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A B C E F G I J K M N O 
 0 0 0 1 1 1 0 0 0 0 0 0 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>mod_vax_t1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t1 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>mod_vax_t1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t1 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb10-2"><a></a>p_vax_t1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_vax_t1, <span class="at">type =</span> <span class="st">"response"</span>)[<span class="dv">1</span>] <span class="co"># all have same predicted value because no covariates</span></span>
-<span id="cb10-3"><a></a>p_vax_t1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a></a>p_vax_t1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   1 
 0.25 </code></pre>
@@ -2049,17 +2051,17 @@ Louisa Smith
 <h2>Vaccination in T2 = censoring (strategy 0 and 3) or not (2)</h2>
 <p>(For strategy 1, already censored if not vaccinated in T1 so no one “at risk for” censoring here)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>trial_data <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>trial_data <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a></a>  <span class="fu">filter</span>(vax_t1 <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span><span class="fu">is.na</span>(vax_t2)) <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a></a>  <span class="fu">pull</span>(vax_t2, <span class="at">name =</span> person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a></a>  <span class="fu">pull</span>(vax_t2, <span class="at">name =</span> person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A B I J M N 
 0 0 1 1 0 0 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>mod_vax_t2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t2 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>(),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>mod_vax_t2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t2 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>(),</span>
 <span id="cb14-2"><a></a>                  <span class="at">subset =</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span>)</span>
 <span id="cb14-3"><a></a>p_vax_t2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_vax_t2, <span class="at">type =</span> <span class="st">"response"</span>)[<span class="dv">1</span>]</span>
-<span id="cb14-4"><a></a>p_vax_t2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a></a>p_vax_t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        1 
 0.3333333 </code></pre>
@@ -2070,16 +2072,16 @@ Louisa Smith
 <h2>Vaccination in T3 = censoring (strategy 0) or not (3)</h2>
 <p>(For strategies 1 and 2, already censored if not vaccinated in T1 or T2 so no one “at risk for” censoring here)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>trial_data <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>trial_data <span class="sc">|&gt;</span></span>
 <span id="cb16-2"><a></a>  <span class="fu">filter</span>(vax_t1 <span class="sc">==</span> <span class="dv">0</span>, vax_t2 <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span><span class="fu">is.na</span>(vax_t3)) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a></a>  <span class="fu">pull</span>(vax_t3, <span class="at">name =</span> person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-3"><a></a>  <span class="fu">pull</span>(vax_t3, <span class="at">name =</span> person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A M 
 0 1 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>mod_vax_t3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t3 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>(), <span class="at">subset =</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> vax_t2 <span class="sc">==</span> <span class="dv">0</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>mod_vax_t3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t3 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>(), <span class="at">subset =</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> vax_t2 <span class="sc">==</span> <span class="dv">0</span>)</span>
 <span id="cb18-2"><a></a>p_vax_t3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_vax_t3, <span class="at">type =</span> <span class="st">"response"</span>)[<span class="dv">1</span>]</span>
-<span id="cb18-3"><a></a>p_vax_t3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-3"><a></a>p_vax_t3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  1 
 0.5 </code></pre>
@@ -2090,7 +2092,7 @@ Louisa Smith
 <h2>Step 3b: Calculate Weights</h2>
 <p>Weight = 1 / (cumulative probability of not being censored)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>weighted_data <span class="ot">&lt;-</span> censored_data <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>weighted_data <span class="ot">&lt;-</span> censored_data <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a></a>  <span class="fu">mutate</span>(</span>
 <span id="cb20-3"><a></a>    <span class="co"># Probability of not being censored at each time point</span></span>
 <span id="cb20-4"><a></a>    <span class="at">prob_not_cens_t1 =</span> <span class="fu">case_when</span>(</span>
@@ -2099,36 +2101,36 @@ Louisa Smith
 <span id="cb20-7"><a></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_vax_t1,  <span class="co"># No vax at T1</span></span>
 <span id="cb20-8"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
 <span id="cb20-9"><a></a>    ),</span>
-<span id="cb20-10"><a></a>    </span>
+<span id="cb20-10"><a></a></span>
 <span id="cb20-11"><a></a>    <span class="at">prob_not_cens_t2 =</span> <span class="fu">case_when</span>(</span>
 <span id="cb20-12"><a></a>      <span class="fu">is.na</span>(censored_t2) <span class="sc">~</span> <span class="dv">1</span>,  <span class="co"># Not at risk</span></span>
 <span id="cb20-13"><a></a>      strategy <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> p_vax_t2,  <span class="co"># Strategy 2: needs vax at T2</span></span>
 <span id="cb20-14"><a></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>) <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_vax_t2,  <span class="co"># No vax at T2</span></span>
 <span id="cb20-15"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
 <span id="cb20-16"><a></a>    ),</span>
-<span id="cb20-17"><a></a>    </span>
+<span id="cb20-17"><a></a></span>
 <span id="cb20-18"><a></a>    <span class="at">prob_not_cens_t3 =</span> <span class="fu">case_when</span>(</span>
 <span id="cb20-19"><a></a>      <span class="fu">is.na</span>(censored_t3) <span class="sc">~</span> <span class="dv">1</span>,  <span class="co"># Not at risk</span></span>
 <span id="cb20-20"><a></a>      strategy <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> p_vax_t3,  <span class="co"># Strategy 3: needs vax at T3</span></span>
 <span id="cb20-21"><a></a>      strategy <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_vax_t3,  <span class="co"># No vax at T3</span></span>
 <span id="cb20-22"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
 <span id="cb20-23"><a></a>    ),</span>
-<span id="cb20-24"><a></a>    </span>
+<span id="cb20-24"><a></a></span>
 <span id="cb20-25"><a></a>    <span class="co"># Cumulative probability = product</span></span>
 <span id="cb20-26"><a></a>    <span class="at">cum_prob_not_censored =</span> prob_not_cens_t1 <span class="sc">*</span> prob_not_cens_t2 <span class="sc">*</span> prob_not_cens_t3,</span>
-<span id="cb20-27"><a></a>    </span>
+<span id="cb20-27"><a></a></span>
 <span id="cb20-28"><a></a>    <span class="co"># Weight = inverse probability (only for uncensored)</span></span>
 <span id="cb20-29"><a></a>    <span class="at">weight =</span> <span class="fu">if_else</span>(<span class="sc">!</span>censored, <span class="dv">1</span> <span class="sc">/</span> cum_prob_not_censored, <span class="dv">0</span>)</span>
-<span id="cb20-30"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-30"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="example-strategy-0-never-vaccinate" class="slide level2">
 <h2>Example: Strategy 0 (Never vaccinate)</h2>
 <p>Uncensored individuals and their weights:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>weighted_data <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>weighted_data <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a></a>  <span class="fu">filter</span>(strategy <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span>censored) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a></a>  <span class="fu">select</span>(person, livebirth, weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3"><a></a>  <span class="fu">select</span>(person, livebirth, weight)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
    person livebirth weight
@@ -2149,14 +2151,14 @@ Louisa Smith
 <section id="step-3c-calculate-weighted-outcomes" class="slide level2">
 <h2>Step 3c: Calculate Weighted Outcomes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>weighted_data <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>weighted_data <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span>censored) <span class="sc">%&gt;%</span></span>
 <span id="cb23-3"><a></a>  <span class="fu">group_by</span>(strategy) <span class="sc">%&gt;%</span></span>
 <span id="cb23-4"><a></a>  <span class="fu">summarise</span>(</span>
 <span id="cb23-5"><a></a>    <span class="at">sum_weights =</span> <span class="fu">sum</span>(weight),</span>
 <span id="cb23-6"><a></a>    <span class="at">weighted_livebirths =</span> <span class="fu">sum</span>(livebirth <span class="sc">*</span> weight),</span>
 <span id="cb23-7"><a></a>    <span class="at">risk_livebirth =</span> weighted_livebirths <span class="sc">/</span> sum_weights</span>
-<span id="cb23-8"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-8"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   strategy sum_weights weighted_livebirths risk_livebirth
@@ -2219,7 +2221,7 @@ Louisa Smith
 </section>
 <section id="helpfulinteresting-papers" class="slide level2">
 <h2>Helpful/interesting papers</h2>
-<p><span class="citation" data-cites="hernan2008observational">Miguel A. Hernán et al. (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span> <span class="citation" data-cites="cain2010when">Cain et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span> <span class="citation" data-cites="young2011comparative">Young et al. (<a href="#/references" role="doc-biblioref" onclick="">2011</a>)</span> <span class="citation" data-cites="hernan2016specifying">Miguel A. Hernán et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span> <span class="citation" data-cites="hernan2016using">Miguel A. Hernán and Robins (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span> <span class="citation" data-cites="labrecque2017target">Labrecque and Swanson (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span> <span class="citation" data-cites="hernan2018how">Miguel A. Hernán (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span> <span class="citation" data-cites="caniglia2019emulating">Caniglia et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span> <span class="citation" data-cites="dickerman2019avoidable">Dickerman et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span> <span class="citation" data-cites="chiu2020effect">Chiu et al. (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> <span class="citation" data-cites="maringe2020reflection">Maringe et al. (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> <span class="citation" data-cites="ben-michael2021trial">Ben-Michael, Feller, and Stuart (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> <span class="citation" data-cites="gaber2024clonecensorweight">Gaber et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span> <span class="citation" data-cites="cashin2025transparent">Cashin et al. (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span> <span class="citation" data-cites="fu2025starting">(<a href="#/references" role="doc-biblioref" onclick=""><strong>fu2025starting?</strong></a>)</span> <span class="citation" data-cites="moreno-betancur2025ideal">Moreno-Betancur, Wijesuriya, and Carlin (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span></p>
+<p><span class="citation" data-cites="hernan2008observational">Hernán et al. (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span> <span class="citation" data-cites="cain2010when">Cain et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span> <span class="citation" data-cites="young2011comparative">Young et al. (<a href="#/references" role="doc-biblioref" onclick="">2011</a>)</span> <span class="citation" data-cites="hernan2016specifying">Hernán et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span> <span class="citation" data-cites="hernan2016using">Hernán and Robins (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span> <span class="citation" data-cites="labrecque2017target">Labrecque and Swanson (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span> <span class="citation" data-cites="hernan2018how">Hernán (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span> <span class="citation" data-cites="caniglia2019emulating"><span class="nocase">Caniglia et al.</span> (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span> <span class="citation" data-cites="dickerman2019avoidable">Dickerman et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span> <span class="citation" data-cites="chiu2020effect">Chiu et al. (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> <span class="citation" data-cites="maringe2020reflection">Maringe et al. (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> <span class="citation" data-cites="ben-michael2021trial">Ben-Michael et al. (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> <span class="citation" data-cites="gaber2024clonecensorweight">Gaber et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span> <span class="citation" data-cites="cashin2025transparent">Cashin et al. (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span> <span class="citation" data-cites="fu2026starting">Fu et al. (<a href="#/references" role="doc-biblioref" onclick="">2026</a>)</span> <span class="citation" data-cites="moreno-betancur2025ideal">Moreno-Betancur et al. (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span></p>
 </section>
 <section id="discussionquestions" class="slide level2">
 <h2>Discussion/Questions</h2>
@@ -2238,9 +2240,9 @@ Louisa Smith
 <h2>References</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-avalos2023maternal" class="csl-entry" role="listitem">
-Avalos, Lyndsay A., Romain S. Neugebauer, Nerissa Nance, Sylvia E. Badon, T. Craig Cheetham, Thomas R. Easterling, Kristi Reynolds, et al. 2023. <span>“Maternal and Neonatal Outcomes Associated with Treating Hypertension in Pregnancy at Different Thresholds.”</span> <em>Pharmacotherapy: The Journal of Human Pharmacology and Drug Therapy</em> 43 (5): 381–90. <a href="https://doi.org/10.1002/phar.2778">https://doi.org/10.1002/phar.2778</a>.
+Avalos, Lyndsay A., Romain S. Neugebauer, Nerissa Nance, et al. 2023. <span>“Maternal and Neonatal Outcomes Associated with Treating Hypertension in Pregnancy at Different Thresholds.”</span> <em>Pharmacotherapy: The Journal of Human Pharmacology and Drug Therapy</em> 43 (5): 381–90. <a href="https://doi.org/10.1002/phar.2778">https://doi.org/10.1002/phar.2778</a>.
 </div>
 <div id="ref-ben-michael2021trial" class="csl-entry" role="listitem">
 Ben-Michael, Eli, Avi Feller, and Elizabeth A. Stuart. 2021. <span>“A Trial Emulation Approach for Policy Evaluations with Group-Level Longitudinal Data.”</span> <em>Epidemiology</em> 32 (4): 533–40. <a href="https://doi.org/10.1097/ede.0000000000001369">https://doi.org/10.1097/ede.0000000000001369</a>.
@@ -2249,31 +2251,34 @@ Ben-Michael, Eli, Avi Feller, and Elizabeth A. Stuart. 2021. <span>“A Trial Em
 Cain, Lauren E., James M. Robins, Emilie Lanoy, Roger Logan, Dominique Costagliola, and Miguel A. Hernán. 2010. <span>“When to Start Treatment? <span>A</span> Systematic Approach to the Comparison of Dynamic Regimes Using Observational Data.”</span> <em>The International Journal of Biostatistics</em> 6 (2): 1–42. <a href="https://doi.org/10.2202/1557-4679.1212">https://doi.org/10.2202/1557-4679.1212</a>.
 </div>
 <div id="ref-caniglia2019emulating" class="csl-entry" role="listitem">
-Caniglia, Ellen C., James M. Robins, Lauren E. Cain, Caroline Sabin, Roger Logan, Sophie Abgrall, Michael J. Mugavero, et al. 2019. <span>“Emulating a Trial of Joint Dynamic Strategies: An Application to Monitoring and Treatment of <span class="nocase">HIV-positive</span> Individuals.”</span> <em>Statistics in Medicine</em> 38 (13): 2428–46. <a href="https://doi.org/10.1002/sim.8120">https://doi.org/10.1002/sim.8120</a>.
+<span class="nocase">Caniglia, Ellen C., James M. Robins, Lauren E. Cain, et al.</span> 2019. <span>“Emulating a Trial of Joint Dynamic Strategies: An Application to Monitoring and Treatment of <span class="nocase">HIV-positive</span> Individuals.”</span> <em>Statistics in Medicine</em> 38 (13): 2428–46. <a href="https://doi.org/10.1002/sim.8120">https://doi.org/10.1002/sim.8120</a>.
 </div>
 <div id="ref-caniglia2018emulating" class="csl-entry" role="listitem">
-Caniglia, Ellen C., Rebecca Zash, Denise L. Jacobson, Modiegi Diseko, Gloria Mayondi, Shahin Lockman, Jennifer Y. Chen, et al. 2018. <span>“Emulating a Target Trial of Antiretroviral Therapy Regimens Started Before Conception and Risk of Adverse Birth Outcomes.”</span> <em>AIDS</em> 32 (1): 113–20. <a href="https://doi.org/10.1097/qad.0000000000001673">https://doi.org/10.1097/qad.0000000000001673</a>.
+Caniglia, Ellen C., Rebecca Zash, Denise L. Jacobson, et al. 2018. <span>“Emulating a Target Trial of Antiretroviral Therapy Regimens Started Before Conception and Risk of Adverse Birth Outcomes.”</span> <em>AIDS</em> 32 (1): 113–20. <a href="https://doi.org/10.1097/qad.0000000000001673">https://doi.org/10.1097/qad.0000000000001673</a>.
 </div>
 <div id="ref-cashin2025transparent" class="csl-entry" role="listitem">
-Cashin, Aidan G., Harrison J. Hansford, Miguel A. Hernán, Sonja A. Swanson, Hopin Lee, Matthew D. Jones, Issa J. Dahabreh, et al. 2025. <span>“Transparent Reporting of Observational Studies Emulating a Target Trial: The <span>TARGET Statement</span>.”</span> <em>BMJ</em> 390 (September): e087179. <a href="https://doi.org/10.1136/bmj-2025-087179">https://doi.org/10.1136/bmj-2025-087179</a>.
+Cashin, Aidan G., Harrison J. Hansford, Miguel A. Hernán, et al. 2025. <span>“Transparent Reporting of Observational Studies Emulating a Target Trial: The <span>TARGET Statement</span>.”</span> <em>BMJ</em> 390 (September): e087179. <a href="https://doi.org/10.1136/bmj-2025-087179">https://doi.org/10.1136/bmj-2025-087179</a>.
 </div>
 <div id="ref-chiu2024metformin" class="csl-entry" role="listitem">
-Chiu, Yu-Han, Krista F. Huybrechts, Elisabetta Patorno, Jennifer J. Yland, Carolyn E. Cesta, Brian T. Bateman, Ellen W. Seely, Miguel A. Hernán, and Sonia Hernández-Díaz. 2024. <span>“Metformin Use in the First Trimester of Pregnancy and Risk for Nonlive Birth and Congenital Malformations: Emulating a Target Trial Using Real-World Data.”</span> <em>Annals of Internal Medicine</em> 177 (7): 862–70. <a href="https://doi.org/10.7326/M23-2038">https://doi.org/10.7326/M23-2038</a>.
+Chiu, Yu-Han, Krista F. Huybrechts, Elisabetta Patorno, et al. 2024. <span>“Metformin Use in the First Trimester of Pregnancy and Risk for Nonlive Birth and Congenital Malformations: Emulating a Target Trial Using Real-World Data.”</span> <em>Annals of Internal Medicine</em> 177 (7): 862–70. <a href="https://doi.org/10.7326/M23-2038">https://doi.org/10.7326/M23-2038</a>.
 </div>
 <div id="ref-chiu2020effect" class="csl-entry" role="listitem">
-Chiu, Yu-Han, Mats J. Stensrud, Issa J. Dahabreh, Paolo Rinaudo, Michael P. Diamond, John Hsu, Sonia Hernández-Díaz, and Miguel A. Hernán. 2020. <span>“The <span>Effect</span> of <span>Prenatal Treatments</span> on <span>Offspring Events</span> in the <span>Presence</span> of <span>Competing Events</span>: <span>An Application</span> to a <span>Randomized Trial</span> of <span>Fertility Therapies</span>.”</span> <em>Epidemiology</em> 31 (5): 636. <a href="https://doi.org/10.1097/EDE.0000000000001222">https://doi.org/10.1097/EDE.0000000000001222</a>.
+Chiu, Yu-Han, Mats J. Stensrud, Issa J. Dahabreh, et al. 2020. <span>“The <span>Effect</span> of <span>Prenatal Treatments</span> on <span>Offspring Events</span> in the <span>Presence</span> of <span>Competing Events</span>: <span>An Application</span> to a <span>Randomized Trial</span> of <span>Fertility Therapies</span>.”</span> <em>Epidemiology</em> 31 (5): 636. <a href="https://doi.org/10.1097/EDE.0000000000001222">https://doi.org/10.1097/EDE.0000000000001222</a>.
 </div>
 <div id="ref-dickerman2019avoidable" class="csl-entry" role="listitem">
 Dickerman, Barbra A., Xabier García-Albéniz, Roger Logan, Spiros Denaxas, and Miguel A. Hernán. 2019. <span>“Avoidable Flaws in Observational Analyses: An Application to Statins and Cancer.”</span> <em>Nature Medicine</em> 25 (10): 1601–6. <a href="https://doi.org/10.1038/s41591-019-0597-x">https://doi.org/10.1038/s41591-019-0597-x</a>.
 </div>
+<div id="ref-fu2026starting" class="csl-entry" role="listitem">
+Fu, Edouard L., Michael O. Harhay, Sebastian Schneeweiss, Rishi J. Desai, and Miguel A. Hernán. 2026. <span>“Starting Right: Aligning Eligibility and Treatment Assignment at Time Zero When Emulating a Target Trial.”</span> <em>BMJ</em> 392 (January): e084909. <a href="https://doi.org/10.1136/bmj-2025-084909">https://doi.org/10.1136/bmj-2025-084909</a>.
+</div>
 <div id="ref-gaber2024clonecensorweight" class="csl-entry" role="listitem">
-Gaber, Charles E., Kent A. Hanson, Sodam Kim, Jennifer L. Lund, Todd A. Lee, and Eleanor J. Murray. 2024. <span>“The <span>Clone-Censor-Weight Method</span> in <span>Pharmacoepidemiologic Research</span>: <span>Foundations</span> and <span>Methodological Implementation</span>.”</span> <em>Current Epidemiology Reports</em>, February. <a href="https://doi.org/10.1007/s40471-024-00346-2">https://doi.org/10.1007/s40471-024-00346-2</a>.
+Gaber, Charles E., Kent A. Hanson, Sodam Kim, Jennifer L. Lund, Todd A. Lee, and Eleanor J. Murray. 2024. <span>“The <span>Clone-Censor-Weight Method</span> in <span>Pharmacoepidemiologic Research</span>: <span>Foundations</span> and <span>Methodological Implementation</span>.”</span> <em>Current Epidemiology Reports</em>, ahead of print, February. <a href="https://doi.org/10.1007/s40471-024-00346-2">https://doi.org/10.1007/s40471-024-00346-2</a>.
 </div>
 <div id="ref-hernan2018how" class="csl-entry" role="listitem">
 Hernán, Miguel A. 2018. <span>“How to Estimate the Effect of Treatment Duration on Survival Outcomes Using Observational Data.”</span> <em>BMJ</em> 360 (February): k182. <a href="https://doi.org/10.1136/bmj.k182">https://doi.org/10.1136/bmj.k182</a>.
 </div>
 <div id="ref-hernan2008observational" class="csl-entry" role="listitem">
-Hernán, Miguel A., Alvaro Alonso, Roger Logan, Francine Grodstein, Karin B. Michels, Walter C. Willett, Joann E. Manson, and James M. Robins. 2008. <span>“Observational Studies Analyzed Like Randomized Experiments: An Application to Postmenopausal Hormone Therapy and Coronary Heart Disease.”</span> <em>Epidemiology</em> 19 (6): 766–79. <a href="https://doi.org/10.1097/ede.0b013e3181875e61">https://doi.org/10.1097/ede.0b013e3181875e61</a>.
+Hernán, Miguel A., Alvaro Alonso, Roger Logan, et al. 2008. <span>“Observational Studies Analyzed Like Randomized Experiments: An Application to Postmenopausal Hormone Therapy and Coronary Heart Disease.”</span> <em>Epidemiology</em> 19 (6): 766–79. <a href="https://doi.org/10.1097/ede.0b013e3181875e61">https://doi.org/10.1097/ede.0b013e3181875e61</a>.
 </div>
 <div id="ref-hernan2016using" class="csl-entry" role="listitem">
 Hernán, Miguel A., and James M. Robins. 2016. <span>“Using Big Data to Emulate a Target Trial When a Randomized Trial Is Not Available.”</span> <em>American Journal of Epidemiology</em> 183 (8): 758–64. <a href="https://doi.org/10.1093/aje/kwv254">https://doi.org/10.1093/aje/kwv254</a>.
@@ -2285,22 +2290,22 @@ Hernán, Miguel A., Brian C. Sauer, Sonia Hernández-Díaz, Robert Platt, and Ia
 Labrecque, Jeremy A., and Sonja A. Swanson. 2017. <span>“Target Trial Emulation: Teaching Epidemiology and Beyond.”</span> <em>European Journal of Epidemiology</em> 32 (6): 473–75. <a href="https://doi.org/10.1007/s10654-017-0293-4">https://doi.org/10.1007/s10654-017-0293-4</a>.
 </div>
 <div id="ref-maringe2020reflection" class="csl-entry" role="listitem">
-Maringe, Camille, Sara Benitez Majano, Aimilia Exarchakou, Matthew Smith, Bernard Rachet, Aurélien Belot, and Clémence Leyrat. 2020. <span>“Reflection on Modern Methods: Trial Emulation in the Presence of Immortal-Time Bias. <span>Assessing</span> the Benefit of Major Surgery for Elderly Lung Cancer Patients Using Observational Data.”</span> <em>International Journal of Epidemiology</em> 49 (5): 1719–29. <a href="https://doi.org/10.1093/ije/dyaa057">https://doi.org/10.1093/ije/dyaa057</a>.
+Maringe, Camille, Sara Benitez Majano, Aimilia Exarchakou, et al. 2020. <span>“Reflection on Modern Methods: Trial Emulation in the Presence of Immortal-Time Bias. <span>Assessing</span> the Benefit of Major Surgery for Elderly Lung Cancer Patients Using Observational Data.”</span> <em>International Journal of Epidemiology</em> 49 (5): 1719–29. <a href="https://doi.org/10.1093/ije/dyaa057">https://doi.org/10.1093/ije/dyaa057</a>.
 </div>
 <div id="ref-moreno-betancur2025ideal" class="csl-entry" role="listitem">
-Moreno-Betancur, Margarita, Rushani Wijesuriya, and John B. Carlin. 2025. <span>“The Ideal Trial: Defining Causal Estimands That Balance Relevance and Feasibility in Target Trial Emulations and Actual Randomized Trials.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.2405.10026">https://doi.org/10.48550/arXiv.2405.10026</a>.
+Moreno-Betancur, Margarita, Rushani Wijesuriya, and John B. Carlin. 2025. <em>The Ideal Trial: Defining Causal Estimands That Balance Relevance and Feasibility in Target Trial Emulations and Actual Randomized Trials</em>. arXiv:2405.10026. arXiv. <a href="https://doi.org/10.48550/arXiv.2405.10026">https://doi.org/10.48550/arXiv.2405.10026</a>.
 </div>
 <div id="ref-smith2022timing" class="csl-entry" role="listitem">
 Smith, Louisa H., Camille Y. Dollinger, Tyler J. VanderWeele, Diego F. Wyszynski, and Sonia Hernández-Díaz. 2022. <span>“Timing and Severity of <span>COVID-19</span> During Pregnancy and Risk of Preterm Birth in the <span>International Registry</span> of <span>Coronavirus Exposure</span> in <span>Pregnancy</span>.”</span> <em>BMC Pregnancy and Childbirth</em> 22 (1): 775. <a href="https://doi.org/10.1186/s12884-022-05101-3">https://doi.org/10.1186/s12884-022-05101-3</a>.
 </div>
 <div id="ref-wong2024nirmatrelvir" class="csl-entry" role="listitem">
-Wong, Carlos K. H., Kristy T. K. Lau, Matthew S. H. Chung, Ivan C. H. Au, Ka Wang Cheung, Eric H. Y. Lau, Yasmin Daoud, Benjamin J. Cowling, and Gabriel M. Leung. 2024. <span>“Nirmatrelvir/Ritonavir Use in Pregnant Women with <span>SARS-CoV-2 Omicron</span> Infection: A Target Trial Emulation.”</span> <em>Nature Medicine</em> 30 (1): 112–16. <a href="https://doi.org/10.1038/s41591-023-02674-0">https://doi.org/10.1038/s41591-023-02674-0</a>.
+Wong, Carlos K. H., Kristy T. K. Lau, Matthew S. H. Chung, et al. 2024. <span>“Nirmatrelvir/Ritonavir Use in Pregnant Women with <span>SARS-CoV-2 Omicron</span> Infection: A Target Trial Emulation.”</span> <em>Nature Medicine</em> 30 (1): 112–16. <a href="https://doi.org/10.1038/s41591-023-02674-0">https://doi.org/10.1038/s41591-023-02674-0</a>.
 </div>
 <div id="ref-young2011comparative" class="csl-entry" role="listitem">
 Young, Jessica G., Lauren E. Cain, James M. Robins, Eilis J. O’Reilly, and Miguel A. Hernán. 2011. <span>“Comparative Effectiveness of Dynamic Treatment Regimes: An Application of the Parametric g-Formula.”</span> <em>Statistics in Biosciences</em> 3 (1): 119–43. <a href="https://doi.org/10.1007/s12561-011-9040-7">https://doi.org/10.1007/s12561-011-9040-7</a>.
 </div>
 <div id="ref-zidan2025bnt162b2" class="csl-entry" role="listitem">
-Zidan, Mahmoud, Nhung T. H. Trinh, Anteneh Desalegn, Louisa H. Smith, Marleen M. H. J. Van Gelder, Hedvig Nordeng, and Angela Lupattelli. 2025. <span>“<span class="nocase">BNT162b2 mRNA COVID-19</span> Vaccine Effectiveness in Pregnancy: <span>Emulating</span> Trial <span>NCT04754594</span> Using Observational Data from <span>Norwegian</span> Health Registries.”</span> <em>Vaccine</em> 68 (December): 127908. <a href="https://doi.org/10.1016/j.vaccine.2025.127908">https://doi.org/10.1016/j.vaccine.2025.127908</a>.
+<span class="nocase">Zidan, Mahmoud, Nhung T. H. Trinh, Anteneh Desalegn, et al.</span> 2025. <span>“<span class="nocase">BNT162b2 mRNA COVID-19</span> Vaccine Effectiveness in Pregnancy: <span>Emulating</span> Trial <span>NCT04754594</span> Using Observational Data from <span>Norwegian</span> Health Registries.”</span> <em>Vaccine</em> 68 (December): 127908. <a href="https://doi.org/10.1016/j.vaccine.2025.127908">https://doi.org/10.1016/j.vaccine.2025.127908</a>.
 </div>
 </div>
 </section></section>
@@ -2495,7 +2500,7 @@ Zidan, Mahmoud, Nhung T. H. Trinh, Anteneh Desalegn, Louisa H. Smith, Marleen M.
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -2607,13 +2612,14 @@ Zidan, Mahmoud, Nhung T. H. Trinh, Anteneh Desalegn, Louisa H. Smith, Marleen M.
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
