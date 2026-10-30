@@ -1,0 +1,4 @@
+- source: slides.qmd
+  netlify:
+    - id: 9f9a4a1d-efa5-4ab7-94e0-b16f68aa3cd2
+      url: https://scintillating-torte-cc4cd9.netlify.app

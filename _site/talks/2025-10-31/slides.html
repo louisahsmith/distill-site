@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Louisa Smith">
   <meta name="dcterms.date" content="2024-10-31">
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -227,7 +230,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Louisa Smith 
+Louisa Smith
 </div>
 </div>
 </div>
@@ -1907,10 +1910,10 @@ Louisa Smith
 <section id="original-data" class="slide level2">
 <h2>Original Data</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>trial_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"ccw-example-data.csv"</span>)</span>
-<span id="cb1-4"><a></a>trial_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a>trial_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"ccw-example-data.csv"</span>)</span>
+<span id="cb1-4"><a aria-label="4"></a>trial_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 10
    person assigned loss_t1 vax_t1 loss_t2 vax_t2 preterm vax_t3  term livebirth
@@ -1938,12 +1941,12 @@ Louisa Smith
 <h2>Step 1: Cloning</h2>
 <p>Each person is cloned into 4 copies (one for each vaccination strategy: 0, 1, 2, 3)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>cloned_data <span class="ot">&lt;-</span> trial_data <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">crossing</span>(<span class="at">strategy =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">relocate</span>(strategy, <span class="at">.after =</span> person)</span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a>cloned_data <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a></a>  <span class="fu">count</span>(strategy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>cloned_data <span class="ot">&lt;-</span> trial_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="fu">crossing</span>(<span class="at">strategy =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a aria-label="3"></a>  <span class="fu">relocate</span>(strategy, <span class="at">.after =</span> person)</span>
+<span id="cb3-4"><a aria-label="4"></a></span>
+<span id="cb3-5"><a aria-label="5"></a>cloned_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a aria-label="6"></a>  <span class="fu">count</span>(strategy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
   strategy     n
@@ -1959,56 +1962,56 @@ Louisa Smith
 <section id="step-2-censoring-1" class="slide level2">
 <h2>Step 2: Censoring</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>censored_data <span class="ot">&lt;-</span> cloned_data <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-3"><a></a>    <span class="co"># T1: only at risk if survived T1</span></span>
-<span id="cb5-4"><a></a>    <span class="at">censored_t1 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-5"><a></a>      loss_t1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already had outcome</span></span>
-<span id="cb5-6"><a></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&amp;</span> vax_t1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by vaccinating</span></span>
-<span id="cb5-7"><a></a>      strategy <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by not vaccinating</span></span>
-<span id="cb5-8"><a></a>      <span class="at">.default =</span> <span class="cn">FALSE</span>  <span class="co"># Followed strategy</span></span>
-<span id="cb5-9"><a></a>    ),</span>
-<span id="cb5-10"><a></a></span>
-<span id="cb5-11"><a></a>    <span class="co"># T2: only at risk if uncensored and unvaccinated at T1 and survived T2</span></span>
-<span id="cb5-12"><a></a>    <span class="at">censored_t2 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-13"><a></a>      <span class="fu">is.na</span>(censored_t1) <span class="sc">|</span> censored_t1 <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already censored or had outcome at T1</span></span>
-<span id="cb5-14"><a></a>      loss_t2 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Had outcome at T2</span></span>
-<span id="cb5-15"><a></a>      vax_t1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already had vax at T1</span></span>
-<span id="cb5-16"><a></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>) <span class="sc">&amp;</span> vax_t2 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by vaccinating</span></span>
-<span id="cb5-17"><a></a>      strategy <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> vax_t2 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by not vaccinating</span></span>
-<span id="cb5-18"><a></a>      <span class="at">.default =</span> <span class="cn">FALSE</span>  <span class="co"># Followed strategy</span></span>
-<span id="cb5-19"><a></a>    ),</span>
-<span id="cb5-20"><a></a></span>
-<span id="cb5-21"><a></a>    <span class="co"># T3: only at risk if uncensored and unvaccinated at T2 and survived T3</span></span>
-<span id="cb5-22"><a></a>    <span class="at">censored_t3 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-23"><a></a>      <span class="fu">is.na</span>(censored_t2) <span class="sc">|</span> censored_t2 <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already censored or had outcome at T2</span></span>
-<span id="cb5-24"><a></a>      preterm <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Had outcome at T3</span></span>
-<span id="cb5-25"><a></a>      vax_t1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> vax_t2 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already had vax at T1 or T2</span></span>
-<span id="cb5-26"><a></a>      strategy <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> vax_t3 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by vaccinating</span></span>
-<span id="cb5-27"><a></a>      strategy <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> vax_t3 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by not vaccinating</span></span>
-<span id="cb5-28"><a></a>      <span class="at">.default =</span> <span class="cn">FALSE</span>  <span class="co"># Followed strategy</span></span>
-<span id="cb5-29"><a></a>    ),</span>
-<span id="cb5-30"><a></a></span>
-<span id="cb5-31"><a></a>    <span class="co"># Final censoring: censored if ANY time point is TRUE</span></span>
-<span id="cb5-32"><a></a>    <span class="at">censored =</span> (censored_t1) <span class="sc">|</span> (censored_t2) <span class="sc">|</span> (censored_t3),</span>
-<span id="cb5-33"><a></a>    <span class="at">censored =</span> <span class="fu">replace_na</span>(censored, <span class="cn">FALSE</span>)</span>
-<span id="cb5-34"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>censored_data <span class="ot">&lt;-</span> cloned_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-3"><a aria-label="3"></a>    <span class="co"># T1: only at risk if survived T1</span></span>
+<span id="cb5-4"><a aria-label="4"></a>    <span class="at">censored_t1 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-5"><a aria-label="5"></a>      loss_t1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already had outcome</span></span>
+<span id="cb5-6"><a aria-label="6"></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&amp;</span> vax_t1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by vaccinating</span></span>
+<span id="cb5-7"><a aria-label="7"></a>      strategy <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by not vaccinating</span></span>
+<span id="cb5-8"><a aria-label="8"></a>      <span class="at">.default =</span> <span class="cn">FALSE</span>  <span class="co"># Followed strategy</span></span>
+<span id="cb5-9"><a aria-label="9"></a>    ),</span>
+<span id="cb5-10"><a aria-label="10"></a></span>
+<span id="cb5-11"><a aria-label="11"></a>    <span class="co"># T2: only at risk if uncensored and unvaccinated at T1 and survived T2</span></span>
+<span id="cb5-12"><a aria-label="12"></a>    <span class="at">censored_t2 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-13"><a aria-label="13"></a>      <span class="fu">is.na</span>(censored_t1) <span class="sc">|</span> censored_t1 <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already censored or had outcome at T1</span></span>
+<span id="cb5-14"><a aria-label="14"></a>      loss_t2 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Had outcome at T2</span></span>
+<span id="cb5-15"><a aria-label="15"></a>      vax_t1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already had vax at T1</span></span>
+<span id="cb5-16"><a aria-label="16"></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>) <span class="sc">&amp;</span> vax_t2 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by vaccinating</span></span>
+<span id="cb5-17"><a aria-label="17"></a>      strategy <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> vax_t2 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by not vaccinating</span></span>
+<span id="cb5-18"><a aria-label="18"></a>      <span class="at">.default =</span> <span class="cn">FALSE</span>  <span class="co"># Followed strategy</span></span>
+<span id="cb5-19"><a aria-label="19"></a>    ),</span>
+<span id="cb5-20"><a aria-label="20"></a></span>
+<span id="cb5-21"><a aria-label="21"></a>    <span class="co"># T3: only at risk if uncensored and unvaccinated at T2 and survived T3</span></span>
+<span id="cb5-22"><a aria-label="22"></a>    <span class="at">censored_t3 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-23"><a aria-label="23"></a>      <span class="fu">is.na</span>(censored_t2) <span class="sc">|</span> censored_t2 <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already censored or had outcome at T2</span></span>
+<span id="cb5-24"><a aria-label="24"></a>      preterm <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Had outcome at T3</span></span>
+<span id="cb5-25"><a aria-label="25"></a>      vax_t1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> vax_t2 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,  <span class="co"># Already had vax at T1 or T2</span></span>
+<span id="cb5-26"><a aria-label="26"></a>      strategy <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> vax_t3 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by vaccinating</span></span>
+<span id="cb5-27"><a aria-label="27"></a>      strategy <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> vax_t3 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">TRUE</span>,  <span class="co"># Deviated by not vaccinating</span></span>
+<span id="cb5-28"><a aria-label="28"></a>      <span class="at">.default =</span> <span class="cn">FALSE</span>  <span class="co"># Followed strategy</span></span>
+<span id="cb5-29"><a aria-label="29"></a>    ),</span>
+<span id="cb5-30"><a aria-label="30"></a></span>
+<span id="cb5-31"><a aria-label="31"></a>    <span class="co"># Final censoring: censored if ANY time point is TRUE</span></span>
+<span id="cb5-32"><a aria-label="32"></a>    <span class="at">censored =</span> (censored_t1) <span class="sc">|</span> (censored_t2) <span class="sc">|</span> (censored_t3),</span>
+<span id="cb5-33"><a aria-label="33"></a>    <span class="at">censored =</span> <span class="fu">replace_na</span>(censored, <span class="cn">FALSE</span>)</span>
+<span id="cb5-34"><a aria-label="34"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="censoring-summary" class="slide level2">
 <h2>Censoring Summary</h2>
 <p>Different numbers contribute to each strategy:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>censored_data <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">group_by</span>(strategy) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">summarise</span>(</span>
-<span id="cb6-4"><a></a>    <span class="at">n_total =</span> <span class="fu">n</span>(),</span>
-<span id="cb6-5"><a></a>    <span class="at">censored_t1 =</span> <span class="fu">sum</span>(censored_t1 <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-6"><a></a>    <span class="at">censored_t2 =</span> <span class="fu">sum</span>(censored_t2 <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-7"><a></a>    <span class="at">censored_t3 =</span> <span class="fu">sum</span>(censored_t3 <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-8"><a></a>    <span class="at">total_censored =</span> <span class="fu">sum</span>(censored),</span>
-<span id="cb6-9"><a></a>    <span class="at">uncensored =</span> <span class="fu">sum</span>(<span class="sc">!</span>censored)</span>
-<span id="cb6-10"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>censored_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(strategy) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a aria-label="3"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb6-4"><a aria-label="4"></a>    <span class="at">n_total =</span> <span class="fu">n</span>(),</span>
+<span id="cb6-5"><a aria-label="5"></a>    <span class="at">censored_t1 =</span> <span class="fu">sum</span>(censored_t1 <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-6"><a aria-label="6"></a>    <span class="at">censored_t2 =</span> <span class="fu">sum</span>(censored_t2 <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-7"><a aria-label="7"></a>    <span class="at">censored_t3 =</span> <span class="fu">sum</span>(censored_t3 <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-8"><a aria-label="8"></a>    <span class="at">total_censored =</span> <span class="fu">sum</span>(censored),</span>
+<span id="cb6-9"><a aria-label="9"></a>    <span class="at">uncensored =</span> <span class="fu">sum</span>(<span class="sc">!</span>censored)</span>
+<span id="cb6-10"><a aria-label="10"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
   strategy n_total censored_t1 censored_t2 censored_t3 total_censored uncensored
@@ -2031,16 +2034,16 @@ Louisa Smith
 <section id="vaccination-in-t1-censoring-strategy-0-2-and-3-or-not-strategy-1" class="slide level2">
 <h2>Vaccination in T1 = censoring (strategy 0, 2, and 3) or not (strategy 1)</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>trial_data <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(vax_t1)) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">pull</span>(vax_t1, <span class="at">name =</span> person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>trial_data <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(vax_t1)) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a aria-label="3"></a>  <span class="fu">pull</span>(vax_t1, <span class="at">name =</span> person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A B C E F G I J K M N O 
 0 0 0 1 1 1 0 0 0 0 0 0 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>mod_vax_t1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t1 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
-<span id="cb10-2"><a></a>p_vax_t1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_vax_t1, <span class="at">type =</span> <span class="st">"response"</span>)[<span class="dv">1</span>] <span class="co"># all have same predicted value because no covariates</span></span>
-<span id="cb10-3"><a></a>p_vax_t1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a>mod_vax_t1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t1 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
+<span id="cb10-2"><a aria-label="2"></a>p_vax_t1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_vax_t1, <span class="at">type =</span> <span class="st">"response"</span>)[<span class="dv">1</span>] <span class="co"># all have same predicted value because no covariates</span></span>
+<span id="cb10-3"><a aria-label="3"></a>p_vax_t1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   1 
 0.25 </code></pre>
@@ -2051,17 +2054,17 @@ Louisa Smith
 <h2>Vaccination in T2 = censoring (strategy 0 and 3) or not (2)</h2>
 <p>(For strategy 1, already censored if not vaccinated in T1 so no one “at risk for” censoring here)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>trial_data <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">filter</span>(vax_t1 <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span><span class="fu">is.na</span>(vax_t2)) <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a></a>  <span class="fu">pull</span>(vax_t2, <span class="at">name =</span> person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>trial_data <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a aria-label="2"></a>  <span class="fu">filter</span>(vax_t1 <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span><span class="fu">is.na</span>(vax_t2)) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a aria-label="3"></a>  <span class="fu">pull</span>(vax_t2, <span class="at">name =</span> person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A B I J M N 
 0 0 1 1 0 0 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>mod_vax_t2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t2 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>(),</span>
-<span id="cb14-2"><a></a>                  <span class="at">subset =</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb14-3"><a></a>p_vax_t2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_vax_t2, <span class="at">type =</span> <span class="st">"response"</span>)[<span class="dv">1</span>]</span>
-<span id="cb14-4"><a></a>p_vax_t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>mod_vax_t2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t2 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>(),</span>
+<span id="cb14-2"><a aria-label="2"></a>                  <span class="at">subset =</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb14-3"><a aria-label="3"></a>p_vax_t2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_vax_t2, <span class="at">type =</span> <span class="st">"response"</span>)[<span class="dv">1</span>]</span>
+<span id="cb14-4"><a aria-label="4"></a>p_vax_t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        1 
 0.3333333 </code></pre>
@@ -2072,16 +2075,16 @@ Louisa Smith
 <h2>Vaccination in T3 = censoring (strategy 0) or not (3)</h2>
 <p>(For strategies 1 and 2, already censored if not vaccinated in T1 or T2 so no one “at risk for” censoring here)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>trial_data <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a></a>  <span class="fu">filter</span>(vax_t1 <span class="sc">==</span> <span class="dv">0</span>, vax_t2 <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span><span class="fu">is.na</span>(vax_t3)) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a></a>  <span class="fu">pull</span>(vax_t3, <span class="at">name =</span> person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>trial_data <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a aria-label="2"></a>  <span class="fu">filter</span>(vax_t1 <span class="sc">==</span> <span class="dv">0</span>, vax_t2 <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span><span class="fu">is.na</span>(vax_t3)) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a aria-label="3"></a>  <span class="fu">pull</span>(vax_t3, <span class="at">name =</span> person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A M 
 0 1 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>mod_vax_t3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t3 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>(), <span class="at">subset =</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> vax_t2 <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb18-2"><a></a>p_vax_t3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_vax_t3, <span class="at">type =</span> <span class="st">"response"</span>)[<span class="dv">1</span>]</span>
-<span id="cb18-3"><a></a>p_vax_t3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>mod_vax_t3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vax_t3 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> trial_data, <span class="at">family =</span> <span class="fu">binomial</span>(), <span class="at">subset =</span> vax_t1 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> vax_t2 <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb18-2"><a aria-label="2"></a>p_vax_t3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_vax_t3, <span class="at">type =</span> <span class="st">"response"</span>)[<span class="dv">1</span>]</span>
+<span id="cb18-3"><a aria-label="3"></a>p_vax_t3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  1 
 0.5 </code></pre>
@@ -2092,45 +2095,45 @@ Louisa Smith
 <h2>Step 3b: Calculate Weights</h2>
 <p>Weight = 1 / (cumulative probability of not being censored)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>weighted_data <span class="ot">&lt;-</span> censored_data <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb20-3"><a></a>    <span class="co"># Probability of not being censored at each time point</span></span>
-<span id="cb20-4"><a></a>    <span class="at">prob_not_cens_t1 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb20-5"><a></a>      <span class="fu">is.na</span>(censored_t1) <span class="sc">~</span> <span class="dv">1</span>,  <span class="co"># Not at risk</span></span>
-<span id="cb20-6"><a></a>      strategy <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> p_vax_t1,  <span class="co"># Strategy 1: needs vax at T1</span></span>
-<span id="cb20-7"><a></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_vax_t1,  <span class="co"># No vax at T1</span></span>
-<span id="cb20-8"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
-<span id="cb20-9"><a></a>    ),</span>
-<span id="cb20-10"><a></a></span>
-<span id="cb20-11"><a></a>    <span class="at">prob_not_cens_t2 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb20-12"><a></a>      <span class="fu">is.na</span>(censored_t2) <span class="sc">~</span> <span class="dv">1</span>,  <span class="co"># Not at risk</span></span>
-<span id="cb20-13"><a></a>      strategy <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> p_vax_t2,  <span class="co"># Strategy 2: needs vax at T2</span></span>
-<span id="cb20-14"><a></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>) <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_vax_t2,  <span class="co"># No vax at T2</span></span>
-<span id="cb20-15"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
-<span id="cb20-16"><a></a>    ),</span>
-<span id="cb20-17"><a></a></span>
-<span id="cb20-18"><a></a>    <span class="at">prob_not_cens_t3 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb20-19"><a></a>      <span class="fu">is.na</span>(censored_t3) <span class="sc">~</span> <span class="dv">1</span>,  <span class="co"># Not at risk</span></span>
-<span id="cb20-20"><a></a>      strategy <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> p_vax_t3,  <span class="co"># Strategy 3: needs vax at T3</span></span>
-<span id="cb20-21"><a></a>      strategy <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_vax_t3,  <span class="co"># No vax at T3</span></span>
-<span id="cb20-22"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
-<span id="cb20-23"><a></a>    ),</span>
-<span id="cb20-24"><a></a></span>
-<span id="cb20-25"><a></a>    <span class="co"># Cumulative probability = product</span></span>
-<span id="cb20-26"><a></a>    <span class="at">cum_prob_not_censored =</span> prob_not_cens_t1 <span class="sc">*</span> prob_not_cens_t2 <span class="sc">*</span> prob_not_cens_t3,</span>
-<span id="cb20-27"><a></a></span>
-<span id="cb20-28"><a></a>    <span class="co"># Weight = inverse probability (only for uncensored)</span></span>
-<span id="cb20-29"><a></a>    <span class="at">weight =</span> <span class="fu">if_else</span>(<span class="sc">!</span>censored, <span class="dv">1</span> <span class="sc">/</span> cum_prob_not_censored, <span class="dv">0</span>)</span>
-<span id="cb20-30"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a>weighted_data <span class="ot">&lt;-</span> censored_data <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-3"><a aria-label="3"></a>    <span class="co"># Probability of not being censored at each time point</span></span>
+<span id="cb20-4"><a aria-label="4"></a>    <span class="at">prob_not_cens_t1 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-5"><a aria-label="5"></a>      <span class="fu">is.na</span>(censored_t1) <span class="sc">~</span> <span class="dv">1</span>,  <span class="co"># Not at risk</span></span>
+<span id="cb20-6"><a aria-label="6"></a>      strategy <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> p_vax_t1,  <span class="co"># Strategy 1: needs vax at T1</span></span>
+<span id="cb20-7"><a aria-label="7"></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_vax_t1,  <span class="co"># No vax at T1</span></span>
+<span id="cb20-8"><a aria-label="8"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb20-9"><a aria-label="9"></a>    ),</span>
+<span id="cb20-10"><a aria-label="10"></a></span>
+<span id="cb20-11"><a aria-label="11"></a>    <span class="at">prob_not_cens_t2 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-12"><a aria-label="12"></a>      <span class="fu">is.na</span>(censored_t2) <span class="sc">~</span> <span class="dv">1</span>,  <span class="co"># Not at risk</span></span>
+<span id="cb20-13"><a aria-label="13"></a>      strategy <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> p_vax_t2,  <span class="co"># Strategy 2: needs vax at T2</span></span>
+<span id="cb20-14"><a aria-label="14"></a>      strategy <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>) <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_vax_t2,  <span class="co"># No vax at T2</span></span>
+<span id="cb20-15"><a aria-label="15"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb20-16"><a aria-label="16"></a>    ),</span>
+<span id="cb20-17"><a aria-label="17"></a></span>
+<span id="cb20-18"><a aria-label="18"></a>    <span class="at">prob_not_cens_t3 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-19"><a aria-label="19"></a>      <span class="fu">is.na</span>(censored_t3) <span class="sc">~</span> <span class="dv">1</span>,  <span class="co"># Not at risk</span></span>
+<span id="cb20-20"><a aria-label="20"></a>      strategy <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> p_vax_t3,  <span class="co"># Strategy 3: needs vax at T3</span></span>
+<span id="cb20-21"><a aria-label="21"></a>      strategy <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_vax_t3,  <span class="co"># No vax at T3</span></span>
+<span id="cb20-22"><a aria-label="22"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb20-23"><a aria-label="23"></a>    ),</span>
+<span id="cb20-24"><a aria-label="24"></a></span>
+<span id="cb20-25"><a aria-label="25"></a>    <span class="co"># Cumulative probability = product</span></span>
+<span id="cb20-26"><a aria-label="26"></a>    <span class="at">cum_prob_not_censored =</span> prob_not_cens_t1 <span class="sc">*</span> prob_not_cens_t2 <span class="sc">*</span> prob_not_cens_t3,</span>
+<span id="cb20-27"><a aria-label="27"></a></span>
+<span id="cb20-28"><a aria-label="28"></a>    <span class="co"># Weight = inverse probability (only for uncensored)</span></span>
+<span id="cb20-29"><a aria-label="29"></a>    <span class="at">weight =</span> <span class="fu">if_else</span>(<span class="sc">!</span>censored, <span class="dv">1</span> <span class="sc">/</span> cum_prob_not_censored, <span class="dv">0</span>)</span>
+<span id="cb20-30"><a aria-label="30"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="example-strategy-0-never-vaccinate" class="slide level2">
 <h2>Example: Strategy 0 (Never vaccinate)</h2>
 <p>Uncensored individuals and their weights:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>weighted_data <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">filter</span>(strategy <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span>censored) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a></a>  <span class="fu">select</span>(person, livebirth, weight)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a>weighted_data <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a aria-label="2"></a>  <span class="fu">filter</span>(strategy <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span>censored) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a aria-label="3"></a>  <span class="fu">select</span>(person, livebirth, weight)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
    person livebirth weight
@@ -2151,14 +2154,14 @@ Louisa Smith
 <section id="step-3c-calculate-weighted-outcomes" class="slide level2">
 <h2>Step 3c: Calculate Weighted Outcomes</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>weighted_data <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span>censored) <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a></a>  <span class="fu">group_by</span>(strategy) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a></a>  <span class="fu">summarise</span>(</span>
-<span id="cb23-5"><a></a>    <span class="at">sum_weights =</span> <span class="fu">sum</span>(weight),</span>
-<span id="cb23-6"><a></a>    <span class="at">weighted_livebirths =</span> <span class="fu">sum</span>(livebirth <span class="sc">*</span> weight),</span>
-<span id="cb23-7"><a></a>    <span class="at">risk_livebirth =</span> weighted_livebirths <span class="sc">/</span> sum_weights</span>
-<span id="cb23-8"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>weighted_data <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="sc">!</span>censored) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a aria-label="3"></a>  <span class="fu">group_by</span>(strategy) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a aria-label="4"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb23-5"><a aria-label="5"></a>    <span class="at">sum_weights =</span> <span class="fu">sum</span>(weight),</span>
+<span id="cb23-6"><a aria-label="6"></a>    <span class="at">weighted_livebirths =</span> <span class="fu">sum</span>(livebirth <span class="sc">*</span> weight),</span>
+<span id="cb23-7"><a aria-label="7"></a>    <span class="at">risk_livebirth =</span> weighted_livebirths <span class="sc">/</span> sum_weights</span>
+<span id="cb23-8"><a aria-label="8"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   strategy sum_weights weighted_livebirths risk_livebirth
@@ -2251,7 +2254,7 @@ Ben-Michael, Eli, Avi Feller, and Elizabeth A. Stuart. 2021. <span>“A Trial Em
 Cain, Lauren E., James M. Robins, Emilie Lanoy, Roger Logan, Dominique Costagliola, and Miguel A. Hernán. 2010. <span>“When to Start Treatment? <span>A</span> Systematic Approach to the Comparison of Dynamic Regimes Using Observational Data.”</span> <em>The International Journal of Biostatistics</em> 6 (2): 1–42. <a href="https://doi.org/10.2202/1557-4679.1212">https://doi.org/10.2202/1557-4679.1212</a>.
 </div>
 <div id="ref-caniglia2019emulating" class="csl-entry" role="listitem">
-<span class="nocase">Caniglia, Ellen C., James M. Robins, Lauren E. Cain, et al.</span> 2019. <span>“Emulating a Trial of Joint Dynamic Strategies: An Application to Monitoring and Treatment of <span class="nocase">HIV-positive</span> Individuals.”</span> <em>Statistics in Medicine</em> 38 (13): 2428–46. <a href="https://doi.org/10.1002/sim.8120">https://doi.org/10.1002/sim.8120</a>.
+<span class="nocase">Caniglia, Ellen C., James M. Robins, Lauren E. Cain, et al.</span> 2019. <span>“Emulating a Trial of Joint Dynamic Strategies: An Application to Monitoring and Treatment of <span>HIV</span>-Positive Individuals.”</span> <em>Statistics in Medicine</em> 38 (13): 2428–46. <a href="https://doi.org/10.1002/sim.8120">https://doi.org/10.1002/sim.8120</a>.
 </div>
 <div id="ref-caniglia2018emulating" class="csl-entry" role="listitem">
 Caniglia, Ellen C., Rebecca Zash, Denise L. Jacobson, et al. 2018. <span>“Emulating a Target Trial of Antiretroviral Therapy Regimens Started Before Conception and Risk of Adverse Birth Outcomes.”</span> <em>AIDS</em> 32 (1): 113–20. <a href="https://doi.org/10.1097/qad.0000000000001673">https://doi.org/10.1097/qad.0000000000001673</a>.
@@ -2263,7 +2266,7 @@ Cashin, Aidan G., Harrison J. Hansford, Miguel A. Hernán, et al. 2025. <span>�
 Chiu, Yu-Han, Krista F. Huybrechts, Elisabetta Patorno, et al. 2024. <span>“Metformin Use in the First Trimester of Pregnancy and Risk for Nonlive Birth and Congenital Malformations: Emulating a Target Trial Using Real-World Data.”</span> <em>Annals of Internal Medicine</em> 177 (7): 862–70. <a href="https://doi.org/10.7326/M23-2038">https://doi.org/10.7326/M23-2038</a>.
 </div>
 <div id="ref-chiu2020effect" class="csl-entry" role="listitem">
-Chiu, Yu-Han, Mats J. Stensrud, Issa J. Dahabreh, et al. 2020. <span>“The <span>Effect</span> of <span>Prenatal Treatments</span> on <span>Offspring Events</span> in the <span>Presence</span> of <span>Competing Events</span>: <span>An Application</span> to a <span>Randomized Trial</span> of <span>Fertility Therapies</span>.”</span> <em>Epidemiology</em> 31 (5): 636. <a href="https://doi.org/10.1097/EDE.0000000000001222">https://doi.org/10.1097/EDE.0000000000001222</a>.
+Chiu, Yu-Han, Mats J. Stensrud, Issa J. Dahabreh, et al. 2020. <span>“The Effect of Prenatal Treatments on Offspring Events in the Presence of Competing Events: An Application to a Randomized Trial of Fertility Therapies.”</span> <em>Epidemiology</em> 31 (5): 636. <a href="https://doi.org/10.1097/EDE.0000000000001222">https://doi.org/10.1097/EDE.0000000000001222</a>.
 </div>
 <div id="ref-dickerman2019avoidable" class="csl-entry" role="listitem">
 Dickerman, Barbra A., Xabier García-Albéniz, Roger Logan, Spiros Denaxas, and Miguel A. Hernán. 2019. <span>“Avoidable Flaws in Observational Analyses: An Application to Statins and Cancer.”</span> <em>Nature Medicine</em> 25 (10): 1601–6. <a href="https://doi.org/10.1038/s41591-019-0597-x">https://doi.org/10.1038/s41591-019-0597-x</a>.
@@ -2272,7 +2275,7 @@ Dickerman, Barbra A., Xabier García-Albéniz, Roger Logan, Spiros Denaxas, and 
 Fu, Edouard L., Michael O. Harhay, Sebastian Schneeweiss, Rishi J. Desai, and Miguel A. Hernán. 2026. <span>“Starting Right: Aligning Eligibility and Treatment Assignment at Time Zero When Emulating a Target Trial.”</span> <em>BMJ</em> 392 (January): e084909. <a href="https://doi.org/10.1136/bmj-2025-084909">https://doi.org/10.1136/bmj-2025-084909</a>.
 </div>
 <div id="ref-gaber2024clonecensorweight" class="csl-entry" role="listitem">
-Gaber, Charles E., Kent A. Hanson, Sodam Kim, Jennifer L. Lund, Todd A. Lee, and Eleanor J. Murray. 2024. <span>“The <span>Clone-Censor-Weight Method</span> in <span>Pharmacoepidemiologic Research</span>: <span>Foundations</span> and <span>Methodological Implementation</span>.”</span> <em>Current Epidemiology Reports</em>, ahead of print, February. <a href="https://doi.org/10.1007/s40471-024-00346-2">https://doi.org/10.1007/s40471-024-00346-2</a>.
+Gaber, Charles E., Kent A. Hanson, Sodam Kim, Jennifer L. Lund, Todd A. Lee, and Eleanor J. Murray. 2024. <span>“The Clone-Censor-Weight Method in Pharmacoepidemiologic Research: <span>Foundations</span> and Methodological Implementation.”</span> <em>Current Epidemiology Reports</em>, ahead of print, February. <a href="https://doi.org/10.1007/s40471-024-00346-2">https://doi.org/10.1007/s40471-024-00346-2</a>.
 </div>
 <div id="ref-hernan2018how" class="csl-entry" role="listitem">
 Hernán, Miguel A. 2018. <span>“How to Estimate the Effect of Treatment Duration on Survival Outcomes Using Observational Data.”</span> <em>BMJ</em> 360 (February): k182. <a href="https://doi.org/10.1136/bmj.k182">https://doi.org/10.1136/bmj.k182</a>.
