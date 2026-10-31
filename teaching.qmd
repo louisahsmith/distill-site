@@ -4,11 +4,23 @@ title: Teaching
 
 ### Northeastern University
 
+#### PHTH 6802: Causal Inference 2
+
+Instructor (fall 2026)
+
+*Follow-up course to PHTH 6800, covering advanced topics in causal inference including time-varying treatments, sustatined and dynamic treatment strategies, emulation of target trials, and more.*
+
+#### PHTH 5210: Biostatistics in Public Health
+
+Instructor (fall 2026)
+
+*Graduate course introducing basic statistical concepts and methods for first-year graduate students.*
+
 #### PHTH 6800: Causal Inference in Public Health Research
 
 Instructor (spring 2023, 2024, 2026)
 
-*PhD course introducing potential outcomes, causal graphs, g-formula, marginal structural models, quasi-experimental methods, and more.*
+*Graduate course introducing potential outcomes, causal graphs, g-formula, marginal structural models, quasi-experimental methods, and more.*
 
 #### PHTH 2210: Foundations of Biostatistics
 
@@ -20,7 +32,7 @@ Co-instructor (fall 2024, spring 2025)
 
 #### [EPI590R: R Bootcamp](https://epi590r.louisahsmith.com/)
 
-Instructor (summer 2023-2025)
+Instructor (summer 2023-2026)
 
 *Best practices and tools for data management, tables and figures, and reproducible research in R.*
 

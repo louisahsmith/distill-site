@@ -7,22 +7,28 @@
     <a href="publications/bu2023bayesian.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Health issues in the industrial port zone of Marseille, France: The FOS EPSEAL community-based cross-sectional survey"
+- title: "Evaluating frailty index integrity: Insights from an international network study"
+  Authors: "Cavanaugh R, Wong C, **Smith LH**, Bivas-Benita M, Akiva P, El-Hay T, Orkaby AR, Yanover C, Olivieri-Mui B"
+  date: 2026-01-01
+  path: https://doi.org/10.1093/gerona/glag193
+  Journal: "The Journals of Gerontology: Series A"
+  PDF: 
+- title: "Health issues in the industrial port zone of Marseille, France: The Fos EPSEAL community-based cross-sectional survey"
   Authors: "Cohen AK, Richards T, Allen BL, Ferrier Y, Lees J, **Smith LH**"
-  date: 2017-01-01
+  date: 2018-01-01
   path: https://doi.org/10.1007/s10389-017-0857-5
   Journal: "Journal of Public Health"
   PDF: |
-    <a href="publications/cohen2017health.pdf">
+    <a href="publications/cohen2018health.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
 - title: "Educational attainment past the traditional age of completion for two cohorts of US adults: Inequalities by gender and race/ethnicity"
   Authors: "Cohen AK, Ryan S, **Smith LH**, Ream RK, Glymour MM, Lopez A, Yen IH"
-  date: 2021-01-01
+  date: 2022-01-01
   path: https://doi.org/10.1007/s12552-021-09352-1
   Journal: "Race and Social Problems"
   PDF: |
-    <a href="publications/cohen2021educational.pdf">
+    <a href="publications/cohen2022educational.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
 - title: "Maternal prepregnancy weight and children’s behavioral and emotional outcomes"
@@ -142,13 +148,22 @@
     <a href="publications/nielsen2025initiation.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
+- title: "Effect heterogeneity of loneliness and social support on incident hypertension in older, normotensive populations"
+  Authors: "Nielsen VM, **Smith L,** Han L, Honda T, Manjourides J"
+  date: 2026-01-01
+  path: https://doi.org/10.1093/aje/kwag271
+  Journal: "American Journal of Epidemiology"
+  PDF: |
+    <a href="publications/nielsen2026effect.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "Bias analyses to investigate the impact of differential participation: Application to a birth defects case-control study"
-  Authors: "Peterson J, Kahrs JC, Adrien N, Wood ME, Olshan AF, **Smith LH**, Howley MM, Ailes EC, Romitti PA, Herring AH, Parker SE, Shaw GM, Politis MD"
+  Authors: "Petersen JM, Kahrs JC, Adrien N, Wood ME, Olshan AF, **Smith LH**, Howley MM, Ailes EC, Romitti PA, Herring AH, Parker SE, Shaw GM, Politis MD"
   date: 2024-01-01
   path: https://doi.org/10.1111/ppe.13026
   Journal: "Paediatric and Perinatal Epidemiology"
   PDF: |
-    <a href="publications/peterson2024bias.pdf">
+    <a href="publications/petersen2024bias.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
 - title: "Evaluating criminal justice reform during COVID-19: The need for a novel sentiment analysis package"
@@ -232,7 +247,7 @@
     <a href="publications/smith2024allofus.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Pregnancy episodes in <i>All</i> <i>of</i> <i>Us</i>: Harnessing multi-source data for pregnancy-related research"
+- title: "Pregnancy episodes in <i>All</i> <i>of</i> <i>Us</i> : Harnessing multi-source data for pregnancy-related research"
   Authors: "**Smith LH**, Wang W, Keefe-Oates B"
   date: 2024-01-01
   path: https://doi.org/10.1093/jamia/ocae195
@@ -277,15 +292,6 @@
     <a href="publications/westhoff2022covid19.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
-- title: "Characterizing the role of neighborhood disadvantage in a digital PrEP intervention for young sexual and gender minority men"
-  Authors: "Williams MP, Manjourides J, **Smith LH**, Rainer CB, Hightow-Weidman L, Haley DF"
-  date: 2025-01-01
-  path: https://doi.org/10.1007/s10461-025-04860-2
-  Journal: "AIDS and Behavior"
-  PDF: |
-    <a href="publications/williams2025characterizing.pdf">
-    <i class="bi bi-file-earmark-pdf-fill"></i>
-    </a>
 - title: "Neighborhood disadvantage, syndemic conditions, and PrEP non-adherence in young sexual and gender minority men"
   Authors: "Williams MP, Manjourides J, **Smith LH**, Rainer CB, Hightow-Weidman L, Haley DF"
   date: 2025-01-01
@@ -302,6 +308,15 @@
   Journal: "Journal of Medical Internet Research"
   PDF: |
     <a href="publications/williams2025studying.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
+- title: "Characterizing the role of neighborhood disadvantage in a digital PrEP intervention for young sexual and gender minority men"
+  Authors: "Williams MP, Manjourides J, **Smith LH**, Rainer CB, Hightow-Weidman L, Haley DF"
+  date: 2026-01-01
+  path: https://doi.org/10.1007/s10461-025-04860-2
+  Journal: "AIDS and Behavior"
+  PDF: |
+    <a href="publications/williams2026characterizing.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
 - title: "Frailty among sexual and gender minority older adults: The All of Us database"
@@ -346,6 +361,15 @@
     <a href="publications/wu2024research.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
+- title: "Psychoactive medication prescribing after critical illness in American adults not justified by a documented supporting diagnosis"
+  Authors: "Wu TT, Bienvenu OJ, **Smith LH**, Saczynski JS, Cavanaugh R, Devlin JW"
+  date: 2026-01-01
+  path: https://doi.org/10.1097/CCM.0000000000007310
+  Journal: "Critical Care Medicine"
+  PDF: |
+    <a href="publications/wu2026psychoactive.pdf">
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    </a>
 - title: "BNT162b2 mRNA COVID-19 vaccine effectiveness in pregnancy: Emulating trial NCT04754594 using observational data from Norwegian health registries"
   Authors: "Zidan M, Trinh NTH, Desalegn A, **Smith LH**, Gelder MMHJ, Nordeng H, Lupattelli A"
   date: 2025-01-01
@@ -375,10 +399,10 @@
     </a>
 - title: "Identifiability and interpretation of estimands under selection in perinatal research"
   Authors: "**Smith LH**"
-  date: 2025-01-01
+  date: 2026-01-01
   path: https://doi.org/10.1111/ppe.70073
   Journal: "Paediatric and Perinatal Epidemiology"
   PDF: |
-    <a href="publications/smith2025identifiability.pdf">
+    <a href="publications/smith2026identifiability.pdf">
     <i class="bi bi-file-earmark-pdf-fill"></i>
     </a>
